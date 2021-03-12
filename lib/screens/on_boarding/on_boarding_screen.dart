@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:outline/config/theme/color_repository.dart';
-import 'package:outline/screens/home/home_screen.dart';
+import 'package:outline/screens/login_and_sign_up/login_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   @override
@@ -13,7 +13,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => HomeScreen()),
+      MaterialPageRoute(builder: (_) => LoginScreen()),
     );
   }
 

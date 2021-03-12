@@ -16,4 +16,5 @@ class ColorRepository {
   static const Color lowOpacityPink = Color(0xFFFFE9E9);
 
   static const Color textColor = Color(0xFF707070);
+  static const Color greyish = Color(0xFF4D515B);
 }
