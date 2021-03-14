@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:outline/config/services/api_result.dart';
+import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/user_model/user_login_model.dart';
 import 'package:outline/models/user_model/user_model.dart';
 import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/repositories/user_repository.dart';
-import 'package:outline/services/api_result.dart';
-import 'package:outline/services/network_exceptions.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';

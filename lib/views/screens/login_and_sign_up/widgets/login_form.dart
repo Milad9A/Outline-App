@@ -5,8 +5,9 @@ import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/user_model/user_login_model.dart';
 import 'package:outline/providers/login/login_bloc.dart';
 import 'package:outline/repositories/user_repository.dart';
-import 'package:outline/screens/login_and_sign_up/sign_up_screen.dart';
-import 'package:outline/widgets/widgets.dart';
+import 'package:outline/views/widgets/widgets.dart';
+
+import '../sign_up_screen.dart';
 
 class LoginForm extends StatelessWidget {
   LoginForm({

@@ -2,40 +2,51 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
+import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/user_model/user_model.dart';
-import 'package:outline/providers/authentication/authentication_bloc.dart';
-import 'package:outline/providers/login/login_bloc.dart';
+import 'package:outline/providers/sign_up/sign_up_bloc.dart';
 import 'package:outline/repositories/user_repository.dart';
-import 'package:outline/screens/home/home_screen.dart';
-import 'package:outline/services/network_exceptions.dart';
+import 'package:outline/views/screens/home/home_screen.dart';
 
-import 'widgets/login_form.dart';
+import 'widgets/sign_up_form.dart';
 import 'widgets/terms_and_policy_text.dart';
 
-class LoginScreen extends StatefulWidget {
+class SignUpScreen extends StatefulWidget {
   static Route get route =>
-      MaterialPageRoute<void>(builder: (_) => LoginScreen());
+      MaterialPageRoute<void>(builder: (_) => SignUpScreen());
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
+  final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final UserRepository userRepository = UserRepository();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: BlocProvider(
-        create: (context) => LoginBloc(
-          authenticationBloc:
-              AuthenticationBloc(userRepository: userRepository),
-          userRepository: userRepository,
+        create: (context) => SignUpBloc(
+          userRepository: UserRepository(),
         ),
         child: Scaffold(
-          body: BlocListener<LoginBloc, LoginState>(
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ),
+          body: BlocListener<SignUpBloc, SignUpState>(
             listener: (context, state) {
               state.when(
                 initial: () {},
@@ -47,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   showPopUp(
                     context,
                     title: 'Success',
-                    content: 'You have been logged In as ${user.name}',
+                    content: 'User Created Successfully',
                     onPressed: () {
                       Navigator.pushReplacement(context, HomeScreen.route);
                     },
@@ -75,13 +86,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     fit: BoxFit.fitWidth,
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(24.0, 110.0, 24.0, 0.0),
-                    child: LoginForm(
+                    padding: const EdgeInsets.fromLTRB(24.0, 80.0, 24.0, 0.0),
+                    child: SignUpForm(
+                      usernameController: usernameController,
                       emailController: emailController,
                       passwordController: passwordController,
+                      confirmPasswordController: confirmPasswordController,
                     ),
                   ),
-                  const TermsAndPolicyText()
+                  const TermsAndPolicyText(),
                 ],
               ),
             ),

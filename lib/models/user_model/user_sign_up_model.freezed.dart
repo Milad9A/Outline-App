@@ -21,11 +21,15 @@ class _$UserSignUpModelTearOff {
   const _$UserSignUpModelTearOff();
 
   UserSignUp call(
-      {@JsonKey(name: 'email') required String email,
-      @JsonKey(name: 'password') required String password}) {
+      {@JsonKey(name: 'name') required String name,
+      @JsonKey(name: 'email') required String email,
+      @JsonKey(name: 'password') required String password,
+      @JsonKey(name: 'confirm_password') required String confirmPassword}) {
     return UserSignUp(
+      name: name,
       email: email,
       password: password,
+      confirmPassword: confirmPassword,
     );
   }
 
@@ -39,10 +43,14 @@ const $UserSignUpModel = _$UserSignUpModelTearOff();
 
 /// @nodoc
 mixin _$UserSignUpModel {
+  @JsonKey(name: 'name')
+  String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'email')
   String get email => throw _privateConstructorUsedError;
   @JsonKey(name: 'password')
   String get password => throw _privateConstructorUsedError;
+  @JsonKey(name: 'confirm_password')
+  String get confirmPassword => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,8 +64,10 @@ abstract class $UserSignUpModelCopyWith<$Res> {
           UserSignUpModel value, $Res Function(UserSignUpModel) then) =
       _$UserSignUpModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'email') String email,
-      @JsonKey(name: 'password') String password});
+      {@JsonKey(name: 'name') String name,
+      @JsonKey(name: 'email') String email,
+      @JsonKey(name: 'password') String password,
+      @JsonKey(name: 'confirm_password') String confirmPassword});
 }
 
 /// @nodoc
@@ -71,10 +81,16 @@ class _$UserSignUpModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? name = freezed,
     Object? email = freezed,
     Object? password = freezed,
+    Object? confirmPassword = freezed,
   }) {
     return _then(_value.copyWith(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -82,6 +98,10 @@ class _$UserSignUpModelCopyWithImpl<$Res>
       password: password == freezed
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      confirmPassword: confirmPassword == freezed
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -95,8 +115,10 @@ abstract class $UserSignUpCopyWith<$Res>
       _$UserSignUpCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'email') String email,
-      @JsonKey(name: 'password') String password});
+      {@JsonKey(name: 'name') String name,
+      @JsonKey(name: 'email') String email,
+      @JsonKey(name: 'password') String password,
+      @JsonKey(name: 'confirm_password') String confirmPassword});
 }
 
 /// @nodoc
@@ -110,10 +132,16 @@ class _$UserSignUpCopyWithImpl<$Res> extends _$UserSignUpModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? name = freezed,
     Object? email = freezed,
     Object? password = freezed,
+    Object? confirmPassword = freezed,
   }) {
     return _then(UserSignUp(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -121,6 +149,10 @@ class _$UserSignUpCopyWithImpl<$Res> extends _$UserSignUpModelCopyWithImpl<$Res>
       password: password == freezed
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      confirmPassword: confirmPassword == freezed
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -131,22 +163,30 @@ class _$UserSignUpCopyWithImpl<$Res> extends _$UserSignUpModelCopyWithImpl<$Res>
 /// @nodoc
 class _$UserSignUp with DiagnosticableTreeMixin implements UserSignUp {
   const _$UserSignUp(
-      {@JsonKey(name: 'email') required this.email,
-      @JsonKey(name: 'password') required this.password});
+      {@JsonKey(name: 'name') required this.name,
+      @JsonKey(name: 'email') required this.email,
+      @JsonKey(name: 'password') required this.password,
+      @JsonKey(name: 'confirm_password') required this.confirmPassword});
 
   factory _$UserSignUp.fromJson(Map<String, dynamic> json) =>
       _$_$UserSignUpFromJson(json);
 
+  @override
+  @JsonKey(name: 'name')
+  final String name;
   @override
   @JsonKey(name: 'email')
   final String email;
   @override
   @JsonKey(name: 'password')
   final String password;
+  @override
+  @JsonKey(name: 'confirm_password')
+  final String confirmPassword;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserSignUpModel(email: $email, password: $password)';
+    return 'UserSignUpModel(name: $name, email: $email, password: $password, confirmPassword: $confirmPassword)';
   }
 
   @override
@@ -154,26 +194,35 @@ class _$UserSignUp with DiagnosticableTreeMixin implements UserSignUp {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'UserSignUpModel'))
+      ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('email', email))
-      ..add(DiagnosticsProperty('password', password));
+      ..add(DiagnosticsProperty('password', password))
+      ..add(DiagnosticsProperty('confirmPassword', confirmPassword));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is UserSignUp &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.password, password) ||
                 const DeepCollectionEquality()
-                    .equals(other.password, password)));
+                    .equals(other.password, password)) &&
+            (identical(other.confirmPassword, confirmPassword) ||
+                const DeepCollectionEquality()
+                    .equals(other.confirmPassword, confirmPassword)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(password);
+      const DeepCollectionEquality().hash(password) ^
+      const DeepCollectionEquality().hash(confirmPassword);
 
   @JsonKey(ignore: true)
   @override
@@ -188,18 +237,27 @@ class _$UserSignUp with DiagnosticableTreeMixin implements UserSignUp {
 
 abstract class UserSignUp implements UserSignUpModel {
   const factory UserSignUp(
-      {@JsonKey(name: 'email') required String email,
-      @JsonKey(name: 'password') required String password}) = _$UserSignUp;
+          {@JsonKey(name: 'name') required String name,
+          @JsonKey(name: 'email') required String email,
+          @JsonKey(name: 'password') required String password,
+          @JsonKey(name: 'confirm_password') required String confirmPassword}) =
+      _$UserSignUp;
 
   factory UserSignUp.fromJson(Map<String, dynamic> json) =
       _$UserSignUp.fromJson;
 
+  @override
+  @JsonKey(name: 'name')
+  String get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'email')
   String get email => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'password')
   String get password => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'confirm_password')
+  String get confirmPassword => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   $UserSignUpCopyWith<UserSignUp> get copyWith =>

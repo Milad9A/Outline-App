@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:outline/screens/on_boarding/on_boarding_screen.dart';
-import 'package:outline/screens/splash/splash_screen.dart';
 
 import 'config/theme/custom_theme.dart';
 import 'providers/authentication/authentication_bloc.dart';
 import 'repositories/user_repository.dart';
+import 'views/screens/on_boarding/on_boarding_screen.dart';
+import 'views/screens/splash/splash_screen.dart';
 
 class OutlineApp extends StatelessWidget {
   final _navigatorKey = GlobalKey<NavigatorState>();

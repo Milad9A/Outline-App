@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:outline/config/theme/color_repository.dart';
-import 'package:outline/screens/login_and_sign_up/login_screen.dart';
+import 'package:outline/views/screens/login_and_sign_up/login_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   @override

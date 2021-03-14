@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/helpers/shared_prefs_helper.dart';
+import 'package:outline/config/services/api_result.dart';
+import 'package:outline/config/services/dio_client.dart';
+import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/user_model/user_login_model.dart';
 import 'package:outline/models/user_model/user_model.dart';
-import 'package:outline/services/api_result.dart';
-import 'package:outline/services/dio_client.dart';
-import 'package:outline/services/network_exceptions.dart';
+import 'package:outline/models/user_model/user_sign_up_model.dart';
 
 class UserRepository {
   late DioClient dioClient;
@@ -29,7 +30,27 @@ class UserRepository {
 
       User user = User.fromJson(response['user']);
       SharedPrefsHelper prefs = SharedPrefsHelper();
-      prefs.persistToken(response.data['token']);
+      prefs.persistToken(response['token']);
+
+      return ApiResult.success(data: user);
+    } catch (e) {
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
+  }
+
+  Future<ApiResult<User>> signUpUser({
+    required UserSignUp userSignUpCredentials,
+  }) async {
+    try {
+      final response = await dioClient.post(
+        '/users',
+        data: userSignUpCredentials,
+      );
+
+      User user = User.fromJson(response['user']);
+
+      SharedPrefsHelper prefs = SharedPrefsHelper();
+      prefs.persistToken(response['token']);
 
       return ApiResult.success(data: user);
     } catch (e) {

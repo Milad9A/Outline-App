@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/theme/color_repository.dart';
-import 'package:outline/widgets/widgets.dart';
+import 'package:outline/models/user_model/user_sign_up_model.dart';
+import 'package:outline/providers/sign_up/sign_up_bloc.dart';
+import 'package:outline/views/widgets/widgets.dart';
 
 class SignUpForm extends StatelessWidget {
   const SignUpForm(
@@ -35,7 +38,7 @@ class SignUpForm extends StatelessWidget {
         ),
         SizedBox(height: 46.0),
         OutlineTextField(
-          controller: emailController,
+          controller: usernameController,
           hintText: 'Username',
           textInputAction: TextInputAction.next,
           textInputType: TextInputType.name,
@@ -57,7 +60,7 @@ class SignUpForm extends StatelessWidget {
         ),
         SizedBox(height: 26.0),
         OutlineTextField(
-          controller: passwordController,
+          controller: confirmPasswordController,
           hintText: 'Confirm Password',
           textInputAction: TextInputAction.done,
           textInputType: TextInputType.text,
@@ -66,7 +69,18 @@ class SignUpForm extends StatelessWidget {
         SizedBox(height: 26.0),
         OutlineTextButton(
           text: 'Create Account',
-          onPressed: () {},
+          onPressed: () {
+            BlocProvider.of<SignUpBloc>(context).add(
+              SignUpButtonPressed(
+                userSignUp: UserSignUp(
+                  name: usernameController.text,
+                  email: emailController.text,
+                  password: passwordController.text,
+                  confirmPassword: confirmPasswordController.text,
+                ),
+              ),
+            );
+          },
         ),
       ],
     );
