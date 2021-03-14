@@ -1,17 +1,22 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/theme/color_repository.dart';
+import 'package:outline/models/user_model/user_login_model.dart';
+import 'package:outline/providers/login/login_bloc.dart';
+import 'package:outline/repositories/user_repository.dart';
 import 'package:outline/screens/login_and_sign_up/sign_up_screen.dart';
 import 'package:outline/widgets/widgets.dart';
 
 class LoginForm extends StatelessWidget {
-  const LoginForm({
+  LoginForm({
     required this.emailController,
     required this.passwordController,
   });
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final UserRepository userRepository = UserRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +66,15 @@ class LoginForm extends StatelessWidget {
         SizedBox(height: 26.0),
         OutlineTextButton(
           text: 'Login',
+          onPressed: () {
+            BlocProvider.of<LoginBloc>(context).add(
+              LoginButtonPressed(
+                userLogin: UserLogin(
+                    email: emailController.text,
+                    password: passwordController.text),
+              ),
+            );
+          },
         ),
         SizedBox(height: 22.0),
         RichText(

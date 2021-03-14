@@ -3,9 +3,11 @@ import 'package:outline/config/theme/color_repository.dart';
 
 class OutlineTextButton extends StatelessWidget {
   final String text;
+  final void Function()? onPressed;
 
   const OutlineTextButton({
     required this.text,
+    required this.onPressed,
   });
 
   @override
@@ -18,7 +20,7 @@ class OutlineTextButton extends StatelessWidget {
           backgroundColor: ColorRepository.darkBlue,
           primary: Colors.white,
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(
           text,
           style: Theme.of(context).textTheme.bodyText2!.copyWith(

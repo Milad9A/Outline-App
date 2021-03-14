@@ -1,4 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:outline/config/functions/show_loading_gif.dart';
+import 'package:outline/config/functions/show_pop_up.dart';
+import 'package:outline/models/user_model/user_model.dart';
+import 'package:outline/providers/authentication/authentication_bloc.dart';
+import 'package:outline/providers/login/login_bloc.dart';
+import 'package:outline/repositories/user_repository.dart';
+import 'package:outline/screens/home/home_screen.dart';
+import 'package:outline/services/network_exceptions.dart';
 
 import 'widgets/login_form.dart';
 import 'widgets/terms_and_policy_text.dart';
@@ -14,30 +23,70 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final UserRepository userRepository = UserRepository();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.asset(
-                'assets/images/shapes_header.png',
-                fit: BoxFit.fitWidth,
+      child: BlocProvider(
+        create: (context) => LoginBloc(
+          authenticationBloc:
+              AuthenticationBloc(userRepository: userRepository),
+          userRepository: userRepository,
+        ),
+        child: Scaffold(
+          body: BlocListener<LoginBloc, LoginState>(
+            listener: (context, state) {
+              state.when(
+                initial: () {},
+                loading: () {
+                  showLoadingGif(context);
+                },
+                success: (User user) {
+                  Navigator.pop(context);
+                  showPopUp(
+                    context,
+                    title: 'Success',
+                    content: 'You have been logged In as ${user.name}',
+                    onPressed: () {
+                      Navigator.pushReplacement(context, HomeScreen.route);
+                    },
+                  );
+                },
+                error: (NetworkExceptions error) {
+                  Navigator.pop(context);
+                  showPopUp(
+                    context,
+                    title: 'Error',
+                    content: NetworkExceptions.getErrorMessage(error),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  );
+                },
+              );
+            },
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset(
+                    'assets/images/shapes_header.png',
+                    fit: BoxFit.fitWidth,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24.0, 110.0, 24.0, 0.0),
+                    child: LoginForm(
+                      emailController: emailController,
+                      passwordController: passwordController,
+                    ),
+                  ),
+                  const TermsAndPolicyText()
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(24.0, 110.0, 24.0, 0.0),
-                child: LoginForm(
-                  emailController: emailController,
-                  passwordController: passwordController,
-                ),
-              ),
-            ],
+            ),
           ),
         ),
-        bottomNavigationBar: const TermsAndPolicyText(),
       ),
     );
   }

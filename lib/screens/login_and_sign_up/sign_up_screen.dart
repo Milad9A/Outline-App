@@ -51,10 +51,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   confirmPasswordController: confirmPasswordController,
                 ),
               ),
+              const TermsAndPolicyText(),
             ],
           ),
         ),
-        bottomNavigationBar: const TermsAndPolicyText(),
       ),
     );
   }

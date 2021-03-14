@@ -66,6 +66,7 @@ class SignUpForm extends StatelessWidget {
         SizedBox(height: 26.0),
         OutlineTextButton(
           text: 'Create Account',
+          onPressed: () {},
         ),
       ],
     );
