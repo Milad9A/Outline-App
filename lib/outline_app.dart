@@ -8,7 +8,12 @@ import 'repositories/user_repository.dart';
 import 'views/screens/on_boarding/on_boarding_screen.dart';
 import 'views/screens/splash/splash_screen.dart';
 
-class OutlineApp extends StatelessWidget {
+class OutlineApp extends StatefulWidget {
+  @override
+  _OutlineAppState createState() => _OutlineAppState();
+}
+
+class _OutlineAppState extends State<OutlineApp> {
   final _navigatorKey = GlobalKey<NavigatorState>();
 
   NavigatorState? get _navigator => _navigatorKey.currentState;
@@ -29,17 +34,12 @@ class OutlineApp extends StatelessWidget {
       create: (context) => AuthenticationBloc(
         userRepository: UserRepository(),
       ),
-      // ..add(AuthenticationAppStarted()),
       child: MaterialApp(
         title: 'Outline',
         debugShowCheckedModeBanner: false,
         theme: CustomTheme.lightTheme,
         navigatorKey: _navigatorKey,
-        home: OnBoardingScreen(),
-        onGenerateRoute: (_) =>
-            MaterialPageRoute<LoadingScreen>(builder: (context) {
-          return const LoadingScreen();
-        }),
+        home: SplashScreen(),
       ),
     );
   }
