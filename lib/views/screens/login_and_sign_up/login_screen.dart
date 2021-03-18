@@ -8,6 +8,7 @@ import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/providers/login/login_bloc.dart';
 import 'package:outline/repositories/user_repository.dart';
 import 'package:outline/views/screens/home/home_screen.dart';
+import 'package:outline/views/screens/navigation/navigation_screen.dart';
 
 import 'widgets/login_form.dart';
 import 'widgets/terms_and_policy_text.dart';
@@ -49,7 +50,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     title: 'Success',
                     content: 'You have been logged In as ${user.name}',
                     onPressed: () {
-                      Navigator.pushReplacement(context, HomeScreen.route);
+                      Navigator.pushReplacement(
+                          context, NavigationScreen.route);
                     },
                   );
                 },

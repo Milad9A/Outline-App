@@ -6,6 +6,7 @@ import 'package:outline/models/user_model/user_model.dart';
 import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/views/screens/home/home_screen.dart';
 import 'package:outline/views/screens/login_and_sign_up/login_screen.dart';
+import 'package:outline/views/screens/navigation/navigation_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen();
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
       listener: (context, state) {
         state.maybeMap(
           authenticated: (state) {
-            Navigator.push(context, HomeScreen.route);
+            Navigator.push(context, NavigationScreen.route);
           },
           unAuthenticated: (state) {
             Navigator.push(context, LoginScreen.route);
