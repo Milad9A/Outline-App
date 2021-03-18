@@ -16,16 +16,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: MediaQuery.of(context).size.height / 2.2,
-        leading: Text(
+        leadingWidth: 0.0,
+        title: Text(
           'Outline',
-          textAlign: TextAlign.right,
           style: Theme.of(context).textTheme.headline4!.copyWith(
                 fontWeight: FontWeight.bold,
                 color: ColorRepository.darkBlue,
               ),
         ),
-        toolbarHeight: 45.0,
         actions: [
           Icon(
             Icons.message_sharp,

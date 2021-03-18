@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/views/screens/course/course_screen.dart';
-import 'package:outline/views/screens/create/create_screen.dart';
+import 'package:outline/views/screens/create/create_post_screen.dart';
 import 'package:outline/views/screens/home/home_screen.dart';
 import 'package:outline/views/screens/profile/profile_screen.dart';
 import 'package:outline/views/screens/search/search_screen.dart';
@@ -51,7 +51,7 @@ class _NavigationScreenState extends State<NavigationScreen>
         children: [
           HomeScreen(),
           SearchScreen(),
-          CreateScreen(),
+          CreatePostScreen(),
           CourseScreen(),
           ProfileScreen(),
         ],
