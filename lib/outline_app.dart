@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:outline/providers/tags/tags/tags_bloc.dart';
+import 'package:outline/repositories/tags_repository.dart';
 
 import 'config/theme/custom_theme.dart';
 import 'providers/authentication/authentication_bloc.dart';
+import 'providers/update_user/update_user_bloc.dart';
 import 'repositories/user_repository.dart';
-import 'views/screens/on_boarding/on_boarding_screen.dart';
 import 'views/screens/splash/splash_screen.dart';
 
 class OutlineApp extends StatefulWidget {
@@ -30,10 +32,24 @@ class _OutlineAppState extends State<OutlineApp> {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent),
     );
-    return BlocProvider(
-      create: (context) => AuthenticationBloc(
-        userRepository: UserRepository(),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthenticationBloc(
+            userRepository: UserRepository(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => TagBloc(
+            tagsRepository: TagsRepository(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => UpdateUserBloc(
+            userRepository: UserRepository(),
+          ),
+        ),
+      ],
       child: MaterialApp(
         title: 'Outline',
         debugShowCheckedModeBanner: false,

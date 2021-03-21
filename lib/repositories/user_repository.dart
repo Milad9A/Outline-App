@@ -8,6 +8,7 @@ import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/user_model/user_login_model.dart';
 import 'package:outline/models/user_model/user_model.dart';
 import 'package:outline/models/user_model/user_sign_up_model.dart';
+import 'package:outline/models/user_model/user_update_model.dart';
 
 class UserRepository {
   late DioClient dioClient;
@@ -70,6 +71,26 @@ class UserRepository {
 
       SharedPrefsHelper prefs = SharedPrefsHelper();
       prefs.persistToken(response['token']);
+
+      return ApiResult.success(data: user);
+    } catch (e) {
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
+  }
+
+  Future<ApiResult<User>> updateUser({
+    required UserUpdate userUpdateValues,
+  }) async {
+    try {
+      var updates = userUpdateValues.toJson();
+      updates.removeWhere((key, value) => value == null);
+
+      final response = await dioClient.patch(
+        '/users/me',
+        data: updates,
+      );
+
+      User user = User.fromJson(response);
 
       return ApiResult.success(data: user);
     } catch (e) {

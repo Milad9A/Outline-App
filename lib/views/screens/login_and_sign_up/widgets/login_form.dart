@@ -44,6 +44,7 @@ class LoginForm extends StatelessWidget {
           hintText: 'Email',
           textInputAction: TextInputAction.next,
           textInputType: TextInputType.emailAddress,
+          onChanged: (value) {},
         ),
         SizedBox(height: 26.0),
         OutlineTextField(
@@ -52,6 +53,7 @@ class LoginForm extends StatelessWidget {
           textInputAction: TextInputAction.done,
           textInputType: TextInputType.text,
           obscureText: true,
+          onChanged: (value) {},
         ),
         SizedBox(height: 26.0),
         Align(

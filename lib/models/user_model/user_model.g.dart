@@ -14,6 +14,9 @@ _$User _$_$UserFromJson(Map<String, dynamic> json) {
     aboutMe: json['aboutMe'] as String,
     reputation: json['reputation'] as int,
     acceptRate: json['accept_rate'] as int,
+    tags: (json['tags'] as List<dynamic>)
+        .map((e) => Tag.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -24,4 +27,5 @@ Map<String, dynamic> _$_$UserToJson(_$User instance) => <String, dynamic>{
       'aboutMe': instance.aboutMe,
       'reputation': instance.reputation,
       'accept_rate': instance.acceptRate,
+      'tags': instance.tags,
     };

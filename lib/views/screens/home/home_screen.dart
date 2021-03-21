@@ -39,10 +39,17 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
-          return Center(
-            child: Text(
-              'Hello, ${state is AuthenticationAuthenticated ? state.user.name : 'User'}',
-            ),
+          return state.when(
+            initial: () => CircularProgressIndicator(),
+            loading: () => CircularProgressIndicator(),
+            unAuthenticated: () => Text('Hello, user'),
+            authenticated: (user) {
+              return Center(
+                child: Text(
+                  'Hello, ${user.name}',
+                ),
+              );
+            },
           );
         },
       ),
