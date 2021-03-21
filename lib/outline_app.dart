@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:outline/providers/article/article_bloc.dart';
 import 'package:outline/providers/tags/tags/tags_bloc.dart';
+import 'package:outline/repositories/article_repository.dart';
 import 'package:outline/repositories/tags_repository.dart';
 
 import 'config/theme/custom_theme.dart';
@@ -47,6 +49,11 @@ class _OutlineAppState extends State<OutlineApp> {
         BlocProvider(
           create: (context) => UpdateUserBloc(
             userRepository: UserRepository(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => ArticleBloc(
+            articleRepository: ArticleRepository(),
           ),
         ),
       ],

@@ -12,15 +12,15 @@ import 'package:outline/views/screens/navigation/navigation_screen.dart';
 import 'package:outline/views/widgets/outline_text_button.dart';
 import 'package:outline/views/widgets/outline_text_field.dart';
 
-class TagsScreen extends StatefulWidget {
+class SignUpTagsScreen extends StatefulWidget {
   static Route get route =>
-      MaterialPageRoute<void>(builder: (_) => TagsScreen());
+      MaterialPageRoute<void>(builder: (_) => SignUpTagsScreen());
 
   @override
-  _TagsScreenState createState() => _TagsScreenState();
+  _SignUpTagsScreenState createState() => _SignUpTagsScreenState();
 }
 
-class _TagsScreenState extends State<TagsScreen> {
+class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
   final GlobalKey<TagsState> _tagStateKey = GlobalKey<TagsState>();
   late TextEditingController searchController;
   late List<String> ids;

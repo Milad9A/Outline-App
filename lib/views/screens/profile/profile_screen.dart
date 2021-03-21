@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:outline/views/screens/login_and_sign_up/login_screen.dart';
 import 'package:outline/views/screens/login_and_sign_up/sign_up_screen.dart';
-import 'package:outline/views/screens/tags/tags_screen.dart';
+import 'package:outline/views/screens/tags/sign_up_tags_screen.dart';
 import 'package:outline/views/widgets/outline_text_button.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -36,7 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           OutlineTextButton(
             text: 'Tags Screen',
             onPressed: () {
-              Navigator.push(context, TagsScreen.route);
+              Navigator.push(context, SignUpTagsScreen.route);
             },
           ),
         ],

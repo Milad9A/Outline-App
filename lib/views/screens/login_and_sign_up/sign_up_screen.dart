@@ -4,9 +4,10 @@ import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/user_model/user_model.dart';
+import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/providers/sign_up/sign_up_bloc.dart';
 import 'package:outline/repositories/user_repository.dart';
-import 'package:outline/views/screens/tags/tags_screen.dart';
+import 'package:outline/views/screens/tags/sign_up_tags_screen.dart';
 
 import 'widgets/sign_up_form.dart';
 import 'widgets/terms_and_policy_text.dart';
@@ -32,6 +33,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: BlocProvider(
         create: (context) => SignUpBloc(
           userRepository: UserRepository(),
+          authenticationBloc: AuthenticationBloc(
+            userRepository: UserRepository(),
+          ),
         ),
         child: Scaffold(
           extendBodyBehindAppBar: true,
@@ -62,7 +66,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        TagsScreen.route,
+                        SignUpTagsScreen.route,
                       );
                     },
                   );

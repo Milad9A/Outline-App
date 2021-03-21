@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/services/network_exceptions.dart';
+import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/user_model/user_model.dart';
 import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/providers/login/login_bloc.dart';
@@ -36,6 +37,23 @@ class _LoginScreenState extends State<LoginScreen> {
           userRepository: userRepository,
         ),
         child: Scaffold(
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            leading: SizedBox.shrink(),
+            actions: [
+              IconButton(
+                  icon: Icon(
+                    Icons.arrow_forward,
+                    color: ColorRepository.greyish,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      NavigationScreen.route,
+                    );
+                  })
+            ],
+          ),
           body: BlocListener<LoginBloc, LoginState>(
             listener: (context, state) {
               state.when(
