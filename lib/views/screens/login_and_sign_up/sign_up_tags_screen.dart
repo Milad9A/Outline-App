@@ -137,7 +137,7 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
                                               color: ColorRepository.textColor,
                                             ),
                                             padding: const EdgeInsets.symmetric(
-                                              vertical: 12.0,
+                                              vertical: 8.0,
                                               horizontal: 8.0,
                                             ),
                                             index: index, // required
@@ -152,7 +152,7 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
                                             elevation: 0.0,
                                             textStyle: Theme.of(context)
                                                 .textTheme
-                                                .subtitle1!
+                                                .subtitle2!
                                                 .copyWith(
                                                   color:
                                                       ColorRepository.textColor,

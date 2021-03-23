@@ -57,7 +57,6 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
             ),
             Expanded(
               child: TabBarView(
-                physics: NeverScrollableScrollPhysics(),
                 children: [
                   CreateArticleTab(),
                   CreateQuestionTab(),

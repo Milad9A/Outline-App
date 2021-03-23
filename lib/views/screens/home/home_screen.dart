@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return state.when(
             initial: () => CircularProgressIndicator(),
             loading: () => CircularProgressIndicator(),
-            unAuthenticated: () => Text('Hello, user'),
+            unAuthenticated: () => Center(child: Text('Hello, user')),
             authenticated: (user) {
               return Center(
                 child: Text(

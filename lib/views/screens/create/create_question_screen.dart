@@ -12,20 +12,21 @@ import 'package:flutter_quill/widgets/default_styles.dart';
 import 'package:flutter_quill/widgets/editor.dart';
 import 'package:flutter_quill/widgets/toolbar.dart';
 import 'package:outline/config/theme/color_repository.dart';
-import 'package:outline/views/screens/create/article_tags_screen.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tuple/tuple.dart';
 
-class CreateArticleScreen extends StatefulWidget {
+import 'question_tags_screen.dart';
+
+class CreateQuestionScreen extends StatefulWidget {
   static Route get route =>
-      MaterialPageRoute<void>(builder: (_) => CreateArticleScreen());
+      MaterialPageRoute<void>(builder: (_) => CreateQuestionScreen());
 
   @override
-  _CreateArticleScreenState createState() => _CreateArticleScreenState();
+  _CreateQuestionScreenState createState() => _CreateQuestionScreenState();
 }
 
-class _CreateArticleScreenState extends State<CreateArticleScreen> {
+class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
   QuillController? _controller;
   final FocusNode _focusNode = FocusNode();
 
@@ -36,7 +37,7 @@ class _CreateArticleScreenState extends State<CreateArticleScreen> {
   }
 
   Future<void> _load() async {
-    final doc = Document()..insert(0, 'Article Content');
+    final doc = Document()..insert(0, 'Question Content');
     setState(() {
       _controller = QuillController(
           document: doc, selection: TextSelection.collapsed(offset: 0));
@@ -56,7 +57,7 @@ class _CreateArticleScreenState extends State<CreateArticleScreen> {
         iconTheme: IconThemeData(color: ColorRepository.darkBlue),
         centerTitle: false,
         title: Text(
-          'Create Article',
+          'Create Question',
           style: Theme.of(context).textTheme.headline6!.copyWith(
                 fontWeight: FontWeight.bold,
                 color: ColorRepository.darkBlue,
@@ -70,7 +71,7 @@ class _CreateArticleScreenState extends State<CreateArticleScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ArticleTagsScreen(articleContent: json),
+                  builder: (context) => QuestionTagsScreen(questionBody: json),
                 ),
               );
             },

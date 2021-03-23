@@ -4,10 +4,12 @@ import 'package:outline/config/theme/color_repository.dart';
 class OutlineTextButton extends StatelessWidget {
   final String text;
   final void Function()? onPressed;
+  final Color? backgroundColor;
 
   const OutlineTextButton({
     required this.text,
     required this.onPressed,
+    this.backgroundColor = ColorRepository.darkBlue,
   });
 
   @override
@@ -17,7 +19,7 @@ class OutlineTextButton extends StatelessWidget {
       width: double.infinity,
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: ColorRepository.darkBlue,
+          backgroundColor: backgroundColor,
           primary: Colors.white,
         ),
         onPressed: onPressed,

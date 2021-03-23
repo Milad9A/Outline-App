@@ -7,7 +7,7 @@ class OutlineTextField extends StatelessWidget {
   final TextInputAction textInputAction;
   final String hintText;
   final bool obscureText;
-  final Widget icon;
+  final Widget? icon;
   final Function(String?) onChanged;
 
   OutlineTextField({
@@ -17,7 +17,7 @@ class OutlineTextField extends StatelessWidget {
     required this.hintText,
     required this.onChanged,
     this.obscureText = false,
-    this.icon = const SizedBox.shrink(),
+    this.icon,
   });
 
   @override

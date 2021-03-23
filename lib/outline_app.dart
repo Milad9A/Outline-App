@@ -4,10 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/providers/article/article_bloc.dart';
 import 'package:outline/providers/tags/tags/tags_bloc.dart';
 import 'package:outline/repositories/article_repository.dart';
+import 'package:outline/repositories/question_repository.dart';
 import 'package:outline/repositories/tags_repository.dart';
 
 import 'config/theme/custom_theme.dart';
 import 'providers/authentication/authentication_bloc.dart';
+import 'providers/question/question_bloc.dart';
 import 'providers/update_user/update_user_bloc.dart';
 import 'repositories/user_repository.dart';
 import 'views/screens/splash/splash_screen.dart';
@@ -54,6 +56,11 @@ class _OutlineAppState extends State<OutlineApp> {
         BlocProvider(
           create: (context) => ArticleBloc(
             articleRepository: ArticleRepository(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => QuestionBloc(
+            questionRepository: QuestionRepository(),
           ),
         ),
       ],

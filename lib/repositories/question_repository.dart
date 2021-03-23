@@ -6,12 +6,14 @@ import 'package:outline/config/services/dio_client.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/article_model/article_create_model.dart';
 import 'package:outline/models/article_model/article_model.dart';
+import 'package:outline/models/question_model/question_create_model.dart';
+import 'package:outline/models/question_model/question_model.dart';
 
-class ArticleRepository {
+class QuestionRepository {
   late DioClient dioClient;
   String _baseUrl = Consts.baseUrl;
 
-  ArticleRepository() {
+  QuestionRepository() {
     var dio = Dio();
     dioClient = DioClient(
       _baseUrl,
@@ -22,18 +24,16 @@ class ArticleRepository {
     );
   }
 
-  Future<ApiResult<Article>> createArticle({
-    required ArticleCreate articleData,
+  Future<ApiResult<Question>> createQuestion({
+    required QuestionCreate questionData,
   }) async {
     try {
       final response = await dioClient.post(
-        '/articles',
-        data: articleData,
+        '/questions',
+        data: questionData,
       );
 
-      print(response);
-
-      Article article = Article.fromJson(response);
+      Question article = Question.fromJson(response);
 
       return ApiResult.success(data: article);
     } catch (e) {

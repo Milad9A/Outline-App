@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/theme/color_repository.dart';
-import 'package:outline/models/user_model/user_model.dart';
 import 'package:outline/providers/authentication/authentication_bloc.dart';
-import 'package:outline/views/screens/home/home_screen.dart';
 import 'package:outline/views/screens/login_and_sign_up/login_screen.dart';
 import 'package:outline/views/screens/navigation/navigation_screen.dart';
 
