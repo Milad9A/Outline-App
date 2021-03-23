@@ -17,4 +17,6 @@ class ColorRepository {
 
   static const Color textColor = Color(0xFF707070);
   static const Color greyish = Color(0xFF4D515B);
+
+  static const Color scaffoldBackground = Color(0xFFF8F9FA);
 }
