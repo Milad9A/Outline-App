@@ -26,34 +26,9 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
         length: 2,
         child: Column(
           children: [
-            TabBar(
-              indicator: MD2Indicator(
-                indicatorSize: MD2IndicatorSize.normal,
-                indicatorHeight: 4.0,
-                indicatorColor: ColorRepository.darkBlue,
-              ),
-              unselectedLabelColor: Colors.grey,
-              labelColor: ColorRepository.darkBlue,
-              tabs: [
-                Tab(
-                  child: Text(
-                    'Create Article',
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-                Tab(
-                  child: Text(
-                    'Create Question',
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-              ],
+            OutlineTabBar(
+              firstTitle: 'Create Article',
+              secondTitle: 'Create Question',
             ),
             Expanded(
               child: TabBarView(

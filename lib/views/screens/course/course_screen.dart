@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/views/screens/course/widgets/widgets.dart';
 import 'package:outline/views/widgets/widgets.dart';
@@ -28,49 +29,17 @@ class _CourseScreenState extends State<CourseScreen> {
         length: 2,
         child: Column(
           children: [
-            Container(
-              color: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: TabBar(
-                indicator: MD2Indicator(
-                  indicatorSize: MD2IndicatorSize.normal,
-                  indicatorHeight: 4.0,
-                  indicatorColor: ColorRepository.darkBlue,
-                ),
-                unselectedLabelColor: Colors.grey,
-                labelColor: ColorRepository.darkBlue,
-                tabs: [
-                  Tab(
-                    child: Text(
-                      'Explore',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                  Tab(
-                    child: Text(
-                      'My Courses',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            OutlineTabBar(
+              firstTitle: 'Explore',
+              secondTitle: 'My Courses',
             ),
-            SizedBox(height: 14.0),
             Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: TabBarView(
-                  children: [
-                    CorseExploreTab(),
-                    MyCourseTab(),
-                  ],
-                ),
+              child: TabBarView(
+                physics: NeverScrollableScrollPhysics(),
+                children: [
+                  CorseExploreTab(),
+                  MyCoursesTab(),
+                ],
               ),
             ),
           ],

@@ -31,6 +31,7 @@ class OutlineTextField extends StatelessWidget {
         textInputAction: textInputAction,
         cursorColor: ColorRepository.darkBlue,
         obscureText: obscureText,
+        style: TextStyle(color: ColorRepository.blackish),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
           hintText: hintText,

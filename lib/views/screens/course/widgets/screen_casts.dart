@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:outline/config/consts.dart';
 
 class ScreenCasts extends StatelessWidget {
   const ScreenCasts({
@@ -8,9 +9,11 @@ class ScreenCasts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [Consts.outlineBoxShadow],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,7 +41,11 @@ class ScreenCasts extends StatelessWidget {
               ],
             ),
           ),
-          Image.asset('assets/images/course_screen_artwork.png'),
+          Image.asset(
+            'assets/images/course_screen_artwork.png',
+            width: MediaQuery.of(context).size.width * 0.4,
+            fit: BoxFit.fill,
+          ),
         ],
       ),
     );

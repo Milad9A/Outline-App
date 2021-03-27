@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/views/screens/create/create_question_screen.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
@@ -19,7 +18,6 @@ class CreateQuestionTab extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.9,
           child: OutlineTextButton(
             text: 'Create Article',
-            backgroundColor: ColorRepository.blackish,
             onPressed: () {
               Navigator.push(
                 context,

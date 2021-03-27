@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/views/screens/course/course_screen.dart';
@@ -45,18 +44,22 @@ class _NavigationScreenState extends State<NavigationScreen>
       extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: true,
       extendBody: true,
-      body: TabBarView(
-        controller: tabBarController,
-        physics: NeverScrollableScrollPhysics(),
-        children: [
-          HomeScreen(),
-          SearchScreen(),
-          CreatePostScreen(),
-          CourseScreen(),
-          ProfileScreen(),
-        ],
+      body: SafeArea(
+        child: TabBarView(
+          controller: tabBarController,
+          physics: NeverScrollableScrollPhysics(),
+          children: [
+            HomeScreen(),
+            SearchScreen(),
+            CreatePostScreen(),
+            CourseScreen(),
+            ProfileScreen(),
+          ],
+        ),
       ),
       bottomNavigationBar: SnakeNavigationBar.color(
+        shadowColor: Colors.black,
+        elevation: 8.0,
         behaviour: snakeBarStyle,
         snakeShape: snakeShape,
         shape: bottomBarShape,

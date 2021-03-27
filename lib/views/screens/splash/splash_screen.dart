@@ -65,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 );
               },
               orElse: () {
-                return Center(child: Text(Consts.unexpectedError));
+                return SizedBox.shrink();
               },
             );
           },
