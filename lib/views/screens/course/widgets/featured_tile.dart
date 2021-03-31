@@ -32,8 +32,19 @@ class FeaturedTile extends StatelessWidget {
               ),
             ),
             SizedBox(height: 6.0),
-            Text('Modern React'),
-            Text('Milad'),
+            Text(
+              'Modern React with Redux',
+              style: TextStyle(
+                color: ColorRepository.blackish,
+              ),
+            ),
+            Text(
+              'Milad Awad',
+              style: TextStyle(
+                fontSize: 12,
+                color: ColorRepository.blackish,
+              ),
+            ),
             Container(
               width: 176.0,
               child: Row(
