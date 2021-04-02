@@ -9,7 +9,16 @@ class CourseScreen extends StatefulWidget {
   _CourseScreenState createState() => _CourseScreenState();
 }
 
-class _CourseScreenState extends State<CourseScreen> {
+class _CourseScreenState extends State<CourseScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,25 +34,26 @@ class _CourseScreenState extends State<CourseScreen> {
               ),
         ),
       ),
-      body: DefaultTabController(
-        length: 2,
-        child: Column(
-          children: [
-            OutlineTabBar(
-              firstTitle: 'Explore',
-              secondTitle: 'My Courses',
+      body: Column(
+        children: [
+          OutlineTabBar(
+            firstTitle: 'Explore',
+            secondTitle: 'My Courses',
+            tabController: _tabController,
+          ),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              physics: NeverScrollableScrollPhysics(),
+              children: [
+                CorseExploreTab(),
+                MyCoursesTab(
+                  tabController: _tabController,
+                ),
+              ],
             ),
-            Expanded(
-              child: TabBarView(
-                physics: NeverScrollableScrollPhysics(),
-                children: [
-                  CorseExploreTab(),
-                  MyCoursesTab(),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

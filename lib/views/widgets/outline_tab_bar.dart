@@ -6,10 +6,12 @@ import 'package:outline/views/widgets/widgets.dart';
 class OutlineTabBar extends StatelessWidget {
   final String firstTitle;
   final String secondTitle;
+  final TabController? tabController;
 
   const OutlineTabBar({
     required this.firstTitle,
     required this.secondTitle,
+    this.tabController,
   });
 
   @override
@@ -19,6 +21,7 @@ class OutlineTabBar extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.white, boxShadow: [Consts.outlineBoxShadow]),
       child: TabBar(
+        controller: tabController,
         indicator: MD2Indicator(
           indicatorSize: MD2IndicatorSize.normal,
           indicatorHeight: 4.0,
