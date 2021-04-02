@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/theme/color_repository.dart';
 
-class FeaturedTile extends StatelessWidget {
-  const FeaturedTile({
+class CourseTile extends StatelessWidget {
+  const CourseTile({
     Key? key,
   }) : super(key: key);
 
