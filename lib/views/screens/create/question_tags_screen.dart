@@ -10,7 +10,7 @@ import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/question_model/question_create_model.dart';
 import 'package:outline/models/question_model/question_model.dart';
 import 'package:outline/providers/question/question_bloc.dart';
-import 'package:outline/providers/tags/tags/tags_bloc.dart';
+import 'package:outline/providers/tags/tags_bloc.dart';
 import 'package:outline/views/screens/navigation/navigation_screen.dart';
 import 'package:outline/views/widgets/widgets.dart';
 

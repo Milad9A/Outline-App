@@ -4,14 +4,14 @@ import 'package:outline/config/helpers/interceptor.dart';
 import 'package:outline/config/services/api_result.dart';
 import 'package:outline/config/services/dio_client.dart';
 import 'package:outline/config/services/network_exceptions.dart';
-import 'package:outline/models/tag_model/tag_model.dart';
-import 'package:outline/models/tag_model/tags_list_model.dart';
+import 'package:outline/models/course_model/course_model.dart';
+import 'package:outline/models/course_model/courses_list_model.dart';
 
-class TagsRepository {
+class CoursesRepository {
   late DioClient dioClient;
   String _baseUrl = Consts.baseUrl;
 
-  TagsRepository() {
+  CoursesRepository() {
     var dio = Dio();
     dioClient = DioClient(
       _baseUrl,
@@ -22,15 +22,15 @@ class TagsRepository {
     );
   }
 
-  Future<ApiResult<List<Tag>>> getAllTags() async {
+  Future<ApiResult<List<Course>>> getAllCourses() async {
     try {
       final response = await dioClient.get(
-        '/tags',
+        '/courses',
       );
 
-      final tagList = TagsList.fromJson({'tagsList': response});
+      final coursesList = CoursesList.fromJson({'coursesList': response});
 
-      return ApiResult.success(data: tagList.tagsList);
+      return ApiResult.success(data: coursesList.coursesList);
     } catch (e) {
       print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
