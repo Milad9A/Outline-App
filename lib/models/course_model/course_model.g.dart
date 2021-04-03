@@ -19,7 +19,7 @@ _$Course _$_$CourseFromJson(Map<String, dynamic> json) {
     price: (json['price'] as num).toDouble(),
     description: json['description'] as String,
     title: json['title'] as String,
-    ownerUserId: json['owner_user_id'] as String,
+    ownerUserId: User.fromJson(json['owner_user_id'] as Map<String, dynamic>),
   );
 }
 

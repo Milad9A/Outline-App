@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:outline/models/content_model/content_model.dart';
+import 'package:outline/models/user_model/user_model.dart';
 
 part 'course_model.freezed.dart';
 part 'course_model.g.dart';
@@ -17,7 +18,7 @@ abstract class CourseModel with _$CourseModel {
     @JsonKey(name: 'price') required double price,
     @JsonKey(name: 'description') required String description,
     @JsonKey(name: 'title') required String title,
-    @JsonKey(name: 'owner_user_id') required String ownerUserId,
+    @JsonKey(name: 'owner_user_id') required User ownerUserId,
   }) = Course;
 
   factory CourseModel.fromJson(Map<String, dynamic> json) =>

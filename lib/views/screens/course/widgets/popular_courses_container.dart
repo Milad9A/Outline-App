@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:outline/models/course_model/course_model.dart';
 import 'package:outline/views/screens/course/courses_list_screen.dart';
 import 'package:outline/views/screens/course/widgets/widgets.dart';
 
 class PopularCoursesContainer extends StatelessWidget {
+  final List<Course> coursesList;
+
   const PopularCoursesContainer({
-    Key? key,
-  }) : super(key: key);
+    required this.coursesList,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +33,10 @@ class PopularCoursesContainer extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          CoursesListScreen(title: 'Most Popular Courses'),
+                      builder: (context) => CoursesListScreen(
+                        title: 'Most Popular Courses',
+                        coursesList: coursesList,
+                      ),
                     ),
                   );
                 },
@@ -44,13 +49,16 @@ class PopularCoursesContainer extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          children: [
-            PopularTile(),
-            PopularTile(),
-            PopularTile(),
-            PopularTile(),
-            PopularTile(),
-          ],
+          children: coursesList
+              .map(
+                (course) => PopularTile(
+                  title: course.title,
+                  instructorName: course.ownerUserId.name,
+                  rating: course.avgRating,
+                  price: course.price,
+                ),
+              )
+              .toList(),
         ),
       ],
     );

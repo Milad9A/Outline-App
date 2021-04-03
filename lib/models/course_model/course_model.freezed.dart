@@ -30,7 +30,7 @@ class _$CourseModelTearOff {
       @JsonKey(name: 'price') required double price,
       @JsonKey(name: 'description') required String description,
       @JsonKey(name: 'title') required String title,
-      @JsonKey(name: 'owner_user_id') required String ownerUserId}) {
+      @JsonKey(name: 'owner_user_id') required User ownerUserId}) {
     return Course(
       isPaid: isPaid,
       numOfSubscribers: numOfSubscribers,
@@ -74,7 +74,7 @@ mixin _$CourseModel {
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'owner_user_id')
-  String get ownerUserId => throw _privateConstructorUsedError;
+  User get ownerUserId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -97,7 +97,7 @@ abstract class $CourseModelCopyWith<$Res> {
       @JsonKey(name: 'price') double price,
       @JsonKey(name: 'description') String description,
       @JsonKey(name: 'title') String title,
-      @JsonKey(name: 'owner_user_id') String ownerUserId});
+      @JsonKey(name: 'owner_user_id') User ownerUserId});
 }
 
 /// @nodoc
@@ -161,7 +161,7 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
       ownerUserId: ownerUserId == freezed
           ? _value.ownerUserId
           : ownerUserId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as User,
     ));
   }
 }
@@ -181,7 +181,7 @@ abstract class $CourseCopyWith<$Res> implements $CourseModelCopyWith<$Res> {
       @JsonKey(name: 'price') double price,
       @JsonKey(name: 'description') String description,
       @JsonKey(name: 'title') String title,
-      @JsonKey(name: 'owner_user_id') String ownerUserId});
+      @JsonKey(name: 'owner_user_id') User ownerUserId});
 }
 
 /// @nodoc
@@ -246,7 +246,7 @@ class _$CourseCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
       ownerUserId: ownerUserId == freezed
           ? _value.ownerUserId
           : ownerUserId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as User,
     ));
   }
 }
@@ -299,7 +299,7 @@ class _$Course with DiagnosticableTreeMixin implements Course {
   final String title;
   @override
   @JsonKey(name: 'owner_user_id')
-  final String ownerUserId;
+  final User ownerUserId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -392,7 +392,7 @@ abstract class Course implements CourseModel {
       @JsonKey(name: 'price') required double price,
       @JsonKey(name: 'description') required String description,
       @JsonKey(name: 'title') required String title,
-      @JsonKey(name: 'owner_user_id') required String ownerUserId}) = _$Course;
+      @JsonKey(name: 'owner_user_id') required User ownerUserId}) = _$Course;
 
   factory Course.fromJson(Map<String, dynamic> json) = _$Course.fromJson;
 
@@ -425,7 +425,7 @@ abstract class Course implements CourseModel {
   String get title => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'owner_user_id')
-  String get ownerUserId => throw _privateConstructorUsedError;
+  User get ownerUserId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   $CourseCopyWith<Course> get copyWith => throw _privateConstructorUsedError;

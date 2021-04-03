@@ -22,11 +22,19 @@ class _CorseExploreTabState extends State<CorseExploreTab> {
                 children: [
                   ScreenCasts(),
                   SizedBox(height: 30.0),
-                  CoursesContainer(title: 'Featured Courses'),
+                  CoursesContainer(
+                    title: 'Featured Courses',
+                    coursesList: coursesList,
+                  ),
                   SizedBox(height: 20.0),
-                  CoursesContainer(title: 'Top Courses'),
+                  CoursesContainer(
+                    title: 'Top Courses',
+                    coursesList: coursesList,
+                  ),
                   SizedBox(height: 20.0),
-                  PopularCoursesContainer(),
+                  PopularCoursesContainer(
+                    coursesList: coursesList,
+                  ),
                   SizedBox(height: 20.0),
                 ],
               ),

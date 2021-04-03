@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/views/screens/course/course_screen.dart';
@@ -25,11 +26,8 @@ class _NavigationScreenState extends State<NavigationScreen>
   ShapeBorder? bottomBarShape;
   bool showSelectedLabels = false;
   bool showUnselectedLabels = false;
-
   int _selectedItemPosition = 0;
-
   Color selectedColor = ColorRepository.darkBlue;
-
   Color unselectedColor = ColorRepository.lowOpacityDarkBlue;
 
   @override
@@ -40,6 +38,11 @@ class _NavigationScreenState extends State<NavigationScreen>
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
     return Scaffold(
       extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: true,
