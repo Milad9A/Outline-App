@@ -19,6 +19,7 @@ abstract class CourseModel with _$CourseModel {
     @JsonKey(name: 'description') required String description,
     @JsonKey(name: 'title') required String title,
     @JsonKey(name: 'owner_user_id') required User ownerUserId,
+    @JsonKey(name: 'banner') required String banner,
   }) = Course;
 
   factory CourseModel.fromJson(Map<String, dynamic> json) =>

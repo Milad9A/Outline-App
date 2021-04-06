@@ -8,12 +8,14 @@ class CourseGrid extends StatelessWidget {
   final String instructorName;
   final double price;
   final double rating;
+  final String bannerUrl;
 
   const CourseGrid({
     required this.title,
     required this.instructorName,
     required this.price,
     required this.rating,
+    required this.bannerUrl,
   });
 
   @override
@@ -31,8 +33,8 @@ class CourseGrid extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
-              child: Image.asset(
-                'assets/images/course_screen_artwork.png',
+              child: Image.network(
+                bannerUrl,
                 fit: BoxFit.fitWidth,
                 height: 99.0,
                 width: 176.0,

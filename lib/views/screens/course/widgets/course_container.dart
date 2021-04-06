@@ -60,6 +60,7 @@ class CoursesContainer extends StatelessWidget {
                     instructorName: course.ownerUserId.name,
                     rating: course.avgRating,
                     price: course.price,
+                    bannerUrl: course.banner,
                   ),
                 )
                 .toList(),

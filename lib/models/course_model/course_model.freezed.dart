@@ -30,7 +30,8 @@ class _$CourseModelTearOff {
       @JsonKey(name: 'price') required double price,
       @JsonKey(name: 'description') required String description,
       @JsonKey(name: 'title') required String title,
-      @JsonKey(name: 'owner_user_id') required User ownerUserId}) {
+      @JsonKey(name: 'owner_user_id') required User ownerUserId,
+      @JsonKey(name: 'banner') required String banner}) {
     return Course(
       isPaid: isPaid,
       numOfSubscribers: numOfSubscribers,
@@ -42,6 +43,7 @@ class _$CourseModelTearOff {
       description: description,
       title: title,
       ownerUserId: ownerUserId,
+      banner: banner,
     );
   }
 
@@ -75,6 +77,8 @@ mixin _$CourseModel {
   String get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'owner_user_id')
   User get ownerUserId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'banner')
+  String get banner => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -97,7 +101,8 @@ abstract class $CourseModelCopyWith<$Res> {
       @JsonKey(name: 'price') double price,
       @JsonKey(name: 'description') String description,
       @JsonKey(name: 'title') String title,
-      @JsonKey(name: 'owner_user_id') User ownerUserId});
+      @JsonKey(name: 'owner_user_id') User ownerUserId,
+      @JsonKey(name: 'banner') String banner});
 }
 
 /// @nodoc
@@ -120,6 +125,7 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
     Object? description = freezed,
     Object? title = freezed,
     Object? ownerUserId = freezed,
+    Object? banner = freezed,
   }) {
     return _then(_value.copyWith(
       isPaid: isPaid == freezed
@@ -162,6 +168,10 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
           ? _value.ownerUserId
           : ownerUserId // ignore: cast_nullable_to_non_nullable
               as User,
+      banner: banner == freezed
+          ? _value.banner
+          : banner // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -181,7 +191,8 @@ abstract class $CourseCopyWith<$Res> implements $CourseModelCopyWith<$Res> {
       @JsonKey(name: 'price') double price,
       @JsonKey(name: 'description') String description,
       @JsonKey(name: 'title') String title,
-      @JsonKey(name: 'owner_user_id') User ownerUserId});
+      @JsonKey(name: 'owner_user_id') User ownerUserId,
+      @JsonKey(name: 'banner') String banner});
 }
 
 /// @nodoc
@@ -205,6 +216,7 @@ class _$CourseCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
     Object? description = freezed,
     Object? title = freezed,
     Object? ownerUserId = freezed,
+    Object? banner = freezed,
   }) {
     return _then(Course(
       isPaid: isPaid == freezed
@@ -247,6 +259,10 @@ class _$CourseCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
           ? _value.ownerUserId
           : ownerUserId // ignore: cast_nullable_to_non_nullable
               as User,
+      banner: banner == freezed
+          ? _value.banner
+          : banner // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -265,7 +281,8 @@ class _$Course with DiagnosticableTreeMixin implements Course {
       @JsonKey(name: 'price') required this.price,
       @JsonKey(name: 'description') required this.description,
       @JsonKey(name: 'title') required this.title,
-      @JsonKey(name: 'owner_user_id') required this.ownerUserId});
+      @JsonKey(name: 'owner_user_id') required this.ownerUserId,
+      @JsonKey(name: 'banner') required this.banner});
 
   factory _$Course.fromJson(Map<String, dynamic> json) =>
       _$_$CourseFromJson(json);
@@ -300,10 +317,13 @@ class _$Course with DiagnosticableTreeMixin implements Course {
   @override
   @JsonKey(name: 'owner_user_id')
   final User ownerUserId;
+  @override
+  @JsonKey(name: 'banner')
+  final String banner;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CourseModel(isPaid: $isPaid, numOfSubscribers: $numOfSubscribers, numOfLectures: $numOfLectures, avgRating: $avgRating, contents: $contents, requirements: $requirements, price: $price, description: $description, title: $title, ownerUserId: $ownerUserId)';
+    return 'CourseModel(isPaid: $isPaid, numOfSubscribers: $numOfSubscribers, numOfLectures: $numOfLectures, avgRating: $avgRating, contents: $contents, requirements: $requirements, price: $price, description: $description, title: $title, ownerUserId: $ownerUserId, banner: $banner)';
   }
 
   @override
@@ -320,7 +340,8 @@ class _$Course with DiagnosticableTreeMixin implements Course {
       ..add(DiagnosticsProperty('price', price))
       ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('ownerUserId', ownerUserId));
+      ..add(DiagnosticsProperty('ownerUserId', ownerUserId))
+      ..add(DiagnosticsProperty('banner', banner));
   }
 
   @override
@@ -353,7 +374,9 @@ class _$Course with DiagnosticableTreeMixin implements Course {
                 const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.ownerUserId, ownerUserId) ||
                 const DeepCollectionEquality()
-                    .equals(other.ownerUserId, ownerUserId)));
+                    .equals(other.ownerUserId, ownerUserId)) &&
+            (identical(other.banner, banner) ||
+                const DeepCollectionEquality().equals(other.banner, banner)));
   }
 
   @override
@@ -368,7 +391,8 @@ class _$Course with DiagnosticableTreeMixin implements Course {
       const DeepCollectionEquality().hash(price) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(ownerUserId);
+      const DeepCollectionEquality().hash(ownerUserId) ^
+      const DeepCollectionEquality().hash(banner);
 
   @JsonKey(ignore: true)
   @override
@@ -392,7 +416,8 @@ abstract class Course implements CourseModel {
       @JsonKey(name: 'price') required double price,
       @JsonKey(name: 'description') required String description,
       @JsonKey(name: 'title') required String title,
-      @JsonKey(name: 'owner_user_id') required User ownerUserId}) = _$Course;
+      @JsonKey(name: 'owner_user_id') required User ownerUserId,
+      @JsonKey(name: 'banner') required String banner}) = _$Course;
 
   factory Course.fromJson(Map<String, dynamic> json) = _$Course.fromJson;
 
@@ -426,6 +451,9 @@ abstract class Course implements CourseModel {
   @override
   @JsonKey(name: 'owner_user_id')
   User get ownerUserId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'banner')
+  String get banner => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   $CourseCopyWith<Course> get copyWith => throw _privateConstructorUsedError;

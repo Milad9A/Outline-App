@@ -20,6 +20,7 @@ _$Course _$_$CourseFromJson(Map<String, dynamic> json) {
     description: json['description'] as String,
     title: json['title'] as String,
     ownerUserId: User.fromJson(json['owner_user_id'] as Map<String, dynamic>),
+    banner: json['banner'] as String,
   );
 }
 
@@ -34,4 +35,5 @@ Map<String, dynamic> _$_$CourseToJson(_$Course instance) => <String, dynamic>{
       'description': instance.description,
       'title': instance.title,
       'owner_user_id': instance.ownerUserId,
+      'banner': instance.banner,
     };
