@@ -28,8 +28,8 @@ class TagBloc extends Bloc<TagEvent, TagState> {
       ApiResult<List<Tag>> apiResult = await tagsRepository.getAllTags();
 
       apiResult.when(
-        success: (List<Tag> tag) {
-          emit(TagsSuccess(tags: tag));
+        success: (List<Tag> tags) {
+          emit(TagsSuccess(tags: tags));
         },
         failure: (NetworkExceptions error) {
           emit(TagsError(error: error));

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:outline/config/theme/color_repository.dart';
-import 'package:outline/providers/course/bloc/course_bloc.dart';
+import 'package:outline/providers/course/all_courses/course_bloc.dart';
+import 'package:outline/providers/course/my_courses/my_courses_bloc.dart';
 import 'package:outline/views/screens/course/widgets/widgets.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
@@ -19,6 +20,7 @@ class _CourseScreenState extends State<CourseScreen>
   void initState() {
     super.initState();
     BlocProvider.of<CourseBloc>(context).add(GetAllCourses());
+    BlocProvider.of<MyCoursesBloc>(context).add(GetMyCourses());
     _tabController = TabController(length: 2, vsync: this);
   }
 

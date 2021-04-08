@@ -36,4 +36,19 @@ class CoursesRepository {
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }
+
+  Future<ApiResult<List<Course>>> getMyCourses() async {
+    try {
+      final response = await dioClient.get(
+        '/courses/purchased',
+      );
+
+      final coursesList = CoursesList.fromJson({'coursesList': response});
+
+      return ApiResult.success(data: coursesList.coursesList);
+    } catch (e) {
+      print(e);
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
+  }
 }

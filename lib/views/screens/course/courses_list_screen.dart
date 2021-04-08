@@ -52,6 +52,7 @@ class _CoursesListScreenState extends State<CoursesListScreen> {
       ),
       body: GridView.count(
         crossAxisCount: 2,
+        padding: EdgeInsets.only(top: 12.0),
         children: widget.coursesList
             .map(
               (course) => CourseGrid(

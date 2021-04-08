@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/providers/article/article_bloc.dart';
-import 'package:outline/providers/course/bloc/course_bloc.dart';
 import 'package:outline/providers/tags/tags_bloc.dart';
 import 'package:outline/repositories/article_repository.dart';
 import 'package:outline/repositories/course_repository.dart';
@@ -11,6 +10,8 @@ import 'package:outline/repositories/tags_repository.dart';
 
 import 'config/theme/custom_theme.dart';
 import 'providers/authentication/authentication_bloc.dart';
+import 'providers/course/all_courses/course_bloc.dart';
+import 'providers/course/my_courses/my_courses_bloc.dart';
 import 'providers/question/question_bloc.dart';
 import 'providers/update_user/update_user_bloc.dart';
 import 'repositories/user_repository.dart';
@@ -67,6 +68,11 @@ class _OutlineAppState extends State<OutlineApp> {
         ),
         BlocProvider(
           create: (context) => CourseBloc(
+            coursesRepository: CoursesRepository(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => MyCoursesBloc(
             coursesRepository: CoursesRepository(),
           ),
         ),

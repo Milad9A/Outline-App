@@ -7,33 +7,36 @@ import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/course_model/course_model.dart';
 import 'package:outline/repositories/course_repository.dart';
 
-part 'course_event.dart';
-part 'course_state.dart';
-part 'course_bloc.freezed.dart';
+part 'my_courses_event.dart';
+part 'my_courses_state.dart';
+part 'my_courses_bloc.freezed.dart';
 
-class CourseBloc extends Bloc<CourseEvent, CourseState> {
-  CourseBloc({
+class MyCoursesBloc extends Bloc<MyCoursesEvent, MyCoursesState> {
+  MyCoursesBloc({
     required this.coursesRepository,
   }) : super(_Initial());
 
   final CoursesRepository coursesRepository;
 
   @override
-  Stream<CourseState> mapEventToState(
-    CourseEvent event,
+  Stream<MyCoursesState> mapEventToState(
+    MyCoursesEvent event,
   ) async* {
-    if (event is GetAllCourses) {
-      yield CoursesLoading();
+    if (event is GetMyCourses) {
+      yield MyCoursesLoading();
 
       ApiResult<List<Course>> apiResult =
-          await coursesRepository.getAllCourses();
+          await coursesRepository.getMyCourses();
 
       apiResult.when(
-        success: (List<Course> course) {
-          emit(CoursesSuccess(courses: course));
+        success: (List<Course> courses) {
+          if (courses.isEmpty)
+            emit(MyCoursesEmpty());
+          else
+            emit(MyCoursesSuccess(courses: courses));
         },
         failure: (NetworkExceptions error) {
-          emit(CoursesError(error: error));
+          emit(MyCoursesError(error: error));
         },
       );
     }
