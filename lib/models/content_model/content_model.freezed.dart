@@ -21,17 +21,25 @@ class _$ContentModelTearOff {
   const _$ContentModelTearOff();
 
   Content call(
-      {@JsonKey(name: '_id') required String id,
-      @JsonKey(name: 'content_type') required String contentType,
-      @JsonKey(name: 'content_name') required String contentName,
-      @JsonKey(name: 'content_link') required String contentLink,
-      @JsonKey(name: 'course_id') required String courseId}) {
+      {@JsonKey(name: '_id')
+          required String id,
+      @JsonKey(name: 'content_type')
+          required String contentType,
+      @JsonKey(name: 'content_name')
+          required String contentName,
+      @JsonKey(name: 'content_link')
+          required String contentLink,
+      @JsonKey(name: 'course_id')
+          required String courseId,
+      @JsonKey(name: 'video_duration_in_seconds')
+          required String durationInSeconds}) {
     return Content(
       id: id,
       contentType: contentType,
       contentName: contentName,
       contentLink: contentLink,
       courseId: courseId,
+      durationInSeconds: durationInSeconds,
     );
   }
 
@@ -55,6 +63,8 @@ mixin _$ContentModel {
   String get contentLink => throw _privateConstructorUsedError;
   @JsonKey(name: 'course_id')
   String get courseId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'video_duration_in_seconds')
+  String get durationInSeconds => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -72,7 +82,8 @@ abstract class $ContentModelCopyWith<$Res> {
       @JsonKey(name: 'content_type') String contentType,
       @JsonKey(name: 'content_name') String contentName,
       @JsonKey(name: 'content_link') String contentLink,
-      @JsonKey(name: 'course_id') String courseId});
+      @JsonKey(name: 'course_id') String courseId,
+      @JsonKey(name: 'video_duration_in_seconds') String durationInSeconds});
 }
 
 /// @nodoc
@@ -90,6 +101,7 @@ class _$ContentModelCopyWithImpl<$Res> implements $ContentModelCopyWith<$Res> {
     Object? contentName = freezed,
     Object? contentLink = freezed,
     Object? courseId = freezed,
+    Object? durationInSeconds = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -112,6 +124,10 @@ class _$ContentModelCopyWithImpl<$Res> implements $ContentModelCopyWith<$Res> {
           ? _value.courseId
           : courseId // ignore: cast_nullable_to_non_nullable
               as String,
+      durationInSeconds: durationInSeconds == freezed
+          ? _value.durationInSeconds
+          : durationInSeconds // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -126,7 +142,8 @@ abstract class $ContentCopyWith<$Res> implements $ContentModelCopyWith<$Res> {
       @JsonKey(name: 'content_type') String contentType,
       @JsonKey(name: 'content_name') String contentName,
       @JsonKey(name: 'content_link') String contentLink,
-      @JsonKey(name: 'course_id') String courseId});
+      @JsonKey(name: 'course_id') String courseId,
+      @JsonKey(name: 'video_duration_in_seconds') String durationInSeconds});
 }
 
 /// @nodoc
@@ -145,6 +162,7 @@ class _$ContentCopyWithImpl<$Res> extends _$ContentModelCopyWithImpl<$Res>
     Object? contentName = freezed,
     Object? contentLink = freezed,
     Object? courseId = freezed,
+    Object? durationInSeconds = freezed,
   }) {
     return _then(Content(
       id: id == freezed
@@ -167,6 +185,10 @@ class _$ContentCopyWithImpl<$Res> extends _$ContentModelCopyWithImpl<$Res>
           ? _value.courseId
           : courseId // ignore: cast_nullable_to_non_nullable
               as String,
+      durationInSeconds: durationInSeconds == freezed
+          ? _value.durationInSeconds
+          : durationInSeconds // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -176,11 +198,18 @@ class _$ContentCopyWithImpl<$Res> extends _$ContentModelCopyWithImpl<$Res>
 /// @nodoc
 class _$Content with DiagnosticableTreeMixin implements Content {
   const _$Content(
-      {@JsonKey(name: '_id') required this.id,
-      @JsonKey(name: 'content_type') required this.contentType,
-      @JsonKey(name: 'content_name') required this.contentName,
-      @JsonKey(name: 'content_link') required this.contentLink,
-      @JsonKey(name: 'course_id') required this.courseId});
+      {@JsonKey(name: '_id')
+          required this.id,
+      @JsonKey(name: 'content_type')
+          required this.contentType,
+      @JsonKey(name: 'content_name')
+          required this.contentName,
+      @JsonKey(name: 'content_link')
+          required this.contentLink,
+      @JsonKey(name: 'course_id')
+          required this.courseId,
+      @JsonKey(name: 'video_duration_in_seconds')
+          required this.durationInSeconds});
 
   factory _$Content.fromJson(Map<String, dynamic> json) =>
       _$_$ContentFromJson(json);
@@ -200,10 +229,13 @@ class _$Content with DiagnosticableTreeMixin implements Content {
   @override
   @JsonKey(name: 'course_id')
   final String courseId;
+  @override
+  @JsonKey(name: 'video_duration_in_seconds')
+  final String durationInSeconds;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ContentModel(id: $id, contentType: $contentType, contentName: $contentName, contentLink: $contentLink, courseId: $courseId)';
+    return 'ContentModel(id: $id, contentType: $contentType, contentName: $contentName, contentLink: $contentLink, courseId: $courseId, durationInSeconds: $durationInSeconds)';
   }
 
   @override
@@ -215,7 +247,8 @@ class _$Content with DiagnosticableTreeMixin implements Content {
       ..add(DiagnosticsProperty('contentType', contentType))
       ..add(DiagnosticsProperty('contentName', contentName))
       ..add(DiagnosticsProperty('contentLink', contentLink))
-      ..add(DiagnosticsProperty('courseId', courseId));
+      ..add(DiagnosticsProperty('courseId', courseId))
+      ..add(DiagnosticsProperty('durationInSeconds', durationInSeconds));
   }
 
   @override
@@ -235,7 +268,10 @@ class _$Content with DiagnosticableTreeMixin implements Content {
                     .equals(other.contentLink, contentLink)) &&
             (identical(other.courseId, courseId) ||
                 const DeepCollectionEquality()
-                    .equals(other.courseId, courseId)));
+                    .equals(other.courseId, courseId)) &&
+            (identical(other.durationInSeconds, durationInSeconds) ||
+                const DeepCollectionEquality()
+                    .equals(other.durationInSeconds, durationInSeconds)));
   }
 
   @override
@@ -245,7 +281,8 @@ class _$Content with DiagnosticableTreeMixin implements Content {
       const DeepCollectionEquality().hash(contentType) ^
       const DeepCollectionEquality().hash(contentName) ^
       const DeepCollectionEquality().hash(contentLink) ^
-      const DeepCollectionEquality().hash(courseId);
+      const DeepCollectionEquality().hash(courseId) ^
+      const DeepCollectionEquality().hash(durationInSeconds);
 
   @JsonKey(ignore: true)
   @override
@@ -260,11 +297,18 @@ class _$Content with DiagnosticableTreeMixin implements Content {
 
 abstract class Content implements ContentModel {
   const factory Content(
-      {@JsonKey(name: '_id') required String id,
-      @JsonKey(name: 'content_type') required String contentType,
-      @JsonKey(name: 'content_name') required String contentName,
-      @JsonKey(name: 'content_link') required String contentLink,
-      @JsonKey(name: 'course_id') required String courseId}) = _$Content;
+      {@JsonKey(name: '_id')
+          required String id,
+      @JsonKey(name: 'content_type')
+          required String contentType,
+      @JsonKey(name: 'content_name')
+          required String contentName,
+      @JsonKey(name: 'content_link')
+          required String contentLink,
+      @JsonKey(name: 'course_id')
+          required String courseId,
+      @JsonKey(name: 'video_duration_in_seconds')
+          required String durationInSeconds}) = _$Content;
 
   factory Content.fromJson(Map<String, dynamic> json) = _$Content.fromJson;
 
@@ -283,6 +327,9 @@ abstract class Content implements ContentModel {
   @override
   @JsonKey(name: 'course_id')
   String get courseId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'video_duration_in_seconds')
+  String get durationInSeconds => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   $ContentCopyWith<Content> get copyWith => throw _privateConstructorUsedError;

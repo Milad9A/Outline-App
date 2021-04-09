@@ -10,4 +10,7 @@ class Consts {
     blurRadius: 1.0,
     offset: Offset(0.0, 1.0),
   );
+
+  static const String defaultAvatar =
+      'https://cdn.drawception.com/drawings/4RfkS5m4AT.png';
 }

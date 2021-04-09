@@ -23,12 +23,6 @@ class _$MyCoursesEventTearOff {
   GetMyCourses getMyCourses() {
     return const GetMyCourses();
   }
-
-  RefreshMyCourses refreshMyCourses({required List<Course> courses}) {
-    return RefreshMyCourses(
-      courses: courses,
-    );
-  }
 }
 
 /// @nodoc
@@ -40,14 +34,12 @@ mixin _$MyCoursesEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getMyCourses,
-    required TResult Function(List<Course> courses) refreshMyCourses,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getMyCourses,
-    TResult Function(List<Course> courses)? refreshMyCourses,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,14 +47,12 @@ mixin _$MyCoursesEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(GetMyCourses value) getMyCourses,
-    required TResult Function(RefreshMyCourses value) refreshMyCourses,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(GetMyCourses value)? getMyCourses,
-    TResult Function(RefreshMyCourses value)? refreshMyCourses,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -123,7 +113,6 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getMyCourses,
-    required TResult Function(List<Course> courses) refreshMyCourses,
   }) {
     return started();
   }
@@ -133,7 +122,6 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getMyCourses,
-    TResult Function(List<Course> courses)? refreshMyCourses,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -147,7 +135,6 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(GetMyCourses value) getMyCourses,
-    required TResult Function(RefreshMyCourses value) refreshMyCourses,
   }) {
     return started(this);
   }
@@ -157,7 +144,6 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(GetMyCourses value)? getMyCourses,
-    TResult Function(RefreshMyCourses value)? refreshMyCourses,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -212,7 +198,6 @@ class _$GetMyCourses implements GetMyCourses {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getMyCourses,
-    required TResult Function(List<Course> courses) refreshMyCourses,
   }) {
     return getMyCourses();
   }
@@ -222,7 +207,6 @@ class _$GetMyCourses implements GetMyCourses {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getMyCourses,
-    TResult Function(List<Course> courses)? refreshMyCourses,
     required TResult orElse(),
   }) {
     if (getMyCourses != null) {
@@ -236,7 +220,6 @@ class _$GetMyCourses implements GetMyCourses {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(GetMyCourses value) getMyCourses,
-    required TResult Function(RefreshMyCourses value) refreshMyCourses,
   }) {
     return getMyCourses(this);
   }
@@ -246,7 +229,6 @@ class _$GetMyCourses implements GetMyCourses {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(GetMyCourses value)? getMyCourses,
-    TResult Function(RefreshMyCourses value)? refreshMyCourses,
     required TResult orElse(),
   }) {
     if (getMyCourses != null) {
@@ -261,126 +243,6 @@ abstract class GetMyCourses implements MyCoursesEvent {
 }
 
 /// @nodoc
-abstract class $RefreshMyCoursesCopyWith<$Res> {
-  factory $RefreshMyCoursesCopyWith(
-          RefreshMyCourses value, $Res Function(RefreshMyCourses) then) =
-      _$RefreshMyCoursesCopyWithImpl<$Res>;
-  $Res call({List<Course> courses});
-}
-
-/// @nodoc
-class _$RefreshMyCoursesCopyWithImpl<$Res>
-    extends _$MyCoursesEventCopyWithImpl<$Res>
-    implements $RefreshMyCoursesCopyWith<$Res> {
-  _$RefreshMyCoursesCopyWithImpl(
-      RefreshMyCourses _value, $Res Function(RefreshMyCourses) _then)
-      : super(_value, (v) => _then(v as RefreshMyCourses));
-
-  @override
-  RefreshMyCourses get _value => super._value as RefreshMyCourses;
-
-  @override
-  $Res call({
-    Object? courses = freezed,
-  }) {
-    return _then(RefreshMyCourses(
-      courses: courses == freezed
-          ? _value.courses
-          : courses // ignore: cast_nullable_to_non_nullable
-              as List<Course>,
-    ));
-  }
-}
-
-/// @nodoc
-class _$RefreshMyCourses implements RefreshMyCourses {
-  const _$RefreshMyCourses({required this.courses});
-
-  @override
-  final List<Course> courses;
-
-  @override
-  String toString() {
-    return 'MyCoursesEvent.refreshMyCourses(courses: $courses)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is RefreshMyCourses &&
-            (identical(other.courses, courses) ||
-                const DeepCollectionEquality().equals(other.courses, courses)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(courses);
-
-  @JsonKey(ignore: true)
-  @override
-  $RefreshMyCoursesCopyWith<RefreshMyCourses> get copyWith =>
-      _$RefreshMyCoursesCopyWithImpl<RefreshMyCourses>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() getMyCourses,
-    required TResult Function(List<Course> courses) refreshMyCourses,
-  }) {
-    return refreshMyCourses(courses);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? getMyCourses,
-    TResult Function(List<Course> courses)? refreshMyCourses,
-    required TResult orElse(),
-  }) {
-    if (refreshMyCourses != null) {
-      return refreshMyCourses(courses);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(GetMyCourses value) getMyCourses,
-    required TResult Function(RefreshMyCourses value) refreshMyCourses,
-  }) {
-    return refreshMyCourses(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(GetMyCourses value)? getMyCourses,
-    TResult Function(RefreshMyCourses value)? refreshMyCourses,
-    required TResult orElse(),
-  }) {
-    if (refreshMyCourses != null) {
-      return refreshMyCourses(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class RefreshMyCourses implements MyCoursesEvent {
-  const factory RefreshMyCourses({required List<Course> courses}) =
-      _$RefreshMyCourses;
-
-  List<Course> get courses => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $RefreshMyCoursesCopyWith<RefreshMyCourses> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 class _$MyCoursesStateTearOff {
   const _$MyCoursesStateTearOff();
 
@@ -390,12 +252,6 @@ class _$MyCoursesStateTearOff {
 
   MyCoursesLoading loading() {
     return const MyCoursesLoading();
-  }
-
-  MyCoursesRefreshing refreshing({required List<Course> courses}) {
-    return MyCoursesRefreshing(
-      courses: courses,
-    );
   }
 
   MyCoursesSuccess success({required List<Course> courses}) {
@@ -424,7 +280,6 @@ mixin _$MyCoursesState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Course> courses) refreshing,
     required TResult Function(List<Course> courses) success,
     required TResult Function() myCoursesEmpty,
     required TResult Function(NetworkExceptions error) error,
@@ -434,7 +289,6 @@ mixin _$MyCoursesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Course> courses)? refreshing,
     TResult Function(List<Course> courses)? success,
     TResult Function()? myCoursesEmpty,
     TResult Function(NetworkExceptions error)? error,
@@ -445,7 +299,6 @@ mixin _$MyCoursesState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(MyCoursesLoading value) loading,
-    required TResult Function(MyCoursesRefreshing value) refreshing,
     required TResult Function(MyCoursesSuccess value) success,
     required TResult Function(MyCoursesEmpty value) myCoursesEmpty,
     required TResult Function(MyCoursesError value) error,
@@ -455,7 +308,6 @@ mixin _$MyCoursesState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(MyCoursesLoading value)? loading,
-    TResult Function(MyCoursesRefreshing value)? refreshing,
     TResult Function(MyCoursesSuccess value)? success,
     TResult Function(MyCoursesEmpty value)? myCoursesEmpty,
     TResult Function(MyCoursesError value)? error,
@@ -519,7 +371,6 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Course> courses) refreshing,
     required TResult Function(List<Course> courses) success,
     required TResult Function() myCoursesEmpty,
     required TResult Function(NetworkExceptions error) error,
@@ -532,7 +383,6 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Course> courses)? refreshing,
     TResult Function(List<Course> courses)? success,
     TResult Function()? myCoursesEmpty,
     TResult Function(NetworkExceptions error)? error,
@@ -549,7 +399,6 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(MyCoursesLoading value) loading,
-    required TResult Function(MyCoursesRefreshing value) refreshing,
     required TResult Function(MyCoursesSuccess value) success,
     required TResult Function(MyCoursesEmpty value) myCoursesEmpty,
     required TResult Function(MyCoursesError value) error,
@@ -562,7 +411,6 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(MyCoursesLoading value)? loading,
-    TResult Function(MyCoursesRefreshing value)? refreshing,
     TResult Function(MyCoursesSuccess value)? success,
     TResult Function(MyCoursesEmpty value)? myCoursesEmpty,
     TResult Function(MyCoursesError value)? error,
@@ -620,7 +468,6 @@ class _$MyCoursesLoading implements MyCoursesLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Course> courses) refreshing,
     required TResult Function(List<Course> courses) success,
     required TResult Function() myCoursesEmpty,
     required TResult Function(NetworkExceptions error) error,
@@ -633,7 +480,6 @@ class _$MyCoursesLoading implements MyCoursesLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Course> courses)? refreshing,
     TResult Function(List<Course> courses)? success,
     TResult Function()? myCoursesEmpty,
     TResult Function(NetworkExceptions error)? error,
@@ -650,7 +496,6 @@ class _$MyCoursesLoading implements MyCoursesLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(MyCoursesLoading value) loading,
-    required TResult Function(MyCoursesRefreshing value) refreshing,
     required TResult Function(MyCoursesSuccess value) success,
     required TResult Function(MyCoursesEmpty value) myCoursesEmpty,
     required TResult Function(MyCoursesError value) error,
@@ -663,7 +508,6 @@ class _$MyCoursesLoading implements MyCoursesLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(MyCoursesLoading value)? loading,
-    TResult Function(MyCoursesRefreshing value)? refreshing,
     TResult Function(MyCoursesSuccess value)? success,
     TResult Function(MyCoursesEmpty value)? myCoursesEmpty,
     TResult Function(MyCoursesError value)? error,
@@ -678,138 +522,6 @@ class _$MyCoursesLoading implements MyCoursesLoading {
 
 abstract class MyCoursesLoading implements MyCoursesState {
   const factory MyCoursesLoading() = _$MyCoursesLoading;
-}
-
-/// @nodoc
-abstract class $MyCoursesRefreshingCopyWith<$Res> {
-  factory $MyCoursesRefreshingCopyWith(
-          MyCoursesRefreshing value, $Res Function(MyCoursesRefreshing) then) =
-      _$MyCoursesRefreshingCopyWithImpl<$Res>;
-  $Res call({List<Course> courses});
-}
-
-/// @nodoc
-class _$MyCoursesRefreshingCopyWithImpl<$Res>
-    extends _$MyCoursesStateCopyWithImpl<$Res>
-    implements $MyCoursesRefreshingCopyWith<$Res> {
-  _$MyCoursesRefreshingCopyWithImpl(
-      MyCoursesRefreshing _value, $Res Function(MyCoursesRefreshing) _then)
-      : super(_value, (v) => _then(v as MyCoursesRefreshing));
-
-  @override
-  MyCoursesRefreshing get _value => super._value as MyCoursesRefreshing;
-
-  @override
-  $Res call({
-    Object? courses = freezed,
-  }) {
-    return _then(MyCoursesRefreshing(
-      courses: courses == freezed
-          ? _value.courses
-          : courses // ignore: cast_nullable_to_non_nullable
-              as List<Course>,
-    ));
-  }
-}
-
-/// @nodoc
-class _$MyCoursesRefreshing implements MyCoursesRefreshing {
-  const _$MyCoursesRefreshing({required this.courses});
-
-  @override
-  final List<Course> courses;
-
-  @override
-  String toString() {
-    return 'MyCoursesState.refreshing(courses: $courses)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is MyCoursesRefreshing &&
-            (identical(other.courses, courses) ||
-                const DeepCollectionEquality().equals(other.courses, courses)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(courses);
-
-  @JsonKey(ignore: true)
-  @override
-  $MyCoursesRefreshingCopyWith<MyCoursesRefreshing> get copyWith =>
-      _$MyCoursesRefreshingCopyWithImpl<MyCoursesRefreshing>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<Course> courses) refreshing,
-    required TResult Function(List<Course> courses) success,
-    required TResult Function() myCoursesEmpty,
-    required TResult Function(NetworkExceptions error) error,
-  }) {
-    return refreshing(courses);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<Course> courses)? refreshing,
-    TResult Function(List<Course> courses)? success,
-    TResult Function()? myCoursesEmpty,
-    TResult Function(NetworkExceptions error)? error,
-    required TResult orElse(),
-  }) {
-    if (refreshing != null) {
-      return refreshing(courses);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(MyCoursesLoading value) loading,
-    required TResult Function(MyCoursesRefreshing value) refreshing,
-    required TResult Function(MyCoursesSuccess value) success,
-    required TResult Function(MyCoursesEmpty value) myCoursesEmpty,
-    required TResult Function(MyCoursesError value) error,
-  }) {
-    return refreshing(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(MyCoursesLoading value)? loading,
-    TResult Function(MyCoursesRefreshing value)? refreshing,
-    TResult Function(MyCoursesSuccess value)? success,
-    TResult Function(MyCoursesEmpty value)? myCoursesEmpty,
-    TResult Function(MyCoursesError value)? error,
-    required TResult orElse(),
-  }) {
-    if (refreshing != null) {
-      return refreshing(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class MyCoursesRefreshing implements MyCoursesState {
-  const factory MyCoursesRefreshing({required List<Course> courses}) =
-      _$MyCoursesRefreshing;
-
-  List<Course> get courses => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $MyCoursesRefreshingCopyWith<MyCoursesRefreshing> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -878,7 +590,6 @@ class _$MyCoursesSuccess implements MyCoursesSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Course> courses) refreshing,
     required TResult Function(List<Course> courses) success,
     required TResult Function() myCoursesEmpty,
     required TResult Function(NetworkExceptions error) error,
@@ -891,7 +602,6 @@ class _$MyCoursesSuccess implements MyCoursesSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Course> courses)? refreshing,
     TResult Function(List<Course> courses)? success,
     TResult Function()? myCoursesEmpty,
     TResult Function(NetworkExceptions error)? error,
@@ -908,7 +618,6 @@ class _$MyCoursesSuccess implements MyCoursesSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(MyCoursesLoading value) loading,
-    required TResult Function(MyCoursesRefreshing value) refreshing,
     required TResult Function(MyCoursesSuccess value) success,
     required TResult Function(MyCoursesEmpty value) myCoursesEmpty,
     required TResult Function(MyCoursesError value) error,
@@ -921,7 +630,6 @@ class _$MyCoursesSuccess implements MyCoursesSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(MyCoursesLoading value)? loading,
-    TResult Function(MyCoursesRefreshing value)? refreshing,
     TResult Function(MyCoursesSuccess value)? success,
     TResult Function(MyCoursesEmpty value)? myCoursesEmpty,
     TResult Function(MyCoursesError value)? error,
@@ -985,7 +693,6 @@ class _$MyCoursesEmpty implements MyCoursesEmpty {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Course> courses) refreshing,
     required TResult Function(List<Course> courses) success,
     required TResult Function() myCoursesEmpty,
     required TResult Function(NetworkExceptions error) error,
@@ -998,7 +705,6 @@ class _$MyCoursesEmpty implements MyCoursesEmpty {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Course> courses)? refreshing,
     TResult Function(List<Course> courses)? success,
     TResult Function()? myCoursesEmpty,
     TResult Function(NetworkExceptions error)? error,
@@ -1015,7 +721,6 @@ class _$MyCoursesEmpty implements MyCoursesEmpty {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(MyCoursesLoading value) loading,
-    required TResult Function(MyCoursesRefreshing value) refreshing,
     required TResult Function(MyCoursesSuccess value) success,
     required TResult Function(MyCoursesEmpty value) myCoursesEmpty,
     required TResult Function(MyCoursesError value) error,
@@ -1028,7 +733,6 @@ class _$MyCoursesEmpty implements MyCoursesEmpty {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(MyCoursesLoading value)? loading,
-    TResult Function(MyCoursesRefreshing value)? refreshing,
     TResult Function(MyCoursesSuccess value)? success,
     TResult Function(MyCoursesEmpty value)? myCoursesEmpty,
     TResult Function(MyCoursesError value)? error,
@@ -1120,7 +824,6 @@ class _$MyCoursesError implements MyCoursesError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Course> courses) refreshing,
     required TResult Function(List<Course> courses) success,
     required TResult Function() myCoursesEmpty,
     required TResult Function(NetworkExceptions error) error,
@@ -1133,7 +836,6 @@ class _$MyCoursesError implements MyCoursesError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Course> courses)? refreshing,
     TResult Function(List<Course> courses)? success,
     TResult Function()? myCoursesEmpty,
     TResult Function(NetworkExceptions error)? error,
@@ -1150,7 +852,6 @@ class _$MyCoursesError implements MyCoursesError {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(MyCoursesLoading value) loading,
-    required TResult Function(MyCoursesRefreshing value) refreshing,
     required TResult Function(MyCoursesSuccess value) success,
     required TResult Function(MyCoursesEmpty value) myCoursesEmpty,
     required TResult Function(MyCoursesError value) error,
@@ -1163,7 +864,6 @@ class _$MyCoursesError implements MyCoursesError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(MyCoursesLoading value)? loading,
-    TResult Function(MyCoursesRefreshing value)? refreshing,
     TResult Function(MyCoursesSuccess value)? success,
     TResult Function(MyCoursesEmpty value)? myCoursesEmpty,
     TResult Function(MyCoursesError value)? error,

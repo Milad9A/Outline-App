@@ -13,6 +13,7 @@ _$Content _$_$ContentFromJson(Map<String, dynamic> json) {
     contentName: json['content_name'] as String,
     contentLink: json['content_link'] as String,
     courseId: json['course_id'] as String,
+    durationInSeconds: json['video_duration_in_seconds'] as String,
   );
 }
 
@@ -22,4 +23,5 @@ Map<String, dynamic> _$_$ContentToJson(_$Content instance) => <String, dynamic>{
       'content_name': instance.contentName,
       'content_link': instance.contentLink,
       'course_id': instance.courseId,
+      'video_duration_in_seconds': instance.durationInSeconds,
     };

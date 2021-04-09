@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
+import 'package:outline/config/consts.dart';
 import 'package:outline/config/theme/color_repository.dart';
+import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/views/screens/course/course_screen.dart';
 import 'package:outline/views/screens/create/create_post_screen.dart';
 import 'package:outline/views/screens/home/home_screen.dart';
@@ -104,12 +107,20 @@ class _NavigationScreenState extends State<NavigationScreen>
             icon: Icon(Icons.cast_for_education),
             label: 'Courses',
           ),
-          const BottomNavigationBarItem(
-            icon: CircleAvatar(
-              maxRadius: 12.0,
-              backgroundImage: NetworkImage(
-                'https://avatarfiles.alphacoders.com/202/202156.png',
-              ),
+          BottomNavigationBarItem(
+            icon: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+              builder: (context, state) {
+                return CircleAvatar(
+                  maxRadius: 12.0,
+                  backgroundImage: NetworkImage(
+                    state.maybeWhen(
+                      authenticated: (user) => user.avatar,
+                      unAuthenticated: () => Consts.defaultAvatar,
+                      orElse: () => Consts.defaultAvatar,
+                    ),
+                  ),
+                );
+              },
             ),
             label: 'Profile',
           )

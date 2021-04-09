@@ -12,6 +12,8 @@ abstract class ContentModel with _$ContentModel {
     @JsonKey(name: 'content_name') required String contentName,
     @JsonKey(name: 'content_link') required String contentLink,
     @JsonKey(name: 'course_id') required String courseId,
+    @JsonKey(name: 'video_duration_in_seconds')
+        required String durationInSeconds,
   }) = Content;
 
   factory ContentModel.fromJson(Map<String, dynamic> json) =>

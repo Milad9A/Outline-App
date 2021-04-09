@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/course_model/course_model.dart';
 import 'package:outline/providers/course/all_courses/course_bloc.dart';
@@ -79,45 +80,9 @@ class _ViewCourseScreenState extends State<ViewCourseScreen>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              physics: NeverScrollableScrollPhysics(),
               children: [
-                Container(
-                  height: 200.0,
-                  child: ListView.builder(
-                    itemCount: widget.course.contents.length,
-                    shrinkWrap: true,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
-                        leading: IconButton(
-                          icon: Icon(
-                            Icons.play_circle_fill,
-                            color: ColorRepository.darkBlue,
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DriveVideoView(
-                                  videoName:
-                                      widget.course.contents[index].contentName,
-                                  videoLink:
-                                      widget.course.contents[index].contentLink,
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                        title: Text(
-                          widget.course.contents[index].contentName,
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                Container(),
+                CourseOverviewTab(contents: widget.course.contents),
+                CourseInfoTab(course: widget.course),
               ],
             ),
           ),
