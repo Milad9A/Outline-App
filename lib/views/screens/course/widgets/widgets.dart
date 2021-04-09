@@ -9,3 +9,4 @@ export 'course_grid.dart';
 export 'build_my_empty_courses_body.dart';
 export 'my_courses_tile.dart';
 export 'my_courses_list_view_builder.dart';
+export 'drive_video_view.dart';
