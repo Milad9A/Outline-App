@@ -3,6 +3,7 @@ import 'package:outline/config/consts.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/course_model/course_model.dart';
 import 'package:outline/views/widgets/widgets.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class MyCoursesTile extends StatelessWidget {
   final Course course;
@@ -50,6 +51,16 @@ class MyCoursesTile extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
             ),
+          ),
+          SizedBox(height: 16.0),
+          LinearPercentIndicator(
+            animation: true,
+            lineHeight: 8.0,
+            animationDuration: 2000,
+            percent: 0.7,
+            linearStrokeCap: LinearStrokeCap.roundAll,
+            progressColor: ColorRepository.green,
+            backgroundColor: ColorRepository.lowOpacityGreen,
           ),
           SizedBox(height: 16.0),
           OutlineTextButton(

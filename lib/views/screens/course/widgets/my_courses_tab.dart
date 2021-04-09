@@ -24,12 +24,9 @@ class _MyCoursesTabState extends State<MyCoursesTab> {
             context,
             widget.tabController,
           ),
-          success: (coursesList) => ListView.builder(
-            padding: EdgeInsets.all(10.0),
-            itemCount: coursesList.length,
-            itemBuilder: (BuildContext context, int index) {
-              return MyCoursesTile(course: coursesList[index]);
-            },
+          success: (coursesList) => MyCoursesListViewBuilder(
+            coursesList: coursesList,
+            context: context,
           ),
           loading: () => Center(
             child: CircularProgressIndicator(),

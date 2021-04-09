@@ -4,5 +4,5 @@ part of 'my_courses_bloc.dart';
 class MyCoursesEvent with _$MyCoursesEvent {
   const factory MyCoursesEvent.started() = _Started;
 
-  const factory MyCoursesEvent.getAllCourses() = GetMyCourses;
+  const factory MyCoursesEvent.getMyCourses() = GetMyCourses;
 }
