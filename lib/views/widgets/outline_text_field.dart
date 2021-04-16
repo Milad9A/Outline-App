@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:outline/config/consts.dart';
 import 'package:outline/config/theme/color_repository.dart';
 
 class OutlineTextField extends StatelessWidget {
@@ -51,11 +52,7 @@ class OutlineTextField extends StatelessWidget {
   }
 
   final OutlineInputBorder customOutlineBorder = OutlineInputBorder(
-    borderSide: BorderSide(
-      style: BorderStyle.solid,
-      width: 1.0,
-      color: ColorRepository.darkGrey,
-    ),
+    borderSide: Consts.outlineBorderSide,
     borderRadius: BorderRadius.circular(4.0),
   );
 }

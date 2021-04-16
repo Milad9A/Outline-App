@@ -12,7 +12,8 @@ import 'package:flutter_quill/widgets/default_styles.dart';
 import 'package:flutter_quill/widgets/editor.dart';
 import 'package:flutter_quill/widgets/toolbar.dart';
 import 'package:outline/config/theme/color_repository.dart';
-import 'package:outline/views/screens/create/article_tags_screen.dart';
+import 'package:outline/views/screens/create/publish_article_screen.dart';
+import 'package:outline/views/screens/create/add_article_tags_screen.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tuple/tuple.dart';
@@ -52,7 +53,7 @@ class _CreateArticleScreenState extends State<CreateArticleScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0,
+        elevation: 1.0,
         iconTheme: IconThemeData(color: ColorRepository.darkBlue),
         centerTitle: false,
         title: Text(
@@ -70,7 +71,9 @@ class _CreateArticleScreenState extends State<CreateArticleScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ArticleTagsScreen(articleContent: json),
+                  builder: (context) => PublishArticleScreen(
+                    articleContent: json,
+                  ),
                 ),
               );
             },
@@ -110,6 +113,7 @@ class _CreateArticleScreenState extends State<CreateArticleScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
+          SizedBox(height: 16.0),
           Expanded(
             flex: 15,
             child: Container(

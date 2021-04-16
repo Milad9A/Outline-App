@@ -5,11 +5,17 @@ class OutlineTextButton extends StatelessWidget {
   final String text;
   final void Function()? onPressed;
   final Color? backgroundColor;
+  final Color? textColor;
+  final BorderSide? borderSide;
+  final Widget? child;
 
   const OutlineTextButton({
     required this.text,
     required this.onPressed,
     this.backgroundColor = ColorRepository.darkBlue,
+    this.textColor = Colors.white,
+    this.borderSide,
+    this.child,
   });
 
   @override
@@ -20,15 +26,17 @@ class OutlineTextButton extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: backgroundColor,
+          side: borderSide,
           primary: Colors.white,
         ),
         onPressed: onPressed,
-        child: Text(
-          text,
-          style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                color: Colors.white,
-              ),
-        ),
+        child: child ??
+            Text(
+              text,
+              style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                    color: textColor,
+                  ),
+            ),
       ),
     );
   }

@@ -5,6 +5,7 @@ Future showPopUp(
   required String title,
   required String content,
   required void Function()? onPressed,
+  List<Widget>? actions,
 }) {
   return showDialog(
     context: context,
@@ -12,12 +13,13 @@ Future showPopUp(
       title: Text(title),
       elevation: 1.0,
       content: Text(content),
-      actions: [
-        IconButton(
-          icon: Icon(Icons.done),
-          onPressed: onPressed,
-        ),
-      ],
+      actions: actions ??
+          [
+            IconButton(
+              icon: Icon(Icons.done),
+              onPressed: onPressed,
+            ),
+          ],
     ),
   );
 }
