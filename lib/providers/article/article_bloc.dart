@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
@@ -29,6 +30,7 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
 
       ApiResult<Article> apiResult = await articleRepository.createArticle(
         articleData: event.articleCreateData,
+        image: event.image,
       );
 
       apiResult.when(

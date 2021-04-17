@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
 import 'package:outline/config/theme/color_repository.dart';
+import 'package:outline/models/course_model/course_model.dart';
 
 import 'widgets/widgets.dart';
 
 class CoursesListScreen extends StatefulWidget {
   final String title;
+  final List<Course> coursesList;
 
   const CoursesListScreen({
     required this.title,
+    required this.coursesList,
   });
 
   @override
@@ -49,17 +52,18 @@ class _CoursesListScreenState extends State<CoursesListScreen> {
       ),
       body: GridView.count(
         crossAxisCount: 2,
-        children: [
-          CourseGrid(),
-          CourseGrid(),
-          CourseGrid(),
-          CourseGrid(),
-          CourseGrid(),
-          CourseGrid(),
-          CourseGrid(),
-          CourseGrid(),
-          CourseGrid(),
-        ],
+        padding: EdgeInsets.only(top: 12.0),
+        children: widget.coursesList
+            .map(
+              (course) => CourseGrid(
+                title: course.title,
+                instructorName: course.ownerUserId.name,
+                rating: course.avgRating,
+                price: course.price,
+                bannerUrl: course.banner,
+              ),
+            )
+            .toList(),
       ),
     );
   }

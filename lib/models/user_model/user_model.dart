@@ -15,6 +15,7 @@ abstract class UserModel with _$UserModel {
     @JsonKey(name: 'reputation') required int reputation,
     @JsonKey(name: 'accept_rate') required int acceptRate,
     @JsonKey(name: 'tags') required List<Tag> tags,
+    @JsonKey(name: 'avatar') required String avatar,
   }) = User;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

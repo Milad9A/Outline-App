@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:outline/models/course_model/course_model.dart';
 import 'package:outline/views/screens/course/courses_list_screen.dart';
 import 'package:outline/views/screens/course/widgets/widgets.dart';
 
 class CoursesContainer extends StatelessWidget {
   final String title;
+  final List<Course> coursesList;
 
   const CoursesContainer({
     required this.title,
+    required this.coursesList,
   });
 
   @override
@@ -32,7 +35,10 @@ class CoursesContainer extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CoursesListScreen(title: title),
+                      builder: (context) => CoursesListScreen(
+                        title: title,
+                        coursesList: coursesList,
+                      ),
                     ),
                   );
                 },
@@ -47,13 +53,17 @@ class CoursesContainer extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
-            children: [
-              CourseTile(),
-              CourseTile(),
-              CourseTile(),
-              CourseTile(),
-              CourseTile(),
-            ],
+            children: coursesList
+                .map(
+                  (course) => CourseTile(
+                    title: course.title,
+                    instructorName: course.ownerUserId.name,
+                    rating: course.avgRating,
+                    price: course.price,
+                    bannerUrl: course.banner,
+                  ),
+                )
+                .toList(),
           ),
         )
       ],

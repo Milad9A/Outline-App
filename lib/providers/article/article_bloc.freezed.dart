@@ -21,9 +21,10 @@ class _$ArticleEventTearOff {
   }
 
   ArticleCreateButtonPressed createArticleButtonPressed(
-      {required ArticleCreate articleCreateData}) {
+      {required ArticleCreate articleCreateData, File? image}) {
     return ArticleCreateButtonPressed(
       articleCreateData: articleCreateData,
+      image: image,
     );
   }
 }
@@ -36,14 +37,14 @@ mixin _$ArticleEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(ArticleCreate articleCreateData)
+    required TResult Function(ArticleCreate articleCreateData, File? image)
         createArticleButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(ArticleCreate articleCreateData)?
+    TResult Function(ArticleCreate articleCreateData, File? image)?
         createArticleButtonPressed,
     required TResult orElse(),
   }) =>
@@ -124,7 +125,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(ArticleCreate articleCreateData)
+    required TResult Function(ArticleCreate articleCreateData, File? image)
         createArticleButtonPressed,
   }) {
     return started();
@@ -134,7 +135,7 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(ArticleCreate articleCreateData)?
+    TResult Function(ArticleCreate articleCreateData, File? image)?
         createArticleButtonPressed,
     required TResult orElse(),
   }) {
@@ -178,7 +179,7 @@ abstract class $ArticleCreateButtonPressedCopyWith<$Res> {
   factory $ArticleCreateButtonPressedCopyWith(ArticleCreateButtonPressed value,
           $Res Function(ArticleCreateButtonPressed) then) =
       _$ArticleCreateButtonPressedCopyWithImpl<$Res>;
-  $Res call({ArticleCreate articleCreateData});
+  $Res call({ArticleCreate articleCreateData, File? image});
 }
 
 /// @nodoc
@@ -196,12 +197,17 @@ class _$ArticleCreateButtonPressedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? articleCreateData = freezed,
+    Object? image = freezed,
   }) {
     return _then(ArticleCreateButtonPressed(
       articleCreateData: articleCreateData == freezed
           ? _value.articleCreateData
           : articleCreateData // ignore: cast_nullable_to_non_nullable
               as ArticleCreate,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as File?,
     ));
   }
 }
@@ -210,14 +216,17 @@ class _$ArticleCreateButtonPressedCopyWithImpl<$Res>
 class _$ArticleCreateButtonPressed
     with DiagnosticableTreeMixin
     implements ArticleCreateButtonPressed {
-  const _$ArticleCreateButtonPressed({required this.articleCreateData});
+  const _$ArticleCreateButtonPressed(
+      {required this.articleCreateData, this.image});
 
   @override
   final ArticleCreate articleCreateData;
+  @override
+  final File? image;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ArticleEvent.createArticleButtonPressed(articleCreateData: $articleCreateData)';
+    return 'ArticleEvent.createArticleButtonPressed(articleCreateData: $articleCreateData, image: $image)';
   }
 
   @override
@@ -226,7 +235,8 @@ class _$ArticleCreateButtonPressed
     properties
       ..add(DiagnosticsProperty(
           'type', 'ArticleEvent.createArticleButtonPressed'))
-      ..add(DiagnosticsProperty('articleCreateData', articleCreateData));
+      ..add(DiagnosticsProperty('articleCreateData', articleCreateData))
+      ..add(DiagnosticsProperty('image', image));
   }
 
   @override
@@ -235,13 +245,16 @@ class _$ArticleCreateButtonPressed
         (other is ArticleCreateButtonPressed &&
             (identical(other.articleCreateData, articleCreateData) ||
                 const DeepCollectionEquality()
-                    .equals(other.articleCreateData, articleCreateData)));
+                    .equals(other.articleCreateData, articleCreateData)) &&
+            (identical(other.image, image) ||
+                const DeepCollectionEquality().equals(other.image, image)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(articleCreateData);
+      const DeepCollectionEquality().hash(articleCreateData) ^
+      const DeepCollectionEquality().hash(image);
 
   @JsonKey(ignore: true)
   @override
@@ -254,22 +267,22 @@ class _$ArticleCreateButtonPressed
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(ArticleCreate articleCreateData)
+    required TResult Function(ArticleCreate articleCreateData, File? image)
         createArticleButtonPressed,
   }) {
-    return createArticleButtonPressed(articleCreateData);
+    return createArticleButtonPressed(articleCreateData, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(ArticleCreate articleCreateData)?
+    TResult Function(ArticleCreate articleCreateData, File? image)?
         createArticleButtonPressed,
     required TResult orElse(),
   }) {
     if (createArticleButtonPressed != null) {
-      return createArticleButtonPressed(articleCreateData);
+      return createArticleButtonPressed(articleCreateData, image);
     }
     return orElse();
   }
@@ -301,10 +314,11 @@ class _$ArticleCreateButtonPressed
 
 abstract class ArticleCreateButtonPressed implements ArticleEvent {
   const factory ArticleCreateButtonPressed(
-          {required ArticleCreate articleCreateData}) =
-      _$ArticleCreateButtonPressed;
+      {required ArticleCreate articleCreateData,
+      File? image}) = _$ArticleCreateButtonPressed;
 
   ArticleCreate get articleCreateData => throw _privateConstructorUsedError;
+  File? get image => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ArticleCreateButtonPressedCopyWith<ArticleCreateButtonPressed>
       get copyWith => throw _privateConstructorUsedError;

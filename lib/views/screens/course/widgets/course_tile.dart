@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/theme/color_repository.dart';
 
 class CourseTile extends StatelessWidget {
+  final String title;
+  final String instructorName;
+  final double price;
+  final double rating;
+  final String bannerUrl;
+
   const CourseTile({
-    Key? key,
-  }) : super(key: key);
+    required this.title,
+    required this.price,
+    required this.rating,
+    required this.instructorName,
+    required this.bannerUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +34,8 @@ class CourseTile extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
-                child: Image.asset(
-                  'assets/images/course_screen_artwork.png',
+                child: Image.network(
+                  bannerUrl,
                   fit: BoxFit.fitWidth,
                   height: 99.0,
                   width: 176.0,
@@ -33,13 +44,13 @@ class CourseTile extends StatelessWidget {
             ),
             SizedBox(height: 6.0),
             Text(
-              'Modern React with Redux',
+              title,
               style: TextStyle(
                 color: ColorRepository.blackish,
               ),
             ),
             Text(
-              'Milad Awad',
+              instructorName,
               style: TextStyle(
                 fontSize: 12,
                 color: ColorRepository.blackish,
@@ -53,11 +64,11 @@ class CourseTile extends StatelessWidget {
                   Row(
                     children: [
                       Icon(Icons.star, color: Colors.yellow),
-                      Text('4.6'),
+                      Text(rating.toString()),
                     ],
                   ),
                   Text(
-                    '40\$',
+                    '$price\$',
                     style: TextStyle(color: ColorRepository.darkBlue),
                   ),
                 ],

@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/theme/color_repository.dart';
 
 class PopularTile extends StatelessWidget {
+  final String title;
+  final String instructorName;
+  final double price;
+  final double rating;
+  final String bannerUrl;
+
   const PopularTile({
-    Key? key,
-  }) : super(key: key);
+    required this.title,
+    required this.instructorName,
+    required this.price,
+    required this.rating,
+    required this.bannerUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +30,13 @@ class PopularTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Modern React with Redux',
+                title,
                 style: Theme.of(context).textTheme.subtitle1!.copyWith(
                       color: ColorRepository.blackish,
                     ),
               ),
               Text(
-                'Milad Awad',
+                instructorName,
                 style: TextStyle(
                   fontSize: 12,
                   color: ColorRepository.blackish,
@@ -34,7 +45,7 @@ class PopularTile extends StatelessWidget {
               Row(
                 children: [
                   Icon(Icons.star, color: Colors.yellow),
-                  Text('4.6'),
+                  Text(rating.toString()),
                 ],
               ),
             ],
@@ -47,8 +58,8 @@ class PopularTile extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
-              child: Image.asset(
-                'assets/images/course_screen_artwork.png',
+              child: Image.network(
+                bannerUrl,
                 fit: BoxFit.fitWidth,
                 height: 50.0,
                 width: 89.0,

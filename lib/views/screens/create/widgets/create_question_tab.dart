@@ -17,7 +17,7 @@ class CreateQuestionTab extends StatelessWidget {
         Container(
           width: MediaQuery.of(context).size.width * 0.9,
           child: OutlineTextButton(
-            text: 'Create Article',
+            text: 'Create Question',
             onPressed: () {
               Navigator.push(
                 context,
