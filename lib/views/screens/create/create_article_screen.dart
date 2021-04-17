@@ -103,12 +103,12 @@ class _CreateArticleScreenState extends State<CreateArticleScreen> {
             }
           }
         },
-        child: _buildWelcomeEditor(context),
+        child: _buildEditor(context),
       ),
     );
   }
 
-  Widget _buildWelcomeEditor(BuildContext context) {
+  Widget _buildEditor(BuildContext context) {
     return SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

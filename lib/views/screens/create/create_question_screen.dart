@@ -5,18 +5,30 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_quill/models/documents/attribute.dart';
 import 'package:flutter_quill/models/documents/document.dart';
 import 'package:flutter_quill/widgets/controller.dart';
 import 'package:flutter_quill/widgets/default_styles.dart';
 import 'package:flutter_quill/widgets/editor.dart';
 import 'package:flutter_quill/widgets/toolbar.dart';
+import 'package:flutter_tags/flutter_tags.dart';
+import 'package:outline/config/consts.dart';
+import 'package:outline/config/functions/show_loading_gif.dart';
+import 'package:outline/config/functions/show_pop_up.dart';
+import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/config/theme/color_repository.dart';
+import 'package:outline/models/question_model/question_create_model.dart';
+import 'package:outline/models/question_model/question_model.dart';
+import 'package:outline/providers/question/question_bloc.dart';
+import 'package:outline/views/screens/navigation/navigation_screen.dart';
+import 'package:outline/views/widgets/outline_text_button.dart';
+import 'package:outline/views/widgets/widgets.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tuple/tuple.dart';
 
-import 'question_tags_screen.dart';
+import 'add_question_tags_screen.dart';
 
 class CreateQuestionScreen extends StatefulWidget {
   static Route get route =>
@@ -29,6 +41,8 @@ class CreateQuestionScreen extends StatefulWidget {
 class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
   QuillController? _controller;
   final FocusNode _focusNode = FocusNode();
+  final TextEditingController titleController = TextEditingController();
+  late List<DataList> tags = [];
 
   @override
   void initState() {
@@ -50,72 +64,106 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
       return Scaffold(body: Center(child: Text('Loading...')));
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        iconTheme: IconThemeData(color: ColorRepository.darkBlue),
-        centerTitle: false,
-        title: Text(
-          'Create Question',
-          style: Theme.of(context).textTheme.headline6!.copyWith(
-                fontWeight: FontWeight.bold,
-                color: ColorRepository.darkBlue,
-              ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              var json = jsonEncode(_controller!.document.toDelta().toJson());
-
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => QuestionTagsScreen(questionBody: json),
-                ),
-              );
-            },
-            child: Text(
-              'Next',
-              style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                    color: ColorRepository.darkBlue,
-                  ),
-            ),
-          ),
-        ],
-      ),
-      body: RawKeyboardListener(
-        focusNode: FocusNode(),
-        onKey: (RawKeyEvent event) {
-          if (event.data.isControlPressed && event.character == 'b') {
-            if (_controller!
-                .getSelectionStyle()
-                .attributes
-                .keys
-                .contains("bold")) {
-              _controller!
-                  .formatSelection(Attribute.clone(Attribute.bold, null));
-            } else {
-              _controller!.formatSelection(Attribute.bold);
-              print("not bold");
-            }
-          }
-        },
-        child: _buildWelcomeEditor(context),
+    return BlocListener<QuestionBloc, QuestionState>(
+      listener: (context, state) {
+        state.maybeWhen(
+          loading: () {
+            showLoadingGif(context);
+          },
+          success: (Question question) {
+            Navigator.push(context, NavigationScreen.route);
+          },
+          error: (NetworkExceptions message) {
+            Navigator.of(context, rootNavigator: true).pop();
+            showPopUp(
+              context,
+              title: 'Error',
+              content: message.toString(),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            );
+          },
+          orElse: () {},
+        );
+      },
+      child: Scaffold(
+        appBar: _buildCreateQuestionScreenAppBar(context),
+        body: _buildCreateQuestionScreenBody(context),
       ),
     );
   }
 
-  Widget _buildWelcomeEditor(BuildContext context) {
+  RawKeyboardListener _buildCreateQuestionScreenBody(BuildContext context) {
+    return RawKeyboardListener(
+      focusNode: FocusNode(),
+      onKey: (RawKeyEvent event) {
+        if (event.data.isControlPressed && event.character == 'b') {
+          if (_controller!
+              .getSelectionStyle()
+              .attributes
+              .keys
+              .contains("bold")) {
+            _controller!.formatSelection(Attribute.clone(Attribute.bold, null));
+          } else {
+            _controller!.formatSelection(Attribute.bold);
+            print("not bold");
+          }
+        }
+      },
+      child: _buildEditor(context),
+    );
+  }
+
+  AppBar _buildCreateQuestionScreenAppBar(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.white,
+      elevation: 0,
+      iconTheme: IconThemeData(color: ColorRepository.darkBlue),
+      centerTitle: false,
+      title: Text(
+        'Create Question',
+        style: Theme.of(context).textTheme.headline6!.copyWith(
+              fontWeight: FontWeight.bold,
+              color: ColorRepository.darkBlue,
+            ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            var content = jsonEncode(_controller!.document.toDelta().toJson());
+
+            BlocProvider.of<QuestionBloc>(context).add(
+              QuestionCreateButtonPressed(
+                questionCreateData: QuestionCreate(
+                  body: content,
+                  title: titleController.text,
+                  tags: tags.map((tag) => tag.customData.toString()).toList(),
+                ),
+              ),
+            );
+          },
+          child: Text(
+            'Post',
+            style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                  color: ColorRepository.darkBlue,
+                ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildEditor(BuildContext context) {
     return SafeArea(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Expanded(
-            flex: 15,
-            child: Container(
+      child: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height * 0.35,
               color: Colors.white,
-              padding: const EdgeInsets.only(left: 16.0, right: 16.0),
               child: QuillEditor(
                 controller: _controller!,
                 scrollController: ScrollController(),
@@ -142,24 +190,115 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                 ),
               ),
             ),
-          ),
-          kIsWeb
-              ? Expanded(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+            MediaQuery.of(context).viewInsets.bottom != 0
+                ? Container(
                     child: QuillToolbar.basic(
                       controller: _controller!,
                       onImagePickCallback: _onImagePickCallback,
                     ),
-                  ),
-                )
-              : Container(
-                  child: QuillToolbar.basic(
-                    controller: _controller!,
-                    onImagePickCallback: _onImagePickCallback,
-                  ),
+                  )
+                : SizedBox.shrink(),
+            SizedBox(height: 30.0),
+            Row(
+              children: [
+                Text(
+                  'Title',
+                  style: TextStyle(color: ColorRepository.darkBlue),
                 ),
-        ],
+              ],
+            ),
+            SizedBox(height: 10.0),
+            OutlineTextField(
+              controller: titleController,
+              textInputType: TextInputType.name,
+              textInputAction: TextInputAction.next,
+              hintText: 'Write a title',
+              onChanged: (value) {},
+            ),
+            SizedBox(height: 30.0),
+            Row(
+              children: [
+                Text(
+                  'Tags',
+                  style: TextStyle(color: ColorRepository.darkBlue),
+                ),
+              ],
+            ),
+            SizedBox(height: 10.0),
+            OutlineTextButton(
+              text: 'Select Tags',
+              onPressed: () async {
+                tags = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddQuestionTagsScreen(),
+                  ),
+                );
+                setState(() {});
+              },
+              backgroundColor: Colors.transparent,
+              textColor: ColorRepository.darkGrey,
+              borderSide: Consts.outlineBorderSide,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Select Tags',
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                          color: ColorRepository.darkGrey,
+                        ),
+                  ),
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    color: ColorRepository.darkGrey,
+                    size: 14.0,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 15.0),
+            Container(
+              width: double.infinity,
+              child: Tags(
+                itemCount: tags.length,
+                alignment: WrapAlignment.start,
+                itemBuilder: (int index) {
+                  final tag = tags[index];
+                  return ItemTags(
+                    key: Key(index.toString()),
+                    index: index,
+                    title: tag.title,
+                    active: true,
+                    elevation: 0.0,
+                    textColor: ColorRepository.darkBlue,
+                    textActiveColor: ColorRepository.darkBlue,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(4.0),
+                    ),
+                    border: Border.all(
+                      color: ColorRepository.lowOpacityDarkBlue,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8.0,
+                      horizontal: 8.0,
+                    ),
+                    color: ColorRepository.lightBlue,
+                    activeColor: ColorRepository.lowOpacityDarkBlue,
+                    removeButton: ItemTagsRemoveButton(
+                        backgroundColor: ColorRepository.darkBlue,
+                        onRemoved: () {
+                          setState(() {
+                            tags.removeAt(index);
+                          });
+                          return true;
+                        }),
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 40.0),
+          ],
+        ),
       ),
     );
   }

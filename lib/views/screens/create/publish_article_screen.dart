@@ -52,13 +52,11 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
   Widget build(BuildContext context) {
     return BlocListener<ArticleBloc, ArticleState>(
       listener: (context, state) {
-        print(state);
         state.maybeWhen(
           loading: () {
             showLoadingGif(context);
           },
           success: (Article article) {
-            print(article.toJson());
             Navigator.push(context, NavigationScreen.route);
           },
           error: (NetworkExceptions message) {
@@ -210,8 +208,7 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
                   tags = await Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          AddArticleTagsScreen(articleContent: ''),
+                      builder: (context) => AddArticleTagsScreen(),
                     ),
                   );
                   setState(() {});

@@ -14,21 +14,15 @@ import 'package:outline/providers/tags/tags_bloc.dart';
 import 'package:outline/views/screens/navigation/navigation_screen.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
-class QuestionTagsScreen extends StatefulWidget {
-  final String questionBody;
-
-  const QuestionTagsScreen({
-    required this.questionBody,
-  });
-
+class AddQuestionTagsScreen extends StatefulWidget {
   @override
-  _QuestionTagsScreenState createState() => _QuestionTagsScreenState();
+  _AddQuestionTagsScreenState createState() => _AddQuestionTagsScreenState();
 }
 
-class _QuestionTagsScreenState extends State<QuestionTagsScreen> {
+class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
   final GlobalKey<TagsState> _tagStateKey = GlobalKey<TagsState>();
   late TextEditingController searchController;
-  late List<String> ids;
+  late List<DataList> ids;
   String searchValue = '';
 
   @override
@@ -42,30 +36,30 @@ class _QuestionTagsScreenState extends State<QuestionTagsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: BlocListener<QuestionBloc, QuestionState>(
-        listener: (context, state) {
-          state.maybeWhen(
-            loading: () {
-              showLoadingGif(context);
-            },
-            success: (Question question) {
-              print(question.toJson());
-              Navigator.push(context, NavigationScreen.route);
-            },
-            error: (NetworkExceptions message) {
-              showPopUp(
-                context,
-                title: 'Error',
-                content: message.toString(),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              );
-            },
-            orElse: () {},
-          );
-        },
+    return BlocListener<QuestionBloc, QuestionState>(
+      listener: (context, state) {
+        state.maybeWhen(
+          loading: () {
+            showLoadingGif(context);
+          },
+          success: (Question question) {
+            print(question.toJson());
+            Navigator.push(context, NavigationScreen.route);
+          },
+          error: (NetworkExceptions message) {
+            showPopUp(
+              context,
+              title: 'Error',
+              content: message.toString(),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            );
+          },
+          orElse: () {},
+        );
+      },
+      child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.white,
@@ -79,23 +73,43 @@ class _QuestionTagsScreenState extends State<QuestionTagsScreen> {
                     color: ColorRepository.darkBlue,
                   ),
             ),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                showPopUp(
+                  context,
+                  title: 'Are you sure you want to exit?',
+                  content: 'Your changes will not be saved',
+                  actions: [
+                    TextButton(
+                      child: Text(
+                        'cancel',
+                        style: TextStyle(fontSize: 15.0),
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                    TextButton(
+                      child: Text(
+                        'exit',
+                        style: TextStyle(fontSize: 15.0),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Navigator.pop(context, []);
+                      },
+                    ),
+                  ],
+                  onPressed: () {},
+                );
+              },
+            ),
             actions: [
               TextButton(
                 onPressed: () {
-                  var rng = new Random();
-
-                  BlocProvider.of<QuestionBloc>(context).add(
-                    QuestionCreateButtonPressed(
-                      questionCreateData: QuestionCreate(
-                        body: widget.questionBody,
-                        title: rng.nextInt(10000).toString(),
-                        tags: ids,
-                      ),
-                    ),
-                  );
+                  Navigator.pop(context, ids);
                 },
                 child: Text(
-                  'Publish',
+                  'Done',
                   style: Theme.of(context).textTheme.subtitle1!.copyWith(
                         color: ColorRepository.darkBlue,
                       ),
@@ -164,7 +178,7 @@ class _QuestionTagsScreenState extends State<QuestionTagsScreen> {
                                         vertical: 8.0,
                                         horizontal: 8.0,
                                       ),
-                                      index: index, // required
+                                      index: index,
                                       title: item.title,
                                       active: item.active,
                                       color: Colors.white,
@@ -183,7 +197,13 @@ class _QuestionTagsScreenState extends State<QuestionTagsScreen> {
                                         print(item);
                                         setState(() {
                                           if (!ids.contains(item.customData))
-                                            ids.add(item.customData);
+                                            ids.add(
+                                              DataList(
+                                                title: item.title,
+                                                customData: item.customData,
+                                                index: item.index,
+                                              ),
+                                            );
                                         });
                                       },
                                       onLongPressed: (item) => print(item),
