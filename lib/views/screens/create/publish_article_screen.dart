@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tags/flutter_tags.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
@@ -29,12 +32,27 @@ class PublishArticleScreen extends StatefulWidget {
 
 class _PublishArticleScreenState extends State<PublishArticleScreen> {
   final TextEditingController titleController = TextEditingController();
+  final picker = ImagePicker();
   late List<DataList> tags = [];
+  File? image;
+
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        image = File(pickedFile.path);
+      } else {
+        print('No Image Selected');
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<ArticleBloc, ArticleState>(
       listener: (context, state) {
+        print(state);
         state.maybeWhen(
           loading: () {
             showLoadingGif(context);
@@ -44,6 +62,7 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
             Navigator.push(context, NavigationScreen.route);
           },
           error: (NetworkExceptions message) {
+            Navigator.of(context, rootNavigator: true).pop();
             showPopUp(
               context,
               title: 'Error',
@@ -122,30 +141,38 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
               DottedBorder(
                 dashPattern: [10, 10],
                 strokeWidth: 1.0,
+                padding: EdgeInsets.all(0.5),
                 color: ColorRepository.darkGrey,
                 borderType: BorderType.RRect,
                 radius: Radius.circular(10),
                 child: ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
-                  child: Container(
-                    height: 170,
-                    width: double.infinity,
-                    color: Colors.transparent,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.add_photo_alternate,
-                          color: ColorRepository.darkBlue,
-                        ),
-                        Text(
-                          'Add Article Cover',
-                          style:
-                              Theme.of(context).textTheme.subtitle1!.copyWith(
-                                    color: ColorRepository.darkBlue,
-                                  ),
-                        ),
-                      ],
+                  child: GestureDetector(
+                    onTap: () async => await getImage(),
+                    child: Container(
+                      height: 170,
+                      width: double.infinity,
+                      color: Colors.transparent,
+                      child: image == null
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.add_photo_alternate,
+                                  color: ColorRepository.darkBlue,
+                                ),
+                                Text(
+                                  'Add Article Cover',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .subtitle1!
+                                      .copyWith(
+                                        color: ColorRepository.darkBlue,
+                                      ),
+                                ),
+                              ],
+                            )
+                          : Image.file(image!),
                     ),
                   ),
                 ),
@@ -264,8 +291,8 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
                       tags:
                           tags.map((tag) => tag.customData.toString()).toList(),
                       title: titleController.text,
-                      viewCount: 0,
                     ),
+                    image: image,
                   ),
                 );
               },

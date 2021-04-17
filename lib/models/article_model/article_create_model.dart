@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
@@ -9,7 +12,6 @@ abstract class ArticleCreateModel with _$ArticleCreateModel {
   const factory ArticleCreateModel({
     @JsonKey(name: 'content') required String content,
     @JsonKey(name: 'title') required String title,
-    @JsonKey(name: 'view_count') required int viewCount,
     @JsonKey(name: 'tags') required List<String> tags,
   }) = ArticleCreate;
 

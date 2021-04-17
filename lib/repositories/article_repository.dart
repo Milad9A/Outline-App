@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/helpers/interceptor.dart';
@@ -24,14 +26,23 @@ class ArticleRepository {
 
   Future<ApiResult<Article>> createArticle({
     required ArticleCreate articleData,
+    File? image,
   }) async {
     try {
+      FormData data = FormData.fromMap(articleData.toJson());
+
+      if (image != null)
+        data.files.add(
+          MapEntry(
+            'banner',
+            await MultipartFile.fromFile(image.path),
+          ),
+        );
+
       final response = await dioClient.post(
         '/articles',
-        data: articleData,
+        data: data,
       );
-
-      print(response);
 
       Article article = Article.fromJson(response);
 

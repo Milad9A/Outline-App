@@ -5,12 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "outline",
-            "request": "launch",
-            "type": "dart",
-            "internalConsoleOptions": "neverOpen"
-        },
-        {
             "name": "outline debug",
             "request": "launch",
             "type": "dart",

@@ -23,12 +23,10 @@ class _$ArticleCreateModelTearOff {
   ArticleCreate call(
       {@JsonKey(name: 'content') required String content,
       @JsonKey(name: 'title') required String title,
-      @JsonKey(name: 'view_count') required int viewCount,
       @JsonKey(name: 'tags') required List<String> tags}) {
     return ArticleCreate(
       content: content,
       title: title,
-      viewCount: viewCount,
       tags: tags,
     );
   }
@@ -47,8 +45,6 @@ mixin _$ArticleCreateModel {
   String get content => throw _privateConstructorUsedError;
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
-  @JsonKey(name: 'view_count')
-  int get viewCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'tags')
   List<String> get tags => throw _privateConstructorUsedError;
 
@@ -66,7 +62,6 @@ abstract class $ArticleCreateModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'content') String content,
       @JsonKey(name: 'title') String title,
-      @JsonKey(name: 'view_count') int viewCount,
       @JsonKey(name: 'tags') List<String> tags});
 }
 
@@ -83,7 +78,6 @@ class _$ArticleCreateModelCopyWithImpl<$Res>
   $Res call({
     Object? content = freezed,
     Object? title = freezed,
-    Object? viewCount = freezed,
     Object? tags = freezed,
   }) {
     return _then(_value.copyWith(
@@ -95,10 +89,6 @@ class _$ArticleCreateModelCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      viewCount: viewCount == freezed
-          ? _value.viewCount
-          : viewCount // ignore: cast_nullable_to_non_nullable
-              as int,
       tags: tags == freezed
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
@@ -117,7 +107,6 @@ abstract class $ArticleCreateCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'content') String content,
       @JsonKey(name: 'title') String title,
-      @JsonKey(name: 'view_count') int viewCount,
       @JsonKey(name: 'tags') List<String> tags});
 }
 
@@ -136,7 +125,6 @@ class _$ArticleCreateCopyWithImpl<$Res>
   $Res call({
     Object? content = freezed,
     Object? title = freezed,
-    Object? viewCount = freezed,
     Object? tags = freezed,
   }) {
     return _then(ArticleCreate(
@@ -148,10 +136,6 @@ class _$ArticleCreateCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      viewCount: viewCount == freezed
-          ? _value.viewCount
-          : viewCount // ignore: cast_nullable_to_non_nullable
-              as int,
       tags: tags == freezed
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
@@ -167,7 +151,6 @@ class _$ArticleCreate with DiagnosticableTreeMixin implements ArticleCreate {
   const _$ArticleCreate(
       {@JsonKey(name: 'content') required this.content,
       @JsonKey(name: 'title') required this.title,
-      @JsonKey(name: 'view_count') required this.viewCount,
       @JsonKey(name: 'tags') required this.tags});
 
   factory _$ArticleCreate.fromJson(Map<String, dynamic> json) =>
@@ -180,15 +163,12 @@ class _$ArticleCreate with DiagnosticableTreeMixin implements ArticleCreate {
   @JsonKey(name: 'title')
   final String title;
   @override
-  @JsonKey(name: 'view_count')
-  final int viewCount;
-  @override
   @JsonKey(name: 'tags')
   final List<String> tags;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ArticleCreateModel(content: $content, title: $title, viewCount: $viewCount, tags: $tags)';
+    return 'ArticleCreateModel(content: $content, title: $title, tags: $tags)';
   }
 
   @override
@@ -198,7 +178,6 @@ class _$ArticleCreate with DiagnosticableTreeMixin implements ArticleCreate {
       ..add(DiagnosticsProperty('type', 'ArticleCreateModel'))
       ..add(DiagnosticsProperty('content', content))
       ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('viewCount', viewCount))
       ..add(DiagnosticsProperty('tags', tags));
   }
 
@@ -211,9 +190,6 @@ class _$ArticleCreate with DiagnosticableTreeMixin implements ArticleCreate {
                     .equals(other.content, content)) &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.viewCount, viewCount) ||
-                const DeepCollectionEquality()
-                    .equals(other.viewCount, viewCount)) &&
             (identical(other.tags, tags) ||
                 const DeepCollectionEquality().equals(other.tags, tags)));
   }
@@ -223,7 +199,6 @@ class _$ArticleCreate with DiagnosticableTreeMixin implements ArticleCreate {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(content) ^
       const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(viewCount) ^
       const DeepCollectionEquality().hash(tags);
 
   @JsonKey(ignore: true)
@@ -241,7 +216,6 @@ abstract class ArticleCreate implements ArticleCreateModel {
   const factory ArticleCreate(
       {@JsonKey(name: 'content') required String content,
       @JsonKey(name: 'title') required String title,
-      @JsonKey(name: 'view_count') required int viewCount,
       @JsonKey(name: 'tags') required List<String> tags}) = _$ArticleCreate;
 
   factory ArticleCreate.fromJson(Map<String, dynamic> json) =
@@ -253,9 +227,6 @@ abstract class ArticleCreate implements ArticleCreateModel {
   @override
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(name: 'view_count')
-  int get viewCount => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'tags')
   List<String> get tags => throw _privateConstructorUsedError;
