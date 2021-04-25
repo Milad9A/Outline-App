@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "293799011183",
+    "firebase_url": "https://outline-13077-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "outline-13077",
+    "storage_bucket": "outline-13077.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293799011183:android:22da50bb456b28975b7e9a",
+        "android_client_info": {
+          "package_name": "com.outline.outline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "293799011183-hmeiihsba0g4m0jkjankfavptkl8nc8r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbqPaAreaQx_JM0wOiPLUnC4c5CPNoAr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "293799011183-hmeiihsba0g4m0jkjankfavptkl8nc8r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

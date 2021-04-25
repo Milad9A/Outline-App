@@ -1,4 +1,4 @@
-package com.example.outline
+package com.outline.outline
 
 import io.flutter.embedding.android.FlutterActivity
 
