@@ -1,3 +1,4 @@
+import 'package:outline/config/consts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefsHelper {
@@ -26,5 +27,26 @@ class SharedPrefsHelper {
     final SharedPreferences prefs = await _prefs;
     final token = prefs.getString('token');
     return token;
+  }
+
+  Future<void> saveUsernameAndEmailToSharedPrefs({
+    required String email,
+    required String username,
+  }) async {
+    final SharedPreferences prefs = await _prefs;
+    prefs.setString('email', email);
+    Consts.email = email;
+    prefs.setString('username', username);
+    Consts.username = username;
+  }
+
+  Future<String?> getUsernameFromSharedPrefs() async {
+    final SharedPreferences prefs = await _prefs;
+    return prefs.getString('username');
+  }
+
+  Future<String?> getEmailFromSharedPrefs() async {
+    final SharedPreferences prefs = await _prefs;
+    return prefs.getString('email');
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/helpers/interceptor.dart';
@@ -54,6 +56,19 @@ class UserRepository {
 
       return ApiResult.success(data: user);
     } catch (e) {
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
+  }
+
+  Future<ApiResult<List>> getAllUsersPublicInfo() async {
+    try {
+      final response = await dioClient.get(
+        '/users/public-info',
+      );
+
+      return ApiResult.success(data: response);
+    } catch (e) {
+      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }

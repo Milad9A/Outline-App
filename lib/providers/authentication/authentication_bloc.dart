@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:outline/config/consts.dart';
 import 'package:outline/config/helpers/shared_prefs_helper.dart';
 import 'package:outline/config/services/api_result.dart';
 import 'package:outline/config/services/network_exceptions.dart';
@@ -34,7 +35,14 @@ class AuthenticationBloc
         ApiResult<User> apiResult = await userRepository.getUserInfo();
 
         apiResult.when(
-          success: (User data) {
+          success: (User data) async {
+            Consts.username = data.name;
+            Consts.email = data.email;
+            Consts.isLoggedIn = true;
+            await prefs.saveUsernameAndEmailToSharedPrefs(
+              email: data.email,
+              username: data.name,
+            );
             emit(AuthenticationAuthenticated(user: data));
           },
           failure: (NetworkExceptions error) {
@@ -46,8 +54,18 @@ class AuthenticationBloc
       }
     }
 
+    // TODO Add AuthenticationSignedUp event
     if (event is AuthenticationLoggedIn) {
       yield AuthenticationLoading();
+      final SharedPrefsHelper prefs = SharedPrefsHelper();
+
+      Consts.username = event.user.name;
+      Consts.email = event.user.email;
+      Consts.isLoggedIn = true;
+      await prefs.saveUsernameAndEmailToSharedPrefs(
+        email: event.user.email,
+        username: event.user.name,
+      );
       yield AuthenticationAuthenticated(user: event.user);
     }
 

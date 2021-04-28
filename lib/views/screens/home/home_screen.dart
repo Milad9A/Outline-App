@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:outline/config/consts.dart';
+import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/providers/authentication/authentication_bloc.dart';
+import 'package:outline/views/screens/chat/chats_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static Route get route =>
@@ -25,16 +28,32 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
         ),
         actions: [
-          Icon(
-            Icons.message_sharp,
+          IconButton(
+            icon: Icon(Icons.chat_bubble_outline),
+            onPressed: () {
+              if (Consts.isLoggedIn) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ChatsScreen()),
+                );
+              } else {
+                showPopUp(
+                  context,
+                  title: 'Error',
+                  content: "You must be logged In!",
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                );
+              }
+            },
             color: ColorRepository.darkBlue,
           ),
-          SizedBox(width: 10.0),
-          Icon(
-            Icons.notifications,
+          IconButton(
+            icon: Icon(Icons.notifications_none),
+            onPressed: () {},
             color: ColorRepository.darkBlue,
           ),
-          SizedBox(width: 10.0),
         ],
       ),
       body: BlocBuilder<AuthenticationBloc, AuthenticationState>(

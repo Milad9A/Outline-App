@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/providers/article/article_bloc.dart';
 import 'package:outline/providers/tags/tags_bloc.dart';
+import 'package:outline/providers/user/user_bloc.dart';
 import 'package:outline/repositories/article_repository.dart';
 import 'package:outline/repositories/course_repository.dart';
 import 'package:outline/repositories/question_repository.dart';
@@ -26,13 +27,6 @@ class _OutlineAppState extends State<OutlineApp> {
   final _navigatorKey = GlobalKey<NavigatorState>();
 
   NavigatorState? get _navigator => _navigatorKey.currentState;
-
-  void _navigateToRoute(Route route) {
-    _navigator!.pushAndRemoveUntil<void>(
-      route,
-      (_) => false,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +68,11 @@ class _OutlineAppState extends State<OutlineApp> {
         BlocProvider(
           create: (context) => MyCoursesBloc(
             coursesRepository: CoursesRepository(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => UserBloc(
+            userRepository: UserRepository(),
           ),
         ),
       ],

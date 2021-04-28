@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'theme/color_repository.dart';
 
 class Consts {
+  static String username = '';
+  static String email = '';
+  static bool isLoggedIn = false;
+
   static String baseUrl = "https://outline-app-api.herokuapp.com";
 
   static const String unexpectedError = 'Unexpected Error!';

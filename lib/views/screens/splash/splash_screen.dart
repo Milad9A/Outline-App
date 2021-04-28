@@ -57,8 +57,19 @@ class _SplashScreenState extends State<SplashScreen> {
                         width: double.infinity,
                         fit: BoxFit.fill,
                       ),
-                      Image.asset(
-                        'assets/images/splash_text.png',
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/images/splash_text.png',
+                          ),
+                          SizedBox(height: 30.0),
+                          CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.white,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
