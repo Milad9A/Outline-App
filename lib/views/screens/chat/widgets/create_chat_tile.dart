@@ -41,8 +41,18 @@ class CreateChatTile extends StatelessWidget {
             chatRoomId: '${email}_${Consts.email}',
             chatRoomMap: {
               'chatroomid': '${email}_${Consts.email}',
-              'users_names': [name, Consts.username],
-              'users_emails': [email, Consts.email],
+              'users': [
+                {
+                  'name': Consts.username,
+                  'email': Consts.email,
+                  'avatar': Consts.avatar,
+                },
+                {
+                  'name': name,
+                  'email': email,
+                  'avatar': avatar,
+                },
+              ],
             },
           );
         }

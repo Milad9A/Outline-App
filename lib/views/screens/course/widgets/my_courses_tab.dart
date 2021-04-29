@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/providers/course/my_courses/my_courses_bloc.dart';
 import 'package:outline/views/screens/course/widgets/widgets.dart';
+import 'package:outline/views/widgets/widgets.dart';
 
 class MyCoursesTab extends StatefulWidget {
   final TabController tabController;
@@ -29,7 +30,7 @@ class _MyCoursesTabState extends State<MyCoursesTab> {
             context: context,
           ),
           loading: () => Center(
-            child: CircularProgressIndicator(),
+            child: OutlineCircularProgressIndicator(),
           ),
           orElse: () => SizedBox.shrink(),
         );

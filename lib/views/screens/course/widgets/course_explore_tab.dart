@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/providers/course/all_courses/course_bloc.dart';
 import 'package:outline/views/screens/course/widgets/widgets.dart';
+import 'package:outline/views/widgets/widgets.dart';
 
 class CorseExploreTab extends StatefulWidget {
   @override
@@ -41,7 +42,7 @@ class _CorseExploreTabState extends State<CorseExploreTab> {
             );
           },
           loading: () => Center(
-            child: CircularProgressIndicator(),
+            child: OutlineCircularProgressIndicator(),
           ),
           orElse: () => SizedBox.shrink(),
         );

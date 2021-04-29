@@ -141,7 +141,7 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
                       builder: (context, state) {
                         return state.when(
                           initial: () => SizedBox.shrink(),
-                          loading: () => CircularProgressIndicator(),
+                          loading: () => OutlineCircularProgressIndicator(),
                           success: (tags) {
                             List<DataList> items = tags
                                 .map(

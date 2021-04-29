@@ -58,9 +58,13 @@ class ChatRepository {
   }
 
   Stream<QuerySnapshot> getChatRooms({required String? userEmail}) {
-    return FirebaseFirestore.instance
-        .collection('chatroom')
-        .where('users_emails', arrayContains: userEmail)
-        .snapshots();
+    return FirebaseFirestore.instance.collection('chatroom').where(
+      'users',
+      arrayContains: {
+        'email': Consts.email,
+        'name': Consts.username,
+        'avatar': Consts.avatar
+      },
+    ).snapshots();
   }
 }

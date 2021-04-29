@@ -11,6 +11,7 @@ import 'package:outline/providers/update_user/update_user_bloc.dart';
 import 'package:outline/views/screens/navigation/navigation_screen.dart';
 import 'package:outline/views/widgets/outline_text_button.dart';
 import 'package:outline/views/widgets/outline_text_field.dart';
+import 'package:outline/views/widgets/widgets.dart';
 
 class SignUpTagsScreen extends StatefulWidget {
   static Route get route =>
@@ -102,7 +103,8 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
                             builder: (context, state) {
                               return state.when(
                                 initial: () => SizedBox.shrink(),
-                                loading: () => CircularProgressIndicator(),
+                                loading: () =>
+                                    OutlineCircularProgressIndicator(),
                                 success: (tags) {
                                   List<DataList> items = tags
                                       .map(

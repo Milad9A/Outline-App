@@ -25,7 +25,6 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
   @override
   void initState() {
     super.initState();
-    chatsStream = chatRepository.getChatRooms(userEmail: Consts.email);
     BlocProvider.of<UserBloc>(context).add(GetAllPublicData());
   }
 
@@ -101,11 +100,11 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
               return state.maybeWhen(
                 initial: () => Padding(
                   padding: const EdgeInsets.only(top: 150.0),
-                  child: CircularProgressIndicator(),
+                  child: OutlineCircularProgressIndicator(),
                 ),
                 loading: () => Padding(
                   padding: const EdgeInsets.only(top: 150.0),
-                  child: CircularProgressIndicator(),
+                  child: OutlineCircularProgressIndicator(),
                 ),
                 success: (users) {
                   return ListView.builder(

@@ -38,6 +38,7 @@ class AuthenticationBloc
           success: (User data) async {
             Consts.username = data.name;
             Consts.email = data.email;
+            Consts.avatar = data.avatar;
             Consts.isLoggedIn = true;
             await prefs.saveUsernameAndEmailToSharedPrefs(
               email: data.email,
@@ -54,6 +55,7 @@ class AuthenticationBloc
       }
     }
 
+    // TODO Call this when logging in
     // TODO Add AuthenticationSignedUp event
     if (event is AuthenticationLoggedIn) {
       yield AuthenticationLoading();
@@ -61,6 +63,7 @@ class AuthenticationBloc
 
       Consts.username = event.user.name;
       Consts.email = event.user.email;
+      Consts.avatar = event.user.avatar;
       Consts.isLoggedIn = true;
       await prefs.saveUsernameAndEmailToSharedPrefs(
         email: event.user.email,

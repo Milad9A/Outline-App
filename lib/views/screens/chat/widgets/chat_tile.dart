@@ -1,12 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:outline/config/theme/color_repository.dart';
+import 'package:outline/views/screens/chat/conversation_screen.dart';
 
 class ChatTile extends StatelessWidget {
+  final String name;
+  final String avatar;
+  final String chatRoomId;
+
+  const ChatTile({
+    required this.name,
+    required this.avatar,
+    required this.chatRoomId,
+  });
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ConversationScreen(
+              name: name,
+              avatar: avatar,
+              chatRoomId: chatRoomId,
+            ),
+          ),
+        );
+      },
       contentPadding: EdgeInsets.zero,
       leading: CircleAvatar(
+        backgroundImage: NetworkImage(avatar),
         backgroundColor: ColorRepository.greyish,
         radius: 24.0,
       ),
@@ -15,7 +39,7 @@ class ChatTile extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              'Hilal Khadour is a hall machine so much i eat hall and poop hall',
+              name,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context)

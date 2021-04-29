@@ -5,6 +5,7 @@ import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/views/screens/chat/chats_screen.dart';
+import 'package:outline/views/widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   static Route get route =>
@@ -59,8 +60,8 @@ class _HomeScreenState extends State<HomeScreen> {
       body: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           return state.when(
-            initial: () => CircularProgressIndicator(),
-            loading: () => CircularProgressIndicator(),
+            initial: () => OutlineCircularProgressIndicator(),
+            loading: () => OutlineCircularProgressIndicator(),
             unAuthenticated: () => Center(child: Text('Hello, user')),
             authenticated: (user) {
               return Center(
