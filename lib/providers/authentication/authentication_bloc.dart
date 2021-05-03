@@ -39,7 +39,7 @@ class AuthenticationBloc
             Consts.username = data.name;
             Consts.email = data.email;
             Consts.avatar = data.avatar;
-            Consts.isLoggedIn = true;
+            Consts.isAuthenticated = true;
             await prefs.saveUsernameAndEmailToSharedPrefs(
               email: data.email,
               username: data.name,
@@ -55,8 +55,6 @@ class AuthenticationBloc
       }
     }
 
-    // TODO Call this when logging in
-    // TODO Add AuthenticationSignedUp event
     if (event is AuthenticationLoggedIn) {
       yield AuthenticationLoading();
       final SharedPrefsHelper prefs = SharedPrefsHelper();
@@ -64,7 +62,22 @@ class AuthenticationBloc
       Consts.username = event.user.name;
       Consts.email = event.user.email;
       Consts.avatar = event.user.avatar;
-      Consts.isLoggedIn = true;
+      Consts.isAuthenticated = true;
+      await prefs.saveUsernameAndEmailToSharedPrefs(
+        email: event.user.email,
+        username: event.user.name,
+      );
+      yield AuthenticationAuthenticated(user: event.user);
+    }
+
+    if (event is AuthenticationSignedUp) {
+      yield AuthenticationLoading();
+      final SharedPrefsHelper prefs = SharedPrefsHelper();
+
+      Consts.username = event.user.name;
+      Consts.email = event.user.email;
+      Consts.avatar = event.user.avatar;
+      Consts.isAuthenticated = true;
       await prefs.saveUsernameAndEmailToSharedPrefs(
         email: event.user.email,
         username: event.user.name,

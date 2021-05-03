@@ -34,10 +34,9 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         userSignUpCredentials: event.userSignUp,
       );
 
-      print(apiResult);
-
       apiResult.when(
         success: (User data) {
+          authenticationBloc.add(AuthenticationSignedUp(user: data));
           emit(SignUpSuccess(user: data));
         },
         failure: (NetworkExceptions error) {

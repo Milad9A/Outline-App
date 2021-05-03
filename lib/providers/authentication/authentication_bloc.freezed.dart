@@ -26,6 +26,12 @@ class _$AuthenticationEventTearOff {
     );
   }
 
+  AuthenticationSignedUp signedUp({required User user}) {
+    return AuthenticationSignedUp(
+      user: user,
+    );
+  }
+
   AuthenticationLoggedOut loggedOut() {
     return const AuthenticationLoggedOut();
   }
@@ -40,6 +46,7 @@ mixin _$AuthenticationEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() appStarted,
     required TResult Function(User user) loggedIn,
+    required TResult Function(User user) signedUp,
     required TResult Function() loggedOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +54,7 @@ mixin _$AuthenticationEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(User user)? loggedIn,
+    TResult Function(User user)? signedUp,
     TResult Function()? loggedOut,
     required TResult orElse(),
   }) =>
@@ -55,6 +63,7 @@ mixin _$AuthenticationEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(AuthenticationAppStarted value) appStarted,
     required TResult Function(AuthenticationLoggedIn value) loggedIn,
+    required TResult Function(AuthenticationSignedUp value) signedUp,
     required TResult Function(AuthenticationLoggedOut value) loggedOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +71,7 @@ mixin _$AuthenticationEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthenticationAppStarted value)? appStarted,
     TResult Function(AuthenticationLoggedIn value)? loggedIn,
+    TResult Function(AuthenticationSignedUp value)? signedUp,
     TResult Function(AuthenticationLoggedOut value)? loggedOut,
     required TResult orElse(),
   }) =>
@@ -127,6 +137,7 @@ class _$AuthenticationAppStarted implements AuthenticationAppStarted {
   TResult when<TResult extends Object?>({
     required TResult Function() appStarted,
     required TResult Function(User user) loggedIn,
+    required TResult Function(User user) signedUp,
     required TResult Function() loggedOut,
   }) {
     return appStarted();
@@ -137,6 +148,7 @@ class _$AuthenticationAppStarted implements AuthenticationAppStarted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(User user)? loggedIn,
+    TResult Function(User user)? signedUp,
     TResult Function()? loggedOut,
     required TResult orElse(),
   }) {
@@ -151,6 +163,7 @@ class _$AuthenticationAppStarted implements AuthenticationAppStarted {
   TResult map<TResult extends Object?>({
     required TResult Function(AuthenticationAppStarted value) appStarted,
     required TResult Function(AuthenticationLoggedIn value) loggedIn,
+    required TResult Function(AuthenticationSignedUp value) signedUp,
     required TResult Function(AuthenticationLoggedOut value) loggedOut,
   }) {
     return appStarted(this);
@@ -161,6 +174,7 @@ class _$AuthenticationAppStarted implements AuthenticationAppStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthenticationAppStarted value)? appStarted,
     TResult Function(AuthenticationLoggedIn value)? loggedIn,
+    TResult Function(AuthenticationSignedUp value)? signedUp,
     TResult Function(AuthenticationLoggedOut value)? loggedOut,
     required TResult orElse(),
   }) {
@@ -242,6 +256,7 @@ class _$AuthenticationLoggedIn implements AuthenticationLoggedIn {
   TResult when<TResult extends Object?>({
     required TResult Function() appStarted,
     required TResult Function(User user) loggedIn,
+    required TResult Function(User user) signedUp,
     required TResult Function() loggedOut,
   }) {
     return loggedIn(user);
@@ -252,6 +267,7 @@ class _$AuthenticationLoggedIn implements AuthenticationLoggedIn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(User user)? loggedIn,
+    TResult Function(User user)? signedUp,
     TResult Function()? loggedOut,
     required TResult orElse(),
   }) {
@@ -266,6 +282,7 @@ class _$AuthenticationLoggedIn implements AuthenticationLoggedIn {
   TResult map<TResult extends Object?>({
     required TResult Function(AuthenticationAppStarted value) appStarted,
     required TResult Function(AuthenticationLoggedIn value) loggedIn,
+    required TResult Function(AuthenticationSignedUp value) signedUp,
     required TResult Function(AuthenticationLoggedOut value) loggedOut,
   }) {
     return loggedIn(this);
@@ -276,6 +293,7 @@ class _$AuthenticationLoggedIn implements AuthenticationLoggedIn {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthenticationAppStarted value)? appStarted,
     TResult Function(AuthenticationLoggedIn value)? loggedIn,
+    TResult Function(AuthenticationSignedUp value)? signedUp,
     TResult Function(AuthenticationLoggedOut value)? loggedOut,
     required TResult orElse(),
   }) {
@@ -293,6 +311,131 @@ abstract class AuthenticationLoggedIn implements AuthenticationEvent {
   User get user => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AuthenticationLoggedInCopyWith<AuthenticationLoggedIn> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AuthenticationSignedUpCopyWith<$Res> {
+  factory $AuthenticationSignedUpCopyWith(AuthenticationSignedUp value,
+          $Res Function(AuthenticationSignedUp) then) =
+      _$AuthenticationSignedUpCopyWithImpl<$Res>;
+  $Res call({User user});
+}
+
+/// @nodoc
+class _$AuthenticationSignedUpCopyWithImpl<$Res>
+    extends _$AuthenticationEventCopyWithImpl<$Res>
+    implements $AuthenticationSignedUpCopyWith<$Res> {
+  _$AuthenticationSignedUpCopyWithImpl(AuthenticationSignedUp _value,
+      $Res Function(AuthenticationSignedUp) _then)
+      : super(_value, (v) => _then(v as AuthenticationSignedUp));
+
+  @override
+  AuthenticationSignedUp get _value => super._value as AuthenticationSignedUp;
+
+  @override
+  $Res call({
+    Object? user = freezed,
+  }) {
+    return _then(AuthenticationSignedUp(
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+}
+
+/// @nodoc
+class _$AuthenticationSignedUp implements AuthenticationSignedUp {
+  const _$AuthenticationSignedUp({required this.user});
+
+  @override
+  final User user;
+
+  @override
+  String toString() {
+    return 'AuthenticationEvent.signedUp(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is AuthenticationSignedUp &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
+
+  @JsonKey(ignore: true)
+  @override
+  $AuthenticationSignedUpCopyWith<AuthenticationSignedUp> get copyWith =>
+      _$AuthenticationSignedUpCopyWithImpl<AuthenticationSignedUp>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() appStarted,
+    required TResult Function(User user) loggedIn,
+    required TResult Function(User user) signedUp,
+    required TResult Function() loggedOut,
+  }) {
+    return signedUp(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? appStarted,
+    TResult Function(User user)? loggedIn,
+    TResult Function(User user)? signedUp,
+    TResult Function()? loggedOut,
+    required TResult orElse(),
+  }) {
+    if (signedUp != null) {
+      return signedUp(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AuthenticationAppStarted value) appStarted,
+    required TResult Function(AuthenticationLoggedIn value) loggedIn,
+    required TResult Function(AuthenticationSignedUp value) signedUp,
+    required TResult Function(AuthenticationLoggedOut value) loggedOut,
+  }) {
+    return signedUp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AuthenticationAppStarted value)? appStarted,
+    TResult Function(AuthenticationLoggedIn value)? loggedIn,
+    TResult Function(AuthenticationSignedUp value)? signedUp,
+    TResult Function(AuthenticationLoggedOut value)? loggedOut,
+    required TResult orElse(),
+  }) {
+    if (signedUp != null) {
+      return signedUp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AuthenticationSignedUp implements AuthenticationEvent {
+  const factory AuthenticationSignedUp({required User user}) =
+      _$AuthenticationSignedUp;
+
+  User get user => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AuthenticationSignedUpCopyWith<AuthenticationSignedUp> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -337,6 +480,7 @@ class _$AuthenticationLoggedOut implements AuthenticationLoggedOut {
   TResult when<TResult extends Object?>({
     required TResult Function() appStarted,
     required TResult Function(User user) loggedIn,
+    required TResult Function(User user) signedUp,
     required TResult Function() loggedOut,
   }) {
     return loggedOut();
@@ -347,6 +491,7 @@ class _$AuthenticationLoggedOut implements AuthenticationLoggedOut {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(User user)? loggedIn,
+    TResult Function(User user)? signedUp,
     TResult Function()? loggedOut,
     required TResult orElse(),
   }) {
@@ -361,6 +506,7 @@ class _$AuthenticationLoggedOut implements AuthenticationLoggedOut {
   TResult map<TResult extends Object?>({
     required TResult Function(AuthenticationAppStarted value) appStarted,
     required TResult Function(AuthenticationLoggedIn value) loggedIn,
+    required TResult Function(AuthenticationSignedUp value) signedUp,
     required TResult Function(AuthenticationLoggedOut value) loggedOut,
   }) {
     return loggedOut(this);
@@ -371,6 +517,7 @@ class _$AuthenticationLoggedOut implements AuthenticationLoggedOut {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthenticationAppStarted value)? appStarted,
     TResult Function(AuthenticationLoggedIn value)? loggedIn,
+    TResult Function(AuthenticationSignedUp value)? signedUp,
     TResult Function(AuthenticationLoggedOut value)? loggedOut,
     required TResult orElse(),
   }) {

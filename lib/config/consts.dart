@@ -5,7 +5,7 @@ class Consts {
   static String username = '';
   static String email = '';
   static String avatar = '';
-  static bool isLoggedIn = false;
+  static bool isAuthenticated = false;
 
   static String baseUrl = "https://outline-app-api.herokuapp.com";
 

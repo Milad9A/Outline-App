@@ -35,6 +35,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
       apiResult.when(
         success: (User data) {
+          authenticationBloc.add(AuthenticationLoggedIn(user: data));
           emit(LoginSuccess(user: data));
         },
         failure: (NetworkExceptions error) {

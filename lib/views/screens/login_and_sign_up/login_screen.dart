@@ -32,8 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: BlocProvider(
         create: (context) => LoginBloc(
-          authenticationBloc:
-              AuthenticationBloc(userRepository: userRepository),
+          authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
           userRepository: userRepository,
         ),
         child: Scaffold(

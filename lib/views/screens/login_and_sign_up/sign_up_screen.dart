@@ -33,9 +33,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: BlocProvider(
         create: (context) => SignUpBloc(
           userRepository: UserRepository(),
-          authenticationBloc: AuthenticationBloc(
-            userRepository: UserRepository(),
-          ),
+          authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
         ),
         child: Scaffold(
           extendBodyBehindAppBar: true,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/views/screens/login_and_sign_up/login_screen.dart';
 import 'package:outline/views/screens/login_and_sign_up/sign_up_screen.dart';
 import 'package:outline/views/screens/login_and_sign_up/sign_up_tags_screen.dart';
@@ -37,6 +39,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
             text: 'Tags Screen',
             onPressed: () {
               Navigator.push(context, SignUpTagsScreen.route);
+            },
+          ),
+          SizedBox(height: 50.0),
+          OutlineTextButton(
+            text: 'Logout',
+            onPressed: () {
+              BlocProvider.of<AuthenticationBloc>(context).add(
+                AuthenticationLoggedOut(),
+              );
             },
           ),
         ],

@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             icon: Icon(Icons.chat_bubble_outline),
             onPressed: () {
-              if (Consts.isLoggedIn) {
+              if (Consts.isAuthenticated) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ChatsScreen()),
