@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
-import 'package:outline/config/consts.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/views/screens/course/course_screen.dart';
@@ -111,12 +111,28 @@ class _NavigationScreenState extends State<NavigationScreen>
             icon: BlocBuilder<AuthenticationBloc, AuthenticationState>(
               builder: (context, state) {
                 return CircleAvatar(
-                  maxRadius: 12.0,
-                  backgroundImage: NetworkImage(
-                    state.maybeWhen(
-                      authenticated: (user) => user.avatar,
-                      unAuthenticated: () => Consts.defaultAvatar,
-                      orElse: () => Consts.defaultAvatar,
+                  radius: 12.0,
+                  backgroundColor: Colors.transparent,
+                  child: state.maybeWhen(
+                    authenticated: (user) => ClipOval(
+                      child: CachedNetworkImage(
+                        imageUrl: user.avatar,
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) =>
+                                CircularProgressIndicator(
+                          value: downloadProgress.progress,
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              ColorRepository.darkBlue),
+                        ),
+                      ),
+                    ),
+                    unAuthenticated: () => Icon(
+                      Icons.person,
+                      color: ColorRepository.darkBlue,
+                    ),
+                    orElse: () => Icon(
+                      Icons.person,
+                      color: ColorRepository.darkBlue,
                     ),
                   ),
                 );
