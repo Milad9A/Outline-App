@@ -1,8 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/consts.dart';
-import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/repositories/chat_repository.dart';
 import 'package:outline/views/screens/chat/create_chat_screen.dart';
@@ -98,7 +98,8 @@ class _ChatsScreenState extends State<ChatsScreen> {
                           physics: NeverScrollableScrollPhysics(),
                           itemCount: snapshot.data.docs.length,
                           itemBuilder: (BuildContext context, int index) {
-                            final chatRoom = snapshot.data.docs[index];
+                            final QueryDocumentSnapshot chatRoom =
+                                snapshot.data.docs[index];
                             List users = chatRoom['users'];
                             var otherUser = users.firstWhere(
                               (element) => element['email'] != Consts.email,

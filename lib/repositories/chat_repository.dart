@@ -48,12 +48,24 @@ class ChatRepository {
     }
   }
 
+  Stream<QuerySnapshot> getConversationLastMessage({
+    required String chatRoomId,
+  }) {
+    return FirebaseFirestore.instance
+        .collection('chatroom')
+        .doc(chatRoomId)
+        .collection('chats')
+        .orderBy('time', descending: true)
+        .limit(1)
+        .snapshots();
+  }
+
   Stream<QuerySnapshot> getConversationMessages({required String? chatRoomId}) {
     return FirebaseFirestore.instance
         .collection('chatroom')
         .doc(chatRoomId)
         .collection('chats')
-        .orderBy('time')
+        .orderBy('time', descending: true)
         .snapshots();
   }
 

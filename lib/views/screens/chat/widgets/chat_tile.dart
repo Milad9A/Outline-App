@@ -1,17 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:outline/config/theme/color_repository.dart';
+import 'package:outline/repositories/chat_repository.dart';
 import 'package:outline/views/screens/chat/conversation_screen.dart';
 
-class ChatTile extends StatelessWidget {
-  final String name;
-  final String avatar;
-  final String chatRoomId;
-
+class ChatTile extends StatefulWidget {
   const ChatTile({
     required this.name,
     required this.avatar,
     required this.chatRoomId,
   });
+
+  final String name;
+  final String avatar;
+  final String chatRoomId;
+
+  @override
+  _ChatTileState createState() => _ChatTileState();
+}
+
+class _ChatTileState extends State<ChatTile> {
+  final ChatRepository chatRepository = ChatRepository();
+  late Stream lastMessageStream;
+
+  @override
+  void initState() {
+    super.initState();
+    lastMessageStream = chatRepository.getConversationLastMessage(
+      chatRoomId: widget.chatRoomId,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +38,16 @@ class ChatTile extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => ConversationScreen(
-              name: name,
-              avatar: avatar,
-              chatRoomId: chatRoomId,
+              name: widget.name,
+              avatar: widget.avatar,
+              chatRoomId: widget.chatRoomId,
             ),
           ),
         );
       },
       contentPadding: EdgeInsets.zero,
       leading: CircleAvatar(
-        backgroundImage: NetworkImage(avatar),
+        backgroundImage: NetworkImage(widget.avatar),
         backgroundColor: ColorRepository.greyish,
         radius: 24.0,
       ),
@@ -39,7 +56,7 @@ class ChatTile extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              name,
+              widget.name,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context)
@@ -52,11 +69,23 @@ class ChatTile extends StatelessWidget {
           Text('9:28 AM', style: Theme.of(context).textTheme.subtitle2),
         ],
       ),
-      subtitle: Text(
-        'My name is hilal and I like to eat hall so fucking much and I eat hall everyday. This is what I live for, eating hall and my name is hilal also.',
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: Theme.of(context).textTheme.subtitle2,
+      subtitle: StreamBuilder(
+        stream: lastMessageStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return snapshot.hasData && snapshot.data.docs.isNotEmpty
+              ? Text(
+                  snapshot.data.docs[0]['message'],
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.subtitle2,
+                )
+              : Text(
+                  '...',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.subtitle2,
+                );
+        },
       ),
     );
   }

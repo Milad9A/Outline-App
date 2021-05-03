@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/consts.dart';
-import 'package:outline/config/functions/show_pop_up.dart';
-import 'package:outline/config/helpers/date_foramtter.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/repositories/chat_repository.dart';
-import 'package:outline/views/screens/chat/create_chat_screen.dart';
 import 'package:outline/views/screens/chat/widgets/widgets.dart';
 import 'package:outline/views/widgets/widgets.dart';
-import 'package:intl/intl.dart';
 
 class ConversationScreen extends StatefulWidget {
   final String name;
@@ -93,77 +88,80 @@ class _ConversationScreenState extends State<ConversationScreen> {
 
   Widget _buildConversationScreenBody() {
     return StreamBuilder(
-        stream: conversationStream,
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          return Stack(
-            children: [
-              snapshot.hasData
-                  ? Column(
-                      children: [
-                        Expanded(
-                          child: ListView.builder(
-                            itemCount: snapshot.data.docs.length,
-                            shrinkWrap: true,
-                            controller: scrollController,
-                            padding: EdgeInsets.only(top: 10, bottom: 60),
-                            itemBuilder: (context, index) {
-                              var message = snapshot.data.docs[index];
-                              return MessageTile(message: message);
-                            },
-                          ),
-                        ),
-                      ],
-                    )
-                  : SizedBox.shrink(),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Container(
-                  padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
-                  height: 60,
-                  width: double.infinity,
-                  color: Colors.white,
-                  child: Row(
+      stream: conversationStream,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        return Stack(
+          children: [
+            snapshot.hasData
+                ? Column(
                     children: [
                       Expanded(
-                        child: OutlineTextField(
-                          controller: messageController,
-                          hintText: 'Type a message ...',
-                          onChanged: (value) {},
-                          textInputAction: TextInputAction.send,
-                          textInputType: TextInputType.text,
+                        child: ListView.builder(
+                          reverse: true,
+                          itemCount: snapshot.data.docs.length,
+                          shrinkWrap: true,
+                          controller: scrollController,
+                          padding: EdgeInsets.only(top: 10, bottom: 2.0),
+                          itemBuilder: (context, index) {
+                            var message = snapshot.data.docs[index];
+                            return MessageTile(message: message);
+                          },
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          chatRepository.addConversationMessage(
-                            chatRoomId: widget.chatRoomId,
-                            messageMap: {
-                              'message': messageController.text,
-                              'sent_by': Consts.username,
-                              'time': DateTime.now().toIso8601String(),
-                            },
-                          );
-                          messageController.clear();
-                          scrollController.animateTo(
-                            40.0 * snapshot.data.docs.length + 10.0,
-                            curve: Curves.easeOut,
-                            duration: const Duration(milliseconds: 300),
-                          );
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Icon(
-                            Icons.send,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
+                      SizedBox(height: 60.0),
                     ],
-                  ),
+                  )
+                : SizedBox.shrink(),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Container(
+                padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                height: 60,
+                width: double.infinity,
+                color: Colors.white,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: OutlineTextField(
+                        controller: messageController,
+                        hintText: 'Type a message ...',
+                        onChanged: (value) {},
+                        textInputAction: TextInputAction.send,
+                        textInputType: TextInputType.text,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: IconButton(
+                        splashRadius: 0.1,
+                        icon: Icon(Icons.send),
+                        onPressed: () {
+                          if (messageController.text.isNotEmpty) {
+                            chatRepository.addConversationMessage(
+                              chatRoomId: widget.chatRoomId,
+                              messageMap: {
+                                'message': messageController.text,
+                                'sent_by': Consts.username,
+                                'time': DateTime.now().toIso8601String(),
+                              },
+                            );
+                            messageController.clear();
+                            scrollController.animateTo(
+                              0.0,
+                              curve: Curves.easeOut,
+                              duration: const Duration(milliseconds: 300),
+                            );
+                          }
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          );
-        });
+            ),
+          ],
+        );
+      },
+    );
   }
 }
