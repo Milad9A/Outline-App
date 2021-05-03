@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/repositories/chat_repository.dart';
@@ -47,7 +48,7 @@ class _ChatTileState extends State<ChatTile> {
       },
       contentPadding: EdgeInsets.zero,
       leading: CircleAvatar(
-        backgroundImage: NetworkImage(widget.avatar),
+        backgroundImage: CachedNetworkImageProvider(widget.avatar),
         backgroundColor: ColorRepository.greyish,
         radius: 24.0,
       ),

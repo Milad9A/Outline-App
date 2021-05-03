@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/theme/color_repository.dart';
@@ -52,7 +53,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
       title: Row(
         children: [
           CircleAvatar(
-            backgroundImage: NetworkImage(widget.avatar),
+            backgroundImage: CachedNetworkImageProvider(widget.avatar),
             backgroundColor: ColorRepository.greyish,
             radius: 17.0,
           ),

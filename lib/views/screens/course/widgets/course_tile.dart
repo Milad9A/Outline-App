@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:outline/config/consts.dart';
@@ -34,8 +35,8 @@ class CourseTile extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
-                child: Image.network(
-                  bannerUrl,
+                child: CachedNetworkImage(
+                  imageUrl: bannerUrl,
                   fit: BoxFit.fitWidth,
                   height: 99.0,
                   width: 176.0,

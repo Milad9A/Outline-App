@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
@@ -23,7 +24,7 @@ class CreateChatTile extends StatelessWidget {
     return ListTile(
       contentPadding: EdgeInsets.symmetric(vertical: 4.0),
       leading: CircleAvatar(
-        backgroundImage: NetworkImage(avatar),
+        backgroundImage: CachedNetworkImageProvider(avatar),
         backgroundColor: ColorRepository.greyish,
         radius: 24.0,
       ),

@@ -30,10 +30,10 @@ class _SplashScreenState extends State<SplashScreen> {
       listener: (context, state) {
         state.maybeMap(
           authenticated: (state) {
-            Navigator.push(context, NavigationScreen.route);
+            Navigator.pushReplacement(context, NavigationScreen.route);
           },
           unAuthenticated: (state) {
-            Navigator.push(context, LoginScreen.route);
+            Navigator.pushReplacement(context, LoginScreen.route);
           },
           orElse: () {},
         );

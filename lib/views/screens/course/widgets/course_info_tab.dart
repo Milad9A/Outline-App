@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/course_model/course_model.dart';
@@ -32,7 +33,7 @@ class CourseInfoTab extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 25.0,
-                backgroundImage: NetworkImage(
+                backgroundImage: CachedNetworkImageProvider(
                   course.ownerUserId.avatar,
                 ),
               ),
