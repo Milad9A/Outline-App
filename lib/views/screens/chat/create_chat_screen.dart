@@ -30,27 +30,25 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: BlocListener<UserBloc, UserState>(
-        listener: (context, state) {
-          state.maybeWhen(
-            error: (error) {
-              showPopUp(
-                context,
-                title: 'Error',
-                content: NetworkExceptions.getErrorMessage(error),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              );
-            },
-            orElse: () {},
-          );
-        },
-        child: Scaffold(
-          appBar: _buildCreateChatScreenAppBar(context),
-          body: _buildCreateChatScreenBody(),
-        ),
+    return BlocListener<UserBloc, UserState>(
+      listener: (context, state) {
+        state.maybeWhen(
+          error: (error) {
+            showPopUp(
+              context,
+              title: 'Error',
+              content: NetworkExceptions.getErrorMessage(error),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            );
+          },
+          orElse: () {},
+        );
+      },
+      child: Scaffold(
+        appBar: _buildCreateChatScreenAppBar(context),
+        body: _buildCreateChatScreenBody(),
       ),
     );
   }

@@ -41,11 +41,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: _buildConversationScreenAppBar(context),
-        body: _buildConversationScreenBody(),
-      ),
+    return Scaffold(
+      appBar: _buildConversationScreenAppBar(context),
+      body: _buildConversationScreenBody(),
     );
   }
 
@@ -55,16 +53,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
       elevation: 1.0,
       iconTheme: IconThemeData(color: ColorRepository.darkBlue),
       centerTitle: false,
-      leadingWidth: 30.0,
-      leading: GestureDetector(
-        onTap: () {
-          Navigator.pop(context);
-        },
-        child: Padding(
-          padding: const EdgeInsets.only(left: 16.0),
-          child: Icon(Icons.arrow_back),
-        ),
-      ),
+      leadingWidth: 50.0,
       title: Row(
         children: [
           CircleAvatar(

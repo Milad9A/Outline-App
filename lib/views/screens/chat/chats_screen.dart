@@ -51,6 +51,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
       elevation: 1.0,
       iconTheme: IconThemeData(color: ColorRepository.darkBlue),
       centerTitle: false,
+      leadingWidth: 50.0,
       title: Text(
         'Chats',
         style: Theme.of(context).textTheme.headline6!.copyWith(
@@ -63,6 +64,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
           icon: Icon(Icons.more_vert_outlined),
           onPressed: () {},
         ),
+        SizedBox(width: 3.0),
       ],
     );
   }
@@ -70,50 +72,68 @@ class _ChatsScreenState extends State<ChatsScreen> {
   Widget _buildChatsScreenBody() {
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        children: [
-          SizedBox(height: 14.0),
-          OutlineTextField(
-            controller: searchController,
-            textInputType: TextInputType.name,
-            textInputAction: TextInputAction.done,
-            onChanged: (value) {
-              setState(() {
-                searchValue = value!;
-              });
-            },
-            hintText: 'Search Chats',
-            icon: Icon(Icons.search),
-          ),
-          StreamBuilder(
-            stream: chatsStream,
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              return Container(
-                child: snapshot.hasData
-                    ? ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: snapshot.data.docs.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          final chatRoom = snapshot.data.docs[index];
-                          List users = chatRoom['users'];
-                          var otherUser = users.firstWhere(
-                            (element) => element['email'] != Consts.email,
-                          );
-                          return ChatTile(
-                            name: otherUser['name'],
-                            avatar: otherUser['avatar'],
-                            chatRoomId: chatRoom['chatroomid'],
-                          );
-                        },
-                      )
-                    : Padding(
-                        padding: const EdgeInsets.only(top: 150.0),
-                        child: OutlineCircularProgressIndicator(),
+      child: StreamBuilder(
+        stream: chatsStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return snapshot.hasData
+              ? snapshot.data.docs.isNotEmpty
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 14.0),
+                        OutlineTextField(
+                          controller: searchController,
+                          textInputType: TextInputType.name,
+                          textInputAction: TextInputAction.done,
+                          onChanged: (value) {
+                            setState(() {
+                              searchValue = value!;
+                            });
+                          },
+                          hintText: 'Search Chats',
+                          icon: Icon(Icons.search),
+                        ),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: snapshot.data.docs.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            final chatRoom = snapshot.data.docs[index];
+                            List users = chatRoom['users'];
+                            var otherUser = users.firstWhere(
+                              (element) => element['email'] != Consts.email,
+                            );
+                            return ChatTile(
+                              name: otherUser['name'],
+                              avatar: otherUser['avatar'],
+                              chatRoomId: chatRoom['chatroomid'],
+                            );
+                          },
+                        ),
+                      ],
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.only(top: 150.0),
+                      child: Center(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset('assets/images/no_chats_yet.png'),
+                            SizedBox(height: 20.0),
+                            Text(
+                              'No Chats Yet.',
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ],
+                        ),
                       ),
-              );
-            },
-          ),
-        ],
+                    )
+              : Padding(
+                  padding: const EdgeInsets.only(top: 150.0),
+                  child: Center(child: OutlineCircularProgressIndicator()),
+                );
+        },
       ),
     );
   }

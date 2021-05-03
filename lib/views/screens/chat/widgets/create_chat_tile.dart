@@ -3,6 +3,7 @@ import 'package:outline/config/consts.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/repositories/chat_repository.dart';
+import 'package:outline/views/screens/chat/conversation_screen.dart';
 
 class CreateChatTile extends StatelessWidget {
   final String name;
@@ -26,7 +27,7 @@ class CreateChatTile extends StatelessWidget {
         backgroundColor: ColorRepository.greyish,
         radius: 24.0,
       ),
-      onTap: () {
+      onTap: () async {
         if (Consts.email == email) {
           showPopUp(
             context,
@@ -37,7 +38,7 @@ class CreateChatTile extends StatelessWidget {
             },
           );
         } else {
-          chatRepository.createChatRoom(
+          await chatRepository.createChatRoom(
             chatRoomId: '${email}_${Consts.email}',
             chatRoomMap: {
               'chatroomid': '${email}_${Consts.email}',
@@ -54,6 +55,16 @@ class CreateChatTile extends StatelessWidget {
                 },
               ],
             },
+          );
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ConversationScreen(
+                name: name,
+                avatar: avatar,
+                chatRoomId: '${email}_${Consts.email}',
+              ),
+            ),
           );
         }
       },
