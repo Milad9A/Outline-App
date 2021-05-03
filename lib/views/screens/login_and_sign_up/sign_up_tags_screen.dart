@@ -55,7 +55,6 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
           extendBodyBehindAppBar: true,
           appBar: AppBar(
             iconTheme: IconThemeData(color: Colors.black),
-            brightness: Brightness.dark,
           ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

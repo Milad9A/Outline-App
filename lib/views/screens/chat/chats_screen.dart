@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
@@ -27,20 +28,18 @@ class _ChatsScreenState extends State<ChatsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: _buildChatsScreenAppBar(context),
-        body: _buildChatsScreenBody(),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: ColorRepository.darkBlue,
-          child: Icon(Icons.add),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => CreateChatScreen()),
-            );
-          },
-        ),
+    return Scaffold(
+      appBar: _buildChatsScreenAppBar(context),
+      body: _buildChatsScreenBody(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: ColorRepository.darkBlue,
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => CreateChatScreen()),
+          );
+        },
       ),
     );
   }
@@ -48,6 +47,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
   AppBar _buildChatsScreenAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
+      systemOverlayStyle: SystemUiOverlayStyle.light,
       elevation: 1.0,
       iconTheme: IconThemeData(color: ColorRepository.darkBlue),
       centerTitle: false,

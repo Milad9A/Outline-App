@@ -16,6 +16,7 @@ class CustomTheme {
       buttonColor: ColorRepository.darkBlue,
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.transparent,
+        brightness: Brightness.light,
         elevation: 0.0,
       ),
       textTheme: TextTheme(

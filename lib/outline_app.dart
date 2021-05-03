@@ -30,9 +30,6 @@ class _OutlineAppState extends State<OutlineApp> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent),
-    );
     return MultiBlocProvider(
       providers: [
         BlocProvider(

@@ -29,80 +29,77 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: BlocProvider(
-        create: (context) => LoginBloc(
-          authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
-          userRepository: userRepository,
+    return BlocProvider(
+      create: (context) => LoginBloc(
+        authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
+        userRepository: userRepository,
+      ),
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          leading: SizedBox.shrink(),
+          actions: [
+            IconButton(
+                icon: Icon(
+                  Icons.arrow_forward,
+                  color: ColorRepository.greyish,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    NavigationScreen.route,
+                  );
+                })
+          ],
         ),
-        child: Scaffold(
-          extendBodyBehindAppBar: true,
-          appBar: AppBar(
-            leading: SizedBox.shrink(),
-            actions: [
-              IconButton(
-                  icon: Icon(
-                    Icons.arrow_forward,
-                    color: ColorRepository.greyish,
-                  ),
+        body: BlocListener<LoginBloc, LoginState>(
+          listener: (context, state) {
+            state.when(
+              initial: () {},
+              loading: () {
+                showLoadingGif(context);
+              },
+              success: (User user) {
+                Navigator.pop(context);
+                showPopUp(
+                  context,
+                  title: 'Success',
+                  content: 'You have been logged In as ${user.name}',
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      NavigationScreen.route,
-                    );
-                  })
-            ],
-          ),
-          body: BlocListener<LoginBloc, LoginState>(
-            listener: (context, state) {
-              state.when(
-                initial: () {},
-                loading: () {
-                  showLoadingGif(context);
-                },
-                success: (User user) {
-                  Navigator.pop(context);
-                  showPopUp(
-                    context,
-                    title: 'Success',
-                    content: 'You have been logged In as ${user.name}',
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                          context, NavigationScreen.route);
-                    },
-                  );
-                },
-                error: (NetworkExceptions error) {
-                  Navigator.pop(context);
-                  showPopUp(
-                    context,
-                    title: 'Error',
-                    content: NetworkExceptions.getErrorMessage(error),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  );
-                },
-              );
-            },
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset(
-                    'assets/images/shapes_header.png',
-                    fit: BoxFit.fitWidth,
+                    Navigator.pushReplacement(context, NavigationScreen.route);
+                  },
+                );
+              },
+              error: (NetworkExceptions error) {
+                Navigator.pop(context);
+                showPopUp(
+                  context,
+                  title: 'Error',
+                  content: NetworkExceptions.getErrorMessage(error),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                );
+              },
+            );
+          },
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(
+                  'assets/images/shapes_header.png',
+                  fit: BoxFit.fitWidth,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24.0, 110.0, 24.0, 0.0),
+                  child: LoginForm(
+                    emailController: emailController,
+                    passwordController: passwordController,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(24.0, 110.0, 24.0, 0.0),
-                    child: LoginForm(
-                      emailController: emailController,
-                      passwordController: passwordController,
-                    ),
-                  ),
-                  const TermsAndPolicyText()
-                ],
-              ),
+                ),
+                const TermsAndPolicyText()
+              ],
             ),
           ),
         ),
