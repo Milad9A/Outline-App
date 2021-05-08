@@ -20,8 +20,11 @@ class MessageTile extends StatelessWidget {
         alignment: (message['sent_by'] == Consts.email
             ? Alignment.topRight
             : Alignment.topLeft),
-        child: Container(
-            height: 30.0,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: MediaQuery.of(context).size.width * 0.8,
+          ),
+          child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4.0),
               color: (message['sent_by'] == Consts.email
@@ -32,37 +35,35 @@ class MessageTile extends StatelessWidget {
               horizontal: 6.0,
               vertical: 5.0,
             ),
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: message['sent_by'] == Consts.email
+                  ? CrossAxisAlignment.end
+                  : CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    message['message'],
-                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                          color: ColorRepository.blackish,
-                        ),
-                  ),
+                Text(
+                  message['message'],
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                        color: ColorRepository.blackish,
+                      ),
                 ),
                 SizedBox(width: 4.0),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Text(
-                    DateFormatter().getVerboseDateTimeRepresentation(
-                      DateTime.parse(
-                        message['time'],
-                      ),
+                Text(
+                  DateFormatter().getVerboseDateTimeRepresentation(
+                    DateTime.parse(
+                      message['time'],
                     ),
-                    textAlign: TextAlign.end,
-                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                          color: ColorRepository.darkGrey,
-                          fontSize: 10.0,
-                        ),
                   ),
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                        color: ColorRepository.darkGrey,
+                        fontSize: 10.0,
+                      ),
                 ),
               ],
-            )),
+            ),
+          ),
+        ),
       ),
     );
   }

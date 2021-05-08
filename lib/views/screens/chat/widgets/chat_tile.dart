@@ -26,6 +26,7 @@ class ChatTile extends StatefulWidget {
 class _ChatTileState extends State<ChatTile> {
   final ChatRepository chatRepository = ChatRepository();
   late Stream lastMessageStream;
+  bool isOpened = true;
 
   @override
   void initState() {
@@ -43,13 +44,20 @@ class _ChatTileState extends State<ChatTile> {
     return StreamBuilder(
         stream: lastMessageStream,
         builder: (context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData && snapshot.data.docs.isNotEmpty) {
+            print(snapshot.data.docs);
+            isOpened = DateTime.parse(widget.lastOpenedByMe)
+                    .isBefore(DateTime.parse(snapshot.data.docs[0]['time']))
+                ? false
+                : true;
+          }
           return ListTile(
             onTap: () async {
               chatRepository.updateChatRoomsUsersLastOpened(
                 userEmail: Consts.email,
                 chatRoomId: widget.chatRoomId,
               );
-              Navigator.of(context).push(
+              await Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => ConversationScreen(
                     name: widget.name,
@@ -58,6 +66,12 @@ class _ChatTileState extends State<ChatTile> {
                   ),
                 ),
               );
+              chatRepository.updateChatRoomsUsersLastOpened(
+                userEmail: Consts.email,
+                chatRoomId: widget.chatRoomId,
+              );
+              isOpened = true;
+              setState(() {});
             },
             contentPadding: EdgeInsets.zero,
             leading: CircleAvatar(
@@ -86,25 +100,38 @@ class _ChatTileState extends State<ChatTile> {
                     style: Theme.of(context).textTheme.subtitle2),
               ],
             ),
-            subtitle: snapshot.hasData && snapshot.data.docs.isNotEmpty
-                ? Text(
-                    snapshot.data.docs[0]['message'],
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                          fontWeight: DateTime.parse(widget.lastOpenedByMe)
-                                  .isBefore(DateTime.parse(
-                                      snapshot.data.docs[0]['time']))
-                              ? FontWeight.bold
-                              : FontWeight.w400,
+            subtitle: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: snapshot.hasData && snapshot.data.docs.isNotEmpty
+                      ? Text(
+                          snapshot.data.docs[0]['message'],
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style:
+                              Theme.of(context).textTheme.subtitle2!.copyWith(
+                                    fontWeight: !isOpened
+                                        ? FontWeight.bold
+                                        : FontWeight.w400,
+                                  ),
+                        )
+                      : Text(
+                          '...',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context).textTheme.subtitle2,
                         ),
-                  )
-                : Text(
-                    '...',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.subtitle2,
-                  ),
+                ),
+                snapshot.hasData && snapshot.data.docs.isNotEmpty && !isOpened
+                    ? Icon(
+                        Icons.circle,
+                        color: ColorRepository.lowOpacityDarkBlue,
+                        size: 18.0,
+                      )
+                    : SizedBox(),
+              ],
+            ),
           );
         });
   }
