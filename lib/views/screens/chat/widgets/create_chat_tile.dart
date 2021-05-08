@@ -43,16 +43,20 @@ class CreateChatTile extends StatelessWidget {
             chatRoomId: '${email}_${Consts.email}',
             chatRoomMap: {
               'chatroomid': '${email}_${Consts.email}',
+              'emails': [Consts.email, email],
+              'last_message_time': DateTime.now().toIso8601String(),
               'users': [
                 {
                   'name': Consts.username,
                   'email': Consts.email,
                   'avatar': Consts.avatar,
+                  'last_opened': DateTime.now().toIso8601String(),
                 },
                 {
                   'name': name,
                   'email': email,
                   'avatar': avatar,
+                  'last_opened': DateTime.now().toIso8601String(),
                 },
               ],
             },

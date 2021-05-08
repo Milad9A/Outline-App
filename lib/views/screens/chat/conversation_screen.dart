@@ -142,7 +142,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                               chatRoomId: widget.chatRoomId,
                               messageMap: {
                                 'message': messageController.text,
-                                'sent_by': Consts.username,
+                                'sent_by': Consts.email,
                                 'time': DateTime.now().toIso8601String(),
                               },
                             );
@@ -153,6 +153,11 @@ class _ConversationScreenState extends State<ConversationScreen> {
                               duration: const Duration(milliseconds: 300),
                             );
                           }
+
+                          chatRepository.updateChatRoomsUsersLastOpened(
+                            userEmail: Consts.email,
+                            chatRoomId: widget.chatRoomId,
+                          );
                         },
                       ),
                     ),

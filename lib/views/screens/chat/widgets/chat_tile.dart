@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:outline/config/consts.dart';
+import 'package:outline/config/helpers/date_foramtter.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/repositories/chat_repository.dart';
 import 'package:outline/views/screens/chat/conversation_screen.dart';
@@ -9,11 +11,13 @@ class ChatTile extends StatefulWidget {
     required this.name,
     required this.avatar,
     required this.chatRoomId,
+    required this.lastOpenedByMe,
   });
 
   final String name;
   final String avatar;
   final String chatRoomId;
+  final String lastOpenedByMe;
 
   @override
   _ChatTileState createState() => _ChatTileState();
@@ -33,61 +37,75 @@ class _ChatTileState extends State<ChatTile> {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ConversationScreen(
-              name: widget.name,
-              avatar: widget.avatar,
-              chatRoomId: widget.chatRoomId,
-            ),
-          ),
-        );
-      },
-      contentPadding: EdgeInsets.zero,
-      leading: CircleAvatar(
-        backgroundImage: CachedNetworkImageProvider(widget.avatar),
-        backgroundColor: ColorRepository.greyish,
-        radius: 24.0,
-      ),
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: Text(
-              widget.name,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle1!
-                  .copyWith(fontWeight: FontWeight.bold, color: Colors.black),
-            ),
-          ),
-          SizedBox(width: 22.0),
-          Text('9:28 AM', style: Theme.of(context).textTheme.subtitle2),
-        ],
-      ),
-      subtitle: StreamBuilder(
-        stream: lastMessageStream,
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          return snapshot.hasData && snapshot.data.docs.isNotEmpty
-              ? Text(
-                  snapshot.data.docs[0]['message'],
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.subtitle2,
-                )
-              : Text(
-                  '...',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.subtitle2,
-                );
-        },
-      ),
+    lastMessageStream = chatRepository.getConversationLastMessage(
+      chatRoomId: widget.chatRoomId,
     );
+    return StreamBuilder(
+        stream: lastMessageStream,
+        builder: (context, AsyncSnapshot snapshot) {
+          return ListTile(
+            onTap: () async {
+              chatRepository.updateChatRoomsUsersLastOpened(
+                userEmail: Consts.email,
+                chatRoomId: widget.chatRoomId,
+              );
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ConversationScreen(
+                    name: widget.name,
+                    avatar: widget.avatar,
+                    chatRoomId: widget.chatRoomId,
+                  ),
+                ),
+              );
+            },
+            contentPadding: EdgeInsets.zero,
+            leading: CircleAvatar(
+              backgroundImage: CachedNetworkImageProvider(widget.avatar),
+              backgroundColor: ColorRepository.greyish,
+              radius: 24.0,
+            ),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Text(
+                    widget.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                        fontWeight: FontWeight.bold, color: Colors.black),
+                  ),
+                ),
+                SizedBox(width: 22.0),
+                Text(
+                    snapshot.hasData && snapshot.data.docs.isNotEmpty
+                        ? DateFormatter().getVerboseDateTimeRepresentation(
+                            DateTime.parse(snapshot.data.docs[0]['time']))
+                        : '',
+                    style: Theme.of(context).textTheme.subtitle2),
+              ],
+            ),
+            subtitle: snapshot.hasData && snapshot.data.docs.isNotEmpty
+                ? Text(
+                    snapshot.data.docs[0]['message'],
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                          fontWeight: DateTime.parse(widget.lastOpenedByMe)
+                                  .isBefore(DateTime.parse(
+                                      snapshot.data.docs[0]['time']))
+                              ? FontWeight.bold
+                              : FontWeight.w400,
+                        ),
+                  )
+                : Text(
+                    '...',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.subtitle2,
+                  ),
+          );
+        });
   }
 }

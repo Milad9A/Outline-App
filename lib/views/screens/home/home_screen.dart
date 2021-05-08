@@ -21,6 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 0.0,
+        backgroundColor: Colors.white,
+        elevation: 1.0,
         title: Text(
           'Outline',
           style: Theme.of(context).textTheme.headline4!.copyWith(

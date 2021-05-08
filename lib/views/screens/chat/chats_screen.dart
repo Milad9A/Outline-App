@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/repositories/chat_repository.dart';
@@ -28,6 +27,8 @@ class _ChatsScreenState extends State<ChatsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    chatsStream = chatRepository.getChatRooms(userEmail: Consts.email);
+
     return Scaffold(
       appBar: _buildChatsScreenAppBar(context),
       body: _buildChatsScreenBody(),
@@ -101,6 +102,9 @@ class _ChatsScreenState extends State<ChatsScreen> {
                             final QueryDocumentSnapshot chatRoom =
                                 snapshot.data.docs[index];
                             List users = chatRoom['users'];
+                            var me = users.firstWhere(
+                              (element) => element['email'] == Consts.email,
+                            );
                             var otherUser = users.firstWhere(
                               (element) => element['email'] != Consts.email,
                             );
@@ -108,6 +112,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                               name: otherUser['name'],
                               avatar: otherUser['avatar'],
                               chatRoomId: chatRoom['chatroomid'],
+                              lastOpenedByMe: me['last_opened'],
                             );
                           },
                         ),

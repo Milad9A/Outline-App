@@ -43,8 +43,40 @@ class ChatRepository {
           .doc(chatRoomId)
           .collection('chats')
           .add(messageMap);
+
+      await FirebaseFirestore.instance
+          .collection('chatroom')
+          .doc(chatRoomId)
+          .update({'last_message_time': DateTime.now().toIso8601String()});
     } catch (e) {
       print(e.toString());
+    }
+  }
+
+  Future<void> updateChatRoomsUsersLastOpened({
+    required String userEmail,
+    required String chatRoomId,
+  }) async {
+    try {
+      var chatRoom = await FirebaseFirestore.instance
+          .collection('chatroom')
+          .doc(chatRoomId)
+          .get();
+
+      List users = chatRoom.get('users');
+
+      users.forEach((element) {
+        if (element['email'] == userEmail) {
+          element['last_opened'] = DateTime.now().toIso8601String();
+        }
+      });
+
+      await FirebaseFirestore.instance
+          .collection('chatroom')
+          .doc(chatRoomId)
+          .update({'users': users});
+    } catch (e) {
+      print(e);
     }
   }
 
@@ -69,14 +101,11 @@ class ChatRepository {
         .snapshots();
   }
 
-  Stream<QuerySnapshot> getChatRooms({required String? userEmail}) {
-    return FirebaseFirestore.instance.collection('chatroom').where(
-      'users',
-      arrayContains: {
-        'email': Consts.email,
-        'name': Consts.username,
-        'avatar': Consts.avatar
-      },
-    ).snapshots();
+  Stream<QuerySnapshot> getChatRooms({required String userEmail}) {
+    return FirebaseFirestore.instance
+        .collection('chatroom')
+        .where('emails', arrayContains: userEmail)
+        .orderBy('last_message_time', descending: true)
+        .snapshots();
   }
 }

@@ -17,14 +17,14 @@ class MessageTile extends StatelessWidget {
         vertical: 5.0,
       ),
       child: Align(
-        alignment: (message['sent_by'] == Consts.username
+        alignment: (message['sent_by'] == Consts.email
             ? Alignment.topRight
             : Alignment.topLeft),
         child: Container(
             height: 30.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4.0),
-              color: (message['sent_by'] == Consts.username
+              color: (message['sent_by'] == Consts.email
                   ? ColorRepository.darkBlue.withOpacity(0.2)
                   : ColorRepository.lowOpacityGreen),
             ),
