@@ -26,7 +26,7 @@ class ChatTile extends StatefulWidget {
 class _ChatTileState extends State<ChatTile> {
   final ChatRepository chatRepository = ChatRepository();
   late Stream lastMessageStream;
-  bool isOpened = true;
+  late bool isOpened;
 
   @override
   void initState() {
@@ -45,7 +45,6 @@ class _ChatTileState extends State<ChatTile> {
         stream: lastMessageStream,
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.hasData && snapshot.data.docs.isNotEmpty) {
-            print(snapshot.data.docs);
             isOpened = DateTime.parse(widget.lastOpenedByMe)
                     .isBefore(DateTime.parse(snapshot.data.docs[0]['time']))
                 ? false
@@ -53,10 +52,6 @@ class _ChatTileState extends State<ChatTile> {
           }
           return ListTile(
             onTap: () async {
-              chatRepository.updateChatRoomsUsersLastOpened(
-                userEmail: Consts.email,
-                chatRoomId: widget.chatRoomId,
-              );
               await Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => ConversationScreen(

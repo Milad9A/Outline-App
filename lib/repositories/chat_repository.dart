@@ -108,4 +108,13 @@ class ChatRepository {
         .orderBy('last_message_time', descending: true)
         .snapshots();
   }
+
+  String createChatRoomIdFromEmails(
+    String firstEmail,
+    String secondEmail,
+  ) {
+    return firstEmail.compareTo(secondEmail) > 0
+        ? '${secondEmail}_$firstEmail'
+        : '${firstEmail}_$secondEmail';
+  }
 }

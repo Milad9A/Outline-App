@@ -49,21 +49,20 @@ class CoursesContainer extends StatelessWidget {
         SizedBox(height: 10.0),
         Container(
           height: 190.0,
-          child: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            scrollDirection: Axis.horizontal,
+          child: ListView.separated(
+            itemCount: coursesList.length,
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
             shrinkWrap: true,
-            children: coursesList
-                .map(
-                  (course) => CourseTile(
-                    title: course.title,
-                    instructorName: course.ownerUserId.name,
-                    rating: course.avgRating,
-                    price: course.price,
-                    bannerUrl: course.banner,
-                  ),
-                )
-                .toList(),
+            scrollDirection: Axis.horizontal,
+            separatorBuilder: (BuildContext context, int index) {
+              return SizedBox(width: 10);
+            },
+            itemBuilder: (BuildContext context, int index) {
+              Course course = coursesList[index];
+              return CourseTile(
+                course: course,
+              );
+            },
           ),
         )
       ],

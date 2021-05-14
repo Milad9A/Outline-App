@@ -45,21 +45,21 @@ class PopularCoursesContainer extends StatelessWidget {
           ),
         ),
         SizedBox(height: 10.0),
-        ListView(
+        ListView.builder(
+          itemCount: coursesList.length,
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          children: coursesList
-              .map(
-                (course) => PopularTile(
-                  title: course.title,
-                  instructorName: course.ownerUserId.name,
-                  rating: course.avgRating,
-                  price: course.price,
-                  bannerUrl: course.banner,
-                ),
-              )
-              .toList(),
+          itemBuilder: (BuildContext context, int index) {
+            Course course = coursesList[index];
+            return PopularTile(
+              title: course.title,
+              instructorName: course.ownerUserId.name,
+              rating: course.avgRating,
+              price: course.price,
+              bannerUrl: course.banner,
+            );
+          },
         ),
       ],
     );

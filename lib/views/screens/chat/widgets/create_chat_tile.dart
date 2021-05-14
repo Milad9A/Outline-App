@@ -40,9 +40,15 @@ class CreateChatTile extends StatelessWidget {
           );
         } else {
           await chatRepository.createChatRoom(
-            chatRoomId: '${email}_${Consts.email}',
+            chatRoomId: chatRepository.createChatRoomIdFromEmails(
+              email,
+              Consts.email,
+            ),
             chatRoomMap: {
-              'chatroomid': '${email}_${Consts.email}',
+              'chatroomid': chatRepository.createChatRoomIdFromEmails(
+                email,
+                Consts.email,
+              ),
               'emails': [Consts.email, email],
               'last_message_time': DateTime.now().toIso8601String(),
               'users': [
@@ -67,7 +73,8 @@ class CreateChatTile extends StatelessWidget {
               builder: (context) => ConversationScreen(
                 name: name,
                 avatar: avatar,
-                chatRoomId: '${email}_${Consts.email}',
+                chatRoomId: chatRepository.createChatRoomIdFromEmails(
+                    email, Consts.email),
               ),
             ),
           );

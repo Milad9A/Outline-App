@@ -3,82 +3,83 @@ import 'package:flutter/material.dart';
 
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/theme/color_repository.dart';
+import 'package:outline/models/course_model/course_model.dart';
+import 'package:outline/views/screens/course/buy_course_screen.dart';
 
 class CourseTile extends StatelessWidget {
-  final String title;
-  final String instructorName;
-  final double price;
-  final double rating;
-  final String bannerUrl;
+  final Course course;
 
   const CourseTile({
-    required this.title,
-    required this.price,
-    required this.rating,
-    required this.instructorName,
-    required this.bannerUrl,
+    required this.course,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10.0),
-                boxShadow: [Consts.outlineBoxShadow],
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => BuyCourseScreen(
+              course: course,
+            ),
+          ),
+        );
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10.0),
+              boxShadow: [Consts.outlineBoxShadow],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: CachedNetworkImage(
+                imageUrl: course.banner,
+                fit: BoxFit.fitWidth,
+                height: 99.0,
+                width: 176.0,
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: CachedNetworkImage(
-                  imageUrl: bannerUrl,
-                  fit: BoxFit.fitWidth,
-                  height: 99.0,
-                  width: 176.0,
+            ),
+          ),
+          SizedBox(height: 6.0),
+          Text(
+            course.title,
+            style: TextStyle(
+              color: ColorRepository.blackish,
+            ),
+          ),
+          Text(
+            course.ownerUserId.name,
+            style: TextStyle(
+              fontSize: 12,
+              color: ColorRepository.blackish,
+            ),
+          ),
+          Container(
+            width: 176.0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.star, color: Colors.yellow),
+                    Text(course.avgRating.toString()),
+                  ],
                 ),
-              ),
+                Text(
+                  '${course.price}\$',
+                  style: TextStyle(color: ColorRepository.darkBlue),
+                ),
+              ],
             ),
-            SizedBox(height: 6.0),
-            Text(
-              title,
-              style: TextStyle(
-                color: ColorRepository.blackish,
-              ),
-            ),
-            Text(
-              instructorName,
-              style: TextStyle(
-                fontSize: 12,
-                color: ColorRepository.blackish,
-              ),
-            ),
-            Container(
-              width: 176.0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(Icons.star, color: Colors.yellow),
-                      Text(rating.toString()),
-                    ],
-                  ),
-                  Text(
-                    '$price\$',
-                    style: TextStyle(color: ColorRepository.darkBlue),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-        SizedBox(width: 10.0),
-      ],
+          ),
+        ],
+      ),
     );
   }
 }

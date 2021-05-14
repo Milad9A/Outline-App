@@ -17,6 +17,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
   final ChatRepository chatRepository = ChatRepository();
   late TextEditingController searchController = TextEditingController();
   late Stream chatsStream;
+  late Stream lastMessageStream;
   String searchValue = '';
 
   @override

@@ -8,7 +8,6 @@ import 'package:outline/models/user_model/user_model.dart';
 import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/providers/login/login_bloc.dart';
 import 'package:outline/repositories/user_repository.dart';
-import 'package:outline/views/screens/home/home_screen.dart';
 import 'package:outline/views/screens/navigation/navigation_screen.dart';
 
 import 'widgets/login_form.dart';
@@ -45,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: ColorRepository.greyish,
                 ),
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     NavigationScreen.route,
                   );
