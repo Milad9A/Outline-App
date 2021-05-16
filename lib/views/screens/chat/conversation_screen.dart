@@ -46,7 +46,6 @@ class _ConversationScreenState extends State<ConversationScreen> {
         );
 
         Navigator.pop(context, DateTime.now().toIso8601String());
-        print('Popped the conversation screen!');
 
         return true;
       },

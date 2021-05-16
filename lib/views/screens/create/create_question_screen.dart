@@ -51,7 +51,7 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
   }
 
   Future<void> _load() async {
-    final doc = Document()..insert(0, 'Question Content');
+    final doc = Document()..insert(0, '');
     setState(() {
       _controller = QuillController(
           document: doc, selection: TextSelection.collapsed(offset: 0));
@@ -142,6 +142,8 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                 ),
               ),
             );
+
+            _focusNode.unfocus();
           },
           child: Text(
             'Post',
@@ -156,149 +158,169 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
 
   Widget _buildEditor(BuildContext context) {
     return SafeArea(
-      child: SingleChildScrollView(
+      child: ListView(
+        shrinkWrap: true,
         padding: EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.35,
+        children: [
+          Row(
+            children: [
+              Text(
+                'Title',
+                style: TextStyle(color: ColorRepository.darkBlue),
+              ),
+            ],
+          ),
+          SizedBox(height: 10.0),
+          OutlineTextField(
+            controller: titleController,
+            textInputType: TextInputType.name,
+            textInputAction: TextInputAction.next,
+            hintText: 'Write a title',
+            onChanged: (value) {},
+          ),
+          SizedBox(height: 30.0),
+          Row(
+            children: [
+              Text(
+                'Content',
+                style: TextStyle(color: ColorRepository.darkBlue),
+              ),
+            ],
+          ),
+          SizedBox(height: 10.0),
+          Container(
+            decoration: BoxDecoration(
               color: Colors.white,
-              child: QuillEditor(
-                controller: _controller!,
-                scrollController: ScrollController(),
-                scrollable: true,
-                focusNode: _focusNode,
-                autoFocus: false,
-                readOnly: false,
-                placeholder: 'Add content',
-                enableInteractiveSelection: true,
-                expands: false,
-                padding: EdgeInsets.zero,
-                customStyles: DefaultStyles(
-                  h1: DefaultTextBlockStyle(
-                      TextStyle(
-                        fontSize: 32.0,
-                        color: Colors.black,
-                        height: 1.15,
-                        fontWeight: FontWeight.w300,
+              border: Border.all(
+                color: ColorRepository.darkGrey,
+                style: BorderStyle.solid,
+                width: 1.0,
+              ),
+              borderRadius: BorderRadius.circular(4.0),
+            ),
+            height: MediaQuery.of(context).size.height * 0.5,
+            constraints: BoxConstraints(
+              minHeight: MediaQuery.of(context).size.height * 0.3,
+              maxHeight: MediaQuery.of(context).size.height * 0.5,
+            ),
+            child: QuillEditor(
+              controller: _controller!,
+              scrollController: ScrollController(),
+              scrollable: true,
+              focusNode: _focusNode,
+              autoFocus: false,
+              readOnly: false,
+              placeholder: 'Add content',
+              enableInteractiveSelection: true,
+              expands: true,
+              padding: EdgeInsets.all(10.0),
+              customStyles: DefaultStyles(
+                sizeSmall: TextStyle(fontSize: 9.0),
+                h1: DefaultTextBlockStyle(
+                  TextStyle(
+                    fontSize: 32.0,
+                    color: Colors.black,
+                    height: 1.15,
+                    fontWeight: FontWeight.w300,
+                  ),
+                  Tuple2(16.0, 0.0),
+                  Tuple2(0.0, 0.0),
+                  null,
+                ),
+              ),
+            ),
+          ),
+          MediaQuery.of(context).viewInsets.bottom != 0
+              ? Container(
+                  child: QuillToolbar.basic(
+                    controller: _controller!,
+                    onImagePickCallback: _onImagePickCallback,
+                  ),
+                )
+              : SizedBox.shrink(),
+          SizedBox(height: 30.0),
+          Row(
+            children: [
+              Text(
+                'Tags',
+                style: TextStyle(color: ColorRepository.darkBlue),
+              ),
+            ],
+          ),
+          SizedBox(height: 10.0),
+          OutlineTextButton(
+            text: 'Select Tags',
+            onPressed: () async {
+              tags = await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AddQuestionTagsScreen(),
+                ),
+              );
+              setState(() {});
+            },
+            backgroundColor: Colors.transparent,
+            textColor: ColorRepository.darkGrey,
+            borderSide: Consts.outlineBorderSide,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Select Tags',
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        color: ColorRepository.darkGrey,
                       ),
-                      Tuple2(16.0, 0.0),
-                      Tuple2(0.0, 0.0),
-                      null),
-                  sizeSmall: TextStyle(fontSize: 9.0),
                 ),
-              ),
-            ),
-            MediaQuery.of(context).viewInsets.bottom != 0
-                ? Container(
-                    child: QuillToolbar.basic(
-                      controller: _controller!,
-                      onImagePickCallback: _onImagePickCallback,
-                    ),
-                  )
-                : SizedBox.shrink(),
-            SizedBox(height: 30.0),
-            Row(
-              children: [
-                Text(
-                  'Title',
-                  style: TextStyle(color: ColorRepository.darkBlue),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: ColorRepository.darkGrey,
+                  size: 14.0,
                 ),
               ],
             ),
-            SizedBox(height: 10.0),
-            OutlineTextField(
-              controller: titleController,
-              textInputType: TextInputType.name,
-              textInputAction: TextInputAction.next,
-              hintText: 'Write a title',
-              onChanged: (value) {},
-            ),
-            SizedBox(height: 30.0),
-            Row(
-              children: [
-                Text(
-                  'Tags',
-                  style: TextStyle(color: ColorRepository.darkBlue),
-                ),
-              ],
-            ),
-            SizedBox(height: 10.0),
-            OutlineTextButton(
-              text: 'Select Tags',
-              onPressed: () async {
-                tags = await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AddQuestionTagsScreen(),
+          ),
+          SizedBox(height: 15.0),
+          Container(
+            width: double.infinity,
+            child: Tags(
+              itemCount: tags.length,
+              alignment: WrapAlignment.start,
+              itemBuilder: (int index) {
+                final tag = tags[index];
+                return ItemTags(
+                  key: Key(index.toString()),
+                  index: index,
+                  title: tag.title,
+                  active: true,
+                  elevation: 0.0,
+                  textColor: ColorRepository.darkBlue,
+                  textActiveColor: ColorRepository.darkBlue,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(4.0),
                   ),
+                  border: Border.all(
+                    color: ColorRepository.lowOpacityDarkBlue,
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 8.0,
+                  ),
+                  color: ColorRepository.lightBlue,
+                  activeColor: ColorRepository.lowOpacityDarkBlue,
+                  removeButton: ItemTagsRemoveButton(
+                      backgroundColor: ColorRepository.darkBlue,
+                      onRemoved: () {
+                        setState(() {
+                          tags.removeAt(index);
+                        });
+                        return true;
+                      }),
                 );
-                setState(() {});
               },
-              backgroundColor: Colors.transparent,
-              textColor: ColorRepository.darkGrey,
-              borderSide: Consts.outlineBorderSide,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Select Tags',
-                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                          color: ColorRepository.darkGrey,
-                        ),
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    color: ColorRepository.darkGrey,
-                    size: 14.0,
-                  ),
-                ],
-              ),
             ),
-            SizedBox(height: 15.0),
-            Container(
-              width: double.infinity,
-              child: Tags(
-                itemCount: tags.length,
-                alignment: WrapAlignment.start,
-                itemBuilder: (int index) {
-                  final tag = tags[index];
-                  return ItemTags(
-                    key: Key(index.toString()),
-                    index: index,
-                    title: tag.title,
-                    active: true,
-                    elevation: 0.0,
-                    textColor: ColorRepository.darkBlue,
-                    textActiveColor: ColorRepository.darkBlue,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(4.0),
-                    ),
-                    border: Border.all(
-                      color: ColorRepository.lowOpacityDarkBlue,
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 8.0,
-                      horizontal: 8.0,
-                    ),
-                    color: ColorRepository.lightBlue,
-                    activeColor: ColorRepository.lowOpacityDarkBlue,
-                    removeButton: ItemTagsRemoveButton(
-                        backgroundColor: ColorRepository.darkBlue,
-                        onRemoved: () {
-                          setState(() {
-                            tags.removeAt(index);
-                          });
-                          return true;
-                        }),
-                  );
-                },
-              ),
-            ),
-            SizedBox(height: 40.0),
-          ],
-        ),
+          ),
+          SizedBox(height: 40.0),
+        ],
       ),
     );
   }

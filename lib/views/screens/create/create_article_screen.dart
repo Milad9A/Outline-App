@@ -13,7 +13,6 @@ import 'package:flutter_quill/widgets/editor.dart';
 import 'package:flutter_quill/widgets/toolbar.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/views/screens/create/publish_article_screen.dart';
-import 'package:outline/views/screens/create/add_article_tags_screen.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tuple/tuple.dart';
@@ -37,7 +36,7 @@ class _CreateArticleScreenState extends State<CreateArticleScreen> {
   }
 
   Future<void> _load() async {
-    final doc = Document()..insert(0, 'Article Content');
+    final doc = Document()..insert(0, '');
     setState(() {
       _controller = QuillController(
           document: doc, selection: TextSelection.collapsed(offset: 0));
