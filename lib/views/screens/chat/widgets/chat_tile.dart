@@ -7,17 +7,19 @@ import 'package:outline/repositories/chat_repository.dart';
 import 'package:outline/views/screens/chat/conversation_screen.dart';
 
 class ChatTile extends StatefulWidget {
-  const ChatTile({
+  ChatTile({
     required this.name,
     required this.avatar,
     required this.chatRoomId,
     required this.lastOpenedByMe,
+    required this.lastMessageTime,
   });
 
   final String name;
   final String avatar;
   final String chatRoomId;
   final String lastOpenedByMe;
+  String lastMessageTime;
 
   @override
   _ChatTileState createState() => _ChatTileState();
@@ -34,6 +36,10 @@ class _ChatTileState extends State<ChatTile> {
     lastMessageStream = chatRepository.getConversationLastMessage(
       chatRoomId: widget.chatRoomId,
     );
+    isOpened = DateTime.parse(widget.lastOpenedByMe)
+            .isBefore(DateTime.parse(widget.lastMessageTime))
+        ? false
+        : true;
   }
 
   @override
@@ -41,18 +47,16 @@ class _ChatTileState extends State<ChatTile> {
     lastMessageStream = chatRepository.getConversationLastMessage(
       chatRoomId: widget.chatRoomId,
     );
+    isOpened = DateTime.parse(widget.lastOpenedByMe)
+            .isBefore(DateTime.parse(widget.lastMessageTime))
+        ? false
+        : true;
     return StreamBuilder(
         stream: lastMessageStream,
         builder: (context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData && snapshot.data.docs.isNotEmpty) {
-            isOpened = DateTime.parse(widget.lastOpenedByMe)
-                    .isBefore(DateTime.parse(snapshot.data.docs[0]['time']))
-                ? false
-                : true;
-          }
           return ListTile(
             onTap: () async {
-              await Navigator.of(context).push(
+              widget.lastMessageTime = await Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => ConversationScreen(
                     name: widget.name,
@@ -61,12 +65,9 @@ class _ChatTileState extends State<ChatTile> {
                   ),
                 ),
               );
-              chatRepository.updateChatRoomsUsersLastOpened(
-                userEmail: Consts.email,
-                chatRoomId: widget.chatRoomId,
-              );
-              isOpened = true;
-              setState(() {});
+              setState(() {
+                isOpened = true;
+              });
             },
             contentPadding: EdgeInsets.zero,
             leading: CircleAvatar(
@@ -106,9 +107,9 @@ class _ChatTileState extends State<ChatTile> {
                           overflow: TextOverflow.ellipsis,
                           style:
                               Theme.of(context).textTheme.subtitle2!.copyWith(
-                                    fontWeight: !isOpened
-                                        ? FontWeight.bold
-                                        : FontWeight.w400,
+                                    fontWeight: isOpened
+                                        ? FontWeight.w400
+                                        : FontWeight.bold,
                                   ),
                         )
                       : Text(

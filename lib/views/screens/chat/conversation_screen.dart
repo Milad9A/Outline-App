@@ -5,6 +5,7 @@ import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/repositories/chat_repository.dart';
 import 'package:outline/views/screens/chat/widgets/widgets.dart';
 import 'package:outline/views/widgets/widgets.dart';
+import 'package:auto_direction/auto_direction.dart';
 
 class ConversationScreen extends StatefulWidget {
   final String name;
@@ -37,9 +38,22 @@ class _ConversationScreenState extends State<ConversationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildConversationScreenAppBar(context),
-      body: _buildConversationScreenBody(),
+    return WillPopScope(
+      onWillPop: () async {
+        chatRepository.updateChatRoomsUsersLastOpened(
+          userEmail: Consts.email,
+          chatRoomId: widget.chatRoomId,
+        );
+
+        Navigator.pop(context, DateTime.now().toIso8601String());
+        print('Popped the conversation screen!');
+
+        return true;
+      },
+      child: Scaffold(
+        appBar: _buildConversationScreenAppBar(context),
+        body: _buildConversationScreenBody(),
+      ),
     );
   }
 
@@ -123,12 +137,17 @@ class _ConversationScreenState extends State<ConversationScreen> {
                 child: Row(
                   children: [
                     Expanded(
-                      child: OutlineTextField(
-                        controller: messageController,
-                        hintText: 'Type a message ...',
-                        onChanged: (value) {},
-                        textInputAction: TextInputAction.send,
-                        textInputType: TextInputType.text,
+                      child: AutoDirection(
+                        text: messageController.text,
+                        child: OutlineTextField(
+                          controller: messageController,
+                          hintText: 'Type a message ...',
+                          onChanged: (value) {
+                            setState(() {});
+                          },
+                          textInputAction: TextInputAction.send,
+                          textInputType: TextInputType.text,
+                        ),
                       ),
                     ),
                     Padding(

@@ -114,6 +114,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                               avatar: otherUser['avatar'],
                               chatRoomId: chatRoom['chatroomid'],
                               lastOpenedByMe: me['last_opened'],
+                              lastMessageTime: chatRoom['last_message_time'],
                             );
                           },
                         ),

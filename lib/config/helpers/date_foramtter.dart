@@ -6,9 +6,9 @@ class DateFormatter {
     DateTime justNow = now.subtract(Duration(minutes: 1));
     DateTime localDateTime = dateTime.toLocal();
 
-    if (!localDateTime.difference(justNow).isNegative) {
-      return 'just now';
-    }
+    // if (!localDateTime.difference(justNow).isNegative) {
+    //   return 'just now';
+    // }
 
     String roughTimeString = DateFormat('jm').format(dateTime);
 

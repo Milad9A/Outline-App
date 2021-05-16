@@ -2,12 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/helpers/date_foramtter.dart';
 import 'package:outline/config/theme/color_repository.dart';
+import 'package:auto_direction/auto_direction.dart';
 
-class MessageTile extends StatelessWidget {
-  const MessageTile({
+class MessageTile extends StatefulWidget {
+  MessageTile({
     required this.message,
   });
+
   final message;
+
+  @override
+  _MessageTileState createState() => _MessageTileState();
+}
+
+class _MessageTileState extends State<MessageTile> {
+  bool isRTL = false;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +26,7 @@ class MessageTile extends StatelessWidget {
         vertical: 5.0,
       ),
       child: Align(
-        alignment: (message['sent_by'] == Consts.email
+        alignment: (widget.message['sent_by'] == Consts.email
             ? Alignment.topRight
             : Alignment.topLeft),
         child: ConstrainedBox(
@@ -27,7 +36,7 @@ class MessageTile extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4.0),
-              color: (message['sent_by'] == Consts.email
+              color: (widget.message['sent_by'] == Consts.email
                   ? ColorRepository.darkBlue.withOpacity(0.2)
                   : ColorRepository.lowOpacityGreen),
             ),
@@ -37,22 +46,25 @@ class MessageTile extends StatelessWidget {
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: message['sent_by'] == Consts.email
+              crossAxisAlignment: widget.message['sent_by'] == Consts.email
                   ? CrossAxisAlignment.end
                   : CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  message['message'],
-                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                        color: ColorRepository.blackish,
-                      ),
+                AutoDirection(
+                  text: widget.message['message'],
+                  child: Text(
+                    widget.message['message'],
+                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                          color: ColorRepository.blackish,
+                        ),
+                  ),
                 ),
                 SizedBox(width: 4.0),
                 Text(
                   DateFormatter().getVerboseDateTimeRepresentation(
                     DateTime.parse(
-                      message['time'],
+                      widget.message['time'],
                     ),
                   ),
                   style: Theme.of(context).textTheme.bodyText2!.copyWith(
