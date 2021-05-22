@@ -4,31 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quill/models/documents/document.dart';
 import 'package:flutter_quill/widgets/controller.dart';
 import 'package:flutter_quill/widgets/editor.dart';
-import 'package:flutter_tags/flutter_tags.dart';
 import 'package:outline/config/helpers/date_foramtter.dart';
+import 'package:outline/models/answer_model/answer_model.dart';
 import 'dart:math' as math;
 
-import 'package:outline/models/question_model/question_model.dart';
-import 'package:outline/views/widgets/widgets.dart';
+class AnswerContainer extends StatefulWidget {
+  final Answer answer;
 
-class QuestionContainer extends StatefulWidget {
-  final Question question;
-
-  QuestionContainer({required this.question});
+  AnswerContainer({required this.answer});
 
   @override
-  _QuestionContainerState createState() => _QuestionContainerState();
+  _AnswerContainerState createState() => _AnswerContainerState();
 }
 
-class _QuestionContainerState extends State<QuestionContainer> {
+class _AnswerContainerState extends State<AnswerContainer> {
   QuillController? controller;
 
   @override
   void initState() {
     super.initState();
+
     try {
       controller = QuillController(
-        document: Document.fromJson(jsonDecode(widget.question.body)),
+        document: Document.fromJson(jsonDecode(widget.answer.body)),
         selection: TextSelection.collapsed(offset: 0),
       );
     } catch (e) {}
@@ -41,16 +39,6 @@ class _QuestionContainerState extends State<QuestionContainer> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TagsRow(tags: widget.question.tags),
-          SizedBox(height: 10.0),
-          Text(
-            widget.question.title,
-            style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-          ),
-          SizedBox(height: 10.0),
           Row(
             children: [
               Container(
@@ -72,7 +60,7 @@ class _QuestionContainerState extends State<QuestionContainer> {
                         onPressed: () {},
                       ),
                     ),
-                    Text(widget.question.score.toString()),
+                    Text(widget.answer.score.toString()),
                     Transform.rotate(
                       angle: 90 * math.pi / 180,
                       child: IconButton(
@@ -95,23 +83,20 @@ class _QuestionContainerState extends State<QuestionContainer> {
                       ),
                     )
                   : Expanded(
-                      child: Text(widget.question.body),
+                      child: Text(widget.answer.body),
                     ),
             ],
           ),
           SizedBox(height: 10.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(widget.question.answerCount.toString() + ' Answers'),
-              Text(
-                DateFormatter().getVerboseDateTimeRepresentation(
-                  DateTime.parse(
-                    widget.question.updatedAt,
-                  ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              DateFormatter().getVerboseDateTimeRepresentation(
+                DateTime.parse(
+                  widget.answer.updatedAt,
                 ),
               ),
-            ],
+            ),
           ),
         ],
       ),

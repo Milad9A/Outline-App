@@ -5,11 +5,11 @@ import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/user_model/user_model.dart';
 import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/views/screens/login_and_sign_up/login_screen.dart';
+import 'package:outline/views/screens/profile/widgets/profile_answers_tab.dart';
 import 'package:outline/views/screens/profile/widgets/profile_questions_tab.dart';
 import 'package:outline/views/widgets/outline_circular_progress_indicator.dart';
 import 'package:outline/views/widgets/outline_tab_bar.dart';
 import 'package:outline/views/widgets/outline_text_button.dart';
-import 'package:flutter_tags/flutter_tags.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -20,12 +20,6 @@ class _ProfileScreenState extends State<ProfileScreen>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
   int selectedIndex = 0;
-
-  List<DataList> tags = [
-    DataList(title: 'Git'),
-    DataList(title: 'Github'),
-    DataList(title: 'Gitlab'),
-  ];
 
   @override
   void initState() {
@@ -290,7 +284,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                     ),
                     Visibility(
                       visible: selectedIndex == 2,
-                      child: Text('Answers'),
+                      child: ProfileAnswersTab(),
                     ),
                   ],
                 ),
