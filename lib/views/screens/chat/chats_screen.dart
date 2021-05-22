@@ -23,12 +23,12 @@ class _ChatsScreenState extends State<ChatsScreen> {
   @override
   void initState() {
     super.initState();
-    chatsStream = chatRepository.getChatRooms(userEmail: Consts.email);
+    chatsStream = chatRepository.getChatRooms(userEmail: Consts.email!);
   }
 
   @override
   Widget build(BuildContext context) {
-    chatsStream = chatRepository.getChatRooms(userEmail: Consts.email);
+    chatsStream = chatRepository.getChatRooms(userEmail: Consts.email!);
 
     return Scaffold(
       appBar: _buildChatsScreenAppBar(context),

@@ -42,12 +42,12 @@ class CreateChatTile extends StatelessWidget {
           await chatRepository.createChatRoom(
             chatRoomId: chatRepository.createChatRoomIdFromEmails(
               email,
-              Consts.email,
+              Consts.email!,
             ),
             chatRoomMap: {
               'chatroomid': chatRepository.createChatRoomIdFromEmails(
                 email,
-                Consts.email,
+                Consts.email!,
               ),
               'emails': [Consts.email, email],
               'last_message_time': DateTime.now().toIso8601String(),
@@ -74,7 +74,9 @@ class CreateChatTile extends StatelessWidget {
                 name: name,
                 avatar: avatar,
                 chatRoomId: chatRepository.createChatRoomIdFromEmails(
-                    email, Consts.email),
+                  email,
+                  Consts.email!,
+                ),
               ),
             ),
           );

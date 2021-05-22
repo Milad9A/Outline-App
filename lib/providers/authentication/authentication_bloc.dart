@@ -89,6 +89,10 @@ class AuthenticationBloc
       yield AuthenticationLoading();
       final SharedPrefsHelper prefs = SharedPrefsHelper();
       await prefs.deleteToken();
+      Consts.username = null;
+      Consts.email = null;
+      Consts.avatar = null;
+      Consts.isAuthenticated = false;
       yield AuthenticationUnAuthenticated();
     }
   }

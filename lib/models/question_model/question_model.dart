@@ -10,9 +10,13 @@ abstract class QuestionModel with _$QuestionModel {
   const factory QuestionModel({
     @JsonKey(name: 'body') required String body,
     @JsonKey(name: 'title') required String title,
+    @JsonKey(name: 'is_answered') required bool isAnswered,
     @JsonKey(name: 'view_count') required int viewCount,
     @JsonKey(name: 'answer_count') required int answerCount,
+    @JsonKey(name: 'score') required int score,
     @JsonKey(name: 'tags') required List<Tag> tags,
+    @JsonKey(name: 'createdAt') required String createdAt,
+    @JsonKey(name: 'updatedAt') required String updatedAt,
   }) = Question;
 
   factory QuestionModel.fromJson(Map<String, dynamic> json) =>

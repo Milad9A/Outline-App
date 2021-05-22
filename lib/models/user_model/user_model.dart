@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:outline/models/question_model/question_model.dart';
 import 'package:outline/models/tag_model/tag_model.dart';
 
 part 'user_model.freezed.dart';
@@ -14,8 +15,8 @@ abstract class UserModel with _$UserModel {
     @JsonKey(name: 'aboutMe') required String aboutMe,
     @JsonKey(name: 'reputation') required int reputation,
     @JsonKey(name: 'accept_rate') required int acceptRate,
-    @JsonKey(name: 'tags') required List<Tag> tags,
     @JsonKey(name: 'avatar') required String avatar,
+    @JsonKey(name: 'tags') required List<String> tags,
   }) = User;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

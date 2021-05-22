@@ -42,7 +42,7 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
           loading: () {
             showLoadingGif(context);
           },
-          success: (Question question) {
+          createQuestionSuccess: (Question question) {
             print(question.toJson());
             Navigator.push(context, NavigationScreen.route);
           },

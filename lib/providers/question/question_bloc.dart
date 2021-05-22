@@ -32,7 +32,23 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
 
       apiResult.when(
         success: (Question data) {
-          emit(QuestionSuccess(question: data));
+          emit(CreateQuestionSuccess(question: data));
+        },
+        failure: (NetworkExceptions error) {
+          emit(QuestionError(error: error));
+        },
+      );
+    }
+
+    if (event is QuestionGetMyQuestions) {
+      yield QuestionLoading();
+
+      ApiResult<List<Question>> apiResult =
+          await questionRepository.getMyQuestion();
+
+      apiResult.when(
+        success: (List<Question> data) {
+          emit(GetMyQuestionsSuccess(questions: data));
         },
         failure: (NetworkExceptions error) {
           emit(QuestionError(error: error));

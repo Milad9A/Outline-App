@@ -39,16 +39,17 @@ class _LoginScreenState extends State<LoginScreen> {
           leading: SizedBox.shrink(),
           actions: [
             IconButton(
-                icon: Icon(
-                  Icons.arrow_forward,
-                  color: ColorRepository.greyish,
-                ),
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    NavigationScreen.route,
-                  );
-                })
+              icon: Icon(
+                Icons.arrow_forward,
+                color: ColorRepository.greyish,
+              ),
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  NavigationScreen.route,
+                );
+              },
+            )
           ],
         ),
         body: BlocListener<LoginBloc, LoginState>(

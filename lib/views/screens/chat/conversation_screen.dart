@@ -41,7 +41,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
     return WillPopScope(
       onWillPop: () async {
         chatRepository.updateChatRoomsUsersLastOpened(
-          userEmail: Consts.email,
+          userEmail: Consts.email!,
           chatRoomId: widget.chatRoomId,
         );
 
@@ -173,7 +173,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                           }
 
                           chatRepository.updateChatRoomsUsersLastOpened(
-                            userEmail: Consts.email,
+                            userEmail: Consts.email!,
                             chatRoomId: widget.chatRoomId,
                           );
                         },

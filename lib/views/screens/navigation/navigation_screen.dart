@@ -8,6 +8,7 @@ import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/views/screens/course/course_screen.dart';
 import 'package:outline/views/screens/create/create_post_screen.dart';
 import 'package:outline/views/screens/home/home_screen.dart';
+import 'package:outline/views/screens/login_and_sign_up/login_screen.dart';
 import 'package:outline/views/screens/profile/profile_screen.dart';
 import 'package:outline/views/screens/search/search_screen.dart';
 
@@ -117,13 +118,10 @@ class _NavigationScreenState extends State<NavigationScreen>
                                 CircularProgressIndicator(
                           value: downloadProgress.progress,
                           valueColor: AlwaysStoppedAnimation<Color>(
-                              ColorRepository.darkBlue),
+                            ColorRepository.darkBlue,
+                          ),
                         ),
                       ),
-                    ),
-                    unAuthenticated: () => Icon(
-                      Icons.person,
-                      color: ColorRepository.darkBlue,
                     ),
                     orElse: () => Icon(
                       Icons.person,

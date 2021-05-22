@@ -6,8 +6,11 @@ class QuestionState with _$QuestionState {
 
   const factory QuestionState.loading() = QuestionLoading;
 
-  const factory QuestionState.success({required Question question}) =
-      QuestionSuccess;
+  const factory QuestionState.createQuestionSuccess(
+      {required Question question}) = CreateQuestionSuccess;
+
+  const factory QuestionState.getMyQuestionsSuccess(
+      {required List<Question> questions}) = GetMyQuestionsSuccess;
 
   const factory QuestionState.error({required NetworkExceptions error}) =
       QuestionError;

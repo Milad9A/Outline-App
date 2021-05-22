@@ -5,7 +5,7 @@ class OutlineCircularProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircularProgressIndicator(
-      valueColor: new AlwaysStoppedAnimation<Color>(ColorRepository.darkBlue),
+      valueColor: AlwaysStoppedAnimation<Color>(ColorRepository.darkBlue),
     );
   }
 }

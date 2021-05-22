@@ -10,6 +10,8 @@ class OutlineTabBar extends StatelessWidget {
   final Color titleAndLabelColor;
   final Color unselectedColor;
   final TabController? tabController;
+  final List<Tab>? tabs;
+  final Function(int)? onTap;
 
   const OutlineTabBar({
     required this.firstTitle,
@@ -18,6 +20,8 @@ class OutlineTabBar extends StatelessWidget {
     this.titleAndLabelColor = ColorRepository.darkBlue,
     this.unselectedColor = Colors.grey,
     this.tabController,
+    this.tabs,
+    this.onTap,
   });
 
   @override
@@ -29,6 +33,7 @@ class OutlineTabBar extends StatelessWidget {
         boxShadow: [Consts.outlineBoxShadow],
       ),
       child: TabBar(
+        onTap: onTap,
         controller: tabController,
         indicator: MD2Indicator(
           indicatorSize: MD2IndicatorSize.normal,
@@ -37,26 +42,27 @@ class OutlineTabBar extends StatelessWidget {
         ),
         unselectedLabelColor: unselectedColor,
         labelColor: titleAndLabelColor,
-        tabs: [
-          Tab(
-            child: Text(
-              firstTitle,
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w400,
+        tabs: tabs ??
+            [
+              Tab(
+                child: Text(
+                  firstTitle,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
               ),
-            ),
-          ),
-          Tab(
-            child: Text(
-              secondTitle,
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w400,
+              Tab(
+                child: Text(
+                  secondTitle,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
               ),
-            ),
-          ),
-        ],
+            ],
       ),
     );
   }
