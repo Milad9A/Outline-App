@@ -35,7 +35,23 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
 
       apiResult.when(
         success: (Article data) {
-          emit(ArticleSuccess(article: data));
+          emit(CreateArticleSuccess(article: data));
+        },
+        failure: (NetworkExceptions error) {
+          emit(ArticleError(error: error));
+        },
+      );
+    }
+
+    if (event is ArticleGetMyArticles) {
+      yield ArticleLoading();
+
+      ApiResult<List<Article>> apiResult =
+          await articleRepository.getMyArticle();
+
+      apiResult.when(
+        success: (List<Article> data) {
+          emit(GetMyArticlesSuccess(articles: data));
         },
         failure: (NetworkExceptions error) {
           emit(ArticleError(error: error));

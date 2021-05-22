@@ -8,6 +8,7 @@ import 'package:outline/config/services/dio_client.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/article_model/article_create_model.dart';
 import 'package:outline/models/article_model/article_model.dart';
+import 'package:outline/models/article_model/articles_list_model.dart';
 
 class ArticleRepository {
   late DioClient dioClient;
@@ -47,6 +48,21 @@ class ArticleRepository {
       Article article = Article.fromJson(response);
 
       return ApiResult.success(data: article);
+    } catch (e) {
+      print(e);
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
+  }
+
+  Future<ApiResult<List<Article>>> getMyArticle() async {
+    try {
+      final response = await dioClient.get(
+        '/articles/me',
+      );
+
+      final articlesList = ArticlesList.fromJson({'articlesList': response});
+
+      return ApiResult.success(data: articlesList.articlesList);
     } catch (e) {
       print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));

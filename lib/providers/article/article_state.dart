@@ -6,8 +6,11 @@ class ArticleState with _$ArticleState {
 
   const factory ArticleState.loading() = ArticleLoading;
 
-  const factory ArticleState.success({required Article article}) =
-      ArticleSuccess;
+  const factory ArticleState.createSuccess({required Article article}) =
+      CreateArticleSuccess;
+
+  const factory ArticleState.getMyArticlesSuccess(
+      {required List<Article> articles}) = GetMyArticlesSuccess;
 
   const factory ArticleState.error({required NetworkExceptions error}) =
       ArticleError;

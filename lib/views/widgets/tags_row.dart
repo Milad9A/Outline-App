@@ -11,6 +11,7 @@ class TagsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Tags(
+      heightHorizontalScroll: 40.0,
       itemCount: tags.length,
       alignment: WrapAlignment.start,
       horizontalScroll: true,

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/theme/color_repository.dart';
@@ -6,6 +7,7 @@ import 'package:outline/models/user_model/user_model.dart';
 import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/views/screens/login_and_sign_up/login_screen.dart';
 import 'package:outline/views/screens/profile/widgets/profile_answers_tab.dart';
+import 'package:outline/views/screens/profile/widgets/profile_articles_tab.dart';
 import 'package:outline/views/screens/profile/widgets/profile_questions_tab.dart';
 import 'package:outline/views/widgets/outline_circular_progress_indicator.dart';
 import 'package:outline/views/widgets/outline_tab_bar.dart';
@@ -82,17 +84,33 @@ class _ProfileScreenState extends State<ProfileScreen>
           onPressed: () {
             showModalBottomSheet(
               context: context,
+              enableDrag: true,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(10.0),
+                ),
+              ),
               builder: (context) {
                 return Container(
-                  height: 200.0,
-                  child: TextButton(
-                    onPressed: () {
-                      BlocProvider.of<AuthenticationBloc>(context).add(
-                        AuthenticationLoggedOut(),
-                      );
-                      Navigator.pop(context);
-                    },
-                    child: Text('Logout'),
+                  height: 250.0,
+                  child: Column(
+                    children: [
+                      Icon(
+                        CupertinoIcons.minus,
+                        color: Colors.grey.shade200,
+                        size: 60.0,
+                      ),
+                      ListTile(
+                        onTap: () {
+                          BlocProvider.of<AuthenticationBloc>(context).add(
+                            AuthenticationLoggedOut(),
+                          );
+                          Navigator.pop(context);
+                        },
+                        leading: Icon(Icons.logout),
+                        title: Text('Logout'),
+                      ),
+                    ],
                   ),
                 );
               },
@@ -151,7 +169,10 @@ class _ProfileScreenState extends State<ProfileScreen>
           Container(
             width: 187.0,
             child: OutlineTextButton(
-              text: 'Message',
+              text: 'Edit Profile',
+              backgroundColor: Colors.white,
+              textColor: ColorRepository.darkBlue,
+              borderSide: BorderSide(color: ColorRepository.darkBlue),
               onPressed: () {},
             ),
           ),
@@ -276,7 +297,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                   children: [
                     Visibility(
                       visible: selectedIndex == 0,
-                      child: Text('Articles'),
+                      child: ProfileArticlesTab(),
                     ),
                     Visibility(
                       visible: selectedIndex == 1,

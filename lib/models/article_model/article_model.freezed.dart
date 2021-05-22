@@ -21,15 +21,23 @@ class _$ArticleModelTearOff {
   const _$ArticleModelTearOff();
 
   Article call(
-      {@JsonKey(name: 'content') required String content,
+      {@JsonKey(name: 'owner_user_id') required String ownerUserId,
+      @JsonKey(name: 'content') required String content,
       @JsonKey(name: 'title') required String title,
+      @JsonKey(name: 'banner') required String banner,
       @JsonKey(name: 'view_count') required int viewCount,
-      @JsonKey(name: 'tags') required List<Tag> tags}) {
+      @JsonKey(name: 'tags') required List<Tag> tags,
+      @JsonKey(name: 'createdAt') required String createdAt,
+      @JsonKey(name: 'updatedAt') required String updatedAt}) {
     return Article(
+      ownerUserId: ownerUserId,
       content: content,
       title: title,
+      banner: banner,
       viewCount: viewCount,
       tags: tags,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
     );
   }
 
@@ -43,14 +51,22 @@ const $ArticleModel = _$ArticleModelTearOff();
 
 /// @nodoc
 mixin _$ArticleModel {
+  @JsonKey(name: 'owner_user_id')
+  String get ownerUserId => throw _privateConstructorUsedError;
   @JsonKey(name: 'content')
   String get content => throw _privateConstructorUsedError;
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
+  @JsonKey(name: 'banner')
+  String get banner => throw _privateConstructorUsedError;
   @JsonKey(name: 'view_count')
   int get viewCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'tags')
   List<Tag> get tags => throw _privateConstructorUsedError;
+  @JsonKey(name: 'createdAt')
+  String get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updatedAt')
+  String get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -64,10 +80,14 @@ abstract class $ArticleModelCopyWith<$Res> {
           ArticleModel value, $Res Function(ArticleModel) then) =
       _$ArticleModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'content') String content,
+      {@JsonKey(name: 'owner_user_id') String ownerUserId,
+      @JsonKey(name: 'content') String content,
       @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'banner') String banner,
       @JsonKey(name: 'view_count') int viewCount,
-      @JsonKey(name: 'tags') List<Tag> tags});
+      @JsonKey(name: 'tags') List<Tag> tags,
+      @JsonKey(name: 'createdAt') String createdAt,
+      @JsonKey(name: 'updatedAt') String updatedAt});
 }
 
 /// @nodoc
@@ -80,12 +100,20 @@ class _$ArticleModelCopyWithImpl<$Res> implements $ArticleModelCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? ownerUserId = freezed,
     Object? content = freezed,
     Object? title = freezed,
+    Object? banner = freezed,
     Object? viewCount = freezed,
     Object? tags = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
+      ownerUserId: ownerUserId == freezed
+          ? _value.ownerUserId
+          : ownerUserId // ignore: cast_nullable_to_non_nullable
+              as String,
       content: content == freezed
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -93,6 +121,10 @@ class _$ArticleModelCopyWithImpl<$Res> implements $ArticleModelCopyWith<$Res> {
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      banner: banner == freezed
+          ? _value.banner
+          : banner // ignore: cast_nullable_to_non_nullable
               as String,
       viewCount: viewCount == freezed
           ? _value.viewCount
@@ -102,6 +134,14 @@ class _$ArticleModelCopyWithImpl<$Res> implements $ArticleModelCopyWith<$Res> {
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<Tag>,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: updatedAt == freezed
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -112,10 +152,14 @@ abstract class $ArticleCopyWith<$Res> implements $ArticleModelCopyWith<$Res> {
       _$ArticleCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'content') String content,
+      {@JsonKey(name: 'owner_user_id') String ownerUserId,
+      @JsonKey(name: 'content') String content,
       @JsonKey(name: 'title') String title,
+      @JsonKey(name: 'banner') String banner,
       @JsonKey(name: 'view_count') int viewCount,
-      @JsonKey(name: 'tags') List<Tag> tags});
+      @JsonKey(name: 'tags') List<Tag> tags,
+      @JsonKey(name: 'createdAt') String createdAt,
+      @JsonKey(name: 'updatedAt') String updatedAt});
 }
 
 /// @nodoc
@@ -129,12 +173,20 @@ class _$ArticleCopyWithImpl<$Res> extends _$ArticleModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? ownerUserId = freezed,
     Object? content = freezed,
     Object? title = freezed,
+    Object? banner = freezed,
     Object? viewCount = freezed,
     Object? tags = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(Article(
+      ownerUserId: ownerUserId == freezed
+          ? _value.ownerUserId
+          : ownerUserId // ignore: cast_nullable_to_non_nullable
+              as String,
       content: content == freezed
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -142,6 +194,10 @@ class _$ArticleCopyWithImpl<$Res> extends _$ArticleModelCopyWithImpl<$Res>
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      banner: banner == freezed
+          ? _value.banner
+          : banner // ignore: cast_nullable_to_non_nullable
               as String,
       viewCount: viewCount == freezed
           ? _value.viewCount
@@ -151,6 +207,14 @@ class _$ArticleCopyWithImpl<$Res> extends _$ArticleModelCopyWithImpl<$Res>
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<Tag>,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: updatedAt == freezed
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -160,14 +224,21 @@ class _$ArticleCopyWithImpl<$Res> extends _$ArticleModelCopyWithImpl<$Res>
 /// @nodoc
 class _$Article with DiagnosticableTreeMixin implements Article {
   const _$Article(
-      {@JsonKey(name: 'content') required this.content,
+      {@JsonKey(name: 'owner_user_id') required this.ownerUserId,
+      @JsonKey(name: 'content') required this.content,
       @JsonKey(name: 'title') required this.title,
+      @JsonKey(name: 'banner') required this.banner,
       @JsonKey(name: 'view_count') required this.viewCount,
-      @JsonKey(name: 'tags') required this.tags});
+      @JsonKey(name: 'tags') required this.tags,
+      @JsonKey(name: 'createdAt') required this.createdAt,
+      @JsonKey(name: 'updatedAt') required this.updatedAt});
 
   factory _$Article.fromJson(Map<String, dynamic> json) =>
       _$_$ArticleFromJson(json);
 
+  @override
+  @JsonKey(name: 'owner_user_id')
+  final String ownerUserId;
   @override
   @JsonKey(name: 'content')
   final String content;
@@ -175,15 +246,24 @@ class _$Article with DiagnosticableTreeMixin implements Article {
   @JsonKey(name: 'title')
   final String title;
   @override
+  @JsonKey(name: 'banner')
+  final String banner;
+  @override
   @JsonKey(name: 'view_count')
   final int viewCount;
   @override
   @JsonKey(name: 'tags')
   final List<Tag> tags;
+  @override
+  @JsonKey(name: 'createdAt')
+  final String createdAt;
+  @override
+  @JsonKey(name: 'updatedAt')
+  final String updatedAt;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ArticleModel(content: $content, title: $title, viewCount: $viewCount, tags: $tags)';
+    return 'ArticleModel(ownerUserId: $ownerUserId, content: $content, title: $title, banner: $banner, viewCount: $viewCount, tags: $tags, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -191,35 +271,54 @@ class _$Article with DiagnosticableTreeMixin implements Article {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ArticleModel'))
+      ..add(DiagnosticsProperty('ownerUserId', ownerUserId))
       ..add(DiagnosticsProperty('content', content))
       ..add(DiagnosticsProperty('title', title))
+      ..add(DiagnosticsProperty('banner', banner))
       ..add(DiagnosticsProperty('viewCount', viewCount))
-      ..add(DiagnosticsProperty('tags', tags));
+      ..add(DiagnosticsProperty('tags', tags))
+      ..add(DiagnosticsProperty('createdAt', createdAt))
+      ..add(DiagnosticsProperty('updatedAt', updatedAt));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Article &&
+            (identical(other.ownerUserId, ownerUserId) ||
+                const DeepCollectionEquality()
+                    .equals(other.ownerUserId, ownerUserId)) &&
             (identical(other.content, content) ||
                 const DeepCollectionEquality()
                     .equals(other.content, content)) &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.banner, banner) ||
+                const DeepCollectionEquality().equals(other.banner, banner)) &&
             (identical(other.viewCount, viewCount) ||
                 const DeepCollectionEquality()
                     .equals(other.viewCount, viewCount)) &&
             (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)));
+                const DeepCollectionEquality().equals(other.tags, tags)) &&
+            (identical(other.createdAt, createdAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdAt, createdAt)) &&
+            (identical(other.updatedAt, updatedAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.updatedAt, updatedAt)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(ownerUserId) ^
       const DeepCollectionEquality().hash(content) ^
       const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(banner) ^
       const DeepCollectionEquality().hash(viewCount) ^
-      const DeepCollectionEquality().hash(tags);
+      const DeepCollectionEquality().hash(tags) ^
+      const DeepCollectionEquality().hash(createdAt) ^
+      const DeepCollectionEquality().hash(updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -234,13 +333,20 @@ class _$Article with DiagnosticableTreeMixin implements Article {
 
 abstract class Article implements ArticleModel {
   const factory Article(
-      {@JsonKey(name: 'content') required String content,
+      {@JsonKey(name: 'owner_user_id') required String ownerUserId,
+      @JsonKey(name: 'content') required String content,
       @JsonKey(name: 'title') required String title,
+      @JsonKey(name: 'banner') required String banner,
       @JsonKey(name: 'view_count') required int viewCount,
-      @JsonKey(name: 'tags') required List<Tag> tags}) = _$Article;
+      @JsonKey(name: 'tags') required List<Tag> tags,
+      @JsonKey(name: 'createdAt') required String createdAt,
+      @JsonKey(name: 'updatedAt') required String updatedAt}) = _$Article;
 
   factory Article.fromJson(Map<String, dynamic> json) = _$Article.fromJson;
 
+  @override
+  @JsonKey(name: 'owner_user_id')
+  String get ownerUserId => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'content')
   String get content => throw _privateConstructorUsedError;
@@ -248,11 +354,20 @@ abstract class Article implements ArticleModel {
   @JsonKey(name: 'title')
   String get title => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'banner')
+  String get banner => throw _privateConstructorUsedError;
+  @override
   @JsonKey(name: 'view_count')
   int get viewCount => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'tags')
   List<Tag> get tags => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'createdAt')
+  String get createdAt => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'updatedAt')
+  String get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   $ArticleCopyWith<Article> get copyWith => throw _privateConstructorUsedError;

@@ -7,4 +7,6 @@ class ArticleEvent with _$ArticleEvent {
     required ArticleCreate articleCreateData,
     File? image,
   }) = ArticleCreateButtonPressed;
+
+  const factory ArticleEvent.getMyArticles() = ArticleGetMyArticles;
 }
