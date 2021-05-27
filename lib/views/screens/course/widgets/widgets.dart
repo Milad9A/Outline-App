@@ -11,5 +11,7 @@ export 'my_courses_tile.dart';
 export 'my_courses_list_view_builder.dart';
 export 'drive_video_view.dart';
 export 'course_overview_tab.dart';
-export 'course_info_container.dart';
+export 'course_info_container_single.dart';
 export 'course_info_tab.dart';
+export 'course_info_container_multiple.dart';
+export 'buy_course_bottom_nav_bar.dart';

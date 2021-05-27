@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/course_model/course_model.dart';
 import 'package:outline/views/screens/course/widgets/widgets.dart';
+import 'package:outline/views/widgets/outline_text_button.dart';
 
 class BuyCourseScreen extends StatefulWidget {
   final Course course;
@@ -25,7 +26,6 @@ class _BuyCourseScreenState extends State<BuyCourseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorRepository.scaffoldBackground,
       appBar: AppBar(
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: ColorRepository.darkBlue),
@@ -35,11 +35,14 @@ class _BuyCourseScreenState extends State<BuyCourseScreen> {
         ),
       ),
       body: buildBuyCourseScreenBody(context),
+      bottomNavigationBar:
+          BuyCoursesBottomNavigationBar(price: widget.course.price),
     );
   }
 
   Widget buildBuyCourseScreenBody(BuildContext context) {
     return SingleChildScrollView(
+      padding: EdgeInsets.only(bottom: 10.0),
       child: Column(
         children: [
           ClipRRect(
@@ -67,81 +70,9 @@ class _BuyCourseScreenState extends State<BuyCourseScreen> {
                       .subtitle1!
                       .copyWith(color: ColorRepository.darkBlue),
                 ),
-                SizedBox(height: 200.0),
-                Text(
-                  'Course Instructor',
-                  style: Theme.of(context).textTheme.headline6!.copyWith(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-                SizedBox(height: 6.0),
-                Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 25.0,
-                      backgroundImage: CachedNetworkImageProvider(
-                        widget.course.ownerUserId.avatar,
-                      ),
-                    ),
-                    SizedBox(width: 8.0),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.course.ownerUserId.name,
-                          style:
-                              Theme.of(context).textTheme.subtitle1!.copyWith(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                        ),
-                        Text(widget.course.ownerUserId.aboutMe),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 14.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    CourseInfoContainer(
-                      color: ColorRepository.lowOpacityPink,
-                      icon: Icon(
-                        Icons.widgets,
-                        color: ColorRepository.pink,
-                      ),
-                      text: '19\nSections',
-                    ),
-                    SizedBox(width: 10.0),
-                    CourseInfoContainer(
-                      color: ColorRepository.lowOpacityLightBlue,
-                      icon: Icon(
-                        Icons.ondemand_video,
-                        color: ColorRepository.lightBlue,
-                      ),
-                      text: '${widget.course.contents.length}\nVideos',
-                    ),
-                    SizedBox(width: 10.0),
-                    CourseInfoContainer(
-                      color: ColorRepository.lowOpacityGreen,
-                      icon: Icon(
-                        Icons.query_builder,
-                        color: ColorRepository.green,
-                      ),
-                      text: '24h\n23m',
-                    ),
-                    SizedBox(width: 10.0),
-                    CourseInfoContainer(
-                      color: ColorRepository.lowOpacityOrange,
-                      icon: Icon(
-                        Icons.star,
-                        color: ColorRepository.orange,
-                      ),
-                      text: '${widget.course.avgRating}\n(23.232)',
-                    ),
-                  ],
+                SizedBox(height: 10.0),
+                CourseInfoContainerMultiple(
+                  course: widget.course,
                 ),
                 SizedBox(height: 20.0),
                 Text(
@@ -169,6 +100,24 @@ class _BuyCourseScreenState extends State<BuyCourseScreen> {
                   widget.course.requirements,
                   style: TextStyle(color: Colors.black),
                 ),
+                SizedBox(height: 20.0),
+                Text(
+                  'Contents',
+                  style: Theme.of(context).textTheme.headline6!.copyWith(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+                SizedBox(height: 12.0),
+                widget.course.contents.isNotEmpty
+                    ? CourseOverviewTab(
+                        contents: widget.course.contents,
+                        scrollPhysics: NeverScrollableScrollPhysics(),
+                      )
+                    : Text(
+                        "The Course doesn't have any contents yet!",
+                        style: TextStyle(color: Colors.black),
+                      ),
               ],
             ),
           ),

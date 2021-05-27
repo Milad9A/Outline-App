@@ -5,9 +5,11 @@ import 'package:outline/views/screens/course/widgets/widgets.dart';
 
 class CourseOverviewTab extends StatelessWidget {
   final List<Content> contents;
+  final ScrollPhysics scrollPhysics;
 
   const CourseOverviewTab({
     required this.contents,
+    this.scrollPhysics = const AlwaysScrollableScrollPhysics(),
   });
 
   @override
@@ -15,6 +17,7 @@ class CourseOverviewTab extends StatelessWidget {
     return ListView.builder(
       itemCount: contents.length,
       shrinkWrap: true,
+      physics: scrollPhysics,
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
           leading: IconButton(

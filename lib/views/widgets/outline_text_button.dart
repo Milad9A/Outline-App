@@ -8,12 +8,14 @@ class OutlineTextButton extends StatelessWidget {
   final Color? textColor;
   final BorderSide? borderSide;
   final Widget? child;
+  final double? height;
 
   const OutlineTextButton({
     required this.text,
     required this.onPressed,
     this.backgroundColor = ColorRepository.darkBlue,
     this.textColor = Colors.white,
+    this.height = 44.0,
     this.borderSide,
     this.child,
   });
@@ -21,7 +23,7 @@ class OutlineTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 44.0,
+      height: height,
       width: double.infinity,
       child: TextButton(
         style: TextButton.styleFrom(

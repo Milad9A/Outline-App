@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CourseInfoContainer extends StatelessWidget {
+class CourseInfoContainerSingle extends StatelessWidget {
   final Color color;
   final String text;
   final Icon icon;
 
-  const CourseInfoContainer({
+  const CourseInfoContainerSingle({
     required this.color,
     required this.text,
     required this.icon,

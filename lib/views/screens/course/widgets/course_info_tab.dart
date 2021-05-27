@@ -58,7 +58,7 @@ class CourseInfoTab extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              CourseInfoContainer(
+              CourseInfoContainerSingle(
                 color: ColorRepository.lowOpacityPink,
                 icon: Icon(
                   Icons.widgets,
@@ -67,7 +67,7 @@ class CourseInfoTab extends StatelessWidget {
                 text: '19\nSections',
               ),
               SizedBox(width: 10.0),
-              CourseInfoContainer(
+              CourseInfoContainerSingle(
                 color: ColorRepository.lowOpacityLightBlue,
                 icon: Icon(
                   Icons.ondemand_video,
@@ -76,7 +76,7 @@ class CourseInfoTab extends StatelessWidget {
                 text: '${course.contents.length}\nVideos',
               ),
               SizedBox(width: 10.0),
-              CourseInfoContainer(
+              CourseInfoContainerSingle(
                 color: ColorRepository.lowOpacityGreen,
                 icon: Icon(
                   Icons.query_builder,
@@ -85,7 +85,7 @@ class CourseInfoTab extends StatelessWidget {
                 text: '24h\n23m',
               ),
               SizedBox(width: 10.0),
-              CourseInfoContainer(
+              CourseInfoContainerSingle(
                 color: ColorRepository.lowOpacityOrange,
                 icon: Icon(
                   Icons.star,
