@@ -40,7 +40,7 @@ class _ProfileQuestionsTabState extends State<ProfileQuestionsTab> {
               },
             );
           },
-          loading: () => Container(
+          getLoading: () => Container(
             color: Colors.white,
             alignment: Alignment.center,
             padding: EdgeInsets.only(top: 100.0),

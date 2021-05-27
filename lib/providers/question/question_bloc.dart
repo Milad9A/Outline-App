@@ -24,7 +24,7 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
     QuestionEvent event,
   ) async* {
     if (event is QuestionCreateButtonPressed) {
-      yield QuestionLoading();
+      yield CreateQuestionLoading();
 
       ApiResult<Question> apiResult = await questionRepository.createQuestion(
         questionData: event.questionCreateData,
@@ -41,7 +41,7 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
     }
 
     if (event is QuestionGetMyQuestions) {
-      yield QuestionLoading();
+      yield GetQuestionsLoading();
 
       ApiResult<List<Question>> apiResult =
           await questionRepository.getMyQuestion();

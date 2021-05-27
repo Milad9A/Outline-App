@@ -28,7 +28,8 @@ class _$UserModelTearOff {
       @JsonKey(name: 'reputation') required int reputation,
       @JsonKey(name: 'accept_rate') required int acceptRate,
       @JsonKey(name: 'avatar') required String avatar,
-      @JsonKey(name: 'tags') required List<String> tags}) {
+      @JsonKey(name: 'tags') required List<String> tags,
+      @JsonKey(name: 'articles') required List<String> articles}) {
     return User(
       name: name,
       email: email,
@@ -38,6 +39,7 @@ class _$UserModelTearOff {
       acceptRate: acceptRate,
       avatar: avatar,
       tags: tags,
+      articles: articles,
     );
   }
 
@@ -67,6 +69,8 @@ mixin _$UserModel {
   String get avatar => throw _privateConstructorUsedError;
   @JsonKey(name: 'tags')
   List<String> get tags => throw _privateConstructorUsedError;
+  @JsonKey(name: 'articles')
+  List<String> get articles => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -86,7 +90,8 @@ abstract class $UserModelCopyWith<$Res> {
       @JsonKey(name: 'reputation') int reputation,
       @JsonKey(name: 'accept_rate') int acceptRate,
       @JsonKey(name: 'avatar') String avatar,
-      @JsonKey(name: 'tags') List<String> tags});
+      @JsonKey(name: 'tags') List<String> tags,
+      @JsonKey(name: 'articles') List<String> articles});
 }
 
 /// @nodoc
@@ -107,6 +112,7 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? acceptRate = freezed,
     Object? avatar = freezed,
     Object? tags = freezed,
+    Object? articles = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -141,6 +147,10 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      articles: articles == freezed
+          ? _value.articles
+          : articles // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -158,7 +168,8 @@ abstract class $UserCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       @JsonKey(name: 'reputation') int reputation,
       @JsonKey(name: 'accept_rate') int acceptRate,
       @JsonKey(name: 'avatar') String avatar,
-      @JsonKey(name: 'tags') List<String> tags});
+      @JsonKey(name: 'tags') List<String> tags,
+      @JsonKey(name: 'articles') List<String> articles});
 }
 
 /// @nodoc
@@ -180,6 +191,7 @@ class _$UserCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? acceptRate = freezed,
     Object? avatar = freezed,
     Object? tags = freezed,
+    Object? articles = freezed,
   }) {
     return _then(User(
       name: name == freezed
@@ -214,6 +226,10 @@ class _$UserCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      articles: articles == freezed
+          ? _value.articles
+          : articles // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -230,7 +246,8 @@ class _$User with DiagnosticableTreeMixin implements User {
       @JsonKey(name: 'reputation') required this.reputation,
       @JsonKey(name: 'accept_rate') required this.acceptRate,
       @JsonKey(name: 'avatar') required this.avatar,
-      @JsonKey(name: 'tags') required this.tags});
+      @JsonKey(name: 'tags') required this.tags,
+      @JsonKey(name: 'articles') required this.articles});
 
   factory _$User.fromJson(Map<String, dynamic> json) => _$_$UserFromJson(json);
 
@@ -258,10 +275,13 @@ class _$User with DiagnosticableTreeMixin implements User {
   @override
   @JsonKey(name: 'tags')
   final List<String> tags;
+  @override
+  @JsonKey(name: 'articles')
+  final List<String> articles;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserModel(name: $name, email: $email, role: $role, aboutMe: $aboutMe, reputation: $reputation, acceptRate: $acceptRate, avatar: $avatar, tags: $tags)';
+    return 'UserModel(name: $name, email: $email, role: $role, aboutMe: $aboutMe, reputation: $reputation, acceptRate: $acceptRate, avatar: $avatar, tags: $tags, articles: $articles)';
   }
 
   @override
@@ -276,7 +296,8 @@ class _$User with DiagnosticableTreeMixin implements User {
       ..add(DiagnosticsProperty('reputation', reputation))
       ..add(DiagnosticsProperty('acceptRate', acceptRate))
       ..add(DiagnosticsProperty('avatar', avatar))
-      ..add(DiagnosticsProperty('tags', tags));
+      ..add(DiagnosticsProperty('tags', tags))
+      ..add(DiagnosticsProperty('articles', articles));
   }
 
   @override
@@ -301,7 +322,10 @@ class _$User with DiagnosticableTreeMixin implements User {
             (identical(other.avatar, avatar) ||
                 const DeepCollectionEquality().equals(other.avatar, avatar)) &&
             (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)));
+                const DeepCollectionEquality().equals(other.tags, tags)) &&
+            (identical(other.articles, articles) ||
+                const DeepCollectionEquality()
+                    .equals(other.articles, articles)));
   }
 
   @override
@@ -314,7 +338,8 @@ class _$User with DiagnosticableTreeMixin implements User {
       const DeepCollectionEquality().hash(reputation) ^
       const DeepCollectionEquality().hash(acceptRate) ^
       const DeepCollectionEquality().hash(avatar) ^
-      const DeepCollectionEquality().hash(tags);
+      const DeepCollectionEquality().hash(tags) ^
+      const DeepCollectionEquality().hash(articles);
 
   @JsonKey(ignore: true)
   @override
@@ -336,7 +361,8 @@ abstract class User implements UserModel {
       @JsonKey(name: 'reputation') required int reputation,
       @JsonKey(name: 'accept_rate') required int acceptRate,
       @JsonKey(name: 'avatar') required String avatar,
-      @JsonKey(name: 'tags') required List<String> tags}) = _$User;
+      @JsonKey(name: 'tags') required List<String> tags,
+      @JsonKey(name: 'articles') required List<String> articles}) = _$User;
 
   factory User.fromJson(Map<String, dynamic> json) = _$User.fromJson;
 
@@ -364,6 +390,9 @@ abstract class User implements UserModel {
   @override
   @JsonKey(name: 'tags')
   List<String> get tags => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'articles')
+  List<String> get articles => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;

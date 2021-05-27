@@ -26,7 +26,7 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
     ArticleEvent event,
   ) async* {
     if (event is ArticleCreateButtonPressed) {
-      yield ArticleLoading();
+      yield CreateArticleLoading();
 
       ApiResult<Article> apiResult = await articleRepository.createArticle(
         articleData: event.articleCreateData,
@@ -44,7 +44,7 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
     }
 
     if (event is ArticleGetMyArticles) {
-      yield ArticleLoading();
+      yield GetArticlesLoading();
 
       ApiResult<List<Article>> apiResult =
           await articleRepository.getMyArticle();

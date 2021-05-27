@@ -209,7 +209,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                     child: Column(
                       children: [
                         Text(
-                          '60',
+                          user.articles.length.toString(),
                           style:
                               Theme.of(context).textTheme.headline6!.copyWith(
                                     fontWeight: FontWeight.bold,

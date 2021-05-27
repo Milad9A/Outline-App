@@ -53,7 +53,7 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
     return BlocListener<ArticleBloc, ArticleState>(
       listener: (context, state) {
         state.maybeWhen(
-          loading: () {
+          createLoading: () {
             showLoadingGif(context);
           },
           createSuccess: (Article article) {

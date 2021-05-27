@@ -21,7 +21,7 @@ class AnswerBloc extends Bloc<AnswerEvent, AnswerState> {
     AnswerEvent event,
   ) async* {
     if (event is AnswerGetMyAnswers) {
-      yield AnswerLoading();
+      yield GetAnswersLoading();
 
       ApiResult<List<Answer>> apiResult = await answerRepository.getMyAnswers();
 

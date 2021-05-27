@@ -39,7 +39,7 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
     return BlocListener<QuestionBloc, QuestionState>(
       listener: (context, state) {
         state.maybeWhen(
-          loading: () {
+          createLoading: () {
             showLoadingGif(context);
           },
           createQuestionSuccess: (Question question) {

@@ -449,8 +449,8 @@ class _$ArticleStateTearOff {
     return const _Initial();
   }
 
-  ArticleLoading loading() {
-    return const ArticleLoading();
+  CreateArticleLoading createLoading() {
+    return const CreateArticleLoading();
   }
 
   CreateArticleSuccess createSuccess({required Article article}) {
@@ -463,6 +463,10 @@ class _$ArticleStateTearOff {
     return GetMyArticlesSuccess(
       articles: articles,
     );
+  }
+
+  GetArticlesLoading getLoading() {
+    return const GetArticlesLoading();
   }
 
   ArticleError error({required NetworkExceptions error}) {
@@ -480,18 +484,20 @@ mixin _$ArticleState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function() createLoading,
     required TResult Function(Article article) createSuccess,
     required TResult Function(List<Article> articles) getMyArticlesSuccess,
+    required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function()? createLoading,
     TResult Function(Article article)? createSuccess,
     TResult Function(List<Article> articles)? getMyArticlesSuccess,
+    TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) =>
@@ -499,18 +505,20 @@ mixin _$ArticleState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(ArticleLoading value) loading,
+    required TResult Function(CreateArticleLoading value) createLoading,
     required TResult Function(CreateArticleSuccess value) createSuccess,
     required TResult Function(GetMyArticlesSuccess value) getMyArticlesSuccess,
+    required TResult Function(GetArticlesLoading value) getLoading,
     required TResult Function(ArticleError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(ArticleLoading value)? loading,
+    TResult Function(CreateArticleLoading value)? createLoading,
     TResult Function(CreateArticleSuccess value)? createSuccess,
     TResult Function(GetMyArticlesSuccess value)? getMyArticlesSuccess,
+    TResult Function(GetArticlesLoading value)? getLoading,
     TResult Function(ArticleError value)? error,
     required TResult orElse(),
   }) =>
@@ -576,9 +584,10 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function() createLoading,
     required TResult Function(Article article) createSuccess,
     required TResult Function(List<Article> articles) getMyArticlesSuccess,
+    required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
@@ -588,9 +597,10 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function()? createLoading,
     TResult Function(Article article)? createSuccess,
     TResult Function(List<Article> articles)? getMyArticlesSuccess,
+    TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) {
@@ -604,9 +614,10 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(ArticleLoading value) loading,
+    required TResult Function(CreateArticleLoading value) createLoading,
     required TResult Function(CreateArticleSuccess value) createSuccess,
     required TResult Function(GetMyArticlesSuccess value) getMyArticlesSuccess,
+    required TResult Function(GetArticlesLoading value) getLoading,
     required TResult Function(ArticleError value) error,
   }) {
     return initial(this);
@@ -616,9 +627,10 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(ArticleLoading value)? loading,
+    TResult Function(CreateArticleLoading value)? createLoading,
     TResult Function(CreateArticleSuccess value)? createSuccess,
     TResult Function(GetMyArticlesSuccess value)? getMyArticlesSuccess,
+    TResult Function(GetArticlesLoading value)? getLoading,
     TResult Function(ArticleError value)? error,
     required TResult orElse(),
   }) {
@@ -634,42 +646,44 @@ abstract class _Initial implements ArticleState {
 }
 
 /// @nodoc
-abstract class $ArticleLoadingCopyWith<$Res> {
-  factory $ArticleLoadingCopyWith(
-          ArticleLoading value, $Res Function(ArticleLoading) then) =
-      _$ArticleLoadingCopyWithImpl<$Res>;
+abstract class $CreateArticleLoadingCopyWith<$Res> {
+  factory $CreateArticleLoadingCopyWith(CreateArticleLoading value,
+          $Res Function(CreateArticleLoading) then) =
+      _$CreateArticleLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ArticleLoadingCopyWithImpl<$Res>
+class _$CreateArticleLoadingCopyWithImpl<$Res>
     extends _$ArticleStateCopyWithImpl<$Res>
-    implements $ArticleLoadingCopyWith<$Res> {
-  _$ArticleLoadingCopyWithImpl(
-      ArticleLoading _value, $Res Function(ArticleLoading) _then)
-      : super(_value, (v) => _then(v as ArticleLoading));
+    implements $CreateArticleLoadingCopyWith<$Res> {
+  _$CreateArticleLoadingCopyWithImpl(
+      CreateArticleLoading _value, $Res Function(CreateArticleLoading) _then)
+      : super(_value, (v) => _then(v as CreateArticleLoading));
 
   @override
-  ArticleLoading get _value => super._value as ArticleLoading;
+  CreateArticleLoading get _value => super._value as CreateArticleLoading;
 }
 
 /// @nodoc
-class _$ArticleLoading with DiagnosticableTreeMixin implements ArticleLoading {
-  const _$ArticleLoading();
+class _$CreateArticleLoading
+    with DiagnosticableTreeMixin
+    implements CreateArticleLoading {
+  const _$CreateArticleLoading();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ArticleState.loading()';
+    return 'ArticleState.createLoading()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'ArticleState.loading'));
+    properties..add(DiagnosticsProperty('type', 'ArticleState.createLoading'));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ArticleLoading);
+    return identical(this, other) || (other is CreateArticleLoading);
   }
 
   @override
@@ -679,26 +693,28 @@ class _$ArticleLoading with DiagnosticableTreeMixin implements ArticleLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function() createLoading,
     required TResult Function(Article article) createSuccess,
     required TResult Function(List<Article> articles) getMyArticlesSuccess,
+    required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
-    return loading();
+    return createLoading();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function()? createLoading,
     TResult Function(Article article)? createSuccess,
     TResult Function(List<Article> articles)? getMyArticlesSuccess,
+    TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading();
+    if (createLoading != null) {
+      return createLoading();
     }
     return orElse();
   }
@@ -707,33 +723,35 @@ class _$ArticleLoading with DiagnosticableTreeMixin implements ArticleLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(ArticleLoading value) loading,
+    required TResult Function(CreateArticleLoading value) createLoading,
     required TResult Function(CreateArticleSuccess value) createSuccess,
     required TResult Function(GetMyArticlesSuccess value) getMyArticlesSuccess,
+    required TResult Function(GetArticlesLoading value) getLoading,
     required TResult Function(ArticleError value) error,
   }) {
-    return loading(this);
+    return createLoading(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(ArticleLoading value)? loading,
+    TResult Function(CreateArticleLoading value)? createLoading,
     TResult Function(CreateArticleSuccess value)? createSuccess,
     TResult Function(GetMyArticlesSuccess value)? getMyArticlesSuccess,
+    TResult Function(GetArticlesLoading value)? getLoading,
     TResult Function(ArticleError value)? error,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    if (createLoading != null) {
+      return createLoading(this);
     }
     return orElse();
   }
 }
 
-abstract class ArticleLoading implements ArticleState {
-  const factory ArticleLoading() = _$ArticleLoading;
+abstract class CreateArticleLoading implements ArticleState {
+  const factory CreateArticleLoading() = _$CreateArticleLoading;
 }
 
 /// @nodoc
@@ -812,9 +830,10 @@ class _$CreateArticleSuccess
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function() createLoading,
     required TResult Function(Article article) createSuccess,
     required TResult Function(List<Article> articles) getMyArticlesSuccess,
+    required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
     return createSuccess(article);
@@ -824,9 +843,10 @@ class _$CreateArticleSuccess
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function()? createLoading,
     TResult Function(Article article)? createSuccess,
     TResult Function(List<Article> articles)? getMyArticlesSuccess,
+    TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) {
@@ -840,9 +860,10 @@ class _$CreateArticleSuccess
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(ArticleLoading value) loading,
+    required TResult Function(CreateArticleLoading value) createLoading,
     required TResult Function(CreateArticleSuccess value) createSuccess,
     required TResult Function(GetMyArticlesSuccess value) getMyArticlesSuccess,
+    required TResult Function(GetArticlesLoading value) getLoading,
     required TResult Function(ArticleError value) error,
   }) {
     return createSuccess(this);
@@ -852,9 +873,10 @@ class _$CreateArticleSuccess
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(ArticleLoading value)? loading,
+    TResult Function(CreateArticleLoading value)? createLoading,
     TResult Function(CreateArticleSuccess value)? createSuccess,
     TResult Function(GetMyArticlesSuccess value)? getMyArticlesSuccess,
+    TResult Function(GetArticlesLoading value)? getLoading,
     TResult Function(ArticleError value)? error,
     required TResult orElse(),
   }) {
@@ -952,9 +974,10 @@ class _$GetMyArticlesSuccess
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function() createLoading,
     required TResult Function(Article article) createSuccess,
     required TResult Function(List<Article> articles) getMyArticlesSuccess,
+    required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
     return getMyArticlesSuccess(articles);
@@ -964,9 +987,10 @@ class _$GetMyArticlesSuccess
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function()? createLoading,
     TResult Function(Article article)? createSuccess,
     TResult Function(List<Article> articles)? getMyArticlesSuccess,
+    TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) {
@@ -980,9 +1004,10 @@ class _$GetMyArticlesSuccess
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(ArticleLoading value) loading,
+    required TResult Function(CreateArticleLoading value) createLoading,
     required TResult Function(CreateArticleSuccess value) createSuccess,
     required TResult Function(GetMyArticlesSuccess value) getMyArticlesSuccess,
+    required TResult Function(GetArticlesLoading value) getLoading,
     required TResult Function(ArticleError value) error,
   }) {
     return getMyArticlesSuccess(this);
@@ -992,9 +1017,10 @@ class _$GetMyArticlesSuccess
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(ArticleLoading value)? loading,
+    TResult Function(CreateArticleLoading value)? createLoading,
     TResult Function(CreateArticleSuccess value)? createSuccess,
     TResult Function(GetMyArticlesSuccess value)? getMyArticlesSuccess,
+    TResult Function(GetArticlesLoading value)? getLoading,
     TResult Function(ArticleError value)? error,
     required TResult orElse(),
   }) {
@@ -1013,6 +1039,115 @@ abstract class GetMyArticlesSuccess implements ArticleState {
   @JsonKey(ignore: true)
   $GetMyArticlesSuccessCopyWith<GetMyArticlesSuccess> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetArticlesLoadingCopyWith<$Res> {
+  factory $GetArticlesLoadingCopyWith(
+          GetArticlesLoading value, $Res Function(GetArticlesLoading) then) =
+      _$GetArticlesLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$GetArticlesLoadingCopyWithImpl<$Res>
+    extends _$ArticleStateCopyWithImpl<$Res>
+    implements $GetArticlesLoadingCopyWith<$Res> {
+  _$GetArticlesLoadingCopyWithImpl(
+      GetArticlesLoading _value, $Res Function(GetArticlesLoading) _then)
+      : super(_value, (v) => _then(v as GetArticlesLoading));
+
+  @override
+  GetArticlesLoading get _value => super._value as GetArticlesLoading;
+}
+
+/// @nodoc
+class _$GetArticlesLoading
+    with DiagnosticableTreeMixin
+    implements GetArticlesLoading {
+  const _$GetArticlesLoading();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ArticleState.getLoading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'ArticleState.getLoading'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is GetArticlesLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() createLoading,
+    required TResult Function(Article article) createSuccess,
+    required TResult Function(List<Article> articles) getMyArticlesSuccess,
+    required TResult Function() getLoading,
+    required TResult Function(NetworkExceptions error) error,
+  }) {
+    return getLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Article article)? createSuccess,
+    TResult Function(List<Article> articles)? getMyArticlesSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+    required TResult orElse(),
+  }) {
+    if (getLoading != null) {
+      return getLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CreateArticleLoading value) createLoading,
+    required TResult Function(CreateArticleSuccess value) createSuccess,
+    required TResult Function(GetMyArticlesSuccess value) getMyArticlesSuccess,
+    required TResult Function(GetArticlesLoading value) getLoading,
+    required TResult Function(ArticleError value) error,
+  }) {
+    return getLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateArticleLoading value)? createLoading,
+    TResult Function(CreateArticleSuccess value)? createSuccess,
+    TResult Function(GetMyArticlesSuccess value)? getMyArticlesSuccess,
+    TResult Function(GetArticlesLoading value)? getLoading,
+    TResult Function(ArticleError value)? error,
+    required TResult orElse(),
+  }) {
+    if (getLoading != null) {
+      return getLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetArticlesLoading implements ArticleState {
+  const factory GetArticlesLoading() = _$GetArticlesLoading;
 }
 
 /// @nodoc
@@ -1096,9 +1231,10 @@ class _$ArticleError with DiagnosticableTreeMixin implements ArticleError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function() createLoading,
     required TResult Function(Article article) createSuccess,
     required TResult Function(List<Article> articles) getMyArticlesSuccess,
+    required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
@@ -1108,9 +1244,10 @@ class _$ArticleError with DiagnosticableTreeMixin implements ArticleError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function()? createLoading,
     TResult Function(Article article)? createSuccess,
     TResult Function(List<Article> articles)? getMyArticlesSuccess,
+    TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) {
@@ -1124,9 +1261,10 @@ class _$ArticleError with DiagnosticableTreeMixin implements ArticleError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(ArticleLoading value) loading,
+    required TResult Function(CreateArticleLoading value) createLoading,
     required TResult Function(CreateArticleSuccess value) createSuccess,
     required TResult Function(GetMyArticlesSuccess value) getMyArticlesSuccess,
+    required TResult Function(GetArticlesLoading value) getLoading,
     required TResult Function(ArticleError value) error,
   }) {
     return error(this);
@@ -1136,9 +1274,10 @@ class _$ArticleError with DiagnosticableTreeMixin implements ArticleError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(ArticleLoading value)? loading,
+    TResult Function(CreateArticleLoading value)? createLoading,
     TResult Function(CreateArticleSuccess value)? createSuccess,
     TResult Function(GetMyArticlesSuccess value)? getMyArticlesSuccess,
+    TResult Function(GetArticlesLoading value)? getLoading,
     TResult Function(ArticleError value)? error,
     required TResult orElse(),
   }) {

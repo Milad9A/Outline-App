@@ -40,7 +40,7 @@ class _ProfileArticlesTabState extends State<ProfileArticlesTab> {
               },
             );
           },
-          loading: () => Container(
+          getLoading: () => Container(
             color: Colors.white,
             alignment: Alignment.center,
             padding: EdgeInsets.only(top: 100.0),

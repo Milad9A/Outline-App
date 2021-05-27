@@ -411,8 +411,8 @@ class _$QuestionStateTearOff {
     return const _Initial();
   }
 
-  QuestionLoading loading() {
-    return const QuestionLoading();
+  CreateQuestionLoading createLoading() {
+    return const CreateQuestionLoading();
   }
 
   CreateQuestionSuccess createQuestionSuccess({required Question question}) {
@@ -426,6 +426,10 @@ class _$QuestionStateTearOff {
     return GetMyQuestionsSuccess(
       questions: questions,
     );
+  }
+
+  GetQuestionsLoading getLoading() {
+    return const GetQuestionsLoading();
   }
 
   QuestionError error({required NetworkExceptions error}) {
@@ -443,18 +447,20 @@ mixin _$QuestionState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function() createLoading,
     required TResult Function(Question question) createQuestionSuccess,
     required TResult Function(List<Question> questions) getMyQuestionsSuccess,
+    required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function()? createLoading,
     TResult Function(Question question)? createQuestionSuccess,
     TResult Function(List<Question> questions)? getMyQuestionsSuccess,
+    TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) =>
@@ -462,20 +468,22 @@ mixin _$QuestionState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(QuestionLoading value) loading,
+    required TResult Function(CreateQuestionLoading value) createLoading,
     required TResult Function(CreateQuestionSuccess value)
         createQuestionSuccess,
     required TResult Function(GetMyQuestionsSuccess value)
         getMyQuestionsSuccess,
+    required TResult Function(GetQuestionsLoading value) getLoading,
     required TResult Function(QuestionError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(QuestionLoading value)? loading,
+    TResult Function(CreateQuestionLoading value)? createLoading,
     TResult Function(CreateQuestionSuccess value)? createQuestionSuccess,
     TResult Function(GetMyQuestionsSuccess value)? getMyQuestionsSuccess,
+    TResult Function(GetQuestionsLoading value)? getLoading,
     TResult Function(QuestionError value)? error,
     required TResult orElse(),
   }) =>
@@ -536,9 +544,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function() createLoading,
     required TResult Function(Question question) createQuestionSuccess,
     required TResult Function(List<Question> questions) getMyQuestionsSuccess,
+    required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
@@ -548,9 +557,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function()? createLoading,
     TResult Function(Question question)? createQuestionSuccess,
     TResult Function(List<Question> questions)? getMyQuestionsSuccess,
+    TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) {
@@ -564,11 +574,12 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(QuestionLoading value) loading,
+    required TResult Function(CreateQuestionLoading value) createLoading,
     required TResult Function(CreateQuestionSuccess value)
         createQuestionSuccess,
     required TResult Function(GetMyQuestionsSuccess value)
         getMyQuestionsSuccess,
+    required TResult Function(GetQuestionsLoading value) getLoading,
     required TResult Function(QuestionError value) error,
   }) {
     return initial(this);
@@ -578,9 +589,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(QuestionLoading value)? loading,
+    TResult Function(CreateQuestionLoading value)? createLoading,
     TResult Function(CreateQuestionSuccess value)? createQuestionSuccess,
     TResult Function(GetMyQuestionsSuccess value)? getMyQuestionsSuccess,
+    TResult Function(GetQuestionsLoading value)? getLoading,
     TResult Function(QuestionError value)? error,
     required TResult orElse(),
   }) {
@@ -596,36 +608,36 @@ abstract class _Initial implements QuestionState {
 }
 
 /// @nodoc
-abstract class $QuestionLoadingCopyWith<$Res> {
-  factory $QuestionLoadingCopyWith(
-          QuestionLoading value, $Res Function(QuestionLoading) then) =
-      _$QuestionLoadingCopyWithImpl<$Res>;
+abstract class $CreateQuestionLoadingCopyWith<$Res> {
+  factory $CreateQuestionLoadingCopyWith(CreateQuestionLoading value,
+          $Res Function(CreateQuestionLoading) then) =
+      _$CreateQuestionLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$QuestionLoadingCopyWithImpl<$Res>
+class _$CreateQuestionLoadingCopyWithImpl<$Res>
     extends _$QuestionStateCopyWithImpl<$Res>
-    implements $QuestionLoadingCopyWith<$Res> {
-  _$QuestionLoadingCopyWithImpl(
-      QuestionLoading _value, $Res Function(QuestionLoading) _then)
-      : super(_value, (v) => _then(v as QuestionLoading));
+    implements $CreateQuestionLoadingCopyWith<$Res> {
+  _$CreateQuestionLoadingCopyWithImpl(
+      CreateQuestionLoading _value, $Res Function(CreateQuestionLoading) _then)
+      : super(_value, (v) => _then(v as CreateQuestionLoading));
 
   @override
-  QuestionLoading get _value => super._value as QuestionLoading;
+  CreateQuestionLoading get _value => super._value as CreateQuestionLoading;
 }
 
 /// @nodoc
-class _$QuestionLoading implements QuestionLoading {
-  const _$QuestionLoading();
+class _$CreateQuestionLoading implements CreateQuestionLoading {
+  const _$CreateQuestionLoading();
 
   @override
   String toString() {
-    return 'QuestionState.loading()';
+    return 'QuestionState.createLoading()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is QuestionLoading);
+    return identical(this, other) || (other is CreateQuestionLoading);
   }
 
   @override
@@ -635,26 +647,28 @@ class _$QuestionLoading implements QuestionLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function() createLoading,
     required TResult Function(Question question) createQuestionSuccess,
     required TResult Function(List<Question> questions) getMyQuestionsSuccess,
+    required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
-    return loading();
+    return createLoading();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function()? createLoading,
     TResult Function(Question question)? createQuestionSuccess,
     TResult Function(List<Question> questions)? getMyQuestionsSuccess,
+    TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading();
+    if (createLoading != null) {
+      return createLoading();
     }
     return orElse();
   }
@@ -663,35 +677,37 @@ class _$QuestionLoading implements QuestionLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(QuestionLoading value) loading,
+    required TResult Function(CreateQuestionLoading value) createLoading,
     required TResult Function(CreateQuestionSuccess value)
         createQuestionSuccess,
     required TResult Function(GetMyQuestionsSuccess value)
         getMyQuestionsSuccess,
+    required TResult Function(GetQuestionsLoading value) getLoading,
     required TResult Function(QuestionError value) error,
   }) {
-    return loading(this);
+    return createLoading(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(QuestionLoading value)? loading,
+    TResult Function(CreateQuestionLoading value)? createLoading,
     TResult Function(CreateQuestionSuccess value)? createQuestionSuccess,
     TResult Function(GetMyQuestionsSuccess value)? getMyQuestionsSuccess,
+    TResult Function(GetQuestionsLoading value)? getLoading,
     TResult Function(QuestionError value)? error,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    if (createLoading != null) {
+      return createLoading(this);
     }
     return orElse();
   }
 }
 
-abstract class QuestionLoading implements QuestionState {
-  const factory QuestionLoading() = _$QuestionLoading;
+abstract class CreateQuestionLoading implements QuestionState {
+  const factory CreateQuestionLoading() = _$CreateQuestionLoading;
 }
 
 /// @nodoc
@@ -761,9 +777,10 @@ class _$CreateQuestionSuccess implements CreateQuestionSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function() createLoading,
     required TResult Function(Question question) createQuestionSuccess,
     required TResult Function(List<Question> questions) getMyQuestionsSuccess,
+    required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
     return createQuestionSuccess(question);
@@ -773,9 +790,10 @@ class _$CreateQuestionSuccess implements CreateQuestionSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function()? createLoading,
     TResult Function(Question question)? createQuestionSuccess,
     TResult Function(List<Question> questions)? getMyQuestionsSuccess,
+    TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) {
@@ -789,11 +807,12 @@ class _$CreateQuestionSuccess implements CreateQuestionSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(QuestionLoading value) loading,
+    required TResult Function(CreateQuestionLoading value) createLoading,
     required TResult Function(CreateQuestionSuccess value)
         createQuestionSuccess,
     required TResult Function(GetMyQuestionsSuccess value)
         getMyQuestionsSuccess,
+    required TResult Function(GetQuestionsLoading value) getLoading,
     required TResult Function(QuestionError value) error,
   }) {
     return createQuestionSuccess(this);
@@ -803,9 +822,10 @@ class _$CreateQuestionSuccess implements CreateQuestionSuccess {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(QuestionLoading value)? loading,
+    TResult Function(CreateQuestionLoading value)? createLoading,
     TResult Function(CreateQuestionSuccess value)? createQuestionSuccess,
     TResult Function(GetMyQuestionsSuccess value)? getMyQuestionsSuccess,
+    TResult Function(GetQuestionsLoading value)? getLoading,
     TResult Function(QuestionError value)? error,
     required TResult orElse(),
   }) {
@@ -893,9 +913,10 @@ class _$GetMyQuestionsSuccess implements GetMyQuestionsSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function() createLoading,
     required TResult Function(Question question) createQuestionSuccess,
     required TResult Function(List<Question> questions) getMyQuestionsSuccess,
+    required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
     return getMyQuestionsSuccess(questions);
@@ -905,9 +926,10 @@ class _$GetMyQuestionsSuccess implements GetMyQuestionsSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function()? createLoading,
     TResult Function(Question question)? createQuestionSuccess,
     TResult Function(List<Question> questions)? getMyQuestionsSuccess,
+    TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) {
@@ -921,11 +943,12 @@ class _$GetMyQuestionsSuccess implements GetMyQuestionsSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(QuestionLoading value) loading,
+    required TResult Function(CreateQuestionLoading value) createLoading,
     required TResult Function(CreateQuestionSuccess value)
         createQuestionSuccess,
     required TResult Function(GetMyQuestionsSuccess value)
         getMyQuestionsSuccess,
+    required TResult Function(GetQuestionsLoading value) getLoading,
     required TResult Function(QuestionError value) error,
   }) {
     return getMyQuestionsSuccess(this);
@@ -935,9 +958,10 @@ class _$GetMyQuestionsSuccess implements GetMyQuestionsSuccess {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(QuestionLoading value)? loading,
+    TResult Function(CreateQuestionLoading value)? createLoading,
     TResult Function(CreateQuestionSuccess value)? createQuestionSuccess,
     TResult Function(GetMyQuestionsSuccess value)? getMyQuestionsSuccess,
+    TResult Function(GetQuestionsLoading value)? getLoading,
     TResult Function(QuestionError value)? error,
     required TResult orElse(),
   }) {
@@ -956,6 +980,109 @@ abstract class GetMyQuestionsSuccess implements QuestionState {
   @JsonKey(ignore: true)
   $GetMyQuestionsSuccessCopyWith<GetMyQuestionsSuccess> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetQuestionsLoadingCopyWith<$Res> {
+  factory $GetQuestionsLoadingCopyWith(
+          GetQuestionsLoading value, $Res Function(GetQuestionsLoading) then) =
+      _$GetQuestionsLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$GetQuestionsLoadingCopyWithImpl<$Res>
+    extends _$QuestionStateCopyWithImpl<$Res>
+    implements $GetQuestionsLoadingCopyWith<$Res> {
+  _$GetQuestionsLoadingCopyWithImpl(
+      GetQuestionsLoading _value, $Res Function(GetQuestionsLoading) _then)
+      : super(_value, (v) => _then(v as GetQuestionsLoading));
+
+  @override
+  GetQuestionsLoading get _value => super._value as GetQuestionsLoading;
+}
+
+/// @nodoc
+class _$GetQuestionsLoading implements GetQuestionsLoading {
+  const _$GetQuestionsLoading();
+
+  @override
+  String toString() {
+    return 'QuestionState.getLoading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is GetQuestionsLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() createLoading,
+    required TResult Function(Question question) createQuestionSuccess,
+    required TResult Function(List<Question> questions) getMyQuestionsSuccess,
+    required TResult Function() getLoading,
+    required TResult Function(NetworkExceptions error) error,
+  }) {
+    return getLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Question question)? createQuestionSuccess,
+    TResult Function(List<Question> questions)? getMyQuestionsSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+    required TResult orElse(),
+  }) {
+    if (getLoading != null) {
+      return getLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CreateQuestionLoading value) createLoading,
+    required TResult Function(CreateQuestionSuccess value)
+        createQuestionSuccess,
+    required TResult Function(GetMyQuestionsSuccess value)
+        getMyQuestionsSuccess,
+    required TResult Function(GetQuestionsLoading value) getLoading,
+    required TResult Function(QuestionError value) error,
+  }) {
+    return getLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateQuestionLoading value)? createLoading,
+    TResult Function(CreateQuestionSuccess value)? createQuestionSuccess,
+    TResult Function(GetMyQuestionsSuccess value)? getMyQuestionsSuccess,
+    TResult Function(GetQuestionsLoading value)? getLoading,
+    TResult Function(QuestionError value)? error,
+    required TResult orElse(),
+  }) {
+    if (getLoading != null) {
+      return getLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetQuestionsLoading implements QuestionState {
+  const factory GetQuestionsLoading() = _$GetQuestionsLoading;
 }
 
 /// @nodoc
@@ -1032,9 +1159,10 @@ class _$QuestionError implements QuestionError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() loading,
+    required TResult Function() createLoading,
     required TResult Function(Question question) createQuestionSuccess,
     required TResult Function(List<Question> questions) getMyQuestionsSuccess,
+    required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
@@ -1044,9 +1172,10 @@ class _$QuestionError implements QuestionError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? loading,
+    TResult Function()? createLoading,
     TResult Function(Question question)? createQuestionSuccess,
     TResult Function(List<Question> questions)? getMyQuestionsSuccess,
+    TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) {
@@ -1060,11 +1189,12 @@ class _$QuestionError implements QuestionError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(QuestionLoading value) loading,
+    required TResult Function(CreateQuestionLoading value) createLoading,
     required TResult Function(CreateQuestionSuccess value)
         createQuestionSuccess,
     required TResult Function(GetMyQuestionsSuccess value)
         getMyQuestionsSuccess,
+    required TResult Function(GetQuestionsLoading value) getLoading,
     required TResult Function(QuestionError value) error,
   }) {
     return error(this);
@@ -1074,9 +1204,10 @@ class _$QuestionError implements QuestionError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(QuestionLoading value)? loading,
+    TResult Function(CreateQuestionLoading value)? createLoading,
     TResult Function(CreateQuestionSuccess value)? createQuestionSuccess,
     TResult Function(GetMyQuestionsSuccess value)? getMyQuestionsSuccess,
+    TResult Function(GetQuestionsLoading value)? getLoading,
     TResult Function(QuestionError value)? error,
     required TResult orElse(),
   }) {
