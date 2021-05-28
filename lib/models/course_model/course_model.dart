@@ -9,6 +9,7 @@ part 'course_model.g.dart';
 @freezed
 abstract class CourseModel with _$CourseModel {
   const factory CourseModel({
+    @JsonKey(name: '_id') required String id,
     @JsonKey(name: 'is_paid') required bool isPaid,
     @JsonKey(name: 'num_of_subscribers') required int numOfSubscribers,
     @JsonKey(name: 'num_of_lectures') required int numOfLectures,

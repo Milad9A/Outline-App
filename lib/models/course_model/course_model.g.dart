@@ -8,6 +8,7 @@ part of 'course_model.dart';
 
 _$Course _$_$CourseFromJson(Map<String, dynamic> json) {
   return _$Course(
+    id: json['_id'] as String,
     isPaid: json['is_paid'] as bool,
     numOfSubscribers: json['num_of_subscribers'] as int,
     numOfLectures: json['num_of_lectures'] as int,
@@ -25,6 +26,7 @@ _$Course _$_$CourseFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$_$CourseToJson(_$Course instance) => <String, dynamic>{
+      '_id': instance.id,
       'is_paid': instance.isPaid,
       'num_of_subscribers': instance.numOfSubscribers,
       'num_of_lectures': instance.numOfLectures,

@@ -21,7 +21,8 @@ class _$CourseModelTearOff {
   const _$CourseModelTearOff();
 
   Course call(
-      {@JsonKey(name: 'is_paid') required bool isPaid,
+      {@JsonKey(name: '_id') required String id,
+      @JsonKey(name: 'is_paid') required bool isPaid,
       @JsonKey(name: 'num_of_subscribers') required int numOfSubscribers,
       @JsonKey(name: 'num_of_lectures') required int numOfLectures,
       @JsonKey(name: 'avg_rating') required double avgRating,
@@ -33,6 +34,7 @@ class _$CourseModelTearOff {
       @JsonKey(name: 'owner_user_id') required User ownerUserId,
       @JsonKey(name: 'banner') required String banner}) {
     return Course(
+      id: id,
       isPaid: isPaid,
       numOfSubscribers: numOfSubscribers,
       numOfLectures: numOfLectures,
@@ -57,6 +59,8 @@ const $CourseModel = _$CourseModelTearOff();
 
 /// @nodoc
 mixin _$CourseModel {
+  @JsonKey(name: '_id')
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_paid')
   bool get isPaid => throw _privateConstructorUsedError;
   @JsonKey(name: 'num_of_subscribers')
@@ -92,7 +96,8 @@ abstract class $CourseModelCopyWith<$Res> {
           CourseModel value, $Res Function(CourseModel) then) =
       _$CourseModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'is_paid') bool isPaid,
+      {@JsonKey(name: '_id') String id,
+      @JsonKey(name: 'is_paid') bool isPaid,
       @JsonKey(name: 'num_of_subscribers') int numOfSubscribers,
       @JsonKey(name: 'num_of_lectures') int numOfLectures,
       @JsonKey(name: 'avg_rating') double avgRating,
@@ -115,6 +120,7 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? isPaid = freezed,
     Object? numOfSubscribers = freezed,
     Object? numOfLectures = freezed,
@@ -128,6 +134,10 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
     Object? banner = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       isPaid: isPaid == freezed
           ? _value.isPaid
           : isPaid // ignore: cast_nullable_to_non_nullable
@@ -182,7 +192,8 @@ abstract class $CourseCopyWith<$Res> implements $CourseModelCopyWith<$Res> {
       _$CourseCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'is_paid') bool isPaid,
+      {@JsonKey(name: '_id') String id,
+      @JsonKey(name: 'is_paid') bool isPaid,
       @JsonKey(name: 'num_of_subscribers') int numOfSubscribers,
       @JsonKey(name: 'num_of_lectures') int numOfLectures,
       @JsonKey(name: 'avg_rating') double avgRating,
@@ -206,6 +217,7 @@ class _$CourseCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? isPaid = freezed,
     Object? numOfSubscribers = freezed,
     Object? numOfLectures = freezed,
@@ -219,6 +231,10 @@ class _$CourseCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
     Object? banner = freezed,
   }) {
     return _then(Course(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       isPaid: isPaid == freezed
           ? _value.isPaid
           : isPaid // ignore: cast_nullable_to_non_nullable
@@ -272,7 +288,8 @@ class _$CourseCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
 /// @nodoc
 class _$Course with DiagnosticableTreeMixin implements Course {
   const _$Course(
-      {@JsonKey(name: 'is_paid') required this.isPaid,
+      {@JsonKey(name: '_id') required this.id,
+      @JsonKey(name: 'is_paid') required this.isPaid,
       @JsonKey(name: 'num_of_subscribers') required this.numOfSubscribers,
       @JsonKey(name: 'num_of_lectures') required this.numOfLectures,
       @JsonKey(name: 'avg_rating') required this.avgRating,
@@ -287,6 +304,9 @@ class _$Course with DiagnosticableTreeMixin implements Course {
   factory _$Course.fromJson(Map<String, dynamic> json) =>
       _$_$CourseFromJson(json);
 
+  @override
+  @JsonKey(name: '_id')
+  final String id;
   @override
   @JsonKey(name: 'is_paid')
   final bool isPaid;
@@ -323,7 +343,7 @@ class _$Course with DiagnosticableTreeMixin implements Course {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CourseModel(isPaid: $isPaid, numOfSubscribers: $numOfSubscribers, numOfLectures: $numOfLectures, avgRating: $avgRating, contents: $contents, requirements: $requirements, price: $price, description: $description, title: $title, ownerUserId: $ownerUserId, banner: $banner)';
+    return 'CourseModel(id: $id, isPaid: $isPaid, numOfSubscribers: $numOfSubscribers, numOfLectures: $numOfLectures, avgRating: $avgRating, contents: $contents, requirements: $requirements, price: $price, description: $description, title: $title, ownerUserId: $ownerUserId, banner: $banner)';
   }
 
   @override
@@ -331,6 +351,7 @@ class _$Course with DiagnosticableTreeMixin implements Course {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'CourseModel'))
+      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('isPaid', isPaid))
       ..add(DiagnosticsProperty('numOfSubscribers', numOfSubscribers))
       ..add(DiagnosticsProperty('numOfLectures', numOfLectures))
@@ -348,6 +369,8 @@ class _$Course with DiagnosticableTreeMixin implements Course {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Course &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.isPaid, isPaid) ||
                 const DeepCollectionEquality().equals(other.isPaid, isPaid)) &&
             (identical(other.numOfSubscribers, numOfSubscribers) ||
@@ -382,6 +405,7 @@ class _$Course with DiagnosticableTreeMixin implements Course {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(isPaid) ^
       const DeepCollectionEquality().hash(numOfSubscribers) ^
       const DeepCollectionEquality().hash(numOfLectures) ^
@@ -407,7 +431,8 @@ class _$Course with DiagnosticableTreeMixin implements Course {
 
 abstract class Course implements CourseModel {
   const factory Course(
-      {@JsonKey(name: 'is_paid') required bool isPaid,
+      {@JsonKey(name: '_id') required String id,
+      @JsonKey(name: 'is_paid') required bool isPaid,
       @JsonKey(name: 'num_of_subscribers') required int numOfSubscribers,
       @JsonKey(name: 'num_of_lectures') required int numOfLectures,
       @JsonKey(name: 'avg_rating') required double avgRating,
@@ -421,6 +446,9 @@ abstract class Course implements CourseModel {
 
   factory Course.fromJson(Map<String, dynamic> json) = _$Course.fromJson;
 
+  @override
+  @JsonKey(name: '_id')
+  String get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'is_paid')
   bool get isPaid => throw _privateConstructorUsedError;

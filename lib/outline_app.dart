@@ -7,6 +7,7 @@ import 'package:outline/providers/tags/tags_bloc.dart';
 import 'package:outline/providers/user/user_bloc.dart';
 import 'package:outline/repositories/answers_repository.dart';
 import 'package:outline/repositories/article_repository.dart';
+import 'package:outline/repositories/banker_repository.dart';
 import 'package:outline/repositories/course_repository.dart';
 import 'package:outline/repositories/question_repository.dart';
 import 'package:outline/repositories/tags_repository.dart';
@@ -14,6 +15,7 @@ import 'package:outline/repositories/tags_repository.dart';
 import 'config/theme/custom_theme.dart';
 import 'providers/authentication/authentication_bloc.dart';
 import 'providers/course/all_courses/course_bloc.dart';
+import 'providers/course/buy_course/buy_course_bloc.dart';
 import 'providers/course/my_courses/my_courses_bloc.dart';
 import 'providers/question/question_bloc.dart';
 import 'providers/update_user/update_user_bloc.dart';
@@ -72,6 +74,12 @@ class _OutlineAppState extends State<OutlineApp> {
         BlocProvider(
           create: (context) => MyCoursesBloc(
             coursesRepository: CoursesRepository(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => BuyCourseBloc(
+            coursesRepository: CoursesRepository(),
+            bankerRepository: BankerRepository(),
           ),
         ),
         BlocProvider(

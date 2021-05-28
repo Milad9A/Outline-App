@@ -5,11 +5,11 @@ import 'package:outline/views/screens/course/widgets/widgets.dart';
 
 class CourseOverviewTab extends StatelessWidget {
   final List<Content> contents;
-  final ScrollPhysics scrollPhysics;
+  final bool inBuyCourseScreen;
 
   const CourseOverviewTab({
     required this.contents,
-    this.scrollPhysics = const AlwaysScrollableScrollPhysics(),
+    this.inBuyCourseScreen = false,
   });
 
   @override
@@ -17,25 +17,30 @@ class CourseOverviewTab extends StatelessWidget {
     return ListView.builder(
       itemCount: contents.length,
       shrinkWrap: true,
-      physics: scrollPhysics,
+      physics: inBuyCourseScreen
+          ? NeverScrollableScrollPhysics()
+          : AlwaysScrollableScrollPhysics(),
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
           leading: IconButton(
             icon: Icon(
               Icons.play_circle_fill,
-              color: ColorRepository.darkBlue,
+              color:
+                  !inBuyCourseScreen ? ColorRepository.darkBlue : Colors.grey,
             ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DriveVideoView(
-                    videoName: contents[index].contentName,
-                    videoLink: contents[index].contentLink,
-                  ),
-                ),
-              );
-            },
+            onPressed: !inBuyCourseScreen
+                ? () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DriveVideoView(
+                          videoName: contents[index].contentName,
+                          videoLink: contents[index].contentLink,
+                        ),
+                      ),
+                    );
+                  }
+                : () {},
           ),
           title: Text(
             contents[index].contentName,

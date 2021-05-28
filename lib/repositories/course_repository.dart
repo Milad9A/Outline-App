@@ -51,4 +51,23 @@ class CoursesRepository {
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }
+
+  Future<ApiResult> buyCourse({
+    required String courseId,
+    required String bankerAuthorizationToken,
+  }) async {
+    try {
+      final response = await dioClient.post(
+        '/courses/$courseId/purchase',
+        data: {
+          "authorization": bankerAuthorizationToken,
+        },
+      );
+
+      return ApiResult.success(data: '');
+    } catch (e) {
+      print(e);
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
+  }
 }

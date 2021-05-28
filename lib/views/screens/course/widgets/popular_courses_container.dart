@@ -52,13 +52,7 @@ class PopularCoursesContainer extends StatelessWidget {
           shrinkWrap: true,
           itemBuilder: (BuildContext context, int index) {
             Course course = coursesList[index];
-            return PopularTile(
-              title: course.title,
-              instructorName: course.ownerUserId.name,
-              rating: course.avgRating,
-              price: course.price,
-              bannerUrl: course.banner,
-            );
+            return PopularTile(course: course);
           },
         ),
       ],
