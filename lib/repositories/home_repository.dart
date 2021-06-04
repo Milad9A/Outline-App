@@ -27,7 +27,7 @@ class HomeRepository {
       final response = await dioClient.get(
         '/news-feed',
         queryParameters: {
-          'limit': 8,
+          'limit': 5,
           'skip': skip,
         },
       );

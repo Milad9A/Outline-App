@@ -19,12 +19,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeRepository homeRepository;
 
   List<FeedPost> feed = [];
+  bool loadMore = true;
 
   @override
   Stream<HomeState> mapEventToState(
     HomeEvent event,
   ) async* {
     if (event is GetNewsFeedInitial) {
+      loadMore = true;
       if (event.refresh) {
         yield GetFeedLoadingRefresh(feed: feed);
       } else {
@@ -55,6 +57,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       apiResult.when(
         success: (List<FeedPost> data) {
+          if (data.isEmpty) loadMore = false;
           feed.addAll(data);
           emit(GetFeedSuccess(feed: feed));
         },

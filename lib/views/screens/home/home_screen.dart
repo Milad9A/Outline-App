@@ -46,15 +46,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     getFeedLoadingInitial: () => Center(
                       child: OutlineCircularProgressIndicator(),
                     ),
-                    getFeedLoadingRefresh: (List<FeedPost> feed) =>
-                        NewsFeedBuilder(
-                      feed: feed,
-                      context: context,
-                    ),
-                    getFeedSuccess: (List<FeedPost> feed) => NewsFeedBuilder(
-                      feed: feed,
-                      context: context,
-                    ),
+                    getFeedLoadingRefresh: (List<FeedPost> feed) {
+                      return NewsFeedBuilder(context: context);
+                    },
+                    getFeedLoadingMore: () {
+                      return NewsFeedBuilder(context: context);
+                    },
+                    getFeedSuccess: (List<FeedPost> feed) {
+                      return NewsFeedBuilder(context: context);
+                    },
                     orElse: () => SizedBox.shrink(),
                   );
                 },
