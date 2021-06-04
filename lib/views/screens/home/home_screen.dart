@@ -8,6 +8,7 @@ import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/providers/home/home_bloc.dart';
 import 'package:outline/views/screens/chat/chats_screen.dart';
 import 'package:outline/views/screens/home/widgets/article_home_container.dart';
+import 'package:outline/views/screens/home/widgets/news_feed_builder.dart';
 import 'package:outline/views/screens/home/widgets/question_home_container.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
@@ -45,22 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     getFeedLoading: () => Center(
                       child: OutlineCircularProgressIndicator(),
                     ),
-                    getFeedSuccess: (List<FeedPost> feed) => ListView.separated(
-                      itemCount: feed.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        FeedPost feedPost = feed[index];
-                        if (feedPost.type == 'article') {
-                          return ArticleHomeContainer(article: feedPost.post);
-                        } else
-                          return QuestionHomeContainer(question: feedPost.post);
-                      },
-                      separatorBuilder: (BuildContext context, int index) {
-                        return Divider(
-                          thickness: 1.0,
-                          indent: 15.0,
-                          endIndent: 15.0,
-                        );
-                      },
+                    getFeedSuccess: (List<FeedPost> feed) => NewsFeedBuilder(
+                      feed: feed,
+                      context: context,
                     ),
                     orElse: () => SizedBox.shrink(),
                   );
