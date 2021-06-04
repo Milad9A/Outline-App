@@ -7,9 +7,7 @@ import 'package:outline/models/feed_post_model/feed_post_model.dart';
 import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/providers/home/home_bloc.dart';
 import 'package:outline/views/screens/chat/chats_screen.dart';
-import 'package:outline/views/screens/home/widgets/article_home_container.dart';
 import 'package:outline/views/screens/home/widgets/news_feed_builder.dart';
-import 'package:outline/views/screens/home/widgets/question_home_container.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,7 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<HomeBloc>(context).add(GetNewsFeed());
+    BlocProvider.of<HomeBloc>(context).add(
+      GetNewsFeedInitial(refresh: false),
+    );
   }
 
   @override
@@ -43,8 +43,13 @@ class _HomeScreenState extends State<HomeScreen> {
               return BlocBuilder<HomeBloc, HomeState>(
                 builder: (context, state) {
                   return state.maybeWhen(
-                    getFeedLoading: () => Center(
+                    getFeedLoadingInitial: () => Center(
                       child: OutlineCircularProgressIndicator(),
+                    ),
+                    getFeedLoadingRefresh: (List<FeedPost> feed) =>
+                        NewsFeedBuilder(
+                      feed: feed,
+                      context: context,
                     ),
                     getFeedSuccess: (List<FeedPost> feed) => NewsFeedBuilder(
                       feed: feed,

@@ -243,6 +243,7 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
                     final tag = tags[index];
                     return ItemTags(
                       key: Key(index.toString()),
+                      pressEnabled: false,
                       index: index,
                       title: tag.title,
                       active: true,

@@ -20,8 +20,16 @@ class _$HomeEventTearOff {
     return const _Started();
   }
 
-  GetNewsFeed getNewsFeed() {
-    return const GetNewsFeed();
+  GetNewsFeedInitial getNewsFeedInitial({required bool refresh}) {
+    return GetNewsFeedInitial(
+      refresh: refresh,
+    );
+  }
+
+  GetNewsFeedMore getNewsFeedMore({required int skip}) {
+    return GetNewsFeedMore(
+      skip: skip,
+    );
   }
 }
 
@@ -33,26 +41,30 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getNewsFeed,
+    required TResult Function(bool refresh) getNewsFeedInitial,
+    required TResult Function(int skip) getNewsFeedMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getNewsFeed,
+    TResult Function(bool refresh)? getNewsFeedInitial,
+    TResult Function(int skip)? getNewsFeedMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(GetNewsFeed value) getNewsFeed,
+    required TResult Function(GetNewsFeedInitial value) getNewsFeedInitial,
+    required TResult Function(GetNewsFeedMore value) getNewsFeedMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(GetNewsFeed value)? getNewsFeed,
+    TResult Function(GetNewsFeedInitial value)? getNewsFeedInitial,
+    TResult Function(GetNewsFeedMore value)? getNewsFeedMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -110,7 +122,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getNewsFeed,
+    required TResult Function(bool refresh) getNewsFeedInitial,
+    required TResult Function(int skip) getNewsFeedMore,
   }) {
     return started();
   }
@@ -119,7 +132,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getNewsFeed,
+    TResult Function(bool refresh)? getNewsFeedInitial,
+    TResult Function(int skip)? getNewsFeedMore,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -132,7 +146,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(GetNewsFeed value) getNewsFeed,
+    required TResult Function(GetNewsFeedInitial value) getNewsFeedInitial,
+    required TResult Function(GetNewsFeedMore value) getNewsFeedMore,
   }) {
     return started(this);
   }
@@ -141,7 +156,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(GetNewsFeed value)? getNewsFeed,
+    TResult Function(GetNewsFeedInitial value)? getNewsFeedInitial,
+    TResult Function(GetNewsFeedMore value)? getNewsFeedMore,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -156,58 +172,86 @@ abstract class _Started implements HomeEvent {
 }
 
 /// @nodoc
-abstract class $GetNewsFeedCopyWith<$Res> {
-  factory $GetNewsFeedCopyWith(
-          GetNewsFeed value, $Res Function(GetNewsFeed) then) =
-      _$GetNewsFeedCopyWithImpl<$Res>;
+abstract class $GetNewsFeedInitialCopyWith<$Res> {
+  factory $GetNewsFeedInitialCopyWith(
+          GetNewsFeedInitial value, $Res Function(GetNewsFeedInitial) then) =
+      _$GetNewsFeedInitialCopyWithImpl<$Res>;
+  $Res call({bool refresh});
 }
 
 /// @nodoc
-class _$GetNewsFeedCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
-    implements $GetNewsFeedCopyWith<$Res> {
-  _$GetNewsFeedCopyWithImpl(
-      GetNewsFeed _value, $Res Function(GetNewsFeed) _then)
-      : super(_value, (v) => _then(v as GetNewsFeed));
+class _$GetNewsFeedInitialCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res>
+    implements $GetNewsFeedInitialCopyWith<$Res> {
+  _$GetNewsFeedInitialCopyWithImpl(
+      GetNewsFeedInitial _value, $Res Function(GetNewsFeedInitial) _then)
+      : super(_value, (v) => _then(v as GetNewsFeedInitial));
 
   @override
-  GetNewsFeed get _value => super._value as GetNewsFeed;
+  GetNewsFeedInitial get _value => super._value as GetNewsFeedInitial;
+
+  @override
+  $Res call({
+    Object? refresh = freezed,
+  }) {
+    return _then(GetNewsFeedInitial(
+      refresh: refresh == freezed
+          ? _value.refresh
+          : refresh // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
-class _$GetNewsFeed implements GetNewsFeed {
-  const _$GetNewsFeed();
+class _$GetNewsFeedInitial implements GetNewsFeedInitial {
+  const _$GetNewsFeedInitial({required this.refresh});
+
+  @override
+  final bool refresh;
 
   @override
   String toString() {
-    return 'HomeEvent.getNewsFeed()';
+    return 'HomeEvent.getNewsFeedInitial(refresh: $refresh)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GetNewsFeed);
+    return identical(this, other) ||
+        (other is GetNewsFeedInitial &&
+            (identical(other.refresh, refresh) ||
+                const DeepCollectionEquality().equals(other.refresh, refresh)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(refresh);
+
+  @JsonKey(ignore: true)
+  @override
+  $GetNewsFeedInitialCopyWith<GetNewsFeedInitial> get copyWith =>
+      _$GetNewsFeedInitialCopyWithImpl<GetNewsFeedInitial>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() getNewsFeed,
+    required TResult Function(bool refresh) getNewsFeedInitial,
+    required TResult Function(int skip) getNewsFeedMore,
   }) {
-    return getNewsFeed();
+    return getNewsFeedInitial(refresh);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? getNewsFeed,
+    TResult Function(bool refresh)? getNewsFeedInitial,
+    TResult Function(int skip)? getNewsFeedMore,
     required TResult orElse(),
   }) {
-    if (getNewsFeed != null) {
-      return getNewsFeed();
+    if (getNewsFeedInitial != null) {
+      return getNewsFeedInitial(refresh);
     }
     return orElse();
   }
@@ -216,27 +260,153 @@ class _$GetNewsFeed implements GetNewsFeed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(GetNewsFeed value) getNewsFeed,
+    required TResult Function(GetNewsFeedInitial value) getNewsFeedInitial,
+    required TResult Function(GetNewsFeedMore value) getNewsFeedMore,
   }) {
-    return getNewsFeed(this);
+    return getNewsFeedInitial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(GetNewsFeed value)? getNewsFeed,
+    TResult Function(GetNewsFeedInitial value)? getNewsFeedInitial,
+    TResult Function(GetNewsFeedMore value)? getNewsFeedMore,
     required TResult orElse(),
   }) {
-    if (getNewsFeed != null) {
-      return getNewsFeed(this);
+    if (getNewsFeedInitial != null) {
+      return getNewsFeedInitial(this);
     }
     return orElse();
   }
 }
 
-abstract class GetNewsFeed implements HomeEvent {
-  const factory GetNewsFeed() = _$GetNewsFeed;
+abstract class GetNewsFeedInitial implements HomeEvent {
+  const factory GetNewsFeedInitial({required bool refresh}) =
+      _$GetNewsFeedInitial;
+
+  bool get refresh => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $GetNewsFeedInitialCopyWith<GetNewsFeedInitial> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetNewsFeedMoreCopyWith<$Res> {
+  factory $GetNewsFeedMoreCopyWith(
+          GetNewsFeedMore value, $Res Function(GetNewsFeedMore) then) =
+      _$GetNewsFeedMoreCopyWithImpl<$Res>;
+  $Res call({int skip});
+}
+
+/// @nodoc
+class _$GetNewsFeedMoreCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
+    implements $GetNewsFeedMoreCopyWith<$Res> {
+  _$GetNewsFeedMoreCopyWithImpl(
+      GetNewsFeedMore _value, $Res Function(GetNewsFeedMore) _then)
+      : super(_value, (v) => _then(v as GetNewsFeedMore));
+
+  @override
+  GetNewsFeedMore get _value => super._value as GetNewsFeedMore;
+
+  @override
+  $Res call({
+    Object? skip = freezed,
+  }) {
+    return _then(GetNewsFeedMore(
+      skip: skip == freezed
+          ? _value.skip
+          : skip // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+class _$GetNewsFeedMore implements GetNewsFeedMore {
+  const _$GetNewsFeedMore({required this.skip});
+
+  @override
+  final int skip;
+
+  @override
+  String toString() {
+    return 'HomeEvent.getNewsFeedMore(skip: $skip)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetNewsFeedMore &&
+            (identical(other.skip, skip) ||
+                const DeepCollectionEquality().equals(other.skip, skip)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(skip);
+
+  @JsonKey(ignore: true)
+  @override
+  $GetNewsFeedMoreCopyWith<GetNewsFeedMore> get copyWith =>
+      _$GetNewsFeedMoreCopyWithImpl<GetNewsFeedMore>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(bool refresh) getNewsFeedInitial,
+    required TResult Function(int skip) getNewsFeedMore,
+  }) {
+    return getNewsFeedMore(skip);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(bool refresh)? getNewsFeedInitial,
+    TResult Function(int skip)? getNewsFeedMore,
+    required TResult orElse(),
+  }) {
+    if (getNewsFeedMore != null) {
+      return getNewsFeedMore(skip);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(GetNewsFeedInitial value) getNewsFeedInitial,
+    required TResult Function(GetNewsFeedMore value) getNewsFeedMore,
+  }) {
+    return getNewsFeedMore(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetNewsFeedInitial value)? getNewsFeedInitial,
+    TResult Function(GetNewsFeedMore value)? getNewsFeedMore,
+    required TResult orElse(),
+  }) {
+    if (getNewsFeedMore != null) {
+      return getNewsFeedMore(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetNewsFeedMore implements HomeEvent {
+  const factory GetNewsFeedMore({required int skip}) = _$GetNewsFeedMore;
+
+  int get skip => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $GetNewsFeedMoreCopyWith<GetNewsFeedMore> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -247,8 +417,18 @@ class _$HomeStateTearOff {
     return const _Initial();
   }
 
-  GetFeedLoading getFeedLoading() {
-    return const GetFeedLoading();
+  GetFeedLoadingInitial getFeedLoadingInitial() {
+    return const GetFeedLoadingInitial();
+  }
+
+  GetFeedLoadingMore getFeedLoadingMore() {
+    return const GetFeedLoadingMore();
+  }
+
+  GetFeedLoadingRefresh getFeedLoadingRefresh({required List<FeedPost> feed}) {
+    return GetFeedLoadingRefresh(
+      feed: feed,
+    );
   }
 
   GetFeedSuccess getFeedSuccess({required List<FeedPost> feed}) {
@@ -272,7 +452,9 @@ mixin _$HomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getFeedLoading,
+    required TResult Function() getFeedLoadingInitial,
+    required TResult Function() getFeedLoadingMore,
+    required TResult Function(List<FeedPost> feed) getFeedLoadingRefresh,
     required TResult Function(List<FeedPost> feed) getFeedSuccess,
     required TResult Function(NetworkExceptions error) error,
   }) =>
@@ -280,7 +462,9 @@ mixin _$HomeState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getFeedLoading,
+    TResult Function()? getFeedLoadingInitial,
+    TResult Function()? getFeedLoadingMore,
+    TResult Function(List<FeedPost> feed)? getFeedLoadingRefresh,
     TResult Function(List<FeedPost> feed)? getFeedSuccess,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
@@ -289,7 +473,11 @@ mixin _$HomeState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(GetFeedLoading value) getFeedLoading,
+    required TResult Function(GetFeedLoadingInitial value)
+        getFeedLoadingInitial,
+    required TResult Function(GetFeedLoadingMore value) getFeedLoadingMore,
+    required TResult Function(GetFeedLoadingRefresh value)
+        getFeedLoadingRefresh,
     required TResult Function(GetFeedSuccess value) getFeedSuccess,
     required TResult Function(HomeError value) error,
   }) =>
@@ -297,7 +485,9 @@ mixin _$HomeState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(GetFeedLoading value)? getFeedLoading,
+    TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
+    TResult Function(GetFeedLoadingMore value)? getFeedLoadingMore,
+    TResult Function(GetFeedLoadingRefresh value)? getFeedLoadingRefresh,
     TResult Function(GetFeedSuccess value)? getFeedSuccess,
     TResult Function(HomeError value)? error,
     required TResult orElse(),
@@ -357,7 +547,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getFeedLoading,
+    required TResult Function() getFeedLoadingInitial,
+    required TResult Function() getFeedLoadingMore,
+    required TResult Function(List<FeedPost> feed) getFeedLoadingRefresh,
     required TResult Function(List<FeedPost> feed) getFeedSuccess,
     required TResult Function(NetworkExceptions error) error,
   }) {
@@ -368,7 +560,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getFeedLoading,
+    TResult Function()? getFeedLoadingInitial,
+    TResult Function()? getFeedLoadingMore,
+    TResult Function(List<FeedPost> feed)? getFeedLoadingRefresh,
     TResult Function(List<FeedPost> feed)? getFeedSuccess,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
@@ -383,7 +577,11 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(GetFeedLoading value) getFeedLoading,
+    required TResult Function(GetFeedLoadingInitial value)
+        getFeedLoadingInitial,
+    required TResult Function(GetFeedLoadingMore value) getFeedLoadingMore,
+    required TResult Function(GetFeedLoadingRefresh value)
+        getFeedLoadingRefresh,
     required TResult Function(GetFeedSuccess value) getFeedSuccess,
     required TResult Function(HomeError value) error,
   }) {
@@ -394,7 +592,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(GetFeedLoading value)? getFeedLoading,
+    TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
+    TResult Function(GetFeedLoadingMore value)? getFeedLoadingMore,
+    TResult Function(GetFeedLoadingRefresh value)? getFeedLoadingRefresh,
     TResult Function(GetFeedSuccess value)? getFeedSuccess,
     TResult Function(HomeError value)? error,
     required TResult orElse(),
@@ -411,35 +611,36 @@ abstract class _Initial implements HomeState {
 }
 
 /// @nodoc
-abstract class $GetFeedLoadingCopyWith<$Res> {
-  factory $GetFeedLoadingCopyWith(
-          GetFeedLoading value, $Res Function(GetFeedLoading) then) =
-      _$GetFeedLoadingCopyWithImpl<$Res>;
+abstract class $GetFeedLoadingInitialCopyWith<$Res> {
+  factory $GetFeedLoadingInitialCopyWith(GetFeedLoadingInitial value,
+          $Res Function(GetFeedLoadingInitial) then) =
+      _$GetFeedLoadingInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$GetFeedLoadingCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
-    implements $GetFeedLoadingCopyWith<$Res> {
-  _$GetFeedLoadingCopyWithImpl(
-      GetFeedLoading _value, $Res Function(GetFeedLoading) _then)
-      : super(_value, (v) => _then(v as GetFeedLoading));
+class _$GetFeedLoadingInitialCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res>
+    implements $GetFeedLoadingInitialCopyWith<$Res> {
+  _$GetFeedLoadingInitialCopyWithImpl(
+      GetFeedLoadingInitial _value, $Res Function(GetFeedLoadingInitial) _then)
+      : super(_value, (v) => _then(v as GetFeedLoadingInitial));
 
   @override
-  GetFeedLoading get _value => super._value as GetFeedLoading;
+  GetFeedLoadingInitial get _value => super._value as GetFeedLoadingInitial;
 }
 
 /// @nodoc
-class _$GetFeedLoading implements GetFeedLoading {
-  const _$GetFeedLoading();
+class _$GetFeedLoadingInitial implements GetFeedLoadingInitial {
+  const _$GetFeedLoadingInitial();
 
   @override
   String toString() {
-    return 'HomeState.getFeedLoading()';
+    return 'HomeState.getFeedLoadingInitial()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GetFeedLoading);
+    return identical(this, other) || (other is GetFeedLoadingInitial);
   }
 
   @override
@@ -449,24 +650,28 @@ class _$GetFeedLoading implements GetFeedLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getFeedLoading,
+    required TResult Function() getFeedLoadingInitial,
+    required TResult Function() getFeedLoadingMore,
+    required TResult Function(List<FeedPost> feed) getFeedLoadingRefresh,
     required TResult Function(List<FeedPost> feed) getFeedSuccess,
     required TResult Function(NetworkExceptions error) error,
   }) {
-    return getFeedLoading();
+    return getFeedLoadingInitial();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getFeedLoading,
+    TResult Function()? getFeedLoadingInitial,
+    TResult Function()? getFeedLoadingMore,
+    TResult Function(List<FeedPost> feed)? getFeedLoadingRefresh,
     TResult Function(List<FeedPost> feed)? getFeedSuccess,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) {
-    if (getFeedLoading != null) {
-      return getFeedLoading();
+    if (getFeedLoadingInitial != null) {
+      return getFeedLoadingInitial();
     }
     return orElse();
   }
@@ -475,31 +680,275 @@ class _$GetFeedLoading implements GetFeedLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(GetFeedLoading value) getFeedLoading,
+    required TResult Function(GetFeedLoadingInitial value)
+        getFeedLoadingInitial,
+    required TResult Function(GetFeedLoadingMore value) getFeedLoadingMore,
+    required TResult Function(GetFeedLoadingRefresh value)
+        getFeedLoadingRefresh,
     required TResult Function(GetFeedSuccess value) getFeedSuccess,
     required TResult Function(HomeError value) error,
   }) {
-    return getFeedLoading(this);
+    return getFeedLoadingInitial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(GetFeedLoading value)? getFeedLoading,
+    TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
+    TResult Function(GetFeedLoadingMore value)? getFeedLoadingMore,
+    TResult Function(GetFeedLoadingRefresh value)? getFeedLoadingRefresh,
     TResult Function(GetFeedSuccess value)? getFeedSuccess,
     TResult Function(HomeError value)? error,
     required TResult orElse(),
   }) {
-    if (getFeedLoading != null) {
-      return getFeedLoading(this);
+    if (getFeedLoadingInitial != null) {
+      return getFeedLoadingInitial(this);
     }
     return orElse();
   }
 }
 
-abstract class GetFeedLoading implements HomeState {
-  const factory GetFeedLoading() = _$GetFeedLoading;
+abstract class GetFeedLoadingInitial implements HomeState {
+  const factory GetFeedLoadingInitial() = _$GetFeedLoadingInitial;
+}
+
+/// @nodoc
+abstract class $GetFeedLoadingMoreCopyWith<$Res> {
+  factory $GetFeedLoadingMoreCopyWith(
+          GetFeedLoadingMore value, $Res Function(GetFeedLoadingMore) then) =
+      _$GetFeedLoadingMoreCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$GetFeedLoadingMoreCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res>
+    implements $GetFeedLoadingMoreCopyWith<$Res> {
+  _$GetFeedLoadingMoreCopyWithImpl(
+      GetFeedLoadingMore _value, $Res Function(GetFeedLoadingMore) _then)
+      : super(_value, (v) => _then(v as GetFeedLoadingMore));
+
+  @override
+  GetFeedLoadingMore get _value => super._value as GetFeedLoadingMore;
+}
+
+/// @nodoc
+class _$GetFeedLoadingMore implements GetFeedLoadingMore {
+  const _$GetFeedLoadingMore();
+
+  @override
+  String toString() {
+    return 'HomeState.getFeedLoadingMore()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is GetFeedLoadingMore);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() getFeedLoadingInitial,
+    required TResult Function() getFeedLoadingMore,
+    required TResult Function(List<FeedPost> feed) getFeedLoadingRefresh,
+    required TResult Function(List<FeedPost> feed) getFeedSuccess,
+    required TResult Function(NetworkExceptions error) error,
+  }) {
+    return getFeedLoadingMore();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFeedLoadingInitial,
+    TResult Function()? getFeedLoadingMore,
+    TResult Function(List<FeedPost> feed)? getFeedLoadingRefresh,
+    TResult Function(List<FeedPost> feed)? getFeedSuccess,
+    TResult Function(NetworkExceptions error)? error,
+    required TResult orElse(),
+  }) {
+    if (getFeedLoadingMore != null) {
+      return getFeedLoadingMore();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(GetFeedLoadingInitial value)
+        getFeedLoadingInitial,
+    required TResult Function(GetFeedLoadingMore value) getFeedLoadingMore,
+    required TResult Function(GetFeedLoadingRefresh value)
+        getFeedLoadingRefresh,
+    required TResult Function(GetFeedSuccess value) getFeedSuccess,
+    required TResult Function(HomeError value) error,
+  }) {
+    return getFeedLoadingMore(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
+    TResult Function(GetFeedLoadingMore value)? getFeedLoadingMore,
+    TResult Function(GetFeedLoadingRefresh value)? getFeedLoadingRefresh,
+    TResult Function(GetFeedSuccess value)? getFeedSuccess,
+    TResult Function(HomeError value)? error,
+    required TResult orElse(),
+  }) {
+    if (getFeedLoadingMore != null) {
+      return getFeedLoadingMore(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetFeedLoadingMore implements HomeState {
+  const factory GetFeedLoadingMore() = _$GetFeedLoadingMore;
+}
+
+/// @nodoc
+abstract class $GetFeedLoadingRefreshCopyWith<$Res> {
+  factory $GetFeedLoadingRefreshCopyWith(GetFeedLoadingRefresh value,
+          $Res Function(GetFeedLoadingRefresh) then) =
+      _$GetFeedLoadingRefreshCopyWithImpl<$Res>;
+  $Res call({List<FeedPost> feed});
+}
+
+/// @nodoc
+class _$GetFeedLoadingRefreshCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res>
+    implements $GetFeedLoadingRefreshCopyWith<$Res> {
+  _$GetFeedLoadingRefreshCopyWithImpl(
+      GetFeedLoadingRefresh _value, $Res Function(GetFeedLoadingRefresh) _then)
+      : super(_value, (v) => _then(v as GetFeedLoadingRefresh));
+
+  @override
+  GetFeedLoadingRefresh get _value => super._value as GetFeedLoadingRefresh;
+
+  @override
+  $Res call({
+    Object? feed = freezed,
+  }) {
+    return _then(GetFeedLoadingRefresh(
+      feed: feed == freezed
+          ? _value.feed
+          : feed // ignore: cast_nullable_to_non_nullable
+              as List<FeedPost>,
+    ));
+  }
+}
+
+/// @nodoc
+class _$GetFeedLoadingRefresh implements GetFeedLoadingRefresh {
+  const _$GetFeedLoadingRefresh({required this.feed});
+
+  @override
+  final List<FeedPost> feed;
+
+  @override
+  String toString() {
+    return 'HomeState.getFeedLoadingRefresh(feed: $feed)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is GetFeedLoadingRefresh &&
+            (identical(other.feed, feed) ||
+                const DeepCollectionEquality().equals(other.feed, feed)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(feed);
+
+  @JsonKey(ignore: true)
+  @override
+  $GetFeedLoadingRefreshCopyWith<GetFeedLoadingRefresh> get copyWith =>
+      _$GetFeedLoadingRefreshCopyWithImpl<GetFeedLoadingRefresh>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() getFeedLoadingInitial,
+    required TResult Function() getFeedLoadingMore,
+    required TResult Function(List<FeedPost> feed) getFeedLoadingRefresh,
+    required TResult Function(List<FeedPost> feed) getFeedSuccess,
+    required TResult Function(NetworkExceptions error) error,
+  }) {
+    return getFeedLoadingRefresh(feed);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFeedLoadingInitial,
+    TResult Function()? getFeedLoadingMore,
+    TResult Function(List<FeedPost> feed)? getFeedLoadingRefresh,
+    TResult Function(List<FeedPost> feed)? getFeedSuccess,
+    TResult Function(NetworkExceptions error)? error,
+    required TResult orElse(),
+  }) {
+    if (getFeedLoadingRefresh != null) {
+      return getFeedLoadingRefresh(feed);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(GetFeedLoadingInitial value)
+        getFeedLoadingInitial,
+    required TResult Function(GetFeedLoadingMore value) getFeedLoadingMore,
+    required TResult Function(GetFeedLoadingRefresh value)
+        getFeedLoadingRefresh,
+    required TResult Function(GetFeedSuccess value) getFeedSuccess,
+    required TResult Function(HomeError value) error,
+  }) {
+    return getFeedLoadingRefresh(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
+    TResult Function(GetFeedLoadingMore value)? getFeedLoadingMore,
+    TResult Function(GetFeedLoadingRefresh value)? getFeedLoadingRefresh,
+    TResult Function(GetFeedSuccess value)? getFeedSuccess,
+    TResult Function(HomeError value)? error,
+    required TResult orElse(),
+  }) {
+    if (getFeedLoadingRefresh != null) {
+      return getFeedLoadingRefresh(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetFeedLoadingRefresh implements HomeState {
+  const factory GetFeedLoadingRefresh({required List<FeedPost> feed}) =
+      _$GetFeedLoadingRefresh;
+
+  List<FeedPost> get feed => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $GetFeedLoadingRefreshCopyWith<GetFeedLoadingRefresh> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -566,7 +1015,9 @@ class _$GetFeedSuccess implements GetFeedSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getFeedLoading,
+    required TResult Function() getFeedLoadingInitial,
+    required TResult Function() getFeedLoadingMore,
+    required TResult Function(List<FeedPost> feed) getFeedLoadingRefresh,
     required TResult Function(List<FeedPost> feed) getFeedSuccess,
     required TResult Function(NetworkExceptions error) error,
   }) {
@@ -577,7 +1028,9 @@ class _$GetFeedSuccess implements GetFeedSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getFeedLoading,
+    TResult Function()? getFeedLoadingInitial,
+    TResult Function()? getFeedLoadingMore,
+    TResult Function(List<FeedPost> feed)? getFeedLoadingRefresh,
     TResult Function(List<FeedPost> feed)? getFeedSuccess,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
@@ -592,7 +1045,11 @@ class _$GetFeedSuccess implements GetFeedSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(GetFeedLoading value) getFeedLoading,
+    required TResult Function(GetFeedLoadingInitial value)
+        getFeedLoadingInitial,
+    required TResult Function(GetFeedLoadingMore value) getFeedLoadingMore,
+    required TResult Function(GetFeedLoadingRefresh value)
+        getFeedLoadingRefresh,
     required TResult Function(GetFeedSuccess value) getFeedSuccess,
     required TResult Function(HomeError value) error,
   }) {
@@ -603,7 +1060,9 @@ class _$GetFeedSuccess implements GetFeedSuccess {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(GetFeedLoading value)? getFeedLoading,
+    TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
+    TResult Function(GetFeedLoadingMore value)? getFeedLoadingMore,
+    TResult Function(GetFeedLoadingRefresh value)? getFeedLoadingRefresh,
     TResult Function(GetFeedSuccess value)? getFeedSuccess,
     TResult Function(HomeError value)? error,
     required TResult orElse(),
@@ -696,7 +1155,9 @@ class _$HomeError implements HomeError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getFeedLoading,
+    required TResult Function() getFeedLoadingInitial,
+    required TResult Function() getFeedLoadingMore,
+    required TResult Function(List<FeedPost> feed) getFeedLoadingRefresh,
     required TResult Function(List<FeedPost> feed) getFeedSuccess,
     required TResult Function(NetworkExceptions error) error,
   }) {
@@ -707,7 +1168,9 @@ class _$HomeError implements HomeError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getFeedLoading,
+    TResult Function()? getFeedLoadingInitial,
+    TResult Function()? getFeedLoadingMore,
+    TResult Function(List<FeedPost> feed)? getFeedLoadingRefresh,
     TResult Function(List<FeedPost> feed)? getFeedSuccess,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
@@ -722,7 +1185,11 @@ class _$HomeError implements HomeError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(GetFeedLoading value) getFeedLoading,
+    required TResult Function(GetFeedLoadingInitial value)
+        getFeedLoadingInitial,
+    required TResult Function(GetFeedLoadingMore value) getFeedLoadingMore,
+    required TResult Function(GetFeedLoadingRefresh value)
+        getFeedLoadingRefresh,
     required TResult Function(GetFeedSuccess value) getFeedSuccess,
     required TResult Function(HomeError value) error,
   }) {
@@ -733,7 +1200,9 @@ class _$HomeError implements HomeError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(GetFeedLoading value)? getFeedLoading,
+    TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
+    TResult Function(GetFeedLoadingMore value)? getFeedLoadingMore,
+    TResult Function(GetFeedLoadingRefresh value)? getFeedLoadingRefresh,
     TResult Function(GetFeedSuccess value)? getFeedSuccess,
     TResult Function(HomeError value)? error,
     required TResult orElse(),

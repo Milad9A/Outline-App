@@ -28,11 +28,9 @@ class _AddArticleTagsScreenState extends State<AddArticleTagsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: _buildAddArticleTagsScreenAppBar(context),
-        body: _buildAddArticleTagsScreenBody(),
-      ),
+    return Scaffold(
+      appBar: _buildAddArticleTagsScreenAppBar(context),
+      body: _buildAddArticleTagsScreenBody(),
     );
   }
 
@@ -85,7 +83,6 @@ class _AddArticleTagsScreenState extends State<AddArticleTagsScreen> {
                             alignment: WrapAlignment.spaceBetween,
                             itemBuilder: (int index) {
                               final item = items[index];
-
                               return ItemTags(
                                 key: Key(index.toString()),
                                 borderRadius: BorderRadius.all(

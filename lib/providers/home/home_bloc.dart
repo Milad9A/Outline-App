@@ -18,18 +18,45 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   final HomeRepository homeRepository;
 
+  List<FeedPost> feed = [];
+
   @override
   Stream<HomeState> mapEventToState(
     HomeEvent event,
   ) async* {
-    if (event is GetNewsFeed) {
-      yield GetFeedLoading();
+    if (event is GetNewsFeedInitial) {
+      if (event.refresh) {
+        yield GetFeedLoadingRefresh(feed: feed);
+      } else {
+        yield GetFeedLoadingInitial();
+        feed.clear();
+      }
 
-      ApiResult<List<FeedPost>> apiResult = await homeRepository.getNewsFeed();
+      ApiResult<List<FeedPost>> apiResult =
+          await homeRepository.getNewsFeed(skip: 0);
 
       apiResult.when(
         success: (List<FeedPost> data) {
-          emit(GetFeedSuccess(feed: data));
+          feed = data;
+          emit(GetFeedSuccess(feed: feed));
+        },
+        failure: (NetworkExceptions error) {
+          emit(HomeError(error: error));
+        },
+      );
+    }
+
+    if (event is GetNewsFeedMore) {
+      yield GetFeedLoadingMore();
+
+      ApiResult<List<FeedPost>> apiResult = await homeRepository.getNewsFeed(
+        skip: event.skip,
+      );
+
+      apiResult.when(
+        success: (List<FeedPost> data) {
+          feed.addAll(data);
+          emit(GetFeedSuccess(feed: feed));
         },
         failure: (NetworkExceptions error) {
           emit(HomeError(error: error));

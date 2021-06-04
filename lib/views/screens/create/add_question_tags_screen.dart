@@ -56,169 +56,167 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
           orElse: () {},
         );
       },
-      child: SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            elevation: 0,
-            iconTheme: IconThemeData(color: ColorRepository.darkBlue),
-            centerTitle: false,
-            title: Text(
-              'Create Question',
-              style: Theme.of(context).textTheme.headline6!.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: ColorRepository.darkBlue,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          iconTheme: IconThemeData(color: ColorRepository.darkBlue),
+          centerTitle: false,
+          title: Text(
+            'Create Question',
+            style: Theme.of(context).textTheme.headline6!.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: ColorRepository.darkBlue,
+                ),
+          ),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              showPopUp(
+                context,
+                title: 'Are you sure you want to exit?',
+                content: 'Your changes will not be saved',
+                actions: [
+                  TextButton(
+                    child: Text(
+                      'cancel',
+                      style: TextStyle(fontSize: 15.0),
+                    ),
+                    onPressed: () => Navigator.pop(context),
                   ),
-            ),
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back),
+                  TextButton(
+                    child: Text(
+                      'exit',
+                      style: TextStyle(fontSize: 15.0),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.pop(context, []);
+                    },
+                  ),
+                ],
+                onPressed: () {},
+              );
+            },
+          ),
+          actions: [
+            TextButton(
               onPressed: () {
-                showPopUp(
-                  context,
-                  title: 'Are you sure you want to exit?',
-                  content: 'Your changes will not be saved',
-                  actions: [
-                    TextButton(
-                      child: Text(
-                        'cancel',
-                        style: TextStyle(fontSize: 15.0),
-                      ),
-                      onPressed: () => Navigator.pop(context),
-                    ),
-                    TextButton(
-                      child: Text(
-                        'exit',
-                        style: TextStyle(fontSize: 15.0),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                        Navigator.pop(context, []);
-                      },
-                    ),
-                  ],
-                  onPressed: () {},
-                );
+                Navigator.pop(context, ids);
               },
+              child: Text(
+                'Done',
+                style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                      color: ColorRepository.darkBlue,
+                    ),
+              ),
             ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context, ids);
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            children: [
+              SizedBox(height: 14.0),
+              OutlineTextField(
+                controller: searchController,
+                textInputType: TextInputType.name,
+                textInputAction: TextInputAction.done,
+                onChanged: (value) {
+                  setState(() {
+                    searchValue = value!;
+                  });
                 },
-                child: Text(
-                  'Done',
-                  style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                        color: ColorRepository.darkBlue,
-                      ),
+                hintText: 'Search Tags',
+                icon: Icon(Icons.search),
+              ),
+              SizedBox(height: 20.0),
+              Expanded(
+                child: Center(
+                  child: BlocBuilder<TagBloc, TagState>(
+                    builder: (context, state) {
+                      return state.when(
+                        initial: () => SizedBox.shrink(),
+                        loading: () => OutlineCircularProgressIndicator(),
+                        success: (tags) {
+                          List<DataList> items = tags
+                              .map(
+                                (tag) => DataList(
+                                  title: tag.name,
+                                  active: false,
+                                  customData: tag.id,
+                                ),
+                              )
+                              .toList();
+                          if (searchValue != '')
+                            items.removeWhere((element) => !element.title
+                                .toLowerCase()
+                                .contains(searchValue.toLowerCase()));
+
+                          return SingleChildScrollView(
+                            child: Center(
+                              child: Tags(
+                                key: _tagStateKey,
+                                itemCount: items.length,
+                                alignment: WrapAlignment.spaceBetween,
+                                itemBuilder: (int index) {
+                                  final item = items[index];
+
+                                  return ItemTags(
+                                    key: Key(index.toString()),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(4.0),
+                                    ),
+                                    border: Border.all(
+                                      color: ColorRepository.textColor,
+                                    ),
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 8.0,
+                                      horizontal: 8.0,
+                                    ),
+                                    index: index,
+                                    title: item.title,
+                                    active: item.active,
+                                    color: Colors.white,
+                                    activeColor: ColorRepository.darkBlue,
+                                    customData: item.customData,
+                                    textColor: ColorRepository.textColor,
+                                    elevation: 0.0,
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .subtitle2!
+                                        .copyWith(
+                                          color: ColorRepository.textColor,
+                                        ),
+                                    combine: ItemTagsCombine.withTextBefore,
+                                    onPressed: (item) {
+                                      print(item);
+                                      setState(() {
+                                        if (!ids.contains(item.customData))
+                                          ids.add(
+                                            DataList(
+                                              title: item.title!,
+                                              customData: item.customData,
+                                              index: item.index,
+                                            ),
+                                          );
+                                      });
+                                    },
+                                    onLongPressed: (item) => print(item),
+                                  );
+                                },
+                              ),
+                            ),
+                          );
+                        },
+                        error: (error) => Text(error.toString()),
+                      );
+                    },
+                  ),
                 ),
               ),
+              SizedBox(height: 18.0),
             ],
-          ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              children: [
-                SizedBox(height: 14.0),
-                OutlineTextField(
-                  controller: searchController,
-                  textInputType: TextInputType.name,
-                  textInputAction: TextInputAction.done,
-                  onChanged: (value) {
-                    setState(() {
-                      searchValue = value!;
-                    });
-                  },
-                  hintText: 'Search Tags',
-                  icon: Icon(Icons.search),
-                ),
-                SizedBox(height: 20.0),
-                Expanded(
-                  child: Center(
-                    child: BlocBuilder<TagBloc, TagState>(
-                      builder: (context, state) {
-                        return state.when(
-                          initial: () => SizedBox.shrink(),
-                          loading: () => OutlineCircularProgressIndicator(),
-                          success: (tags) {
-                            List<DataList> items = tags
-                                .map(
-                                  (tag) => DataList(
-                                    title: tag.name,
-                                    active: false,
-                                    customData: tag.id,
-                                  ),
-                                )
-                                .toList();
-                            if (searchValue != '')
-                              items.removeWhere((element) => !element.title
-                                  .toLowerCase()
-                                  .contains(searchValue.toLowerCase()));
-
-                            return SingleChildScrollView(
-                              child: Center(
-                                child: Tags(
-                                  key: _tagStateKey,
-                                  itemCount: items.length,
-                                  alignment: WrapAlignment.spaceBetween,
-                                  itemBuilder: (int index) {
-                                    final item = items[index];
-
-                                    return ItemTags(
-                                      key: Key(index.toString()),
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(4.0),
-                                      ),
-                                      border: Border.all(
-                                        color: ColorRepository.textColor,
-                                      ),
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 8.0,
-                                        horizontal: 8.0,
-                                      ),
-                                      index: index,
-                                      title: item.title,
-                                      active: item.active,
-                                      color: Colors.white,
-                                      activeColor: ColorRepository.darkBlue,
-                                      customData: item.customData,
-                                      textColor: ColorRepository.textColor,
-                                      elevation: 0.0,
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .subtitle2!
-                                          .copyWith(
-                                            color: ColorRepository.textColor,
-                                          ),
-                                      combine: ItemTagsCombine.withTextBefore,
-                                      onPressed: (item) {
-                                        print(item);
-                                        setState(() {
-                                          if (!ids.contains(item.customData))
-                                            ids.add(
-                                              DataList(
-                                                title: item.title!,
-                                                customData: item.customData,
-                                                index: item.index,
-                                              ),
-                                            );
-                                        });
-                                      },
-                                      onLongPressed: (item) => print(item),
-                                    );
-                                  },
-                                ),
-                              ),
-                            );
-                          },
-                          error: (error) => Text(error.toString()),
-                        );
-                      },
-                    ),
-                  ),
-                ),
-                SizedBox(height: 18.0),
-              ],
-            ),
           ),
         ),
       ),

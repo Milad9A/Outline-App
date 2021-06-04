@@ -282,6 +282,7 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                   itemBuilder: (int index) {
                     final tag = tags[index];
                     return ItemTags(
+                      pressEnabled: false,
                       key: Key(index.toString()),
                       index: index,
                       title: tag.title,
