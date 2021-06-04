@@ -21,7 +21,7 @@ class _$ArticleModelTearOff {
   const _$ArticleModelTearOff();
 
   Article call(
-      {@JsonKey(name: 'owner_user_id') required String ownerUserId,
+      {@JsonKey(name: 'owner_user_id') required User user,
       @JsonKey(name: 'content') required String content,
       @JsonKey(name: 'title') required String title,
       @JsonKey(name: 'banner') required String banner,
@@ -30,7 +30,7 @@ class _$ArticleModelTearOff {
       @JsonKey(name: 'createdAt') required String createdAt,
       @JsonKey(name: 'updatedAt') required String updatedAt}) {
     return Article(
-      ownerUserId: ownerUserId,
+      user: user,
       content: content,
       title: title,
       banner: banner,
@@ -52,7 +52,7 @@ const $ArticleModel = _$ArticleModelTearOff();
 /// @nodoc
 mixin _$ArticleModel {
   @JsonKey(name: 'owner_user_id')
-  String get ownerUserId => throw _privateConstructorUsedError;
+  User get user => throw _privateConstructorUsedError;
   @JsonKey(name: 'content')
   String get content => throw _privateConstructorUsedError;
   @JsonKey(name: 'title')
@@ -80,7 +80,7 @@ abstract class $ArticleModelCopyWith<$Res> {
           ArticleModel value, $Res Function(ArticleModel) then) =
       _$ArticleModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'owner_user_id') String ownerUserId,
+      {@JsonKey(name: 'owner_user_id') User user,
       @JsonKey(name: 'content') String content,
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'banner') String banner,
@@ -100,7 +100,7 @@ class _$ArticleModelCopyWithImpl<$Res> implements $ArticleModelCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? ownerUserId = freezed,
+    Object? user = freezed,
     Object? content = freezed,
     Object? title = freezed,
     Object? banner = freezed,
@@ -110,10 +110,10 @@ class _$ArticleModelCopyWithImpl<$Res> implements $ArticleModelCopyWith<$Res> {
     Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      ownerUserId: ownerUserId == freezed
-          ? _value.ownerUserId
-          : ownerUserId // ignore: cast_nullable_to_non_nullable
-              as String,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
       content: content == freezed
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -152,7 +152,7 @@ abstract class $ArticleCopyWith<$Res> implements $ArticleModelCopyWith<$Res> {
       _$ArticleCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'owner_user_id') String ownerUserId,
+      {@JsonKey(name: 'owner_user_id') User user,
       @JsonKey(name: 'content') String content,
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'banner') String banner,
@@ -173,7 +173,7 @@ class _$ArticleCopyWithImpl<$Res> extends _$ArticleModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? ownerUserId = freezed,
+    Object? user = freezed,
     Object? content = freezed,
     Object? title = freezed,
     Object? banner = freezed,
@@ -183,10 +183,10 @@ class _$ArticleCopyWithImpl<$Res> extends _$ArticleModelCopyWithImpl<$Res>
     Object? updatedAt = freezed,
   }) {
     return _then(Article(
-      ownerUserId: ownerUserId == freezed
-          ? _value.ownerUserId
-          : ownerUserId // ignore: cast_nullable_to_non_nullable
-              as String,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
       content: content == freezed
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -224,7 +224,7 @@ class _$ArticleCopyWithImpl<$Res> extends _$ArticleModelCopyWithImpl<$Res>
 /// @nodoc
 class _$Article with DiagnosticableTreeMixin implements Article {
   const _$Article(
-      {@JsonKey(name: 'owner_user_id') required this.ownerUserId,
+      {@JsonKey(name: 'owner_user_id') required this.user,
       @JsonKey(name: 'content') required this.content,
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'banner') required this.banner,
@@ -238,7 +238,7 @@ class _$Article with DiagnosticableTreeMixin implements Article {
 
   @override
   @JsonKey(name: 'owner_user_id')
-  final String ownerUserId;
+  final User user;
   @override
   @JsonKey(name: 'content')
   final String content;
@@ -263,7 +263,7 @@ class _$Article with DiagnosticableTreeMixin implements Article {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ArticleModel(ownerUserId: $ownerUserId, content: $content, title: $title, banner: $banner, viewCount: $viewCount, tags: $tags, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'ArticleModel(user: $user, content: $content, title: $title, banner: $banner, viewCount: $viewCount, tags: $tags, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -271,7 +271,7 @@ class _$Article with DiagnosticableTreeMixin implements Article {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'ArticleModel'))
-      ..add(DiagnosticsProperty('ownerUserId', ownerUserId))
+      ..add(DiagnosticsProperty('user', user))
       ..add(DiagnosticsProperty('content', content))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('banner', banner))
@@ -285,9 +285,8 @@ class _$Article with DiagnosticableTreeMixin implements Article {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Article &&
-            (identical(other.ownerUserId, ownerUserId) ||
-                const DeepCollectionEquality()
-                    .equals(other.ownerUserId, ownerUserId)) &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)) &&
             (identical(other.content, content) ||
                 const DeepCollectionEquality()
                     .equals(other.content, content)) &&
@@ -311,7 +310,7 @@ class _$Article with DiagnosticableTreeMixin implements Article {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(ownerUserId) ^
+      const DeepCollectionEquality().hash(user) ^
       const DeepCollectionEquality().hash(content) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(banner) ^
@@ -333,7 +332,7 @@ class _$Article with DiagnosticableTreeMixin implements Article {
 
 abstract class Article implements ArticleModel {
   const factory Article(
-      {@JsonKey(name: 'owner_user_id') required String ownerUserId,
+      {@JsonKey(name: 'owner_user_id') required User user,
       @JsonKey(name: 'content') required String content,
       @JsonKey(name: 'title') required String title,
       @JsonKey(name: 'banner') required String banner,
@@ -346,7 +345,7 @@ abstract class Article implements ArticleModel {
 
   @override
   @JsonKey(name: 'owner_user_id')
-  String get ownerUserId => throw _privateConstructorUsedError;
+  User get user => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'content')
   String get content => throw _privateConstructorUsedError;

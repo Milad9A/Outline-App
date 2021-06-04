@@ -119,7 +119,7 @@ class _AddArticleTagsScreenState extends State<AddArticleTagsScreen> {
                                     if (!ids.contains(item.customData))
                                       ids.add(
                                         DataList(
-                                          title: item.title,
+                                          title: item.title!,
                                           customData: item.customData,
                                           index: item.index,
                                         ),

@@ -1,26 +1,27 @@
 import 'dart:convert';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/models/documents/document.dart';
 import 'package:flutter_quill/widgets/controller.dart';
 import 'package:flutter_quill/widgets/editor.dart';
 import 'package:flutter_tags/flutter_tags.dart';
-import 'package:outline/config/helpers/date_foramtter.dart';
+import 'package:outline/config/theme/color_repository.dart';
 import 'dart:math' as math;
 
 import 'package:outline/models/question_model/question_model.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
-class QuestionContainer extends StatefulWidget {
+class QuestionHomeContainer extends StatefulWidget {
   final Question question;
 
-  QuestionContainer({required this.question});
+  QuestionHomeContainer({required this.question});
 
   @override
-  _QuestionContainerState createState() => _QuestionContainerState();
+  _QuestionHomeContainerState createState() => _QuestionHomeContainerState();
 }
 
-class _QuestionContainerState extends State<QuestionContainer> {
+class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
   QuillController? controller;
 
   @override
@@ -37,13 +38,37 @@ class _QuestionContainerState extends State<QuestionContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       padding: EdgeInsets.all(15.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          widget.question.tags.isNotEmpty
-              ? TagsRow(tags: widget.question.tags)
-              : SizedBox.shrink(),
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 24.0,
+                backgroundImage: CachedNetworkImageProvider(
+                  widget.question.user.avatar,
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(widget.question.user.name),
+                    ),
+                    Container(
+                      child: widget.question.tags.isNotEmpty
+                          ? TagsRow(tags: widget.question.tags)
+                          : SizedBox.shrink(),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
           SizedBox(height: 10.0),
           Text(
             widget.question.title,
@@ -52,7 +77,7 @@ class _QuestionContainerState extends State<QuestionContainer> {
                   color: Colors.black,
                 ),
           ),
-          SizedBox(height: 10.0),
+          SizedBox(height: 6.0),
           Row(
             children: [
               Container(
@@ -113,12 +138,17 @@ class _QuestionContainerState extends State<QuestionContainer> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(widget.question.answerCount.toString() + ' Answers'),
-              Text(
-                DateFormatter().getVerboseDateTimeRepresentation(
-                  DateTime.parse(
-                    widget.question.updatedAt,
+              Row(
+                children: [
+                  Text(
+                    'View All Answers',
+                    style: TextStyle(color: ColorRepository.darkBlue),
                   ),
-                ),
+                  Icon(
+                    Icons.arrow_forward,
+                    color: ColorRepository.darkBlue,
+                  )
+                ],
               ),
             ],
           ),

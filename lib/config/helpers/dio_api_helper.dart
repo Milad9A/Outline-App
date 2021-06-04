@@ -17,10 +17,12 @@ class DioApiHelper {
     return dio
       ..interceptors.add(
         InterceptorsWrapper(
-            onRequest: (RequestOptions options) => requestInterceptor(options),
-            onError: (DioError e) async {
+            onRequest:
+                (RequestOptions options, RequestInterceptorHandler handler) =>
+                    requestInterceptor(options),
+            onError: (DioError e, ErrorInterceptorHandler handler) async {
               print(e);
-              return e.message;
+              return e.error;
             }),
       );
   }

@@ -6,21 +6,21 @@ import 'package:flutter_quill/models/documents/document.dart';
 import 'package:flutter_quill/widgets/controller.dart';
 import 'package:flutter_quill/widgets/editor.dart';
 import 'package:flutter_tags/flutter_tags.dart';
-import 'package:outline/config/helpers/date_foramtter.dart';
+import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/article_model/article_model.dart';
 import 'package:outline/views/widgets/widgets.dart';
 import 'dart:math' as math;
 
-class ArticleContainer extends StatefulWidget {
+class ArticleHomeContainer extends StatefulWidget {
   final Article article;
 
-  ArticleContainer({required this.article});
+  ArticleHomeContainer({required this.article});
 
   @override
-  _ArticleContainerState createState() => _ArticleContainerState();
+  _ArticleHomeContainerState createState() => _ArticleHomeContainerState();
 }
 
-class _ArticleContainerState extends State<ArticleContainer> {
+class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
   QuillController? controller;
 
   @override
@@ -37,13 +37,37 @@ class _ArticleContainerState extends State<ArticleContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       padding: EdgeInsets.all(15.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          widget.article.tags.isNotEmpty
-              ? TagsRow(tags: widget.article.tags)
-              : SizedBox.shrink(),
+          Row(
+            children: [
+              CircleAvatar(
+                radius: 24.0,
+                backgroundImage: CachedNetworkImageProvider(
+                  widget.article.user.avatar,
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(widget.article.user.name),
+                    ),
+                    Container(
+                      child: widget.article.tags.isNotEmpty
+                          ? TagsRow(tags: widget.article.tags)
+                          : SizedBox.shrink(),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
           SizedBox(height: 10.0),
           Text(
             widget.article.title,
@@ -52,20 +76,10 @@ class _ArticleContainerState extends State<ArticleContainer> {
                   color: Colors.black,
                 ),
           ),
-          SizedBox(height: 10.0),
+          SizedBox(height: 6.0),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12.0),
-                child: CachedNetworkImage(
-                  imageUrl: widget.article.banner,
-                  fit: BoxFit.cover,
-                  height: 60.0,
-                  width: 60.0,
-                ),
-              ),
-              SizedBox(width: 10.0),
               Container(
                 child: controller != null
                     ? Expanded(
@@ -88,6 +102,14 @@ class _ArticleContainerState extends State<ArticleContainer> {
             ],
           ),
           SizedBox(height: 10.0),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12.0),
+            child: CachedNetworkImage(
+              imageUrl: widget.article.banner,
+              fit: BoxFit.cover,
+            ),
+          ),
+          SizedBox(height: 10.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -102,12 +124,17 @@ class _ArticleContainerState extends State<ArticleContainer> {
                   Text('24k'),
                 ],
               ),
-              Text(
-                DateFormatter().getVerboseDateTimeRepresentation(
-                  DateTime.parse(
-                    widget.article.updatedAt,
+              Row(
+                children: [
+                  Text(
+                    'Read All Articles',
+                    style: TextStyle(color: ColorRepository.darkBlue),
                   ),
-                ),
+                  Icon(
+                    Icons.arrow_forward,
+                    color: ColorRepository.darkBlue,
+                  )
+                ],
               ),
             ],
           ),

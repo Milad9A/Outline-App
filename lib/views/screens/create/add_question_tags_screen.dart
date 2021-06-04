@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tags/flutter_tags.dart';
@@ -7,7 +5,6 @@ import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/config/theme/color_repository.dart';
-import 'package:outline/models/question_model/question_create_model.dart';
 import 'package:outline/models/question_model/question_model.dart';
 import 'package:outline/providers/question/question_bloc.dart';
 import 'package:outline/providers/tags/tags_bloc.dart';
@@ -199,7 +196,7 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
                                           if (!ids.contains(item.customData))
                                             ids.add(
                                               DataList(
-                                                title: item.title,
+                                                title: item.title!,
                                                 customData: item.customData,
                                                 index: item.index,
                                               ),

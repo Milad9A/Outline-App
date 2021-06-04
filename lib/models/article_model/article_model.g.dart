@@ -8,7 +8,7 @@ part of 'article_model.dart';
 
 _$Article _$_$ArticleFromJson(Map<String, dynamic> json) {
   return _$Article(
-    ownerUserId: json['owner_user_id'] as String,
+    user: User.fromJson(json['owner_user_id'] as Map<String, dynamic>),
     content: json['content'] as String,
     title: json['title'] as String,
     banner: json['banner'] as String,
@@ -22,7 +22,7 @@ _$Article _$_$ArticleFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$_$ArticleToJson(_$Article instance) => <String, dynamic>{
-      'owner_user_id': instance.ownerUserId,
+      'owner_user_id': instance.user,
       'content': instance.content,
       'title': instance.title,
       'banner': instance.banner,

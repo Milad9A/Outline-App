@@ -23,6 +23,7 @@ class TagsRow extends StatelessWidget {
           title: tag.name,
           textActiveColor: Colors.black,
           elevation: 0.0,
+          pressEnabled: false,
         );
       },
     );

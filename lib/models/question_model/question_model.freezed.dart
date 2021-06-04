@@ -21,7 +21,8 @@ class _$QuestionModelTearOff {
   const _$QuestionModelTearOff();
 
   Question call(
-      {@JsonKey(name: 'body') required String body,
+      {@JsonKey(name: 'owner_user_id') required User user,
+      @JsonKey(name: 'body') required String body,
       @JsonKey(name: 'title') required String title,
       @JsonKey(name: 'is_answered') required bool isAnswered,
       @JsonKey(name: 'view_count') required int viewCount,
@@ -31,6 +32,7 @@ class _$QuestionModelTearOff {
       @JsonKey(name: 'createdAt') required String createdAt,
       @JsonKey(name: 'updatedAt') required String updatedAt}) {
     return Question(
+      user: user,
       body: body,
       title: title,
       isAnswered: isAnswered,
@@ -53,6 +55,8 @@ const $QuestionModel = _$QuestionModelTearOff();
 
 /// @nodoc
 mixin _$QuestionModel {
+  @JsonKey(name: 'owner_user_id')
+  User get user => throw _privateConstructorUsedError;
   @JsonKey(name: 'body')
   String get body => throw _privateConstructorUsedError;
   @JsonKey(name: 'title')
@@ -84,7 +88,8 @@ abstract class $QuestionModelCopyWith<$Res> {
           QuestionModel value, $Res Function(QuestionModel) then) =
       _$QuestionModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'body') String body,
+      {@JsonKey(name: 'owner_user_id') User user,
+      @JsonKey(name: 'body') String body,
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'is_answered') bool isAnswered,
       @JsonKey(name: 'view_count') int viewCount,
@@ -106,6 +111,7 @@ class _$QuestionModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? user = freezed,
     Object? body = freezed,
     Object? title = freezed,
     Object? isAnswered = freezed,
@@ -117,6 +123,10 @@ class _$QuestionModelCopyWithImpl<$Res>
     Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -163,7 +173,8 @@ abstract class $QuestionCopyWith<$Res> implements $QuestionModelCopyWith<$Res> {
       _$QuestionCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'body') String body,
+      {@JsonKey(name: 'owner_user_id') User user,
+      @JsonKey(name: 'body') String body,
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'is_answered') bool isAnswered,
       @JsonKey(name: 'view_count') int viewCount,
@@ -185,6 +196,7 @@ class _$QuestionCopyWithImpl<$Res> extends _$QuestionModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? user = freezed,
     Object? body = freezed,
     Object? title = freezed,
     Object? isAnswered = freezed,
@@ -196,6 +208,10 @@ class _$QuestionCopyWithImpl<$Res> extends _$QuestionModelCopyWithImpl<$Res>
     Object? updatedAt = freezed,
   }) {
     return _then(Question(
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -241,7 +257,8 @@ class _$QuestionCopyWithImpl<$Res> extends _$QuestionModelCopyWithImpl<$Res>
 /// @nodoc
 class _$Question with DiagnosticableTreeMixin implements Question {
   const _$Question(
-      {@JsonKey(name: 'body') required this.body,
+      {@JsonKey(name: 'owner_user_id') required this.user,
+      @JsonKey(name: 'body') required this.body,
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'is_answered') required this.isAnswered,
       @JsonKey(name: 'view_count') required this.viewCount,
@@ -254,6 +271,9 @@ class _$Question with DiagnosticableTreeMixin implements Question {
   factory _$Question.fromJson(Map<String, dynamic> json) =>
       _$_$QuestionFromJson(json);
 
+  @override
+  @JsonKey(name: 'owner_user_id')
+  final User user;
   @override
   @JsonKey(name: 'body')
   final String body;
@@ -284,7 +304,7 @@ class _$Question with DiagnosticableTreeMixin implements Question {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'QuestionModel(body: $body, title: $title, isAnswered: $isAnswered, viewCount: $viewCount, answerCount: $answerCount, score: $score, tags: $tags, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'QuestionModel(user: $user, body: $body, title: $title, isAnswered: $isAnswered, viewCount: $viewCount, answerCount: $answerCount, score: $score, tags: $tags, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -292,6 +312,7 @@ class _$Question with DiagnosticableTreeMixin implements Question {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'QuestionModel'))
+      ..add(DiagnosticsProperty('user', user))
       ..add(DiagnosticsProperty('body', body))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('isAnswered', isAnswered))
@@ -307,6 +328,8 @@ class _$Question with DiagnosticableTreeMixin implements Question {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Question &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)) &&
             (identical(other.body, body) ||
                 const DeepCollectionEquality().equals(other.body, body)) &&
             (identical(other.title, title) ||
@@ -335,6 +358,7 @@ class _$Question with DiagnosticableTreeMixin implements Question {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(user) ^
       const DeepCollectionEquality().hash(body) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(isAnswered) ^
@@ -358,7 +382,8 @@ class _$Question with DiagnosticableTreeMixin implements Question {
 
 abstract class Question implements QuestionModel {
   const factory Question(
-      {@JsonKey(name: 'body') required String body,
+      {@JsonKey(name: 'owner_user_id') required User user,
+      @JsonKey(name: 'body') required String body,
       @JsonKey(name: 'title') required String title,
       @JsonKey(name: 'is_answered') required bool isAnswered,
       @JsonKey(name: 'view_count') required int viewCount,
@@ -370,6 +395,9 @@ abstract class Question implements QuestionModel {
 
   factory Question.fromJson(Map<String, dynamic> json) = _$Question.fromJson;
 
+  @override
+  @JsonKey(name: 'owner_user_id')
+  User get user => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'body')
   String get body => throw _privateConstructorUsedError;
