@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/consts.dart';
@@ -40,6 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text('Please Login or Sign Up to View the News Feed!'),
             ),
             authenticated: (user) {
+              for (var tag in user.tags) {
+                FirebaseMessaging.instance.subscribeToTopic(tag);
+              }
               return BlocBuilder<HomeBloc, HomeState>(
                 builder: (context, state) {
                   return state.maybeWhen(
