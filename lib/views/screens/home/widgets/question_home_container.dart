@@ -129,7 +129,10 @@ class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
                       ),
                     )
                   : Expanded(
-                      child: Text(widget.question.body),
+                      child: Text(
+                        widget.question.body,
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
                     ),
             ],
           ),

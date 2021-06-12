@@ -139,7 +139,9 @@ class _ChatsScreenState extends State<ChatsScreen> {
                     )
               : Padding(
                   padding: const EdgeInsets.only(top: 150.0),
-                  child: Center(child: OutlineCircularProgressIndicator()),
+                  child: Center(
+                    child: OutlineCircularProgressIndicator(),
+                  ),
                 );
         },
       ),

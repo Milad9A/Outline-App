@@ -77,27 +77,26 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
                 ),
           ),
           SizedBox(height: 6.0),
-          Row(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
+                height: 40.0,
                 child: controller != null
-                    ? Expanded(
-                        child: QuillEditor(
-                          controller: controller!,
-                          readOnly: true,
-                          showCursor: false,
-                          autoFocus: false,
-                          expands: false,
-                          focusNode: FocusNode(),
-                          padding: EdgeInsets.zero,
-                          scrollable: true,
-                          scrollController: ScrollController(),
-                        ),
+                    ? Text(
+                        controller!.document.toPlainText(),
+                        style: Theme.of(context).textTheme.bodyText1,
+                        overflow: TextOverflow.ellipsis,
                       )
-                    : Expanded(
-                        child: Text(widget.article.content),
+                    : Text(
+                        widget.article.content,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
+              ),
+              Text(
+                '...',
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             ],
           ),

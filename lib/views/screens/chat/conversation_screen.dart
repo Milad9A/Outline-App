@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/repositories/chat_repository.dart';
+import 'package:outline/views/screens/chat/call_screen.dart';
 import 'package:outline/views/screens/chat/widgets/widgets.dart';
 import 'package:outline/views/widgets/widgets.dart';
 import 'package:auto_direction/auto_direction.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ConversationScreen extends StatefulWidget {
   final String name;
@@ -34,6 +36,23 @@ class _ConversationScreenState extends State<ConversationScreen> {
     conversationStream = chatRepository.getConversationMessages(
       chatRoomId: widget.chatRoomId,
     );
+  }
+
+  Future<void> onJoin() async {
+    await _handleCameraAndMic(Permission.camera);
+    await _handleCameraAndMic(Permission.microphone);
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CallScreen(channelName: widget.chatRoomId),
+      ),
+    );
+  }
+
+  Future<void> _handleCameraAndMic(Permission permission) async {
+    final status = await permission.request();
+    print(status);
   }
 
   @override
@@ -84,18 +103,20 @@ class _ConversationScreenState extends State<ConversationScreen> {
         ],
       ),
       actions: [
-        Icon(
-          Icons.videocam,
+        IconButton(
+          icon: Icon(Icons.videocam),
+          onPressed: () {
+            onJoin();
+          },
         ),
-        SizedBox(width: 15.0),
-        Icon(
-          Icons.call,
+        IconButton(
+          icon: Icon(Icons.call),
+          onPressed: () {},
         ),
-        SizedBox(width: 15.0),
-        Icon(
-          Icons.more_vert_outlined,
+        IconButton(
+          icon: Icon(Icons.more_vert_outlined),
+          onPressed: () {},
         ),
-        SizedBox(width: 15.0),
       ],
     );
   }

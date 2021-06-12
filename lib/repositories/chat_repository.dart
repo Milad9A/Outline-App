@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/helpers/interceptor.dart';
+import 'package:outline/config/services/api_result.dart';
 import 'package:outline/config/services/dio_client.dart';
+import 'package:outline/config/services/network_exceptions.dart';
 
 class ChatRepository {
   late DioClient dioClient;
@@ -116,5 +118,23 @@ class ChatRepository {
     return firstEmail.compareTo(secondEmail) > 0
         ? '${secondEmail}_$firstEmail'
         : '${firstEmail}_$secondEmail';
+  }
+
+  Future<ApiResult<Map<String, dynamic>>> getAgoraAccessToken({
+    required String channelName,
+  }) async {
+    try {
+      final response = await dioClient.get(
+        '/agora-access-token',
+        queryParameters: {
+          'channel_name': channelName,
+        },
+      );
+
+      return ApiResult.success(data: response);
+    } catch (e) {
+      print(e);
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
   }
 }
