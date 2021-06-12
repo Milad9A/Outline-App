@@ -125,13 +125,11 @@ class ChatRepository {
     required String otherUserEmail,
   }) async {
     try {
-      final response = await dioClient.post(
+      final response = await dioClient.get(
         '/agora-access-token',
-        data: {
-          'other_user_email': otherUserEmail,
-        },
         queryParameters: {
           'channel_name': channelName,
+          'other_user_email': otherUserEmail,
         },
       );
 
