@@ -112,4 +112,21 @@ class UserRepository {
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }
+
+  Future<ApiResult> updateFCMToken({
+    required String newFcmToken,
+  }) async {
+    try {
+      final response = await dioClient.patch(
+        '/users/update-fcm-token',
+        data: {
+          'fcm_token': newFcmToken,
+        },
+      );
+
+      return ApiResult.success(data: response);
+    } catch (e) {
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
+  }
 }

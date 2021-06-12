@@ -71,8 +71,10 @@ class _OutlineAppState extends State<OutlineApp> {
   String _token;
   Stream<String> _tokenStream;
 
-  void setToken(String token) {
+  void setToken(String token) async {
     print('FCM Token: $token');
+    UserRepository userRepository = UserRepository();
+    await userRepository.updateFCMToken(newFcmToken: token);
     setState(() {
       _token = token;
     });

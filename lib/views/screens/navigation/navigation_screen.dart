@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -8,7 +7,6 @@ import 'package:outline/providers/authentication/authentication_bloc.dart';
 import 'package:outline/views/screens/course/course_screen.dart';
 import 'package:outline/views/screens/create/create_post_screen.dart';
 import 'package:outline/views/screens/home/home_screen.dart';
-import 'package:outline/views/screens/login_and_sign_up/login_screen.dart';
 import 'package:outline/views/screens/profile/profile_screen.dart';
 import 'package:outline/views/screens/search/search_screen.dart';
 
