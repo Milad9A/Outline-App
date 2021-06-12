@@ -9,9 +9,11 @@ import 'package:outline/repositories/chat_repository.dart';
 
 class CallScreen extends StatefulWidget {
   final String channelName;
+  final String otherUserEmail;
 
   const CallScreen({
     required this.channelName,
+    required this.otherUserEmail,
   });
 
   @override
@@ -57,8 +59,11 @@ class _CallScreenState extends State<CallScreen> {
     _addAgoraEventHandlers();
     // await _engine!.enableWebSdkInteroperability(true);
 
-    final ApiResult<Map<String, dynamic>> apiResult = await chatRepository
-        .getAgoraAccessToken(channelName: widget.channelName);
+    final ApiResult<Map<String, dynamic>> apiResult =
+        await chatRepository.getAgoraAccessToken(
+      channelName: widget.channelName,
+      otherUserEmail: widget.otherUserEmail,
+    );
 
     apiResult.when(
       success: (Map<String, dynamic> data) async {

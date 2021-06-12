@@ -122,10 +122,14 @@ class ChatRepository {
 
   Future<ApiResult<Map<String, dynamic>>> getAgoraAccessToken({
     required String channelName,
+    required String otherUserEmail,
   }) async {
     try {
-      final response = await dioClient.get(
+      final response = await dioClient.post(
         '/agora-access-token',
+        data: {
+          'other_user_email': otherUserEmail,
+        },
         queryParameters: {
           'channel_name': channelName,
         },

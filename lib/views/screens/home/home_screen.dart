@@ -41,9 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text('Please Login or Sign Up to View the News Feed!'),
             ),
             authenticated: (user) {
-              for (var tag in user.tags) {
-                FirebaseMessaging.instance.subscribeToTopic(tag);
-              }
+              // for (var tag in user.tags) {
+              //   FirebaseMessaging.instance.subscribeToTopic(tag);
+              // }
               return BlocBuilder<HomeBloc, HomeState>(
                 builder: (context, state) {
                   return state.maybeWhen(

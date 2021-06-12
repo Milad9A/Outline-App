@@ -11,11 +11,13 @@ import 'package:permission_handler/permission_handler.dart';
 
 class ConversationScreen extends StatefulWidget {
   final String name;
+  final String email;
   final String avatar;
   final String chatRoomId;
 
   const ConversationScreen({
     required this.name,
+    required this.email,
     required this.avatar,
     required this.chatRoomId,
   });
@@ -45,7 +47,10 @@ class _ConversationScreenState extends State<ConversationScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => CallScreen(channelName: widget.chatRoomId),
+        builder: (context) => CallScreen(
+          channelName: widget.chatRoomId,
+          otherUserEmail: widget.email,
+        ),
       ),
     );
   }

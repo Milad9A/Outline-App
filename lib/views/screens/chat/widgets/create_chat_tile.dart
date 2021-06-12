@@ -10,8 +10,7 @@ class CreateChatTile extends StatelessWidget {
   final String name;
   final String avatar;
   final String email;
-
-  ChatRepository chatRepository = ChatRepository();
+  final ChatRepository chatRepository = ChatRepository();
 
   CreateChatTile({
     required this.name,
@@ -72,6 +71,7 @@ class CreateChatTile extends StatelessWidget {
             MaterialPageRoute(
               builder: (context) => ConversationScreen(
                 name: name,
+                email: email,
                 avatar: avatar,
                 chatRoomId: chatRepository.createChatRoomIdFromEmails(
                   email,

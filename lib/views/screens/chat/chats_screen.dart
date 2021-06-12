@@ -111,6 +111,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                             );
                             return ChatTile(
                               name: otherUser['name'],
+                              email: otherUser['email'],
                               avatar: otherUser['avatar'],
                               chatRoomId: chatRoom['chatroomid'],
                               lastOpenedByMe: me['last_opened'],

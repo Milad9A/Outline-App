@@ -8,6 +8,7 @@ import 'package:outline/views/screens/chat/conversation_screen.dart';
 class ChatTile extends StatefulWidget {
   ChatTile({
     required this.name,
+    required this.email,
     required this.avatar,
     required this.chatRoomId,
     required this.lastOpenedByMe,
@@ -15,6 +16,7 @@ class ChatTile extends StatefulWidget {
   });
 
   final String name;
+  final String email;
   final String avatar;
   final String chatRoomId;
   final String lastOpenedByMe;
@@ -59,6 +61,7 @@ class _ChatTileState extends State<ChatTile> {
               MaterialPageRoute(
                 builder: (context) => ConversationScreen(
                   name: widget.name,
+                  email: widget.email,
                   avatar: widget.avatar,
                   chatRoomId: widget.chatRoomId,
                 ),
