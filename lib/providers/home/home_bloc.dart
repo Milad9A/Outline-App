@@ -29,6 +29,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) async* {
     if (event is GetNewsFeedInitial) {
       loadMore = true;
+      articlesLength = 0;
+      questionsLength = 0;
       if (event.refresh) {
         yield GetFeedLoadingRefresh(feed: feed);
       } else {

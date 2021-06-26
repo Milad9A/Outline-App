@@ -6,6 +6,7 @@ import 'package:outline/config/services/api_result.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/question_model/question_create_model.dart';
 import 'package:outline/models/question_model/question_model.dart';
+import 'package:outline/models/question_model/question_vote_model.dart';
 import 'package:outline/repositories/question_repository.dart';
 
 part 'question_event.dart';

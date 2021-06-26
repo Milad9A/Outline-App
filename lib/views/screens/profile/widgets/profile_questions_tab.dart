@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/models/question_model/question_model.dart';
-import 'package:outline/providers/question/question_bloc.dart';
+import 'package:outline/providers/question/question/question_bloc.dart';
 import 'package:outline/views/screens/profile/widgets/question_container.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
