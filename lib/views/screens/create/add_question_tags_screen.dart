@@ -47,7 +47,7 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
             showPopUp(
               context,
               title: 'Error',
-              content: message.toString(),
+              content: NetworkExceptions.getErrorMessage(message),
               onPressed: () {
                 Navigator.pop(context);
               },

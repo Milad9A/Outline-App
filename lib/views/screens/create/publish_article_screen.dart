@@ -64,7 +64,7 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
             showPopUp(
               context,
               title: 'Error',
-              content: message.toString(),
+              content: NetworkExceptions.getErrorMessage(message),
               onPressed: () {
                 Navigator.pop(context);
               },

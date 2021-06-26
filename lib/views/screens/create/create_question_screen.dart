@@ -78,7 +78,7 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
             showPopUp(
               context,
               title: 'Error',
-              content: message.toString(),
+              content: NetworkExceptions.getErrorMessage(message),
               onPressed: () {
                 Navigator.pop(context);
               },

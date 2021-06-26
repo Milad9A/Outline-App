@@ -41,8 +41,11 @@ abstract class NetworkExceptions with _$NetworkExceptions {
 
   const factory NetworkExceptions.unexpectedError() = UnexpectedError;
 
-  static NetworkExceptions handleResponse(int statusCode) {
-    switch (statusCode) {
+  static NetworkExceptions handleResponse(Response response) {
+    if (response.data['error'] != null) {
+      return NetworkExceptions.defaultError(response.data['error']);
+    }
+    switch (response.statusCode) {
       case 400:
       case 401:
       case 403:
@@ -58,7 +61,7 @@ abstract class NetworkExceptions with _$NetworkExceptions {
       case 503:
         return NetworkExceptions.serviceUnavailable();
       default:
-        var responseCode = statusCode;
+        var responseCode = response.statusCode;
         return NetworkExceptions.defaultError(
           "Received invalid status code: $responseCode",
         );
@@ -85,7 +88,7 @@ abstract class NetworkExceptions with _$NetworkExceptions {
               break;
             case DioErrorType.response:
               networkExceptions =
-                  NetworkExceptions.handleResponse(error.response!.statusCode!);
+                  NetworkExceptions.handleResponse(error.response!);
               break;
             case DioErrorType.sendTimeout:
               networkExceptions = NetworkExceptions.sendTimeout();

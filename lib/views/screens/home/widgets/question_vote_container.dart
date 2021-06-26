@@ -39,7 +39,7 @@ class _QuestionVoteContainerState extends State<QuestionVoteContainer> {
             showPopUp(
               context,
               title: 'Error',
-              content: message.toString(),
+              content: NetworkExceptions.getErrorMessage(message),
               onPressed: () {
                 Navigator.pop(context);
               },
