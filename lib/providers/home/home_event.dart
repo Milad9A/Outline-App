@@ -9,6 +9,7 @@ class HomeEvent with _$HomeEvent {
   }) = GetNewsFeedInitial;
 
   const factory HomeEvent.getNewsFeedMore({
-    required int skip,
+    required int articlesSkip,
+    required int questionsSkip,
   }) = GetNewsFeedMore;
 }

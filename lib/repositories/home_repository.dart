@@ -22,13 +22,17 @@ class HomeRepository {
     );
   }
 
-  Future<ApiResult<List<FeedPost>>> getNewsFeed({required int skip}) async {
+  Future<ApiResult<List<FeedPost>>> getNewsFeed({
+    required int articlesSkip,
+    required int questionsSkip,
+  }) async {
     try {
       final response = await dioClient.get(
         '/news-feed',
         queryParameters: {
           'limit': 5,
-          'skip': skip,
+          'articles_skip': articlesSkip,
+          'questions_skip': questionsSkip,
         },
       );
 

@@ -26,9 +26,11 @@ class _$HomeEventTearOff {
     );
   }
 
-  GetNewsFeedMore getNewsFeedMore({required int skip}) {
+  GetNewsFeedMore getNewsFeedMore(
+      {required int articlesSkip, required int questionsSkip}) {
     return GetNewsFeedMore(
-      skip: skip,
+      articlesSkip: articlesSkip,
+      questionsSkip: questionsSkip,
     );
   }
 }
@@ -42,14 +44,15 @@ mixin _$HomeEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(bool refresh) getNewsFeedInitial,
-    required TResult Function(int skip) getNewsFeedMore,
+    required TResult Function(int articlesSkip, int questionsSkip)
+        getNewsFeedMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(bool refresh)? getNewsFeedInitial,
-    TResult Function(int skip)? getNewsFeedMore,
+    TResult Function(int articlesSkip, int questionsSkip)? getNewsFeedMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -123,7 +126,8 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(bool refresh) getNewsFeedInitial,
-    required TResult Function(int skip) getNewsFeedMore,
+    required TResult Function(int articlesSkip, int questionsSkip)
+        getNewsFeedMore,
   }) {
     return started();
   }
@@ -133,7 +137,7 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(bool refresh)? getNewsFeedInitial,
-    TResult Function(int skip)? getNewsFeedMore,
+    TResult Function(int articlesSkip, int questionsSkip)? getNewsFeedMore,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -237,7 +241,8 @@ class _$GetNewsFeedInitial implements GetNewsFeedInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(bool refresh) getNewsFeedInitial,
-    required TResult Function(int skip) getNewsFeedMore,
+    required TResult Function(int articlesSkip, int questionsSkip)
+        getNewsFeedMore,
   }) {
     return getNewsFeedInitial(refresh);
   }
@@ -247,7 +252,7 @@ class _$GetNewsFeedInitial implements GetNewsFeedInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(bool refresh)? getNewsFeedInitial,
-    TResult Function(int skip)? getNewsFeedMore,
+    TResult Function(int articlesSkip, int questionsSkip)? getNewsFeedMore,
     required TResult orElse(),
   }) {
     if (getNewsFeedInitial != null) {
@@ -296,7 +301,7 @@ abstract class $GetNewsFeedMoreCopyWith<$Res> {
   factory $GetNewsFeedMoreCopyWith(
           GetNewsFeedMore value, $Res Function(GetNewsFeedMore) then) =
       _$GetNewsFeedMoreCopyWithImpl<$Res>;
-  $Res call({int skip});
+  $Res call({int articlesSkip, int questionsSkip});
 }
 
 /// @nodoc
@@ -311,12 +316,17 @@ class _$GetNewsFeedMoreCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? skip = freezed,
+    Object? articlesSkip = freezed,
+    Object? questionsSkip = freezed,
   }) {
     return _then(GetNewsFeedMore(
-      skip: skip == freezed
-          ? _value.skip
-          : skip // ignore: cast_nullable_to_non_nullable
+      articlesSkip: articlesSkip == freezed
+          ? _value.articlesSkip
+          : articlesSkip // ignore: cast_nullable_to_non_nullable
+              as int,
+      questionsSkip: questionsSkip == freezed
+          ? _value.questionsSkip
+          : questionsSkip // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -324,27 +334,36 @@ class _$GetNewsFeedMoreCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
 
 /// @nodoc
 class _$GetNewsFeedMore implements GetNewsFeedMore {
-  const _$GetNewsFeedMore({required this.skip});
+  const _$GetNewsFeedMore(
+      {required this.articlesSkip, required this.questionsSkip});
 
   @override
-  final int skip;
+  final int articlesSkip;
+  @override
+  final int questionsSkip;
 
   @override
   String toString() {
-    return 'HomeEvent.getNewsFeedMore(skip: $skip)';
+    return 'HomeEvent.getNewsFeedMore(articlesSkip: $articlesSkip, questionsSkip: $questionsSkip)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is GetNewsFeedMore &&
-            (identical(other.skip, skip) ||
-                const DeepCollectionEquality().equals(other.skip, skip)));
+            (identical(other.articlesSkip, articlesSkip) ||
+                const DeepCollectionEquality()
+                    .equals(other.articlesSkip, articlesSkip)) &&
+            (identical(other.questionsSkip, questionsSkip) ||
+                const DeepCollectionEquality()
+                    .equals(other.questionsSkip, questionsSkip)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(skip);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(articlesSkip) ^
+      const DeepCollectionEquality().hash(questionsSkip);
 
   @JsonKey(ignore: true)
   @override
@@ -356,9 +375,10 @@ class _$GetNewsFeedMore implements GetNewsFeedMore {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(bool refresh) getNewsFeedInitial,
-    required TResult Function(int skip) getNewsFeedMore,
+    required TResult Function(int articlesSkip, int questionsSkip)
+        getNewsFeedMore,
   }) {
-    return getNewsFeedMore(skip);
+    return getNewsFeedMore(articlesSkip, questionsSkip);
   }
 
   @override
@@ -366,11 +386,11 @@ class _$GetNewsFeedMore implements GetNewsFeedMore {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(bool refresh)? getNewsFeedInitial,
-    TResult Function(int skip)? getNewsFeedMore,
+    TResult Function(int articlesSkip, int questionsSkip)? getNewsFeedMore,
     required TResult orElse(),
   }) {
     if (getNewsFeedMore != null) {
-      return getNewsFeedMore(skip);
+      return getNewsFeedMore(articlesSkip, questionsSkip);
     }
     return orElse();
   }
@@ -401,9 +421,12 @@ class _$GetNewsFeedMore implements GetNewsFeedMore {
 }
 
 abstract class GetNewsFeedMore implements HomeEvent {
-  const factory GetNewsFeedMore({required int skip}) = _$GetNewsFeedMore;
+  const factory GetNewsFeedMore(
+      {required int articlesSkip,
+      required int questionsSkip}) = _$GetNewsFeedMore;
 
-  int get skip => throw _privateConstructorUsedError;
+  int get articlesSkip => throw _privateConstructorUsedError;
+  int get questionsSkip => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $GetNewsFeedMoreCopyWith<GetNewsFeedMore> get copyWith =>
       throw _privateConstructorUsedError;

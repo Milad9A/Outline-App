@@ -33,11 +33,16 @@ class _NewsFeedBuilderState extends State<NewsFeedBuilder> {
 
   void _onLoading() async {
     bool loadMore = BlocProvider.of<HomeBloc>(widget.context).loadMore;
-    int length = BlocProvider.of<HomeBloc>(widget.context).feed.length;
+    // int length = BlocProvider.of<HomeBloc>(widget.context).feed.length;
+    int articlesLength = BlocProvider.of<HomeBloc>(context).articlesLength;
+    int questionsLength = BlocProvider.of<HomeBloc>(context).questionsLength;
 
     if (loadMore) {
       BlocProvider.of<HomeBloc>(widget.context).add(
-        GetNewsFeedMore(skip: (length / 2).floor()),
+        GetNewsFeedMore(
+          articlesSkip: articlesLength,
+          questionsSkip: questionsLength,
+        ),
       );
       if (mounted) setState(() {});
       _refreshController.loadComplete();
@@ -88,9 +93,12 @@ class _NewsFeedBuilderState extends State<NewsFeedBuilder> {
                 FeedPost feedPost =
                     BlocProvider.of<HomeBloc>(context).feed[index];
                 if (feedPost.type == 'article') {
+                  BlocProvider.of<HomeBloc>(context).articlesLength++;
                   return ArticleHomeContainer(article: feedPost.post);
-                } else
+                } else {
+                  BlocProvider.of<HomeBloc>(context).questionsLength++;
                   return QuestionHomeContainer(question: feedPost.post);
+                }
               },
               separatorBuilder: (BuildContext context, int index) {
                 return Divider(

@@ -19,6 +19,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeRepository homeRepository;
 
   List<FeedPost> feed = [];
+  int articlesLength = 0;
+  int questionsLength = 0;
   bool loadMore = true;
 
   @override
@@ -35,7 +37,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       }
 
       ApiResult<List<FeedPost>> apiResult =
-          await homeRepository.getNewsFeed(skip: 0);
+          await homeRepository.getNewsFeed(articlesSkip: 0, questionsSkip: 0);
 
       apiResult.when(
         success: (List<FeedPost> data) {
@@ -52,7 +54,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       yield GetFeedLoadingMore();
 
       ApiResult<List<FeedPost>> apiResult = await homeRepository.getNewsFeed(
-        skip: event.skip,
+        articlesSkip: event.articlesSkip,
+        questionsSkip: event.questionsSkip,
       );
 
       apiResult.when(
