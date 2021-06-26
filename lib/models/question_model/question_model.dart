@@ -9,6 +9,7 @@ part 'question_model.g.dart';
 @freezed
 abstract class QuestionModel with _$QuestionModel {
   const factory QuestionModel({
+    @JsonKey(name: '_id') required String id,
     @JsonKey(name: 'owner_user_id') required User user,
     @JsonKey(name: 'body') required String body,
     @JsonKey(name: 'title') required String title,

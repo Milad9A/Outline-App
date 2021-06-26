@@ -8,6 +8,7 @@ part of 'question_model.dart';
 
 _$Question _$_$QuestionFromJson(Map<String, dynamic> json) {
   return _$Question(
+    id: json['_id'] as String,
     user: User.fromJson(json['owner_user_id'] as Map<String, dynamic>),
     body: json['body'] as String,
     title: json['title'] as String,
@@ -25,6 +26,7 @@ _$Question _$_$QuestionFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$QuestionToJson(_$Question instance) =>
     <String, dynamic>{
+      '_id': instance.id,
       'owner_user_id': instance.user,
       'body': instance.body,
       'title': instance.title,

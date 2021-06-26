@@ -33,7 +33,6 @@ class _NewsFeedBuilderState extends State<NewsFeedBuilder> {
 
   void _onLoading() async {
     bool loadMore = BlocProvider.of<HomeBloc>(widget.context).loadMore;
-    // int length = BlocProvider.of<HomeBloc>(widget.context).feed.length;
     int articlesLength = BlocProvider.of<HomeBloc>(context).articlesLength;
     int questionsLength = BlocProvider.of<HomeBloc>(context).questionsLength;
 
@@ -97,7 +96,7 @@ class _NewsFeedBuilderState extends State<NewsFeedBuilder> {
                   return ArticleHomeContainer(article: feedPost.post);
                 } else {
                   BlocProvider.of<HomeBloc>(context).questionsLength++;
-                  return QuestionHomeContainer(question: feedPost.post);
+                  return QuestionHomeContainer(questionVote: feedPost.post);
                 }
               },
               separatorBuilder: (BuildContext context, int index) {
