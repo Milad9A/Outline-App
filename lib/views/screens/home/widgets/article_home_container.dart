@@ -9,7 +9,8 @@ import 'package:flutter_tags/flutter_tags.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/article_model/article_model.dart';
 import 'package:outline/views/widgets/widgets.dart';
-import 'dart:math' as math;
+
+import 'package:readmore/readmore.dart';
 
 class ArticleHomeContainer extends StatefulWidget {
   final Article article;
@@ -22,6 +23,7 @@ class ArticleHomeContainer extends StatefulWidget {
 
 class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
   QuillController? controller;
+  bool isCompressed = true;
 
   @override
   void initState() {
@@ -81,22 +83,66 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: 40.0,
-                child: controller != null
-                    ? Text(
+                // height: 40.0,
+                child: isCompressed
+                    ? ReadMoreText(
                         controller!.document.toPlainText(),
-                        style: Theme.of(context).textTheme.bodyText1,
-                        overflow: TextOverflow.ellipsis,
+                        callback: (value) {
+                          setState(() {
+                            isCompressed = value;
+                          });
+                        },
+                        style: TextStyle(color: Colors.black),
+                        trimLines: 5,
+                        trimMode: TrimMode.Line,
+                        trimCollapsedText: 'show more',
+                        trimExpandedText: 'show less',
+                        moreStyle: TextStyle(
+                          fontSize: 14,
+                          color: ColorRepository.darkBlue,
+                        ),
                       )
-                    : Text(
-                        widget.article.content,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.bodyText1,
+                    : Row(
+                        children: [
+                          controller != null
+                              ? Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      QuillEditor(
+                                        controller: controller!,
+                                        readOnly: true,
+                                        showCursor: false,
+                                        autoFocus: false,
+                                        expands: false,
+                                        focusNode: FocusNode(),
+                                        padding: EdgeInsets.zero,
+                                        scrollable: true,
+                                        scrollController: ScrollController(),
+                                      ),
+                                      SizedBox(height: 5.0),
+                                      GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            isCompressed = true;
+                                          });
+                                        },
+                                        child: Text(
+                                          'show less',
+                                          style: TextStyle(
+                                            color: ColorRepository.darkBlue,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              : Expanded(
+                                  child: Text(widget.article.content),
+                                ),
+                        ],
                       ),
-              ),
-              Text(
-                '...',
-                style: Theme.of(context).textTheme.bodyText1,
               ),
             ],
           ),
