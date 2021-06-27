@@ -89,6 +89,9 @@ class AuthenticationBloc
       yield AuthenticationLoading();
       final SharedPrefsHelper prefs = SharedPrefsHelper();
       await prefs.deleteToken();
+
+      await userRepository.logOutUser();
+
       Consts.username = null;
       Consts.email = null;
       Consts.avatar = null;

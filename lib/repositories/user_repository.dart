@@ -46,6 +46,18 @@ class UserRepository {
     }
   }
 
+  Future<ApiResult> logOutUser() async {
+    try {
+      final response = await dioClient.post(
+        '/users/logout',
+      );
+
+      return ApiResult.success(data: response);
+    } catch (e) {
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
+  }
+
   Future<ApiResult<User>> getUserInfo() async {
     try {
       final response = await dioClient.get(
