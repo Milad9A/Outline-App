@@ -9,7 +9,6 @@ import 'package:flutter_tags/flutter_tags.dart';
 import 'package:outline/config/helpers/date_foramtter.dart';
 import 'package:outline/models/article_model/article_model.dart';
 import 'package:outline/views/widgets/widgets.dart';
-import 'dart:math' as math;
 
 class ArticleContainer extends StatefulWidget {
   final Article article;

@@ -69,12 +69,21 @@ class _QuestionVoteContainerState extends State<QuestionVoteContainer> {
                         : Colors.grey,
                   ),
                   onPressed: () async {
-                    BlocProvider.of<QuestionVoteBloc>(context).add(
-                      QuestionVoteOnQuestion(
-                        id: widget.questionVote.question.id,
-                        voteValue: 1,
-                      ),
-                    );
+                    if (questionVote.myVote == 1) {
+                      BlocProvider.of<QuestionVoteBloc>(context).add(
+                        QuestionVoteOnQuestion(
+                          id: widget.questionVote.question.id,
+                          voteValue: 0,
+                        ),
+                      );
+                    } else {
+                      BlocProvider.of<QuestionVoteBloc>(context).add(
+                        QuestionVoteOnQuestion(
+                          id: widget.questionVote.question.id,
+                          voteValue: 1,
+                        ),
+                      );
+                    }
                   },
                 ),
               ),
@@ -87,17 +96,26 @@ class _QuestionVoteContainerState extends State<QuestionVoteContainer> {
                   splashRadius: 20.0,
                   icon: Icon(
                     Icons.play_arrow,
-                    color: questionVote.myVote == 0
+                    color: questionVote.myVote == -1
                         ? ColorRepository.darkBlue
                         : Colors.grey,
                   ),
                   onPressed: () async {
-                    BlocProvider.of<QuestionVoteBloc>(context).add(
-                      QuestionVoteOnQuestion(
-                        id: widget.questionVote.question.id,
-                        voteValue: 0,
-                      ),
-                    );
+                    if (questionVote.myVote == -1) {
+                      BlocProvider.of<QuestionVoteBloc>(context).add(
+                        QuestionVoteOnQuestion(
+                          id: widget.questionVote.question.id,
+                          voteValue: 0,
+                        ),
+                      );
+                    } else {
+                      BlocProvider.of<QuestionVoteBloc>(context).add(
+                        QuestionVoteOnQuestion(
+                          id: widget.questionVote.question.id,
+                          voteValue: -1,
+                        ),
+                      );
+                    }
                   },
                 ),
               ),
