@@ -9,7 +9,6 @@ import 'package:flutter_tags/flutter_tags.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/article_model/article_model.dart';
 import 'package:outline/views/widgets/widgets.dart';
-
 import 'package:readmore/readmore.dart';
 
 class ArticleHomeContainer extends StatefulWidget {
@@ -84,7 +83,7 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
             children: [
               Container(
                 // height: 40.0,
-                child: isCompressed
+                child: isCompressed && controller != null
                     ? ReadMoreText(
                         controller!.document.toPlainText(),
                         callback: (value) {
