@@ -6,6 +6,7 @@ import 'package:outline/config/services/api_result.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/config/utils/agora_app_id.dart';
 import 'package:outline/repositories/chat_repository.dart';
+import 'package:outline/views/screens/chat/create_chat_screen.dart';
 
 class CallScreen extends StatefulWidget {
   final String channelName;
@@ -30,9 +31,7 @@ class _CallScreenState extends State<CallScreen> {
 
   @override
   void dispose() {
-    // clear users
     _users.clear();
-    // destroy sdk
     _engine!.leaveChannel();
     _engine!.destroy();
     super.dispose();
@@ -41,7 +40,6 @@ class _CallScreenState extends State<CallScreen> {
   @override
   void initState() {
     super.initState();
-    // initialize agora sdk
     initialize();
   }
 
@@ -57,7 +55,6 @@ class _CallScreenState extends State<CallScreen> {
     }
     await _initAgoraRtcEngine();
     _addAgoraEventHandlers();
-    // await _engine!.enableWebSdkInteroperability(true);
 
     final ApiResult<Map<String, dynamic>> apiResult =
         await chatRepository.getAgoraAccessToken(
@@ -80,13 +77,11 @@ class _CallScreenState extends State<CallScreen> {
     );
   }
 
-  /// Create agora sdk instance and initialize
   Future<void> _initAgoraRtcEngine() async {
     _engine = await RtcEngine.create(appID);
     await _engine!.enableVideo();
   }
 
-  /// Add agora event handlers
   void _addAgoraEventHandlers() {
     _engine!.setEventHandler(RtcEngineEventHandler(
       error: (code) {
@@ -130,7 +125,6 @@ class _CallScreenState extends State<CallScreen> {
     ));
   }
 
-  /// Toolbar layout
   Widget _toolbar() {
     return Container(
       alignment: Alignment.bottomCenter,
@@ -185,6 +179,35 @@ class _CallScreenState extends State<CallScreen> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                enableDrag: true,
+                isScrollControlled: true,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(10.0),
+                  ),
+                ),
+                builder: (context) => Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(10.0),
+                    ),
+                  ),
+                  height: MediaQuery.of(context).size.height * 0.9,
+                  child: CreateChatScreen(
+                    isFromInviteToCall: true,
+                    channelName: widget.channelName,
+                  ),
+                ),
+              );
+            },
+            icon: Icon(Icons.person_add),
+          ),
+        ],
       ),
       backgroundColor: Colors.black,
       body: Center(
@@ -198,7 +221,6 @@ class _CallScreenState extends State<CallScreen> {
     );
   }
 
-  /// Helper function to get list of native views
   List<Widget> _getRenderViews() {
     final List<StatefulWidget> list = [];
     list.add(RtcLocalView.SurfaceView());
@@ -206,12 +228,10 @@ class _CallScreenState extends State<CallScreen> {
     return list;
   }
 
-  /// Video view wrapper
   Widget _videoView(view) {
     return Expanded(child: Container(child: view));
   }
 
-  /// Video view row wrapper
   Widget _expandedVideoRow(List<Widget> views) {
     final wrappedViews = views.map<Widget>(_videoView).toList();
     return Expanded(
@@ -221,7 +241,6 @@ class _CallScreenState extends State<CallScreen> {
     );
   }
 
-  /// Video layout wrapper
   Widget _viewRows() {
     final views = _getRenderViews();
     switch (views.length) {

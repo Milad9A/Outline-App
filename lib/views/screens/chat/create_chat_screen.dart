@@ -9,8 +9,20 @@ import 'package:outline/providers/user/user_bloc.dart';
 import 'package:outline/repositories/chat_repository.dart';
 import 'package:outline/views/screens/chat/widgets/widgets.dart';
 import 'package:outline/views/widgets/widgets.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+import 'call_screen.dart';
+import 'conversation_screen.dart';
 
 class CreateChatScreen extends StatefulWidget {
+  final bool isFromInviteToCall;
+  final String? channelName;
+
+  const CreateChatScreen({
+    this.isFromInviteToCall = false,
+    this.channelName,
+  });
+
   @override
   _CreateChatScreenState createState() => _CreateChatScreenState();
 }
@@ -60,18 +72,20 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
       iconTheme: IconThemeData(color: ColorRepository.darkBlue),
       centerTitle: false,
       title: Text(
-        'Create New Chat',
+        !widget.isFromInviteToCall ? 'Create New Chat' : 'Invite to call',
         style: Theme.of(context).textTheme.headline6!.copyWith(
               fontWeight: FontWeight.bold,
               color: ColorRepository.darkBlue,
             ),
       ),
-      actions: [
-        IconButton(
-          icon: Icon(Icons.more_vert_outlined),
-          onPressed: () {},
-        ),
-      ],
+      actions: !widget.isFromInviteToCall
+          ? [
+              IconButton(
+                icon: Icon(Icons.more_vert_outlined),
+                onPressed: () {},
+              ),
+            ]
+          : [],
     );
   }
 
@@ -114,6 +128,8 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
                         name: users[index]['name'],
                         email: users[index]['email'],
                         avatar: users[index]['avatar'],
+                        channelName: widget.channelName!,
+                        isFromInviteToCall: true,
                       );
                     },
                   );
