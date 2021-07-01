@@ -7,7 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:outline/repositories/user_repository.dart';
 import 'package:outline/views/screens/article/article_details_screen.dart';
+import 'package:outline/views/screens/chat/call_screen.dart';
+import 'package:outline/views/screens/chat/conversation_screen.dart';
 import 'package:outline/views/screens/question/question_details_screen.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   'high_importance_channel',
@@ -39,39 +42,10 @@ class NotificationService {
     _token = token;
   }
 
-  Future<void> _firebaseMessagingBackgroundHandler(
-      RemoteMessage message) async {
-    await Firebase.initializeApp();
-  }
-
-  Future selectNotification(String? payload) async {
-    if (payload != null) {
-      print('notification payload: $payload');
-      Map<String, dynamic> messageData = jsonDecode(payload);
-      String screenName = messageData['screen_name'];
-      String id = messageData['id'];
-      if (screenName == 'article_details_screen') {
-        navigatorKey.currentState!.push(
-          MaterialPageRoute(
-            builder: (context) => ArticleDetailsScreen(article: id),
-          ),
-        );
-      } else if (screenName == 'question_details_screen') {
-        navigatorKey.currentState!.push(
-          MaterialPageRoute(
-            builder: (context) => QuestionDetailsScreen(question: id),
-          ),
-        );
-      }
-    }
-  }
-
   Future<void> init() async {
     FirebaseMessaging.instance.getToken().then(setToken);
     _tokenStream = FirebaseMessaging.instance.onTokenRefresh;
     _tokenStream!.listen(setToken);
-
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
@@ -84,6 +58,25 @@ class NotificationService {
       badge: true,
       sound: true,
     );
+  }
+
+  fdfsd(GlobalKey<NavigatorState> navigatorKey) async {
+    Future selectNotification(
+      String? payload,
+    ) async {
+      if (payload != null) {
+        print('notification payload: $payload');
+        try {
+          Map<String, dynamic> messageData = jsonDecode(payload);
+          handleMessageOpened(
+            messageData,
+            navigatorKey,
+          );
+        } catch (e) {
+          print(e);
+        }
+      }
+    }
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
       RemoteNotification? notification = message.notification;
@@ -104,50 +97,27 @@ class NotificationService {
               icon: 'launch_background',
             ),
           ),
-          payload: message.data.toString(),
+          payload: jsonEncode(message.data),
         );
       }
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       print('A new onMessageOpenedApp event was published!');
-      print(message.data);
-      if (message.data['screen_name'] == 'article_details_screen') {
-        navigatorKey.currentState!.push(
-          MaterialPageRoute(
-            builder: (context) =>
-                ArticleDetailsScreen(article: message.data['id']),
-          ),
-        );
-      } else if (message.data['screen_name'] == 'question_details_screen') {
-        navigatorKey.currentState!.push(
-          MaterialPageRoute(
-            builder: (context) =>
-                QuestionDetailsScreen(question: message.data['id']),
-          ),
-        );
-      }
+      handleMessageOpened(
+        message.data,
+        navigatorKey,
+      );
     });
 
     FirebaseMessaging.instance
         .getInitialMessage()
         .then((RemoteMessage? message) {
       if (message != null) {
-        if (message.data['screen_name'] == 'article_details_screen') {
-          navigatorKey.currentState!.push(
-            MaterialPageRoute(
-              builder: (context) =>
-                  ArticleDetailsScreen(article: message.data['id']),
-            ),
-          );
-        } else if (message.data['screen_name'] == 'question_details_screen') {
-          navigatorKey.currentState!.push(
-            MaterialPageRoute(
-              builder: (context) =>
-                  QuestionDetailsScreen(question: message.data['id']),
-            ),
-          );
-        }
+        handleMessageOpened(
+          message.data,
+          navigatorKey,
+        );
       }
     });
 
@@ -162,6 +132,44 @@ class NotificationService {
     await flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
       onSelectNotification: selectNotification,
+    );
+  }
+}
+
+handleMessageOpened(
+  Map<String, dynamic> messageData,
+  GlobalKey<NavigatorState> navigatorKey,
+) async {
+  print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
+  print(navigatorKey);
+  print(navigatorKey.currentContext);
+  print(navigatorKey.currentState);
+  print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
+
+  if (messageData['screen_name'] == 'article_details_screen') {
+    navigatorKey.currentState!.push(
+      MaterialPageRoute(
+        builder: (context) => ArticleDetailsScreen(article: messageData['id']),
+      ),
+    );
+  } else if (messageData['screen_name'] == 'question_details_screen') {
+    navigatorKey.currentState!.push(
+      MaterialPageRoute(
+        builder: (context) =>
+            QuestionDetailsScreen(question: messageData['id']),
+      ),
+    );
+  } else if (messageData['screen_name'] == 'call_screen') {
+    await handleCameraAndMic(Permission.camera);
+    await handleCameraAndMic(Permission.microphone);
+
+    navigatorKey.currentState!.push(
+      MaterialPageRoute(
+        builder: (context) => CallScreen(
+          channelName: messageData['channel_name'],
+          otherUserEmail: messageData['other_user_email'],
+        ),
+      ),
     );
   }
 }

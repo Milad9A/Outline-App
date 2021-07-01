@@ -9,6 +9,11 @@ import 'package:outline/views/widgets/widgets.dart';
 import 'package:auto_direction/auto_direction.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+Future<void> handleCameraAndMic(Permission permission) async {
+  final status = await permission.request();
+  print(status);
+}
+
 class ConversationScreen extends StatefulWidget {
   final String name;
   final String email;
@@ -41,8 +46,8 @@ class _ConversationScreenState extends State<ConversationScreen> {
   }
 
   Future<void> onJoin() async {
-    await _handleCameraAndMic(Permission.camera);
-    await _handleCameraAndMic(Permission.microphone);
+    await handleCameraAndMic(Permission.camera);
+    await handleCameraAndMic(Permission.microphone);
 
     Navigator.push(
       context,
@@ -53,11 +58,6 @@ class _ConversationScreenState extends State<ConversationScreen> {
         ),
       ),
     );
-  }
-
-  Future<void> _handleCameraAndMic(Permission permission) async {
-    final status = await permission.request();
-    print(status);
   }
 
   @override

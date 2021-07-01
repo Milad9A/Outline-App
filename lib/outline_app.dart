@@ -1,5 +1,6 @@
 // @dart = 2.9
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/providers/answer/answer_bloc.dart';
@@ -15,6 +16,7 @@ import 'package:outline/repositories/course_repository.dart';
 import 'package:outline/repositories/home_repository.dart';
 import 'package:outline/repositories/question_repository.dart';
 import 'package:outline/repositories/tags_repository.dart';
+import 'package:outline/services/notifications_service.dart';
 
 import 'config/theme/custom_theme.dart';
 import 'providers/authentication/authentication_bloc.dart';
@@ -25,14 +27,20 @@ import 'providers/update_user/update_user_bloc.dart';
 import 'repositories/user_repository.dart';
 import 'views/screens/splash/splash_screen.dart';
 
-final navigatorKey = GlobalKey<NavigatorState>();
-
 class OutlineApp extends StatefulWidget {
   @override
   _OutlineAppState createState() => _OutlineAppState();
 }
 
 class _OutlineAppState extends State<OutlineApp> {
+  final navigatorKey = GlobalKey<NavigatorState>();
+
+  @override
+  void initState() {
+    NotificationService().fdfsd(navigatorKey);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
