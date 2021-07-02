@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:outline/outline_app.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -60,7 +58,7 @@ class NotificationService {
     );
   }
 
-  fdfsd(GlobalKey<NavigatorState> navigatorKey) async {
+  handleReceivingMessage(GlobalKey<NavigatorState> navigatorKey) async {
     Future selectNotification(
       String? payload,
     ) async {
@@ -82,23 +80,25 @@ class NotificationService {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
 
-      if (notification != null && android != null) {
-        flutterLocalNotificationsPlugin.show(
-          notification.hashCode,
-          notification.title,
-          notification.body,
-          NotificationDetails(
-            android: AndroidNotificationDetails(
-              channel.id,
-              channel.name,
-              channel.description,
-              // TODO add a proper drawable resource to android, for now using
-              //      one that already exists in example app.
-              icon: 'launch_background',
+      if (message.data['screen_name'] != 'conversation_screen') {
+        if (notification != null && android != null) {
+          flutterLocalNotificationsPlugin.show(
+            notification.hashCode,
+            notification.title,
+            notification.body,
+            NotificationDetails(
+              android: AndroidNotificationDetails(
+                channel.id,
+                channel.name,
+                channel.description,
+                // TODO add a proper drawable resource to android, for now using
+                //      one that already exists in example app.
+                icon: 'launch_background',
+              ),
             ),
-          ),
-          payload: jsonEncode(message.data),
-        );
+            payload: jsonEncode(message.data),
+          );
+        }
       }
     });
 
@@ -140,12 +140,6 @@ handleMessageOpened(
   Map<String, dynamic> messageData,
   GlobalKey<NavigatorState> navigatorKey,
 ) async {
-  print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
-  print(navigatorKey);
-  print(navigatorKey.currentContext);
-  print(navigatorKey.currentState);
-  print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
-
   if (messageData['screen_name'] == 'article_details_screen') {
     navigatorKey.currentState!.push(
       MaterialPageRoute(
@@ -157,6 +151,17 @@ handleMessageOpened(
       MaterialPageRoute(
         builder: (context) =>
             QuestionDetailsScreen(question: messageData['id']),
+      ),
+    );
+  } else if (messageData['screen_name'] == 'conversation_screen') {
+    navigatorKey.currentState!.push(
+      MaterialPageRoute(
+        builder: (context) => ConversationScreen(
+          name: messageData['other_user_name'],
+          email: messageData['other_user_email'],
+          avatar: messageData['other_user_avatar'],
+          chatRoomId: messageData['chat_room_id'],
+        ),
       ),
     );
   } else if (messageData['screen_name'] == 'call_screen') {

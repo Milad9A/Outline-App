@@ -38,8 +38,15 @@ class ChatRepository {
   Future<void> addConversationMessage({
     required String chatRoomId,
     required Map<String, dynamic> messageMap,
+    required String otherUserEmail,
   }) async {
     try {
+      sendMessageNotification(
+        otherUserEmail: otherUserEmail,
+        chatRoomId: chatRoomId,
+        body: messageMap['message'],
+      );
+
       await FirebaseFirestore.instance
           .collection('chatroom')
           .doc(chatRoomId)
@@ -51,7 +58,7 @@ class ChatRepository {
           .doc(chatRoomId)
           .update({'last_message_time': DateTime.now().toIso8601String()});
     } catch (e) {
-      print(e.toString());
+      print(e);
     }
   }
 
@@ -130,6 +137,28 @@ class ChatRepository {
         queryParameters: {
           'channel_name': channelName,
           'other_user_email': otherUserEmail,
+        },
+      );
+
+      return ApiResult.success(data: response);
+    } catch (e) {
+      print(e);
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
+  }
+
+  Future sendMessageNotification({
+    required String otherUserEmail,
+    required String chatRoomId,
+    required String body,
+  }) async {
+    try {
+      final response = await dioClient.post(
+        '/send-message-notification',
+        data: {
+          'other_user_email': otherUserEmail,
+          'message_body': body,
+          'chat_room_id': chatRoomId,
         },
       );
 

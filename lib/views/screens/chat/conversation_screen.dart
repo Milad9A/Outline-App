@@ -183,6 +183,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                         onPressed: () {
                           if (messageController.text.isNotEmpty) {
                             chatRepository.addConversationMessage(
+                              otherUserEmail: widget.email,
                               chatRoomId: widget.chatRoomId,
                               messageMap: {
                                 'message': messageController.text,

@@ -37,7 +37,7 @@ class _OutlineAppState extends State<OutlineApp> {
 
   @override
   void initState() {
-    NotificationService().fdfsd(navigatorKey);
+    NotificationService().handleReceivingMessage(navigatorKey);
     super.initState();
   }
 

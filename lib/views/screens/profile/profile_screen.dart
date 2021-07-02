@@ -61,7 +61,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                 },
               ),
             ),
-            loading: () => OutlineCircularProgressIndicator(),
+            loading: () => Center(child: OutlineCircularProgressIndicator()),
             orElse: () => SizedBox.shrink(),
           );
         },

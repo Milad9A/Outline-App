@@ -95,6 +95,7 @@ class AuthenticationBloc
       Consts.username = null;
       Consts.email = null;
       Consts.avatar = null;
+      Consts.fcmToken = '';
       Consts.isAuthenticated = false;
       yield AuthenticationUnAuthenticated();
     }

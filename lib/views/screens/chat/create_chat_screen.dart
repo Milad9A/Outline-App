@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:outline/config/consts.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/helpers/shared_prefs_helper.dart';
 import 'package:outline/config/services/network_exceptions.dart';
@@ -9,10 +8,6 @@ import 'package:outline/providers/user/user_bloc.dart';
 import 'package:outline/repositories/chat_repository.dart';
 import 'package:outline/views/screens/chat/widgets/widgets.dart';
 import 'package:outline/views/widgets/widgets.dart';
-import 'package:permission_handler/permission_handler.dart';
-
-import 'call_screen.dart';
-import 'conversation_screen.dart';
 
 class CreateChatScreen extends StatefulWidget {
   final bool isFromInviteToCall;

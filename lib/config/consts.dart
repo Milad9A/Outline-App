@@ -7,6 +7,8 @@ class Consts {
   static String? avatar = '';
   static bool isAuthenticated = false;
 
+  static String fcmToken = '';
+
   static String baseUrl = "https://outline-app-api.herokuapp.com";
 
   static const String unexpectedError = 'Unexpected Error!';
