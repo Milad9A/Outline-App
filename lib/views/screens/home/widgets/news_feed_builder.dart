@@ -93,7 +93,7 @@ class _NewsFeedBuilderState extends State<NewsFeedBuilder> {
                     BlocProvider.of<HomeBloc>(context).feed[index];
                 if (feedPost.type == 'article') {
                   BlocProvider.of<HomeBloc>(context).articlesLength++;
-                  return ArticleHomeContainer(article: feedPost.post);
+                  return ArticleHomeContainer(articleLike: feedPost.post);
                 } else {
                   BlocProvider.of<HomeBloc>(context).questionsLength++;
                   return QuestionHomeContainer(questionVote: feedPost.post);

@@ -20,7 +20,7 @@ ArticlesListModel _$ArticlesListModelFromJson(Map<String, dynamic> json) {
 class _$ArticlesListModelTearOff {
   const _$ArticlesListModelTearOff();
 
-  ArticlesList call({required List<Article> articlesList}) {
+  ArticlesList call({required List<ArticleLike> articlesList}) {
     return ArticlesList(
       articlesList: articlesList,
     );
@@ -36,7 +36,7 @@ const $ArticlesListModel = _$ArticlesListModelTearOff();
 
 /// @nodoc
 mixin _$ArticlesListModel {
-  List<Article> get articlesList => throw _privateConstructorUsedError;
+  List<ArticleLike> get articlesList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +49,7 @@ abstract class $ArticlesListModelCopyWith<$Res> {
   factory $ArticlesListModelCopyWith(
           ArticlesListModel value, $Res Function(ArticlesListModel) then) =
       _$ArticlesListModelCopyWithImpl<$Res>;
-  $Res call({List<Article> articlesList});
+  $Res call({List<ArticleLike> articlesList});
 }
 
 /// @nodoc
@@ -69,7 +69,7 @@ class _$ArticlesListModelCopyWithImpl<$Res>
       articlesList: articlesList == freezed
           ? _value.articlesList
           : articlesList // ignore: cast_nullable_to_non_nullable
-              as List<Article>,
+              as List<ArticleLike>,
     ));
   }
 }
@@ -81,7 +81,7 @@ abstract class $ArticlesListCopyWith<$Res>
           ArticlesList value, $Res Function(ArticlesList) then) =
       _$ArticlesListCopyWithImpl<$Res>;
   @override
-  $Res call({List<Article> articlesList});
+  $Res call({List<ArticleLike> articlesList});
 }
 
 /// @nodoc
@@ -103,7 +103,7 @@ class _$ArticlesListCopyWithImpl<$Res>
       articlesList: articlesList == freezed
           ? _value.articlesList
           : articlesList // ignore: cast_nullable_to_non_nullable
-              as List<Article>,
+              as List<ArticleLike>,
     ));
   }
 }
@@ -118,7 +118,7 @@ class _$ArticlesList with DiagnosticableTreeMixin implements ArticlesList {
       _$_$ArticlesListFromJson(json);
 
   @override
-  final List<Article> articlesList;
+  final List<ArticleLike> articlesList;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -158,14 +158,14 @@ class _$ArticlesList with DiagnosticableTreeMixin implements ArticlesList {
 }
 
 abstract class ArticlesList implements ArticlesListModel {
-  const factory ArticlesList({required List<Article> articlesList}) =
+  const factory ArticlesList({required List<ArticleLike> articlesList}) =
       _$ArticlesList;
 
   factory ArticlesList.fromJson(Map<String, dynamic> json) =
       _$ArticlesList.fromJson;
 
   @override
-  List<Article> get articlesList => throw _privateConstructorUsedError;
+  List<ArticleLike> get articlesList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   $ArticlesListCopyWith<ArticlesList> get copyWith =>

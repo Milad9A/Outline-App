@@ -7,6 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:outline/config/services/api_result.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/article_model/article_create_model.dart';
+import 'package:outline/models/article_model/article_like_model.dart';
 import 'package:outline/models/article_model/article_model.dart';
 import 'package:outline/repositories/article_repository.dart';
 
@@ -46,11 +47,11 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
     if (event is ArticleGetMyArticles) {
       yield GetArticlesLoading();
 
-      ApiResult<List<Article>> apiResult =
+      ApiResult<List<ArticleLike>> apiResult =
           await articleRepository.getMyArticle();
 
       apiResult.when(
-        success: (List<Article> data) {
+        success: (List<ArticleLike> data) {
           emit(GetMyArticlesSuccess(articles: data));
         },
         failure: (NetworkExceptions error) {

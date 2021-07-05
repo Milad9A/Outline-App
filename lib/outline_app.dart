@@ -1,10 +1,9 @@
 // @dart = 2.9
 
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/providers/answer/answer_bloc.dart';
-import 'package:outline/providers/article/article_bloc.dart';
+import 'package:outline/providers/article/artilce/article_bloc.dart';
 import 'package:outline/providers/home/home_bloc.dart';
 import 'package:outline/providers/question/question/question_bloc.dart';
 import 'package:outline/providers/tags/tags_bloc.dart';

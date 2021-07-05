@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/helpers/interceptor.dart';

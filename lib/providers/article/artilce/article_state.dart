@@ -10,7 +10,7 @@ class ArticleState with _$ArticleState {
       CreateArticleSuccess;
 
   const factory ArticleState.getMyArticlesSuccess(
-      {required List<Article> articles}) = GetMyArticlesSuccess;
+      {required List<ArticleLike> articles}) = GetMyArticlesSuccess;
 
   const factory ArticleState.getLoading() = GetArticlesLoading;
 

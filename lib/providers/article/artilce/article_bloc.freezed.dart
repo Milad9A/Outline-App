@@ -459,7 +459,8 @@ class _$ArticleStateTearOff {
     );
   }
 
-  GetMyArticlesSuccess getMyArticlesSuccess({required List<Article> articles}) {
+  GetMyArticlesSuccess getMyArticlesSuccess(
+      {required List<ArticleLike> articles}) {
     return GetMyArticlesSuccess(
       articles: articles,
     );
@@ -486,7 +487,7 @@ mixin _$ArticleState {
     required TResult Function() initial,
     required TResult Function() createLoading,
     required TResult Function(Article article) createSuccess,
-    required TResult Function(List<Article> articles) getMyArticlesSuccess,
+    required TResult Function(List<ArticleLike> articles) getMyArticlesSuccess,
     required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) =>
@@ -496,7 +497,7 @@ mixin _$ArticleState {
     TResult Function()? initial,
     TResult Function()? createLoading,
     TResult Function(Article article)? createSuccess,
-    TResult Function(List<Article> articles)? getMyArticlesSuccess,
+    TResult Function(List<ArticleLike> articles)? getMyArticlesSuccess,
     TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
@@ -586,7 +587,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     required TResult Function() initial,
     required TResult Function() createLoading,
     required TResult Function(Article article) createSuccess,
-    required TResult Function(List<Article> articles) getMyArticlesSuccess,
+    required TResult Function(List<ArticleLike> articles) getMyArticlesSuccess,
     required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
@@ -599,7 +600,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     TResult Function()? initial,
     TResult Function()? createLoading,
     TResult Function(Article article)? createSuccess,
-    TResult Function(List<Article> articles)? getMyArticlesSuccess,
+    TResult Function(List<ArticleLike> articles)? getMyArticlesSuccess,
     TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
@@ -695,7 +696,7 @@ class _$CreateArticleLoading
     required TResult Function() initial,
     required TResult Function() createLoading,
     required TResult Function(Article article) createSuccess,
-    required TResult Function(List<Article> articles) getMyArticlesSuccess,
+    required TResult Function(List<ArticleLike> articles) getMyArticlesSuccess,
     required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
@@ -708,7 +709,7 @@ class _$CreateArticleLoading
     TResult Function()? initial,
     TResult Function()? createLoading,
     TResult Function(Article article)? createSuccess,
-    TResult Function(List<Article> articles)? getMyArticlesSuccess,
+    TResult Function(List<ArticleLike> articles)? getMyArticlesSuccess,
     TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
@@ -832,7 +833,7 @@ class _$CreateArticleSuccess
     required TResult Function() initial,
     required TResult Function() createLoading,
     required TResult Function(Article article) createSuccess,
-    required TResult Function(List<Article> articles) getMyArticlesSuccess,
+    required TResult Function(List<ArticleLike> articles) getMyArticlesSuccess,
     required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
@@ -845,7 +846,7 @@ class _$CreateArticleSuccess
     TResult Function()? initial,
     TResult Function()? createLoading,
     TResult Function(Article article)? createSuccess,
-    TResult Function(List<Article> articles)? getMyArticlesSuccess,
+    TResult Function(List<ArticleLike> articles)? getMyArticlesSuccess,
     TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
@@ -902,7 +903,7 @@ abstract class $GetMyArticlesSuccessCopyWith<$Res> {
   factory $GetMyArticlesSuccessCopyWith(GetMyArticlesSuccess value,
           $Res Function(GetMyArticlesSuccess) then) =
       _$GetMyArticlesSuccessCopyWithImpl<$Res>;
-  $Res call({List<Article> articles});
+  $Res call({List<ArticleLike> articles});
 }
 
 /// @nodoc
@@ -924,7 +925,7 @@ class _$GetMyArticlesSuccessCopyWithImpl<$Res>
       articles: articles == freezed
           ? _value.articles
           : articles // ignore: cast_nullable_to_non_nullable
-              as List<Article>,
+              as List<ArticleLike>,
     ));
   }
 }
@@ -936,7 +937,7 @@ class _$GetMyArticlesSuccess
   const _$GetMyArticlesSuccess({required this.articles});
 
   @override
-  final List<Article> articles;
+  final List<ArticleLike> articles;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -976,7 +977,7 @@ class _$GetMyArticlesSuccess
     required TResult Function() initial,
     required TResult Function() createLoading,
     required TResult Function(Article article) createSuccess,
-    required TResult Function(List<Article> articles) getMyArticlesSuccess,
+    required TResult Function(List<ArticleLike> articles) getMyArticlesSuccess,
     required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
@@ -989,7 +990,7 @@ class _$GetMyArticlesSuccess
     TResult Function()? initial,
     TResult Function()? createLoading,
     TResult Function(Article article)? createSuccess,
-    TResult Function(List<Article> articles)? getMyArticlesSuccess,
+    TResult Function(List<ArticleLike> articles)? getMyArticlesSuccess,
     TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
@@ -1032,10 +1033,10 @@ class _$GetMyArticlesSuccess
 }
 
 abstract class GetMyArticlesSuccess implements ArticleState {
-  const factory GetMyArticlesSuccess({required List<Article> articles}) =
+  const factory GetMyArticlesSuccess({required List<ArticleLike> articles}) =
       _$GetMyArticlesSuccess;
 
-  List<Article> get articles => throw _privateConstructorUsedError;
+  List<ArticleLike> get articles => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $GetMyArticlesSuccessCopyWith<GetMyArticlesSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1091,7 +1092,7 @@ class _$GetArticlesLoading
     required TResult Function() initial,
     required TResult Function() createLoading,
     required TResult Function(Article article) createSuccess,
-    required TResult Function(List<Article> articles) getMyArticlesSuccess,
+    required TResult Function(List<ArticleLike> articles) getMyArticlesSuccess,
     required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
@@ -1104,7 +1105,7 @@ class _$GetArticlesLoading
     TResult Function()? initial,
     TResult Function()? createLoading,
     TResult Function(Article article)? createSuccess,
-    TResult Function(List<Article> articles)? getMyArticlesSuccess,
+    TResult Function(List<ArticleLike> articles)? getMyArticlesSuccess,
     TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
@@ -1233,7 +1234,7 @@ class _$ArticleError with DiagnosticableTreeMixin implements ArticleError {
     required TResult Function() initial,
     required TResult Function() createLoading,
     required TResult Function(Article article) createSuccess,
-    required TResult Function(List<Article> articles) getMyArticlesSuccess,
+    required TResult Function(List<ArticleLike> articles) getMyArticlesSuccess,
     required TResult Function() getLoading,
     required TResult Function(NetworkExceptions error) error,
   }) {
@@ -1246,7 +1247,7 @@ class _$ArticleError with DiagnosticableTreeMixin implements ArticleError {
     TResult Function()? initial,
     TResult Function()? createLoading,
     TResult Function(Article article)? createSuccess,
-    TResult Function(List<Article> articles)? getMyArticlesSuccess,
+    TResult Function(List<ArticleLike> articles)? getMyArticlesSuccess,
     TResult Function()? getLoading,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),

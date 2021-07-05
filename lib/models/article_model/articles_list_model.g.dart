@@ -9,7 +9,7 @@ part of 'articles_list_model.dart';
 _$ArticlesList _$_$ArticlesListFromJson(Map<String, dynamic> json) {
   return _$ArticlesList(
     articlesList: (json['articlesList'] as List<dynamic>)
-        .map((e) => Article.fromJson(e as Map<String, dynamic>))
+        .map((e) => ArticleLike.fromJson(e as Map<String, dynamic>))
         .toList(),
   );
 }

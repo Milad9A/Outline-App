@@ -33,7 +33,7 @@ class NotificationService {
   String? _token;
   Stream<String>? _tokenStream;
 
-  void setToken(String? token) async {
+  void setFCMToken(String? token) async {
     print('FCM Token: $token');
     UserRepository userRepository = UserRepository();
     await userRepository.updateFCMToken(newFcmToken: token!);
@@ -41,9 +41,9 @@ class NotificationService {
   }
 
   Future<void> init() async {
-    FirebaseMessaging.instance.getToken().then(setToken);
+    FirebaseMessaging.instance.getToken().then(setFCMToken);
     _tokenStream = FirebaseMessaging.instance.onTokenRefresh;
-    _tokenStream!.listen(setToken);
+    _tokenStream!.listen(setFCMToken);
 
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<

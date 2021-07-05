@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:outline/models/article_model/article_like_model.dart';
 import 'package:outline/models/article_model/article_model.dart';
-import 'package:outline/providers/article/article_bloc.dart';
+import 'package:outline/providers/article/artilce/article_bloc.dart';
 import 'package:outline/views/screens/profile/widgets/article_container.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
@@ -28,8 +29,8 @@ class _ProfileArticlesTabState extends State<ProfileArticlesTab> {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
-                Article article = articles[index];
-                return ArticleContainer(article: article);
+                ArticleLike article = articles[index];
+                return ArticleContainer(article: article.article);
               },
               separatorBuilder: (context, int) {
                 return Divider(
