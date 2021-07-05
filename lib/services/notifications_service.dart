@@ -40,7 +40,10 @@ class NotificationService {
     _token = token;
   }
 
-  Future<void> init() async {
+  Future<void> init({
+    bool afterNewLogin = false,
+  }) async {
+    if (afterNewLogin) FirebaseMessaging.instance.deleteToken();
     FirebaseMessaging.instance.getToken().then(setFCMToken);
     _tokenStream = FirebaseMessaging.instance.onTokenRefresh;
     _tokenStream!.listen(setFCMToken);

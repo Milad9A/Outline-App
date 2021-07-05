@@ -70,7 +70,7 @@ class AuthenticationBloc
       );
 
       NotificationService notificationService = new NotificationService();
-      notificationService.init();
+      notificationService.init(afterNewLogin: true);
 
       yield AuthenticationAuthenticated(user: event.user);
     }
