@@ -4,10 +4,10 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:outline/repositories/user_repository.dart';
-import 'package:outline/views/screens/article/article_details_screen.dart';
+import 'package:outline/views/screens/create_article_question/article_details_screen.dart';
 import 'package:outline/views/screens/chat/call_screen.dart';
 import 'package:outline/views/screens/chat/conversation_screen.dart';
-import 'package:outline/views/screens/question/question_details_screen.dart';
+import 'package:outline/views/screens/create_article_question/question_details_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
@@ -146,7 +146,9 @@ handleMessageOpened(
   if (messageData['screen_name'] == 'article_details_screen') {
     navigatorKey.currentState!.push(
       MaterialPageRoute(
-        builder: (context) => ArticleDetailsScreen(article: messageData['id']),
+        builder: (context) => ArticleDetailsScreen(
+          articleLike: messageData['id'],
+        ),
       ),
     );
   } else if (messageData['screen_name'] == 'question_details_screen') {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:outline/views/screens/create/create_question_screen.dart';
+import 'package:outline/views/screens/create_article_question/create_question_screen.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class CreateQuestionTab extends StatelessWidget {

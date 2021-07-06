@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:outline/views/screens/create/create_article_screen.dart';
+import 'package:outline/views/screens/create_article_question/create_article_screen.dart';
 import 'package:outline/views/widgets/outline_text_button.dart';
 
 class CreateArticleTab extends StatelessWidget {

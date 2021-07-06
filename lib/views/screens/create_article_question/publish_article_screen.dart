@@ -14,7 +14,7 @@ import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/article_model/article_create_model.dart';
 import 'package:outline/models/article_model/article_model.dart';
 import 'package:outline/providers/article/artilce/article_bloc.dart';
-import 'package:outline/views/screens/create/add_article_tags_screen.dart';
+import 'package:outline/views/screens/create_article_question/add_article_tags_screen.dart';
 import 'package:outline/views/screens/navigation/navigation_screen.dart';
 import 'package:outline/views/widgets/outline_text_button.dart';
 import 'package:outline/views/widgets/outline_text_field.dart';

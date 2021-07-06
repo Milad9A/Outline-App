@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/feed_post_model/feed_post_model.dart';
+import 'package:outline/providers/article/article_like/article_like_bloc.dart';
 import 'package:outline/providers/home/home_bloc.dart';
+import 'package:outline/repositories/article_repository.dart';
 import 'package:outline/views/screens/home/widgets/article_home_container.dart';
 import 'package:outline/views/screens/home/widgets/question_home_container.dart';
 import 'package:outline/views/widgets/outline_circular_progress_indicator.dart';
@@ -93,7 +95,12 @@ class _NewsFeedBuilderState extends State<NewsFeedBuilder> {
                     BlocProvider.of<HomeBloc>(context).feed[index];
                 if (feedPost.type == 'article') {
                   BlocProvider.of<HomeBloc>(context).articlesLength++;
-                  return ArticleHomeContainer(articleLike: feedPost.post);
+                  return BlocProvider(
+                    create: (context) => ArticleLikeBloc(
+                      articleRepository: ArticleRepository(),
+                    ),
+                    child: ArticleHomeContainer(articleLike: feedPost.post),
+                  );
                 } else {
                   BlocProvider.of<HomeBloc>(context).questionsLength++;
                   return QuestionHomeContainer(questionVote: feedPost.post);

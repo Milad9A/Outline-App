@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/helpers/shared_prefs_helper.dart';
@@ -100,8 +101,11 @@ class AuthenticationBloc
       Consts.username = null;
       Consts.email = null;
       Consts.avatar = null;
-      Consts.fcmToken = '';
       Consts.isAuthenticated = false;
+
+      Consts.fcmToken = '';
+      await FirebaseMessaging.instance.deleteToken();
+
       yield AuthenticationUnAuthenticated();
     }
   }

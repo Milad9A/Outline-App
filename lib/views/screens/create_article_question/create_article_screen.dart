@@ -12,7 +12,7 @@ import 'package:flutter_quill/widgets/default_styles.dart';
 import 'package:flutter_quill/widgets/editor.dart';
 import 'package:flutter_quill/widgets/toolbar.dart';
 import 'package:outline/config/theme/color_repository.dart';
-import 'package:outline/views/screens/create/publish_article_screen.dart';
+import 'package:outline/views/screens/create_article_question/publish_article_screen.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tuple/tuple.dart';
