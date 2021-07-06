@@ -16,8 +16,12 @@ import 'package:outline/views/widgets/widgets.dart';
 
 class ArticleDetailsScreen extends StatefulWidget {
   final ArticleLike articleLike;
+  final void Function(ArticleLike) onLikeChanged;
 
-  ArticleDetailsScreen({required this.articleLike});
+  ArticleDetailsScreen({
+    required this.articleLike,
+    required this.onLikeChanged,
+  });
 
   @override
   _ArticleDetailsScreenState createState() => _ArticleDetailsScreenState();
@@ -151,6 +155,7 @@ class _ArticleDetailsScreenState extends State<ArticleDetailsScreen> {
                           likeArticleSuccess: (ArticleLike data) {
                             setState(() {
                               articleLike = data;
+                              widget.onLikeChanged(data);
                             });
                           },
                           error: (NetworkExceptions message) {

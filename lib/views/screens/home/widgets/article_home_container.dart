@@ -17,8 +17,12 @@ import 'package:outline/views/widgets/widgets.dart';
 
 class ArticleHomeContainer extends StatefulWidget {
   final ArticleLike articleLike;
+  final void Function(ArticleLike) onLikeChanged;
 
-  ArticleHomeContainer({required this.articleLike});
+  ArticleHomeContainer({
+    required this.articleLike,
+    required this.onLikeChanged,
+  });
 
   @override
   _ArticleHomeContainerState createState() => _ArticleHomeContainerState();
@@ -33,6 +37,7 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
   void initState() {
     super.initState();
     articleLike = widget.articleLike;
+
     try {
       controller = QuillController(
         document: Document.fromJson(jsonDecode(articleLike.article.content)),
@@ -97,7 +102,14 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
                     create: (context) => ArticleLikeBloc(
                       articleRepository: ArticleRepository(),
                     ),
-                    child: ArticleDetailsScreen(articleLike: articleLike),
+                    child: ArticleDetailsScreen(
+                      articleLike: articleLike,
+                      onLikeChanged: (newArticleLike) {
+                        setState(() {
+                          articleLike = newArticleLike;
+                        });
+                      },
+                    ),
                   ),
                 ),
               );
@@ -122,6 +134,7 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
                     likeArticleSuccess: (ArticleLike data) {
                       setState(() {
                         articleLike = data;
+                        widget.onLikeChanged(data);
                       });
                     },
                     error: (NetworkExceptions message) {

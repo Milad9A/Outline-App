@@ -148,6 +148,7 @@ handleMessageOpened(
       MaterialPageRoute(
         builder: (context) => ArticleDetailsScreen(
           articleLike: messageData['id'],
+          onLikeChanged: (newArticleLike) {},
         ),
       ),
     );

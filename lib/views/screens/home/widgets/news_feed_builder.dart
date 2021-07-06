@@ -21,7 +21,11 @@ class NewsFeedBuilder extends StatefulWidget {
   _NewsFeedBuilderState createState() => _NewsFeedBuilderState();
 }
 
-class _NewsFeedBuilderState extends State<NewsFeedBuilder> {
+class _NewsFeedBuilderState extends State<NewsFeedBuilder>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
@@ -54,6 +58,8 @@ class _NewsFeedBuilderState extends State<NewsFeedBuilder> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return BlocListener<HomeBloc, HomeState>(
       listener: (context, state) {
         state.maybeWhen(
@@ -89,6 +95,7 @@ class _NewsFeedBuilderState extends State<NewsFeedBuilder> {
               },
             ),
             child: ListView.separated(
+              addAutomaticKeepAlives: true,
               itemCount: BlocProvider.of<HomeBloc>(context).feed.length,
               itemBuilder: (BuildContext context, int index) {
                 FeedPost feedPost =
@@ -99,7 +106,17 @@ class _NewsFeedBuilderState extends State<NewsFeedBuilder> {
                     create: (context) => ArticleLikeBloc(
                       articleRepository: ArticleRepository(),
                     ),
-                    child: ArticleHomeContainer(articleLike: feedPost.post),
+                    child: ArticleHomeContainer(
+                      articleLike: feedPost.post,
+                      onLikeChanged: (newArticleLike) {
+                        BlocProvider.of<HomeBloc>(context).feed[index] =
+                            FeedPost(
+                          date: feedPost.date,
+                          type: feedPost.type,
+                          post: newArticleLike,
+                        );
+                      },
+                    ),
                   );
                 } else {
                   BlocProvider.of<HomeBloc>(context).questionsLength++;
