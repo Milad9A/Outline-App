@@ -17,6 +17,7 @@ abstract class ArticleModel with _$ArticleModel {
     @JsonKey(name: 'view_count') required int viewCount,
     @JsonKey(name: 'tags') required List<Tag> tags,
     @JsonKey(name: 'likes') required List<String> likes,
+    @JsonKey(name: 'comments') required List<String> comments,
     @JsonKey(name: 'createdAt') required String createdAt,
     @JsonKey(name: 'updatedAt') required String updatedAt,
   }) = Article;

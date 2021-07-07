@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/providers/answer/answer_bloc.dart';
+import 'package:outline/providers/article/article_comments/article_comments_bloc.dart';
 import 'package:outline/providers/article/artilce/article_bloc.dart';
+import 'package:outline/providers/comment/comment_bloc.dart';
 import 'package:outline/providers/home/home_bloc.dart';
 import 'package:outline/providers/question/question/question_bloc.dart';
 import 'package:outline/providers/tags/tags_bloc.dart';
@@ -11,6 +13,7 @@ import 'package:outline/providers/user/user_bloc.dart';
 import 'package:outline/repositories/answers_repository.dart';
 import 'package:outline/repositories/article_repository.dart';
 import 'package:outline/repositories/banker_repository.dart';
+import 'package:outline/repositories/comment_repository.dart';
 import 'package:outline/repositories/course_repository.dart';
 import 'package:outline/repositories/home_repository.dart';
 import 'package:outline/repositories/question_repository.dart';
@@ -62,6 +65,16 @@ class _OutlineAppState extends State<OutlineApp> {
         BlocProvider(
           create: (context) => ArticleBloc(
             articleRepository: ArticleRepository(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => ArticleCommentsBloc(
+            articleRepository: ArticleRepository(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => CommentBloc(
+            commentRepository: CommentRepository(),
           ),
         ),
         BlocProvider(

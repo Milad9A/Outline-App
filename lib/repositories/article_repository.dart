@@ -10,6 +10,8 @@ import 'package:outline/models/article_model/article_create_model.dart';
 import 'package:outline/models/article_model/article_like_model.dart';
 import 'package:outline/models/article_model/article_model.dart';
 import 'package:outline/models/article_model/articles_list_model.dart';
+import 'package:outline/models/comment_model/comment_model.dart';
+import 'package:outline/models/comment_model/comments_list_model.dart';
 
 class ArticleRepository {
   late DioClient dioClient;
@@ -55,7 +57,7 @@ class ArticleRepository {
     }
   }
 
-  Future<ApiResult<List<ArticleLike>>> getMyArticle() async {
+  Future<ApiResult<List<ArticleLike>>> getMyArticles() async {
     try {
       final response = await dioClient.get(
         '/articles/me',
@@ -64,6 +66,23 @@ class ArticleRepository {
       final articlesList = ArticlesList.fromJson({'articlesList': response});
 
       return ApiResult.success(data: articlesList.articlesList);
+    } catch (e) {
+      print(e);
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
+  }
+
+  Future<ApiResult<List<Comment>>> getArticleComments({
+    required String id,
+  }) async {
+    try {
+      final response = await dioClient.get(
+        '/articles/$id/comments',
+      );
+
+      final commentsList = CommentsList.fromJson({'commentsList': response});
+
+      return ApiResult.success(data: commentsList.commentsList);
     } catch (e) {
       print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));

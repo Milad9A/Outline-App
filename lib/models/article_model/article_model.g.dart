@@ -18,6 +18,8 @@ _$Article _$_$ArticleFromJson(Map<String, dynamic> json) {
         .map((e) => Tag.fromJson(e as Map<String, dynamic>))
         .toList(),
     likes: (json['likes'] as List<dynamic>).map((e) => e as String).toList(),
+    comments:
+        (json['comments'] as List<dynamic>).map((e) => e as String).toList(),
     createdAt: json['createdAt'] as String,
     updatedAt: json['updatedAt'] as String,
   );
@@ -32,6 +34,7 @@ Map<String, dynamic> _$_$ArticleToJson(_$Article instance) => <String, dynamic>{
       'view_count': instance.viewCount,
       'tags': instance.tags,
       'likes': instance.likes,
+      'comments': instance.comments,
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
     };

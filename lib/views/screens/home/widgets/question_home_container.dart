@@ -114,24 +114,8 @@ class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
               ],
             ),
             SizedBox(height: 10.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(widget.questionVote.question.answerCount.toString() +
-                    ' Answers'),
-                Row(
-                  children: [
-                    Text(
-                      'View All Answers',
-                      style: TextStyle(color: ColorRepository.darkBlue),
-                    ),
-                    Icon(
-                      Icons.arrow_forward,
-                      color: ColorRepository.darkBlue,
-                    )
-                  ],
-                ),
-              ],
+            Text(
+              widget.questionVote.question.answerCount.toString() + ' Answers',
             ),
           ],
         ),

@@ -98,7 +98,7 @@ class _ArticleContainerState extends State<ArticleContainer> {
                   SizedBox(width: 10.0),
                   Icon(Icons.chat_bubble_outline),
                   SizedBox(width: 4.0),
-                  Text('24k'),
+                  Text(widget.article.comments.length.toString()),
                 ],
               ),
               Text(

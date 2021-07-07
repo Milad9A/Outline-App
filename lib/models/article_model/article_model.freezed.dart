@@ -29,6 +29,7 @@ class _$ArticleModelTearOff {
       @JsonKey(name: 'view_count') required int viewCount,
       @JsonKey(name: 'tags') required List<Tag> tags,
       @JsonKey(name: 'likes') required List<String> likes,
+      @JsonKey(name: 'comments') required List<String> comments,
       @JsonKey(name: 'createdAt') required String createdAt,
       @JsonKey(name: 'updatedAt') required String updatedAt}) {
     return Article(
@@ -40,6 +41,7 @@ class _$ArticleModelTearOff {
       viewCount: viewCount,
       tags: tags,
       likes: likes,
+      comments: comments,
       createdAt: createdAt,
       updatedAt: updatedAt,
     );
@@ -71,6 +73,8 @@ mixin _$ArticleModel {
   List<Tag> get tags => throw _privateConstructorUsedError;
   @JsonKey(name: 'likes')
   List<String> get likes => throw _privateConstructorUsedError;
+  @JsonKey(name: 'comments')
+  List<String> get comments => throw _privateConstructorUsedError;
   @JsonKey(name: 'createdAt')
   String get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updatedAt')
@@ -96,6 +100,7 @@ abstract class $ArticleModelCopyWith<$Res> {
       @JsonKey(name: 'view_count') int viewCount,
       @JsonKey(name: 'tags') List<Tag> tags,
       @JsonKey(name: 'likes') List<String> likes,
+      @JsonKey(name: 'comments') List<String> comments,
       @JsonKey(name: 'createdAt') String createdAt,
       @JsonKey(name: 'updatedAt') String updatedAt});
 }
@@ -118,6 +123,7 @@ class _$ArticleModelCopyWithImpl<$Res> implements $ArticleModelCopyWith<$Res> {
     Object? viewCount = freezed,
     Object? tags = freezed,
     Object? likes = freezed,
+    Object? comments = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -154,6 +160,10 @@ class _$ArticleModelCopyWithImpl<$Res> implements $ArticleModelCopyWith<$Res> {
           ? _value.likes
           : likes // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      comments: comments == freezed
+          ? _value.comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -180,6 +190,7 @@ abstract class $ArticleCopyWith<$Res> implements $ArticleModelCopyWith<$Res> {
       @JsonKey(name: 'view_count') int viewCount,
       @JsonKey(name: 'tags') List<Tag> tags,
       @JsonKey(name: 'likes') List<String> likes,
+      @JsonKey(name: 'comments') List<String> comments,
       @JsonKey(name: 'createdAt') String createdAt,
       @JsonKey(name: 'updatedAt') String updatedAt});
 }
@@ -203,6 +214,7 @@ class _$ArticleCopyWithImpl<$Res> extends _$ArticleModelCopyWithImpl<$Res>
     Object? viewCount = freezed,
     Object? tags = freezed,
     Object? likes = freezed,
+    Object? comments = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -239,6 +251,10 @@ class _$ArticleCopyWithImpl<$Res> extends _$ArticleModelCopyWithImpl<$Res>
           ? _value.likes
           : likes // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      comments: comments == freezed
+          ? _value.comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -264,6 +280,7 @@ class _$Article with DiagnosticableTreeMixin implements Article {
       @JsonKey(name: 'view_count') required this.viewCount,
       @JsonKey(name: 'tags') required this.tags,
       @JsonKey(name: 'likes') required this.likes,
+      @JsonKey(name: 'comments') required this.comments,
       @JsonKey(name: 'createdAt') required this.createdAt,
       @JsonKey(name: 'updatedAt') required this.updatedAt});
 
@@ -295,6 +312,9 @@ class _$Article with DiagnosticableTreeMixin implements Article {
   @JsonKey(name: 'likes')
   final List<String> likes;
   @override
+  @JsonKey(name: 'comments')
+  final List<String> comments;
+  @override
   @JsonKey(name: 'createdAt')
   final String createdAt;
   @override
@@ -303,7 +323,7 @@ class _$Article with DiagnosticableTreeMixin implements Article {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ArticleModel(id: $id, user: $user, content: $content, title: $title, banner: $banner, viewCount: $viewCount, tags: $tags, likes: $likes, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'ArticleModel(id: $id, user: $user, content: $content, title: $title, banner: $banner, viewCount: $viewCount, tags: $tags, likes: $likes, comments: $comments, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -319,6 +339,7 @@ class _$Article with DiagnosticableTreeMixin implements Article {
       ..add(DiagnosticsProperty('viewCount', viewCount))
       ..add(DiagnosticsProperty('tags', tags))
       ..add(DiagnosticsProperty('likes', likes))
+      ..add(DiagnosticsProperty('comments', comments))
       ..add(DiagnosticsProperty('createdAt', createdAt))
       ..add(DiagnosticsProperty('updatedAt', updatedAt));
   }
@@ -345,6 +366,9 @@ class _$Article with DiagnosticableTreeMixin implements Article {
                 const DeepCollectionEquality().equals(other.tags, tags)) &&
             (identical(other.likes, likes) ||
                 const DeepCollectionEquality().equals(other.likes, likes)) &&
+            (identical(other.comments, comments) ||
+                const DeepCollectionEquality()
+                    .equals(other.comments, comments)) &&
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
                     .equals(other.createdAt, createdAt)) &&
@@ -364,6 +388,7 @@ class _$Article with DiagnosticableTreeMixin implements Article {
       const DeepCollectionEquality().hash(viewCount) ^
       const DeepCollectionEquality().hash(tags) ^
       const DeepCollectionEquality().hash(likes) ^
+      const DeepCollectionEquality().hash(comments) ^
       const DeepCollectionEquality().hash(createdAt) ^
       const DeepCollectionEquality().hash(updatedAt);
 
@@ -388,6 +413,7 @@ abstract class Article implements ArticleModel {
       @JsonKey(name: 'view_count') required int viewCount,
       @JsonKey(name: 'tags') required List<Tag> tags,
       @JsonKey(name: 'likes') required List<String> likes,
+      @JsonKey(name: 'comments') required List<String> comments,
       @JsonKey(name: 'createdAt') required String createdAt,
       @JsonKey(name: 'updatedAt') required String updatedAt}) = _$Article;
 
@@ -417,6 +443,9 @@ abstract class Article implements ArticleModel {
   @override
   @JsonKey(name: 'likes')
   List<String> get likes => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'comments')
+  List<String> get comments => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'createdAt')
   String get createdAt => throw _privateConstructorUsedError;

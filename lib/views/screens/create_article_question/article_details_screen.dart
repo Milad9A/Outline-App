@@ -11,7 +11,7 @@ import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/article_model/article_like_model.dart';
 import 'package:outline/providers/article/article_like/article_like_bloc.dart';
-import 'package:outline/repositories/article_repository.dart';
+import 'package:outline/views/screens/create_article_question/comments_screen.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class ArticleDetailsScreen extends StatefulWidget {
@@ -195,23 +195,20 @@ class _ArticleDetailsScreenState extends State<ArticleDetailsScreen> {
                           SizedBox(width: 10.0),
                           IconButton(
                             icon: Icon(Icons.chat_bubble_outline),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CommentsScreen(
+                                    articleId: articleLike.article.id,
+                                  ),
+                                ),
+                              );
+                            },
                           ),
-                          Text('24k'),
+                          Text(articleLike.article.comments.length.toString()),
                         ],
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Read All Articles',
-                          style: TextStyle(color: ColorRepository.darkBlue),
-                        ),
-                        Icon(
-                          Icons.arrow_forward,
-                          color: ColorRepository.darkBlue,
-                        )
-                      ],
                     ),
                   ],
                 ),

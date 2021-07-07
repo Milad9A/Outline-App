@@ -48,7 +48,7 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
       yield GetArticlesLoading();
 
       ApiResult<List<ArticleLike>> apiResult =
-          await articleRepository.getMyArticle();
+          await articleRepository.getMyArticles();
 
       apiResult.when(
         success: (List<ArticleLike> data) {
