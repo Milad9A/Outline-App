@@ -1,15 +1,13 @@
 import 'package:auto_direction/auto_direction.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:outline/config/helpers/date_foramtter.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/comment_model/comment_create_model.dart';
 import 'package:outline/models/comment_model/comment_model.dart';
 import 'package:outline/providers/article/article_comments/article_comments_bloc.dart';
 import 'package:outline/providers/comment/comment_bloc.dart';
-import 'package:outline/views/screens/create_article_question/widgets/buildCommentsList.dart';
+import 'package:outline/views/screens/create_article_question/widgets/comments_list_view.dart';
 import 'package:outline/views/widgets/outline_circular_progress_indicator.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
@@ -48,34 +46,25 @@ class _CommentsScreenState extends State<CommentsScreen> {
           Column(
             children: [
               Expanded(
-                child: BlocBuilder<CommentBloc, CommentState>(
+                child: BlocBuilder<ArticleCommentsBloc, ArticleCommentsState>(
                   builder: (context, state) {
-                    return state.maybeWhen(
-                      commentLoading: () => Center(
+                    return state.when(
+                      initial: () => Center(
                         child: OutlineCircularProgressIndicator(),
                       ),
-                      orElse: () {
-                        return BlocBuilder<ArticleCommentsBloc,
-                            ArticleCommentsState>(
-                          builder: (context, state) {
-                            return state.when(
-                              initial: () => Center(
-                                  child: OutlineCircularProgressIndicator()),
-                              articleCommentsLoading: () => Center(
-                                  child: OutlineCircularProgressIndicator()),
-                              articleCommentsSuccess: (List<Comment> comments) {
-                                return buildCommentsList(comments);
-                              },
-                              articleCommentsError: (NetworkExceptions error) =>
-                                  SizedBox.shrink(),
-                            );
-                          },
-                        );
+                      articleCommentsLoading: () => Center(
+                        child: OutlineCircularProgressIndicator(),
+                      ),
+                      articleCommentsSuccess: (List<Comment> comments) {
+                        return CommentsListView(comments: comments);
                       },
+                      articleCommentsError: (NetworkExceptions error) =>
+                          SizedBox.shrink(),
                     );
                   },
                 ),
               ),
+              SizedBox(height: 60.0),
             ],
           ),
           Align(
@@ -117,9 +106,11 @@ class _CommentsScreenState extends State<CommentsScreen> {
                             ),
                           );
                           commentController.clear();
-                          BlocProvider.of<ArticleCommentsBloc>(context).add(
-                            ArticleCommentsGetComments(id: widget.articleId),
-                          );
+
+                          // BlocProvider.of<ArticleCommentsBloc>(context).add(
+                          //   ArticleCommentsGetComments(id: widget.articleId),
+                          // );
+
                         }
                       },
                     ),
@@ -127,7 +118,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
