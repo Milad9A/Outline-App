@@ -15,7 +15,7 @@ class CreateChatScreen extends StatefulWidget {
 
   const CreateChatScreen({
     this.isFromInviteToCall = false,
-    this.channelName,
+    this.channelName = '',
   });
 
   @override
@@ -124,7 +124,7 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
                         email: users[index]['email'],
                         avatar: users[index]['avatar'],
                         channelName: widget.channelName!,
-                        isFromInviteToCall: true,
+                        isFromInviteToCall: widget.isFromInviteToCall,
                       );
                     },
                   );
