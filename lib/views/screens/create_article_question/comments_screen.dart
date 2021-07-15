@@ -56,7 +56,10 @@ class _CommentsScreenState extends State<CommentsScreen> {
                         child: OutlineCircularProgressIndicator(),
                       ),
                       articleCommentsSuccess: (List<Comment> comments) {
-                        return CommentsListView(comments: comments);
+                        return CommentsListView(
+                          comments: comments,
+                          articleId: widget.articleId,
+                        );
                       },
                       articleCommentsError: (NetworkExceptions error) =>
                           SizedBox.shrink(),
@@ -106,11 +109,6 @@ class _CommentsScreenState extends State<CommentsScreen> {
                             ),
                           );
                           commentController.clear();
-
-                          // BlocProvider.of<ArticleCommentsBloc>(context).add(
-                          //   ArticleCommentsGetComments(id: widget.articleId),
-                          // );
-
                         }
                       },
                     ),
