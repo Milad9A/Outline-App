@@ -56,11 +56,7 @@ class _CoursesListScreenState extends State<CoursesListScreen> {
         children: widget.coursesList
             .map(
               (course) => CourseGrid(
-                title: course.title,
-                instructorName: course.ownerUserId.name,
-                rating: course.avgRating,
-                price: course.price,
-                bannerUrl: course.banner,
+                course: course,
               ),
             )
             .toList(),

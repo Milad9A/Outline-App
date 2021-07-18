@@ -7,7 +7,6 @@ import 'package:outline/config/services/network_exceptions.dart';
 
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/course_model/course_model.dart';
-import 'package:outline/providers/course/all_courses/course_bloc.dart';
 import 'package:outline/providers/course/buy_course/buy_course_bloc.dart';
 import 'package:outline/views/screens/course/widgets/widgets.dart';
 
@@ -84,10 +83,14 @@ class _BuyCourseScreenState extends State<BuyCourseScreen> {
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(12.0),
               ),
-              child: CachedNetworkImage(
-                imageUrl: widget.course.banner,
-                width: double.infinity,
-                fit: BoxFit.fill,
+              child: Hero(
+                tag: widget.course.id,
+                transitionOnUserGestures: true,
+                child: CachedNetworkImage(
+                  imageUrl: widget.course.banner,
+                  width: double.infinity,
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
             Padding(
