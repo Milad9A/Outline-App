@@ -73,10 +73,11 @@ class _ArticleContainerState extends State<ArticleContainer> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      // height: 40.0,
                       child: isCompressed
                           ? ReadMoreText(
-                              controller!.document.toPlainText(),
+                              controller != null
+                                  ? controller!.document.toPlainText()
+                                  : widget.article.content,
                               callback: (value) {
                                 setState(() {
                                   isCompressed = value;
@@ -100,18 +101,20 @@ class _ArticleContainerState extends State<ArticleContainer> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            QuillEditor(
-                                              controller: controller!,
-                                              readOnly: true,
-                                              showCursor: false,
-                                              autoFocus: false,
-                                              expands: false,
-                                              focusNode: FocusNode(),
-                                              padding: EdgeInsets.zero,
-                                              scrollable: true,
-                                              scrollController:
-                                                  ScrollController(),
-                                            ),
+                                            controller != null
+                                                ? QuillEditor(
+                                                    controller: controller!,
+                                                    readOnly: true,
+                                                    showCursor: false,
+                                                    autoFocus: false,
+                                                    expands: false,
+                                                    focusNode: FocusNode(),
+                                                    padding: EdgeInsets.zero,
+                                                    scrollable: true,
+                                                    scrollController:
+                                                        ScrollController(),
+                                                  )
+                                                : Text(widget.article.content),
                                             SizedBox(height: 5.0),
                                             GestureDetector(
                                               onTap: () {
