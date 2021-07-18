@@ -37,7 +37,7 @@ class _SearchArticlesTabState extends State<SearchArticlesTab> {
                     physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       ArticleLike article = articles[index];
-                      return ArticleContainer(article: article.article);
+                      return ArticleContainer(articleLike: article);
                     },
                     separatorBuilder: (context, int) {
                       return Divider(

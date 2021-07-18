@@ -105,9 +105,13 @@ class _ArticleDetailsScreenState extends State<ArticleDetailsScreen> {
                 SizedBox(height: 10.0),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
-                  child: CachedNetworkImage(
-                    imageUrl: articleLike.article.banner,
-                    fit: BoxFit.cover,
+                  child: Hero(
+                    tag: articleLike.article.id,
+                    transitionOnUserGestures: true,
+                    child: CachedNetworkImage(
+                      imageUrl: articleLike.article.banner,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 SizedBox(height: 6.0),

@@ -2,20 +2,25 @@ import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_quill/models/documents/document.dart';
 import 'package:flutter_quill/widgets/controller.dart';
 import 'package:flutter_quill/widgets/editor.dart';
 import 'package:flutter_tags/flutter_tags.dart';
 import 'package:outline/config/helpers/date_foramtter.dart';
 import 'package:outline/config/theme/color_repository.dart';
+import 'package:outline/models/article_model/article_like_model.dart';
 import 'package:outline/models/article_model/article_model.dart';
+import 'package:outline/providers/article/article_like/article_like_bloc.dart';
+import 'package:outline/repositories/article_repository.dart';
+import 'package:outline/views/screens/create_article_question/article_details_screen.dart';
 import 'package:outline/views/widgets/widgets.dart';
 import 'package:readmore/readmore.dart';
 
 class ArticleContainer extends StatefulWidget {
-  final Article article;
+  final ArticleLike articleLike;
 
-  ArticleContainer({required this.article});
+  ArticleContainer({required this.articleLike});
 
   @override
   _ArticleContainerState createState() => _ArticleContainerState();
@@ -30,7 +35,8 @@ class _ArticleContainerState extends State<ArticleContainer> {
     super.initState();
     try {
       controller = QuillController(
-        document: Document.fromJson(jsonDecode(widget.article.content)),
+        document:
+            Document.fromJson(jsonDecode(widget.articleLike.article.content)),
         selection: TextSelection.collapsed(offset: 0),
       );
     } catch (e) {}
@@ -43,12 +49,12 @@ class _ArticleContainerState extends State<ArticleContainer> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          widget.article.tags.isNotEmpty
-              ? TagsRow(tags: widget.article.tags)
+          widget.articleLike.article.tags.isNotEmpty
+              ? TagsRow(tags: widget.articleLike.article.tags)
               : SizedBox.shrink(),
           SizedBox(height: 10.0),
           Text(
-            widget.article.title,
+            widget.articleLike.article.title,
             style: Theme.of(context).textTheme.subtitle1!.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -58,13 +64,35 @@ class _ArticleContainerState extends State<ArticleContainer> {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12.0),
-                child: CachedNetworkImage(
-                  imageUrl: widget.article.banner,
-                  fit: BoxFit.cover,
-                  height: 60.0,
-                  width: 60.0,
+              GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BlocProvider(
+                      create: (context) => ArticleLikeBloc(
+                        articleRepository: ArticleRepository(),
+                      ),
+                      child: ArticleDetailsScreen(
+                        articleLike: widget.articleLike,
+                        onLikeChanged: (newArticleLike) {
+                          setState(() {});
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12.0),
+                  child: Hero(
+                    tag: widget.articleLike.article.id,
+                    transitionOnUserGestures: true,
+                    child: CachedNetworkImage(
+                      imageUrl: widget.articleLike.article.banner,
+                      fit: BoxFit.cover,
+                      height: 60.0,
+                      width: 60.0,
+                    ),
+                  ),
                 ),
               ),
               SizedBox(width: 10.0),
@@ -77,7 +105,7 @@ class _ArticleContainerState extends State<ArticleContainer> {
                           ? ReadMoreText(
                               controller != null
                                   ? controller!.document.toPlainText()
-                                  : widget.article.content,
+                                  : widget.articleLike.article.content,
                               callback: (value) {
                                 setState(() {
                                   isCompressed = value;
@@ -114,7 +142,8 @@ class _ArticleContainerState extends State<ArticleContainer> {
                                                     scrollController:
                                                         ScrollController(),
                                                   )
-                                                : Text(widget.article.content),
+                                                : Text(widget.articleLike
+                                                    .article.content),
                                             SizedBox(height: 5.0),
                                             GestureDetector(
                                               onTap: () {
@@ -134,7 +163,8 @@ class _ArticleContainerState extends State<ArticleContainer> {
                                         ),
                                       )
                                     : Expanded(
-                                        child: Text(widget.article.content),
+                                        child: Text(
+                                            widget.articleLike.article.content),
                                       ),
                               ],
                             ),
@@ -152,17 +182,17 @@ class _ArticleContainerState extends State<ArticleContainer> {
                 children: [
                   Icon(Icons.thumb_up_alt_outlined),
                   SizedBox(width: 4.0),
-                  Text(widget.article.likes.length.toString()),
+                  Text(widget.articleLike.article.likes.length.toString()),
                   SizedBox(width: 10.0),
                   Icon(Icons.chat_bubble_outline),
                   SizedBox(width: 4.0),
-                  Text(widget.article.comments.length.toString()),
+                  Text(widget.articleLike.article.comments.length.toString()),
                 ],
               ),
               Text(
                 DateFormatter().getVerboseDateTimeRepresentation(
                   DateTime.parse(
-                    widget.article.updatedAt,
+                    widget.articleLike.article.updatedAt,
                   ),
                 ),
               ),

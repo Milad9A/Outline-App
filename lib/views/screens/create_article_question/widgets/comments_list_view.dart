@@ -113,7 +113,7 @@ class _CommentsListViewState extends State<CommentsListView> {
                   },
                 )
                 .post
-                .article
+                .articleLike
                 .comments
                 .insert(0, comment.id);
 

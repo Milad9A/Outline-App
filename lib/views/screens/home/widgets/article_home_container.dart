@@ -119,15 +119,19 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
-              child: CachedNetworkImage(
-                imageUrl: articleLike.article.banner,
-                fit: BoxFit.cover,
-                placeholder: (context, url) {
-                  return Container(
-                    height: 200.0,
-                    color: Colors.black12,
-                  );
-                },
+              child: Hero(
+                tag: articleLike.article.id,
+                transitionOnUserGestures: true,
+                child: CachedNetworkImage(
+                  imageUrl: articleLike.article.banner,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) {
+                    return Container(
+                      height: 200.0,
+                      color: Colors.black12,
+                    );
+                  },
+                ),
               ),
             ),
           ),
