@@ -7,7 +7,7 @@ import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/user_model/user_model.dart';
 import 'package:outline/models/user_model/user_update_model.dart';
 import 'package:outline/providers/tags/tags_bloc.dart';
-import 'package:outline/providers/update_user/update_user_bloc.dart';
+import 'package:outline/providers/user/update_user/update_user_bloc.dart';
 import 'package:outline/views/screens/navigation/navigation_screen.dart';
 import 'package:outline/views/widgets/outline_text_button.dart';
 import 'package:outline/views/widgets/outline_text_field.dart';

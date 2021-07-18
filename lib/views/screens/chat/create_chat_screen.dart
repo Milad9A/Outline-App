@@ -4,7 +4,7 @@ import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/helpers/shared_prefs_helper.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/config/theme/color_repository.dart';
-import 'package:outline/providers/user/user_bloc.dart';
+import 'package:outline/providers/user/user/user_bloc.dart';
 import 'package:outline/repositories/chat_repository.dart';
 import 'package:outline/views/screens/chat/widgets/widgets.dart';
 import 'package:outline/views/widgets/widgets.dart';

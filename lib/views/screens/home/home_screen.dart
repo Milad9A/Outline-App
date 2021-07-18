@@ -1,11 +1,10 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/feed_post_model/feed_post_model.dart';
-import 'package:outline/providers/authentication/authentication_bloc.dart';
+import 'package:outline/providers/authentication/authentication/authentication_bloc.dart';
 import 'package:outline/providers/home/home_bloc.dart';
 import 'package:outline/views/screens/chat/chats_screen.dart';
 import 'package:outline/views/screens/home/widgets/news_feed_builder.dart';

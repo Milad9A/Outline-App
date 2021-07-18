@@ -5,8 +5,8 @@ import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/user_model/user_model.dart';
-import 'package:outline/providers/authentication/authentication_bloc.dart';
-import 'package:outline/providers/login/login_bloc.dart';
+import 'package:outline/providers/authentication/authentication/authentication_bloc.dart';
+import 'package:outline/providers/authentication/login/login_bloc.dart';
 import 'package:outline/repositories/user_repository.dart';
 import 'package:outline/views/screens/navigation/navigation_screen.dart';
 

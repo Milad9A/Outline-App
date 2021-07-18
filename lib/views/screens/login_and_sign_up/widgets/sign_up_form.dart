@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/user_model/user_sign_up_model.dart';
-import 'package:outline/providers/sign_up/sign_up_bloc.dart';
+import 'package:outline/providers/authentication/sign_up/sign_up_bloc.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class SignUpForm extends StatelessWidget {

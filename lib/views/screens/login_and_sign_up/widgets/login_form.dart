@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/user_model/user_login_model.dart';
-import 'package:outline/providers/login/login_bloc.dart';
+import 'package:outline/providers/authentication/login/login_bloc.dart';
 import 'package:outline/repositories/user_repository.dart';
 import 'package:outline/views/widgets/widgets.dart';
 

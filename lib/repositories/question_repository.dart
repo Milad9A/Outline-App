@@ -42,7 +42,7 @@ class QuestionRepository {
     }
   }
 
-  Future<ApiResult<List<Question>>> getMyQuestion() async {
+  Future<ApiResult<List<Question>>> getMyQuestions() async {
     try {
       final response = await dioClient.get(
         '/questions/me',

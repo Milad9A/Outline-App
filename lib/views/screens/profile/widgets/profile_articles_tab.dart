@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/models/article_model/article_like_model.dart';
-import 'package:outline/models/article_model/article_model.dart';
 import 'package:outline/providers/article/artilce/article_bloc.dart';
-import 'package:outline/views/screens/profile/widgets/article_container.dart';
+import 'package:outline/views/widgets/article_container.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class ProfileArticlesTab extends StatefulWidget {

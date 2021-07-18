@@ -122,6 +122,12 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
               child: CachedNetworkImage(
                 imageUrl: articleLike.article.banner,
                 fit: BoxFit.cover,
+                placeholder: (context, url) {
+                  return Container(
+                    height: 200.0,
+                    color: Colors.black12,
+                  );
+                },
               ),
             ),
           ),
@@ -162,10 +168,23 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
                             ? null
                             : ColorRepository.darkBlue,
                       ),
-                      onPressed: () async {
+                      onPressed: () {
                         BlocProvider.of<ArticleLikeBloc>(context).add(
                           ArticleLikeArticle(id: articleLike.article.id),
                         );
+                        setState(() {
+                          if (articleLike.myLike == 0) {
+                            articleLike = articleLike.copyWith(
+                              myLike: 1,
+                            );
+                            articleLike.article.likes.add('randomTempValue');
+                          } else {
+                            articleLike = articleLike.copyWith(
+                              myLike: 0,
+                            );
+                            articleLike.article.likes.removeLast();
+                          }
+                        });
                       },
                     ),
                     Text(articleLike.article.likes.length.toString()),

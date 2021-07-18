@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/user_model/user_model.dart';
-import 'package:outline/providers/authentication/authentication_bloc.dart';
-import 'package:outline/providers/sign_up/sign_up_bloc.dart';
+import 'package:outline/providers/authentication/authentication/authentication_bloc.dart';
+import 'package:outline/providers/authentication/sign_up/sign_up_bloc.dart';
 import 'package:outline/repositories/user_repository.dart';
 import 'package:outline/views/screens/login_and_sign_up/sign_up_tags_screen.dart';
 
