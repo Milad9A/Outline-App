@@ -81,11 +81,11 @@ class _ArticleContainerState extends State<ArticleContainer> {
                     ),
                   ),
                 ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12.0),
-                  child: Hero(
-                    tag: widget.articleLike.article.id,
-                    transitionOnUserGestures: true,
+                child: Hero(
+                  tag: widget.articleLike.article.id,
+                  transitionOnUserGestures: true,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12.0),
                     child: CachedNetworkImage(
                       imageUrl: widget.articleLike.article.banner,
                       fit: BoxFit.cover,

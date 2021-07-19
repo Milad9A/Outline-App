@@ -64,15 +64,11 @@ class PopularTile extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
-                child: Hero(
-                  tag: course.id,
-                  transitionOnUserGestures: true,
-                  child: CachedNetworkImage(
-                    imageUrl: course.banner,
-                    fit: BoxFit.fitWidth,
-                    height: 50.0,
-                    width: 89.0,
-                  ),
+                child: CachedNetworkImage(
+                  imageUrl: course.banner,
+                  fit: BoxFit.fitWidth,
+                  height: 50.0,
+                  width: 89.0,
                 ),
               ),
             ),

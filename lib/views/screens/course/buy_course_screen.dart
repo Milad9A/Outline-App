@@ -79,13 +79,13 @@ class _BuyCourseScreenState extends State<BuyCourseScreen> {
         padding: EdgeInsets.only(bottom: 10.0),
         child: Column(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(12.0),
-              ),
-              child: Hero(
-                tag: widget.course.id,
-                transitionOnUserGestures: true,
+            Hero(
+              tag: widget.course.id,
+              transitionOnUserGestures: true,
+              child: ClipRRect(
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(12.0),
+                ),
                 child: CachedNetworkImage(
                   imageUrl: widget.course.banner,
                   width: double.infinity,

@@ -36,11 +36,11 @@ class CourseTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(10.0),
               boxShadow: [Consts.outlineBoxShadow],
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10.0),
-              child: Hero(
-                tag: course.id,
-                transitionOnUserGestures: true,
+            child: Hero(
+              tag: course.id,
+              transitionOnUserGestures: true,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10.0),
                 child: CachedNetworkImage(
                   imageUrl: course.banner,
                   fit: BoxFit.fitWidth,

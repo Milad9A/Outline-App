@@ -117,11 +117,11 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
 
               setState(() {});
             },
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12.0),
-              child: Hero(
-                tag: articleLike.article.id,
-                transitionOnUserGestures: true,
+            child: Hero(
+              tag: articleLike.article.id,
+              transitionOnUserGestures: true,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12.0),
                 child: CachedNetworkImage(
                   imageUrl: articleLike.article.banner,
                   fit: BoxFit.cover,
