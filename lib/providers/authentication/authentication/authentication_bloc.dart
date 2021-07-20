@@ -42,6 +42,7 @@ class AuthenticationBloc
             Consts.email = data.email;
             Consts.avatar = data.avatar;
             Consts.isAuthenticated = true;
+            Consts.purchasedCourses = data.purchasedCourses;
             await prefs.saveUsernameAndEmailToSharedPrefs(
               email: data.email,
               username: data.name,
@@ -65,6 +66,7 @@ class AuthenticationBloc
       Consts.email = event.user.email;
       Consts.avatar = event.user.avatar;
       Consts.isAuthenticated = true;
+      Consts.purchasedCourses = event.user.purchasedCourses;
       await prefs.saveUsernameAndEmailToSharedPrefs(
         email: event.user.email,
         username: event.user.name,
@@ -84,6 +86,7 @@ class AuthenticationBloc
       Consts.email = event.user.email;
       Consts.avatar = event.user.avatar;
       Consts.isAuthenticated = true;
+
       await prefs.saveUsernameAndEmailToSharedPrefs(
         email: event.user.email,
         username: event.user.name,
@@ -102,6 +105,7 @@ class AuthenticationBloc
       Consts.email = null;
       Consts.avatar = null;
       Consts.isAuthenticated = false;
+      Consts.purchasedCourses = [];
 
       Consts.fcmToken = '';
       await FirebaseMessaging.instance.deleteToken();

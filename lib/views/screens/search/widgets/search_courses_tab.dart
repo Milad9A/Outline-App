@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/models/course_model/course_model.dart';
 import 'package:outline/providers/search/course_search/course_search_bloc.dart';
+import 'package:outline/views/screens/course/widgets/course_grid.dart';
 import 'package:outline/views/screens/course/widgets/course_tile.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
@@ -31,21 +32,14 @@ class _SearchCoursesTabState extends State<SearchCoursesTab> {
         return state.maybeWhen(
           courseSearchSuccess: (courses) {
             return courses.isNotEmpty
-                ? ListView.separated(
-                    itemCount: courses.length,
-                    shrinkWrap: true,
+                ? GridView.count(
+                    crossAxisCount: 2,
+                    padding: EdgeInsets.only(top: 12.0),
                     physics: NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      Course course = courses[index];
-                      return CourseTile(course: course);
-                    },
-                    separatorBuilder: (context, int) {
-                      return Divider(
-                        thickness: 0.5,
-                        indent: 15.0,
-                        endIndent: 15.0,
-                      );
-                    },
+                    shrinkWrap: true,
+                    children: courses
+                        .map((Course course) => CourseGrid(course: course))
+                        .toList(),
                   )
                 : Container(
                     padding: EdgeInsets.only(top: 100.0),

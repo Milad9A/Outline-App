@@ -18,6 +18,11 @@ _$User _$_$UserFromJson(Map<String, dynamic> json) {
     tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
     articles:
         (json['articles'] as List<dynamic>).map((e) => e as String).toList(),
+    courses:
+        (json['courses'] as List<dynamic>).map((e) => e as String).toList(),
+    purchasedCourses: (json['purchased_courses'] as List<dynamic>)
+        .map((e) => e as String)
+        .toList(),
   );
 }
 
@@ -31,4 +36,6 @@ Map<String, dynamic> _$_$UserToJson(_$User instance) => <String, dynamic>{
       'avatar': instance.avatar,
       'tags': instance.tags,
       'articles': instance.articles,
+      'courses': instance.courses,
+      'purchased_courses': instance.purchasedCourses,
     };

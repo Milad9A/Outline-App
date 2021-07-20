@@ -32,29 +32,31 @@ class PopularTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  course.title,
-                  style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                        color: ColorRepository.blackish,
-                      ),
-                ),
-                Text(
-                  course.ownerUserId.name,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: ColorRepository.blackish,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    course.title,
+                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                          color: ColorRepository.blackish,
+                        ),
                   ),
-                ),
-                Row(
-                  children: [
-                    Icon(Icons.star, color: Colors.yellow),
-                    Text(course.avgRating.toString()),
-                  ],
-                ),
-              ],
+                  Text(
+                    course.ownerUserId.name,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: ColorRepository.blackish,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.star, color: Colors.yellow),
+                      Text(course.avgRating.toString()),
+                    ],
+                  ),
+                ],
+              ),
             ),
             Container(
               decoration: BoxDecoration(

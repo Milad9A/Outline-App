@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/helpers/date_foramtter.dart';
 import 'package:outline/models/article_model/article_like_model.dart';
-import 'package:outline/models/article_model/article_model.dart';
 import 'package:outline/models/comment_model/comment_model.dart';
 import 'package:outline/models/feed_post_model/feed_post_model.dart';
 import 'package:outline/providers/comment/comment_bloc.dart';
@@ -104,6 +103,21 @@ class _CommentsListViewState extends State<CommentsListView> {
 
             widget.comments.insert(0, comment);
 
+            print(
+              BlocProvider.of<HomeBloc>(context)
+                  .feed
+                  .firstWhere(
+                    (FeedPost feedPost) {
+                      ArticleLike article = feedPost.post;
+                      return article.article.id == widget.articleId;
+                    },
+                  )
+                  .post
+                  .article
+                  .comments
+                  .length,
+            );
+
             BlocProvider.of<HomeBloc>(context)
                 .feed
                 .firstWhere(
@@ -113,10 +127,24 @@ class _CommentsListViewState extends State<CommentsListView> {
                   },
                 )
                 .post
-                .articleLike
+                .article
                 .comments
                 .insert(0, comment.id);
 
+            print(
+              BlocProvider.of<HomeBloc>(context)
+                  .feed
+                  .firstWhere(
+                    (FeedPost feedPost) {
+                      ArticleLike article = feedPost.post;
+                      return article.article.id == widget.articleId;
+                    },
+                  )
+                  .post
+                  .article
+                  .comments
+                  .length,
+            );
             setState(() {});
           },
           orElse: () {},

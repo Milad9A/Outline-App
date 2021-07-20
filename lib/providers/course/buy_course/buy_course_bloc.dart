@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:outline/config/consts.dart';
 import 'package:outline/config/services/api_result.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/user_model/user_login_model.dart';
@@ -41,6 +42,7 @@ class BuyCourseBloc extends Bloc<BuyCourseEvent, BuyCourseState> {
           );
           apiResult.when(
             success: (value) {
+              Consts.purchasedCourses.add(event.courseId);
               emit(BuyCourseSuccess());
             },
             failure: (NetworkExceptions error) {

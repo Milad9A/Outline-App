@@ -21,15 +21,28 @@ class _$UserModelTearOff {
   const _$UserModelTearOff();
 
   User call(
-      {@JsonKey(name: 'name') required String name,
-      @JsonKey(name: 'email') required String email,
-      @JsonKey(name: 'role') required String role,
-      @JsonKey(name: 'aboutMe') required String aboutMe,
-      @JsonKey(name: 'reputation') required int reputation,
-      @JsonKey(name: 'accept_rate') required int acceptRate,
-      @JsonKey(name: 'avatar') required String avatar,
-      @JsonKey(name: 'tags') required List<String> tags,
-      @JsonKey(name: 'articles') required List<String> articles}) {
+      {@JsonKey(name: 'name')
+          required String name,
+      @JsonKey(name: 'email')
+          required String email,
+      @JsonKey(name: 'role')
+          required String role,
+      @JsonKey(name: 'aboutMe')
+          required String aboutMe,
+      @JsonKey(name: 'reputation')
+          required int reputation,
+      @JsonKey(name: 'accept_rate')
+          required int acceptRate,
+      @JsonKey(name: 'avatar')
+          required String avatar,
+      @JsonKey(name: 'tags')
+          required List<String> tags,
+      @JsonKey(name: 'articles')
+          required List<String> articles,
+      @JsonKey(name: 'courses')
+          required List<String> courses,
+      @JsonKey(name: 'purchased_courses')
+          required List<String> purchasedCourses}) {
     return User(
       name: name,
       email: email,
@@ -40,6 +53,8 @@ class _$UserModelTearOff {
       avatar: avatar,
       tags: tags,
       articles: articles,
+      courses: courses,
+      purchasedCourses: purchasedCourses,
     );
   }
 
@@ -71,6 +86,10 @@ mixin _$UserModel {
   List<String> get tags => throw _privateConstructorUsedError;
   @JsonKey(name: 'articles')
   List<String> get articles => throw _privateConstructorUsedError;
+  @JsonKey(name: 'courses')
+  List<String> get courses => throw _privateConstructorUsedError;
+  @JsonKey(name: 'purchased_courses')
+  List<String> get purchasedCourses => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -91,7 +110,9 @@ abstract class $UserModelCopyWith<$Res> {
       @JsonKey(name: 'accept_rate') int acceptRate,
       @JsonKey(name: 'avatar') String avatar,
       @JsonKey(name: 'tags') List<String> tags,
-      @JsonKey(name: 'articles') List<String> articles});
+      @JsonKey(name: 'articles') List<String> articles,
+      @JsonKey(name: 'courses') List<String> courses,
+      @JsonKey(name: 'purchased_courses') List<String> purchasedCourses});
 }
 
 /// @nodoc
@@ -113,6 +134,8 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
     Object? avatar = freezed,
     Object? tags = freezed,
     Object? articles = freezed,
+    Object? courses = freezed,
+    Object? purchasedCourses = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -151,6 +174,14 @@ class _$UserModelCopyWithImpl<$Res> implements $UserModelCopyWith<$Res> {
           ? _value.articles
           : articles // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      courses: courses == freezed
+          ? _value.courses
+          : courses // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      purchasedCourses: purchasedCourses == freezed
+          ? _value.purchasedCourses
+          : purchasedCourses // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -169,7 +200,9 @@ abstract class $UserCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       @JsonKey(name: 'accept_rate') int acceptRate,
       @JsonKey(name: 'avatar') String avatar,
       @JsonKey(name: 'tags') List<String> tags,
-      @JsonKey(name: 'articles') List<String> articles});
+      @JsonKey(name: 'articles') List<String> articles,
+      @JsonKey(name: 'courses') List<String> courses,
+      @JsonKey(name: 'purchased_courses') List<String> purchasedCourses});
 }
 
 /// @nodoc
@@ -192,6 +225,8 @@ class _$UserCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
     Object? avatar = freezed,
     Object? tags = freezed,
     Object? articles = freezed,
+    Object? courses = freezed,
+    Object? purchasedCourses = freezed,
   }) {
     return _then(User(
       name: name == freezed
@@ -230,6 +265,14 @@ class _$UserCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
           ? _value.articles
           : articles // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      courses: courses == freezed
+          ? _value.courses
+          : courses // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      purchasedCourses: purchasedCourses == freezed
+          ? _value.purchasedCourses
+          : purchasedCourses // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -247,7 +290,9 @@ class _$User with DiagnosticableTreeMixin implements User {
       @JsonKey(name: 'accept_rate') required this.acceptRate,
       @JsonKey(name: 'avatar') required this.avatar,
       @JsonKey(name: 'tags') required this.tags,
-      @JsonKey(name: 'articles') required this.articles});
+      @JsonKey(name: 'articles') required this.articles,
+      @JsonKey(name: 'courses') required this.courses,
+      @JsonKey(name: 'purchased_courses') required this.purchasedCourses});
 
   factory _$User.fromJson(Map<String, dynamic> json) => _$_$UserFromJson(json);
 
@@ -278,10 +323,16 @@ class _$User with DiagnosticableTreeMixin implements User {
   @override
   @JsonKey(name: 'articles')
   final List<String> articles;
+  @override
+  @JsonKey(name: 'courses')
+  final List<String> courses;
+  @override
+  @JsonKey(name: 'purchased_courses')
+  final List<String> purchasedCourses;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserModel(name: $name, email: $email, role: $role, aboutMe: $aboutMe, reputation: $reputation, acceptRate: $acceptRate, avatar: $avatar, tags: $tags, articles: $articles)';
+    return 'UserModel(name: $name, email: $email, role: $role, aboutMe: $aboutMe, reputation: $reputation, acceptRate: $acceptRate, avatar: $avatar, tags: $tags, articles: $articles, courses: $courses, purchasedCourses: $purchasedCourses)';
   }
 
   @override
@@ -297,7 +348,9 @@ class _$User with DiagnosticableTreeMixin implements User {
       ..add(DiagnosticsProperty('acceptRate', acceptRate))
       ..add(DiagnosticsProperty('avatar', avatar))
       ..add(DiagnosticsProperty('tags', tags))
-      ..add(DiagnosticsProperty('articles', articles));
+      ..add(DiagnosticsProperty('articles', articles))
+      ..add(DiagnosticsProperty('courses', courses))
+      ..add(DiagnosticsProperty('purchasedCourses', purchasedCourses));
   }
 
   @override
@@ -325,7 +378,13 @@ class _$User with DiagnosticableTreeMixin implements User {
                 const DeepCollectionEquality().equals(other.tags, tags)) &&
             (identical(other.articles, articles) ||
                 const DeepCollectionEquality()
-                    .equals(other.articles, articles)));
+                    .equals(other.articles, articles)) &&
+            (identical(other.courses, courses) ||
+                const DeepCollectionEquality()
+                    .equals(other.courses, courses)) &&
+            (identical(other.purchasedCourses, purchasedCourses) ||
+                const DeepCollectionEquality()
+                    .equals(other.purchasedCourses, purchasedCourses)));
   }
 
   @override
@@ -339,7 +398,9 @@ class _$User with DiagnosticableTreeMixin implements User {
       const DeepCollectionEquality().hash(acceptRate) ^
       const DeepCollectionEquality().hash(avatar) ^
       const DeepCollectionEquality().hash(tags) ^
-      const DeepCollectionEquality().hash(articles);
+      const DeepCollectionEquality().hash(articles) ^
+      const DeepCollectionEquality().hash(courses) ^
+      const DeepCollectionEquality().hash(purchasedCourses);
 
   @JsonKey(ignore: true)
   @override
@@ -354,15 +415,28 @@ class _$User with DiagnosticableTreeMixin implements User {
 
 abstract class User implements UserModel {
   const factory User(
-      {@JsonKey(name: 'name') required String name,
-      @JsonKey(name: 'email') required String email,
-      @JsonKey(name: 'role') required String role,
-      @JsonKey(name: 'aboutMe') required String aboutMe,
-      @JsonKey(name: 'reputation') required int reputation,
-      @JsonKey(name: 'accept_rate') required int acceptRate,
-      @JsonKey(name: 'avatar') required String avatar,
-      @JsonKey(name: 'tags') required List<String> tags,
-      @JsonKey(name: 'articles') required List<String> articles}) = _$User;
+      {@JsonKey(name: 'name')
+          required String name,
+      @JsonKey(name: 'email')
+          required String email,
+      @JsonKey(name: 'role')
+          required String role,
+      @JsonKey(name: 'aboutMe')
+          required String aboutMe,
+      @JsonKey(name: 'reputation')
+          required int reputation,
+      @JsonKey(name: 'accept_rate')
+          required int acceptRate,
+      @JsonKey(name: 'avatar')
+          required String avatar,
+      @JsonKey(name: 'tags')
+          required List<String> tags,
+      @JsonKey(name: 'articles')
+          required List<String> articles,
+      @JsonKey(name: 'courses')
+          required List<String> courses,
+      @JsonKey(name: 'purchased_courses')
+          required List<String> purchasedCourses}) = _$User;
 
   factory User.fromJson(Map<String, dynamic> json) = _$User.fromJson;
 
@@ -393,6 +467,12 @@ abstract class User implements UserModel {
   @override
   @JsonKey(name: 'articles')
   List<String> get articles => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'courses')
+  List<String> get courses => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'purchased_courses')
+  List<String> get purchasedCourses => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;

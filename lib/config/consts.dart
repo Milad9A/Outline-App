@@ -6,6 +6,7 @@ class Consts {
   static String? email = '';
   static String? avatar = '';
   static bool isAuthenticated = false;
+  static List<String> purchasedCourses = [];
 
   static String fcmToken = '';
 
