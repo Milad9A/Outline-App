@@ -1,8 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/user_model/user_model.dart';
+import 'package:outline/models/user_model/user_update_model.dart';
+import 'package:outline/providers/user/update_user/update_user_bloc.dart';
+import 'package:outline/views/screens/profile/widgets/edit_profile_text_field.dart';
 import 'package:outline/views/widgets/outline_text_button.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -15,12 +19,27 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController bioController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    usernameController.text = widget.user.name;
+    bioController.text = widget.user.aboutMe;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildEditProfileScreenAppBar(context),
-      body: _buildEditProfileScreenBody(
-        user: widget.user,
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(new FocusNode());
+      },
+      child: Scaffold(
+        appBar: _buildEditProfileScreenAppBar(context),
+        body: _buildEditProfileScreenBody(
+          user: widget.user,
+        ),
       ),
     );
   }
@@ -39,9 +58,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   Widget _buildEditProfileScreenBody({required User user}) {
     return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           Center(
@@ -83,7 +103,84 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ],
             ),
           ),
+          SizedBox(height: 25.0),
+          EditProfileTextField(
+            controller: usernameController,
+            label: 'username',
+          ),
           SizedBox(height: 20.0),
+          EditProfileTextField(
+            controller: bioController,
+            label: 'bio',
+          ),
+          SizedBox(height: 25.0),
+          InkWell(
+            onTap: () {},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.password,
+                  color: ColorRepository.darkBlue,
+                ),
+                SizedBox(width: 8.0),
+                Text(
+                  'Change Password',
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        color: ColorRepository.darkBlue,
+                      ),
+                ),
+                SizedBox(width: 6.0),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  size: 18.0,
+                  color: ColorRepository.darkBlue,
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 20.0),
+          InkWell(
+            onTap: () {},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.tag,
+                  color: ColorRepository.darkBlue,
+                ),
+                SizedBox(width: 8.0),
+                Text(
+                  'Edit Tags',
+                  style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        color: ColorRepository.darkBlue,
+                      ),
+                ),
+                SizedBox(width: 6.0),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  size: 18.0,
+                  color: ColorRepository.darkBlue,
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 150.0),
+          OutlineTextButton(
+            text: 'Save Changes',
+            onPressed: () {
+              BlocProvider.of<UpdateUserBloc>(context).add(
+                UpdateUserRequested(
+                  updateUser: UserUpdate(
+                    aboutMe: bioController.text,
+                    name: usernameController.text,
+                  ),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

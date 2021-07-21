@@ -127,7 +127,7 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
                   fit: BoxFit.cover,
                   placeholder: (context, url) {
                     return Container(
-                      height: 200.0,
+                      height: 210.0,
                       color: Colors.black12,
                     );
                   },

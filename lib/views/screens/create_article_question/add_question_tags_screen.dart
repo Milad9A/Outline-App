@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:flutter_tags/flutter_tags.dart';
 import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
@@ -32,18 +33,28 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
   }
 
   @override
+  void dispose() {
+    Loader.hide();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocListener<QuestionBloc, QuestionState>(
       listener: (context, state) {
         state.maybeWhen(
           createLoading: () {
-            showLoadingGif(context);
+            Loader.show(
+              context,
+              progressIndicator: OutlineCircularProgressIndicator(),
+            );
           },
           createQuestionSuccess: (Question question) {
             print(question.toJson());
             Navigator.pushReplacement(context, NavigationScreen.route);
           },
           error: (NetworkExceptions message) {
+            Loader.hide();
             showPopUp(
               context,
               title: 'Error',

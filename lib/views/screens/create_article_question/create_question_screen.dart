@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:flutter_quill/models/documents/attribute.dart';
 import 'package:flutter_quill/models/documents/document.dart';
 import 'package:flutter_quill/widgets/controller.dart';
@@ -50,6 +51,12 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
     _load();
   }
 
+  @override
+  void dispose() {
+    Loader.hide();
+    super.dispose();
+  }
+
   Future<void> _load() async {
     final doc = Document()..insert(0, '');
     setState(() {
@@ -68,13 +75,16 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
       listener: (context, state) {
         state.maybeWhen(
           createLoading: () {
-            showLoadingGif(context);
+            Loader.show(
+              context,
+              progressIndicator: OutlineCircularProgressIndicator(),
+            );
           },
           createQuestionSuccess: (Question question) {
             Navigator.pushReplacement(context, NavigationScreen.route);
           },
           error: (NetworkExceptions message) {
-            Navigator.of(context, rootNavigator: true).pop();
+            Loader.hide();
             showPopUp(
               context,
               title: 'Error',

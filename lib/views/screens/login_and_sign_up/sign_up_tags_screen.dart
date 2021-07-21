@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:flutter_tags/flutter_tags.dart';
 import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/theme/color_repository.dart';
@@ -37,12 +38,21 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
   }
 
   @override
+  void dispose() {
+    Loader.hide();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocListener<UpdateUserBloc, UpdateUserState>(
       listener: (context, state) {
         state.maybeWhen(
           loading: () {
-            showLoadingGif(context);
+            Loader.show(
+              context,
+              progressIndicator: OutlineCircularProgressIndicator(),
+            );
           },
           success: (User user) {
             Navigator.push(context, NavigationScreen.route);

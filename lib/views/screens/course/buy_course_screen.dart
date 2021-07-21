@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/services/network_exceptions.dart';
@@ -9,6 +10,7 @@ import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/course_model/course_model.dart';
 import 'package:outline/providers/course/buy_course/buy_course_bloc.dart';
 import 'package:outline/views/screens/course/widgets/widgets.dart';
+import 'package:outline/views/widgets/outline_circular_progress_indicator.dart';
 
 class BuyCourseScreen extends StatefulWidget {
   final Course course;
@@ -43,15 +45,24 @@ class _BuyCourseScreenState extends State<BuyCourseScreen> {
     );
   }
 
+  @override
+  void dispose() {
+    Loader.hide();
+    super.dispose();
+  }
+
   Widget buildBuyCourseScreenBody(BuildContext context) {
     return BlocListener<BuyCourseBloc, BuyCourseState>(
       listener: (context, state) {
         state.maybeWhen(
           buyLoading: () {
-            showLoadingGif(context);
+            Loader.show(
+              context,
+              progressIndicator: OutlineCircularProgressIndicator(),
+            );
           },
           buySuccess: () {
-            Navigator.pop(context);
+            Loader.hide();
             showPopUp(
               context,
               title: 'Success',

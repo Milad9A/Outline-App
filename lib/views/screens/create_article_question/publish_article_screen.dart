@@ -4,6 +4,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:flutter_tags/flutter_tags.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:outline/config/consts.dart';
@@ -16,6 +17,7 @@ import 'package:outline/models/article_model/article_model.dart';
 import 'package:outline/providers/article/artilce/article_bloc.dart';
 import 'package:outline/views/screens/create_article_question/add_article_tags_screen.dart';
 import 'package:outline/views/screens/navigation/navigation_screen.dart';
+import 'package:outline/views/widgets/outline_circular_progress_indicator.dart';
 import 'package:outline/views/widgets/outline_text_button.dart';
 import 'package:outline/views/widgets/outline_text_field.dart';
 
@@ -49,18 +51,27 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
   }
 
   @override
+  void dispose() {
+    Loader.hide();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocListener<ArticleBloc, ArticleState>(
       listener: (context, state) {
         state.maybeWhen(
           createLoading: () {
-            showLoadingGif(context);
+            Loader.show(
+              context,
+              progressIndicator: OutlineCircularProgressIndicator(),
+            );
           },
           createSuccess: (Article article) {
             Navigator.pushReplacement(context, NavigationScreen.route);
           },
           error: (NetworkExceptions message) {
-            Navigator.of(context, rootNavigator: true).pop();
+            Loader.hide();
             showPopUp(
               context,
               title: 'Error',

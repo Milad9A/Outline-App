@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/services/network_exceptions.dart';
@@ -9,6 +10,7 @@ import 'package:outline/providers/authentication/authentication/authentication_b
 import 'package:outline/providers/authentication/login/login_bloc.dart';
 import 'package:outline/repositories/user_repository.dart';
 import 'package:outline/views/screens/navigation/navigation_screen.dart';
+import 'package:outline/views/widgets/widgets.dart';
 
 import 'widgets/login_form.dart';
 import 'widgets/terms_and_policy_text.dart';
@@ -25,6 +27,12 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final UserRepository userRepository = UserRepository();
+
+  @override
+  void dispose() {
+    Loader.hide();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +65,13 @@ class _LoginScreenState extends State<LoginScreen> {
             state.when(
               initial: () {},
               loading: () {
-                showLoadingGif(context);
+                Loader.show(
+                  context,
+                  progressIndicator: OutlineCircularProgressIndicator(),
+                );
               },
               success: (User user) {
-                Navigator.pop(context);
+                Loader.hide();
                 showPopUp(
                   context,
                   title: 'Success',
@@ -71,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 );
               },
               error: (NetworkExceptions error) {
-                Navigator.pop(context);
+                Loader.hide();
                 showPopUp(
                   context,
                   title: 'Error',
