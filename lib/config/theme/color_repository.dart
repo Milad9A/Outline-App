@@ -9,7 +9,7 @@ class ColorRepository {
   static const Color orange = Color(0xFFFEC144);
   static const Color pink = Color(0xFFFFB5B5);
 
-  static const Color lowOpacityDarkBlue = Color(0xFFC6CFFA);
+  static const Color lowOpacityDarkBlue = Color(0xFFB0C4E3);
   static const Color lowOpacityLightBlue = Color(0xFFCAEFFA);
   static const Color lowOpacityGreen = Color(0xFFCFF2DF);
   static const Color lowOpacityOrange = Color(0xFFFFECC6);
