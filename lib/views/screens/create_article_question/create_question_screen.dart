@@ -71,7 +71,7 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
             showLoadingGif(context);
           },
           createQuestionSuccess: (Question question) {
-            Navigator.push(context, NavigationScreen.route);
+            Navigator.pushReplacement(context, NavigationScreen.route);
           },
           error: (NetworkExceptions message) {
             Navigator.of(context, rootNavigator: true).pop();

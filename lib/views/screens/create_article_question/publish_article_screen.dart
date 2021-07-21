@@ -57,7 +57,7 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
             showLoadingGif(context);
           },
           createSuccess: (Article article) {
-            Navigator.push(context, NavigationScreen.route);
+            Navigator.pushReplacement(context, NavigationScreen.route);
           },
           error: (NetworkExceptions message) {
             Navigator.of(context, rootNavigator: true).pop();

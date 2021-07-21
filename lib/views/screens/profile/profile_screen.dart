@@ -6,6 +6,7 @@ import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/user_model/user_model.dart';
 import 'package:outline/providers/authentication/authentication/authentication_bloc.dart';
 import 'package:outline/views/screens/login_and_sign_up/login_screen.dart';
+import 'package:outline/views/screens/profile/edit_profile_screen.dart';
 import 'package:outline/views/screens/profile/widgets/profile_answers_tab.dart';
 import 'package:outline/views/screens/profile/widgets/profile_articles_tab.dart';
 import 'package:outline/views/screens/profile/widgets/profile_questions_tab.dart';
@@ -173,7 +174,14 @@ class _ProfileScreenState extends State<ProfileScreen>
               backgroundColor: Colors.white,
               textColor: ColorRepository.darkBlue,
               borderSide: BorderSide(color: ColorRepository.darkBlue),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EditProfileScreen(user: user),
+                  ),
+                );
+              },
             ),
           ),
           SizedBox(height: 20.0),

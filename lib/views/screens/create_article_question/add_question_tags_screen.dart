@@ -41,7 +41,7 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
           },
           createQuestionSuccess: (Question question) {
             print(question.toJson());
-            Navigator.push(context, NavigationScreen.route);
+            Navigator.pushReplacement(context, NavigationScreen.route);
           },
           error: (NetworkExceptions message) {
             showPopUp(
