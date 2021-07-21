@@ -96,7 +96,7 @@ class NotificationService {
                 channel.description,
                 // TODO add a proper drawable resource to android, for now using
                 //      one that already exists in example app.
-                icon: 'launch_background',
+                icon: '@mipmap/ic_launcher',
               ),
             ),
             payload: jsonEncode(message.data),
@@ -125,7 +125,7 @@ class NotificationService {
     });
 
     final AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('splash_text');
+        AndroidInitializationSettings('@mipmap/ic_launcher');
 
     final InitializationSettings initializationSettings =
         InitializationSettings(

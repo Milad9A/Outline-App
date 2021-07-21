@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ColorRepository {
-  static const Color darkBlue = Color(0xFF1F3BB3);
+  static const Color darkBlue = Color(0xFF3A7CE1);
   static const Color blackish = Color(0xFF263238);
   static const Color darkGrey = Color(0xFF63696E);
   static const Color lightBlue = Color(0xFF4CC9F0);
