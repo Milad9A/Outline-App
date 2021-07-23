@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:outline/config/consts.dart';
@@ -120,6 +121,30 @@ class UserRepository {
       User user = User.fromJson(response);
 
       return ApiResult.success(data: user);
+    } catch (e) {
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
+  }
+
+  Future<ApiResult<String>> updateUserAvatar({required File image}) async {
+    try {
+      FormData data = FormData();
+
+      data.files.add(
+        MapEntry(
+          'avatar',
+          await MultipartFile.fromFile(image.path),
+        ),
+      );
+
+      final response = await dioClient.post(
+        '/users/me/avatar',
+        data: data,
+      );
+
+      String avatarURL = response['avatar'];
+
+      return ApiResult.success(data: avatarURL);
     } catch (e) {
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }

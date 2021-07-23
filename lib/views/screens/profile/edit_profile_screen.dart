@@ -273,6 +273,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       name: usernameController.text,
                       tags: tagsIDs,
                     ),
+                    image: image,
                   ),
                 );
               },

@@ -20,9 +20,11 @@ class _$UpdateUserEventTearOff {
     return const _Started();
   }
 
-  UpdateUserRequested updateUserRequested({required UserUpdate updateUser}) {
+  UpdateUserRequested updateUserRequested(
+      {required UserUpdate updateUser, File? image}) {
     return UpdateUserRequested(
       updateUser: updateUser,
+      image: image,
     );
   }
 }
@@ -35,13 +37,14 @@ mixin _$UpdateUserEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(UserUpdate updateUser) updateUserRequested,
+    required TResult Function(UserUpdate updateUser, File? image)
+        updateUserRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(UserUpdate updateUser)? updateUserRequested,
+    TResult Function(UserUpdate updateUser, File? image)? updateUserRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,7 +117,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(UserUpdate updateUser) updateUserRequested,
+    required TResult Function(UserUpdate updateUser, File? image)
+        updateUserRequested,
   }) {
     return started();
   }
@@ -123,7 +127,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(UserUpdate updateUser)? updateUserRequested,
+    TResult Function(UserUpdate updateUser, File? image)? updateUserRequested,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -164,7 +168,7 @@ abstract class $UpdateUserRequestedCopyWith<$Res> {
   factory $UpdateUserRequestedCopyWith(
           UpdateUserRequested value, $Res Function(UpdateUserRequested) then) =
       _$UpdateUserRequestedCopyWithImpl<$Res>;
-  $Res call({UserUpdate updateUser});
+  $Res call({UserUpdate updateUser, File? image});
 }
 
 /// @nodoc
@@ -181,26 +185,33 @@ class _$UpdateUserRequestedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? updateUser = freezed,
+    Object? image = freezed,
   }) {
     return _then(UpdateUserRequested(
       updateUser: updateUser == freezed
           ? _value.updateUser
           : updateUser // ignore: cast_nullable_to_non_nullable
               as UserUpdate,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as File?,
     ));
   }
 }
 
 /// @nodoc
 class _$UpdateUserRequested implements UpdateUserRequested {
-  const _$UpdateUserRequested({required this.updateUser});
+  const _$UpdateUserRequested({required this.updateUser, this.image});
 
   @override
   final UserUpdate updateUser;
+  @override
+  final File? image;
 
   @override
   String toString() {
-    return 'UpdateUserEvent.updateUserRequested(updateUser: $updateUser)';
+    return 'UpdateUserEvent.updateUserRequested(updateUser: $updateUser, image: $image)';
   }
 
   @override
@@ -209,12 +220,16 @@ class _$UpdateUserRequested implements UpdateUserRequested {
         (other is UpdateUserRequested &&
             (identical(other.updateUser, updateUser) ||
                 const DeepCollectionEquality()
-                    .equals(other.updateUser, updateUser)));
+                    .equals(other.updateUser, updateUser)) &&
+            (identical(other.image, image) ||
+                const DeepCollectionEquality().equals(other.image, image)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(updateUser);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(updateUser) ^
+      const DeepCollectionEquality().hash(image);
 
   @JsonKey(ignore: true)
   @override
@@ -225,20 +240,21 @@ class _$UpdateUserRequested implements UpdateUserRequested {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(UserUpdate updateUser) updateUserRequested,
+    required TResult Function(UserUpdate updateUser, File? image)
+        updateUserRequested,
   }) {
-    return updateUserRequested(updateUser);
+    return updateUserRequested(updateUser, image);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(UserUpdate updateUser)? updateUserRequested,
+    TResult Function(UserUpdate updateUser, File? image)? updateUserRequested,
     required TResult orElse(),
   }) {
     if (updateUserRequested != null) {
-      return updateUserRequested(updateUser);
+      return updateUserRequested(updateUser, image);
     }
     return orElse();
   }
@@ -267,10 +283,11 @@ class _$UpdateUserRequested implements UpdateUserRequested {
 }
 
 abstract class UpdateUserRequested implements UpdateUserEvent {
-  const factory UpdateUserRequested({required UserUpdate updateUser}) =
-      _$UpdateUserRequested;
+  const factory UpdateUserRequested(
+      {required UserUpdate updateUser, File? image}) = _$UpdateUserRequested;
 
   UserUpdate get updateUser => throw _privateConstructorUsedError;
+  File? get image => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $UpdateUserRequestedCopyWith<UpdateUserRequested> get copyWith =>
       throw _privateConstructorUsedError;

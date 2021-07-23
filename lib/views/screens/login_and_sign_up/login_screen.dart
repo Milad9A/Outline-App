@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
-import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/config/theme/color_repository.dart';

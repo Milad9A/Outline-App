@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -32,13 +33,28 @@ class UpdateUserBloc extends Bloc<UpdateUserEvent, UpdateUserState> {
       );
 
       apiResult.when(
-        success: (User data) {
+        success: (User data) async {
           Consts.avatar = data.avatar;
           Consts.username = data.name;
           Consts.bio = data.aboutMe;
           Consts.tags = data.tags;
 
-          emit(UpdateUserSuccess(user: data));
+          if (event.image != null) {
+            ApiResult<String> result = await userRepository.updateUserAvatar(
+              image: event.image!,
+            );
+            result.when(
+              success: (String avatarURL) {
+                Consts.avatar = avatarURL;
+                emit(UpdateUserState.success(user: data));
+              },
+              failure: (NetworkExceptions error) {
+                emit(UpdateUserError(error: error));
+              },
+            );
+          } else {
+            emit(UpdateUserSuccess(user: data));
+          }
         },
         failure: (NetworkExceptions error) {
           emit(UpdateUserError(error: error));

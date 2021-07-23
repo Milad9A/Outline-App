@@ -53,14 +53,17 @@ class _ProfileScreenState extends State<ProfileScreen>
               user: user,
             ),
             unAuthenticated: () => Center(
-              child: OutlineTextButton(
-                text: 'Login',
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => LoginScreen()),
-                  );
-                },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: OutlineTextButton(
+                  text: 'Login',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => LoginScreen()),
+                    );
+                  },
+                ),
               ),
             ),
             loading: () => Center(child: OutlineCircularProgressIndicator()),
@@ -131,11 +134,16 @@ class _ProfileScreenState extends State<ProfileScreen>
         mainAxisSize: MainAxisSize.min,
         children: [
           Center(
-            child: CircleAvatar(
-              radius: 34.0,
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              height: 68.0,
+              width: 68.0,
               child: ClipOval(
                 child: CachedNetworkImage(
                   imageUrl: Consts.avatar!,
+                  fit: BoxFit.cover,
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
                       CircularProgressIndicator(
                     value: downloadProgress.progress,
