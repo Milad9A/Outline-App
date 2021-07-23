@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:outline/config/consts.dart';
 import 'package:outline/config/services/api_result.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/user_model/user_model.dart';
@@ -32,6 +33,11 @@ class UpdateUserBloc extends Bloc<UpdateUserEvent, UpdateUserState> {
 
       apiResult.when(
         success: (User data) {
+          Consts.avatar = data.avatar;
+          Consts.username = data.name;
+          Consts.bio = data.aboutMe;
+          Consts.tags = data.tags;
+
           emit(UpdateUserSuccess(user: data));
         },
         failure: (NetworkExceptions error) {

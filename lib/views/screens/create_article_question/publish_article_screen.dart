@@ -34,8 +34,8 @@ class PublishArticleScreen extends StatefulWidget {
 
 class _PublishArticleScreenState extends State<PublishArticleScreen> {
   final TextEditingController titleController = TextEditingController();
-  final picker = ImagePicker();
   late List<DataList> tags = [];
+  final picker = ImagePicker();
   File? image;
 
   Future getImage() async {

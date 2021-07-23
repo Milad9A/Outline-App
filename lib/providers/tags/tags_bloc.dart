@@ -17,6 +17,7 @@ class TagBloc extends Bloc<TagEvent, TagState> {
   }) : super(_Initial());
 
   final TagsRepository tagsRepository;
+  List<Tag>? tags;
 
   @override
   Stream<TagState> mapEventToState(
@@ -28,8 +29,9 @@ class TagBloc extends Bloc<TagEvent, TagState> {
       ApiResult<List<Tag>> apiResult = await tagsRepository.getAllTags();
 
       apiResult.when(
-        success: (List<Tag> tags) {
-          emit(TagsSuccess(tags: tags));
+        success: (List<Tag> data) {
+          tags = data;
+          emit(TagsSuccess(tags: data));
         },
         failure: (NetworkExceptions error) {
           emit(TagsError(error: error));

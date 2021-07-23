@@ -5,8 +5,10 @@ class Consts {
   static String? username = '';
   static String? email = '';
   static String? avatar = '';
-  static bool isAuthenticated = false;
+  static String? bio = '';
   static List<String> purchasedCourses = [];
+  static List<String> tags = [];
+  static bool isAuthenticated = false;
 
   static String fcmToken = '';
 

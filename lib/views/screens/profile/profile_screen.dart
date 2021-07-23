@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:outline/config/consts.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/user_model/user_model.dart';
 import 'package:outline/providers/authentication/authentication/authentication_bloc.dart';
@@ -134,7 +135,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               radius: 34.0,
               child: ClipOval(
                 child: CachedNetworkImage(
-                  imageUrl: user.avatar,
+                  imageUrl: Consts.avatar!,
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
                       CircularProgressIndicator(
                     value: downloadProgress.progress,
@@ -150,7 +151,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                user.name,
+                Consts.username!,
                 style: Theme.of(context)
                     .textTheme
                     .headline6!
@@ -165,7 +166,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             ],
           ),
           SizedBox(height: 6.0),
-          Text(user.aboutMe),
+          Text(Consts.bio!),
           SizedBox(height: 15.0),
           Container(
             width: 187.0,
@@ -178,7 +179,13 @@ class _ProfileScreenState extends State<ProfileScreen>
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => EditProfileScreen(user: user),
+                    builder: (context) => EditProfileScreen(
+                        user: user.copyWith(
+                      name: Consts.username!,
+                      avatar: Consts.avatar!,
+                      aboutMe: Consts.bio!,
+                      tags: Consts.tags,
+                    )),
                   ),
                 );
               },
@@ -237,7 +244,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                     child: Column(
                       children: [
                         Text(
-                          user.tags.length.toString(),
+                          Consts.tags.length.toString(),
                           style:
                               Theme.of(context).textTheme.headline6!.copyWith(
                                     fontWeight: FontWeight.bold,

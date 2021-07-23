@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:flutter_tags/flutter_tags.dart';
-import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/user_model/user_model.dart';
 import 'package:outline/models/user_model/user_update_model.dart';
