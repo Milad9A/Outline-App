@@ -5,6 +5,7 @@ import 'package:outline/config/services/api_result.dart';
 import 'package:outline/config/services/dio_client.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/answer_model/answer_model.dart';
+import 'package:outline/models/answer_model/answer_vote_model.dart';
 import 'package:outline/models/answer_model/answers_list_model.dart';
 
 class AnswerRepository {
@@ -37,7 +38,7 @@ class AnswerRepository {
     }
   }
 
-  Future<ApiResult<Answer>> addAnswerToQuestion({
+  Future<ApiResult<AnswerVote>> addAnswerToQuestion({
     required String questionId,
     required String body,
   }) async {
@@ -47,7 +48,28 @@ class AnswerRepository {
         'question_id': questionId,
       });
 
-      final answer = Answer.fromJson(response);
+      final answer = AnswerVote.fromJson(response);
+
+      return ApiResult.success(data: answer);
+    } catch (e) {
+      print(e);
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
+  }
+
+  Future<ApiResult<AnswerVote>> voteAnswer({
+    required String id,
+    required int voteValue,
+  }) async {
+    try {
+      final response = await dioClient.post(
+        '/answers/$id/vote',
+        queryParameters: {
+          'value': voteValue,
+        },
+      );
+
+      final AnswerVote answer = AnswerVote.fromJson(response);
 
       return ApiResult.success(data: answer);
     } catch (e) {

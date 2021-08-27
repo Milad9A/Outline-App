@@ -8,6 +8,7 @@ part of 'answer_model.dart';
 
 _$Answer _$_$AnswerFromJson(Map<String, dynamic> json) {
   return _$Answer(
+    id: json['_id'] as String,
     body: json['body'] as String,
     isAccepted: json['is_accepted'] as bool,
     score: json['score'] as int,
@@ -19,6 +20,7 @@ _$Answer _$_$AnswerFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$_$AnswerToJson(_$Answer instance) => <String, dynamic>{
+      '_id': instance.id,
       'body': instance.body,
       'is_accepted': instance.isAccepted,
       'score': instance.score,

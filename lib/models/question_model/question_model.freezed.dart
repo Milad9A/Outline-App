@@ -27,7 +27,7 @@ class _$QuestionModelTearOff {
       @JsonKey(name: 'title') required String title,
       @JsonKey(name: 'is_answered') required bool isAnswered,
       @JsonKey(name: 'view_count') required int viewCount,
-      @JsonKey(name: 'answers') required List<Answer> answers,
+      @JsonKey(name: 'answers') required List<AnswerVote> answers,
       @JsonKey(name: 'score') required int score,
       @JsonKey(name: 'tags') required List<Tag> tags,
       @JsonKey(name: 'createdAt') required String createdAt,
@@ -70,7 +70,7 @@ mixin _$QuestionModel {
   @JsonKey(name: 'view_count')
   int get viewCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'answers')
-  List<Answer> get answers => throw _privateConstructorUsedError;
+  List<AnswerVote> get answers => throw _privateConstructorUsedError;
   @JsonKey(name: 'score')
   int get score => throw _privateConstructorUsedError;
   @JsonKey(name: 'tags')
@@ -98,7 +98,7 @@ abstract class $QuestionModelCopyWith<$Res> {
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'is_answered') bool isAnswered,
       @JsonKey(name: 'view_count') int viewCount,
-      @JsonKey(name: 'answers') List<Answer> answers,
+      @JsonKey(name: 'answers') List<AnswerVote> answers,
       @JsonKey(name: 'score') int score,
       @JsonKey(name: 'tags') List<Tag> tags,
       @JsonKey(name: 'createdAt') String createdAt,
@@ -156,7 +156,7 @@ class _$QuestionModelCopyWithImpl<$Res>
       answers: answers == freezed
           ? _value.answers
           : answers // ignore: cast_nullable_to_non_nullable
-              as List<Answer>,
+              as List<AnswerVote>,
       score: score == freezed
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
@@ -189,7 +189,7 @@ abstract class $QuestionCopyWith<$Res> implements $QuestionModelCopyWith<$Res> {
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'is_answered') bool isAnswered,
       @JsonKey(name: 'view_count') int viewCount,
-      @JsonKey(name: 'answers') List<Answer> answers,
+      @JsonKey(name: 'answers') List<AnswerVote> answers,
       @JsonKey(name: 'score') int score,
       @JsonKey(name: 'tags') List<Tag> tags,
       @JsonKey(name: 'createdAt') String createdAt,
@@ -247,7 +247,7 @@ class _$QuestionCopyWithImpl<$Res> extends _$QuestionModelCopyWithImpl<$Res>
       answers: answers == freezed
           ? _value.answers
           : answers // ignore: cast_nullable_to_non_nullable
-              as List<Answer>,
+              as List<AnswerVote>,
       score: score == freezed
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
@@ -308,7 +308,7 @@ class _$Question with DiagnosticableTreeMixin implements Question {
   final int viewCount;
   @override
   @JsonKey(name: 'answers')
-  final List<Answer> answers;
+  final List<AnswerVote> answers;
   @override
   @JsonKey(name: 'score')
   final int score;
@@ -412,7 +412,7 @@ abstract class Question implements QuestionModel {
       @JsonKey(name: 'title') required String title,
       @JsonKey(name: 'is_answered') required bool isAnswered,
       @JsonKey(name: 'view_count') required int viewCount,
-      @JsonKey(name: 'answers') required List<Answer> answers,
+      @JsonKey(name: 'answers') required List<AnswerVote> answers,
       @JsonKey(name: 'score') required int score,
       @JsonKey(name: 'tags') required List<Tag> tags,
       @JsonKey(name: 'createdAt') required String createdAt,
@@ -440,7 +440,7 @@ abstract class Question implements QuestionModel {
   int get viewCount => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'answers')
-  List<Answer> get answers => throw _privateConstructorUsedError;
+  List<AnswerVote> get answers => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'score')
   int get score => throw _privateConstructorUsedError;

@@ -9,8 +9,11 @@ import 'package:flutter_quill/widgets/controller.dart';
 import 'package:flutter_quill/widgets/editor.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/answer_model/answer_model.dart';
+import 'package:outline/models/answer_model/answer_vote_model.dart';
 import 'package:outline/models/question_model/question_vote_model.dart';
 import 'package:outline/providers/answer/add_answer/add_answer_bloc.dart';
+import 'package:outline/providers/answer/answer_vote/answer_vote_bloc.dart';
+import 'package:outline/repositories/answers_repository.dart';
 import 'package:outline/views/screens/create_article_question/widgets/answer_container.dart';
 import 'package:outline/views/screens/home/widgets/question_vote_container.dart';
 import 'package:outline/views/widgets/widgets.dart';
@@ -36,7 +39,7 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
   late QuestionVote questionVote;
 
   Widget slideAnswer(BuildContext context, int index, animation) {
-    Answer answer = widget.questionVote.question.answers[index];
+    AnswerVote answer = widget.questionVote.question.answers[index];
     return SlideTransition(
       position: Tween<Offset>(
         begin: const Offset(-1, 0),
@@ -51,7 +54,15 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
                   endIndent: 5.0,
                 )
               : SizedBox.shrink(),
-          AnswerContainer(answer: answer),
+          BlocProvider(
+            create: (context) => AnswerVoteBloc(
+              answerRepository: AnswerRepository(),
+            ),
+            child: AnswerContainer(
+              key: UniqueKey(),
+              answerVote: answer,
+            ),
+          ),
         ],
       ),
     );
@@ -171,7 +182,7 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
                   BlocListener<AddAnswerBloc, AddAnswerState>(
                     listener: (context, state) {
                       state.maybeWhen(
-                        success: (Answer answer) {
+                        success: (AnswerVote answer) {
                           scrollController.animateTo(
                             scrollController.position.maxScrollExtent,
                             duration: Duration(milliseconds: 500),
@@ -184,11 +195,6 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
                           );
 
                           widget.questionVote.question.answers.insert(
-                            widget.questionVote.question.answers.length,
-                            answer,
-                          );
-
-                          questionVote.question.answers.insert(
                             widget.questionVote.question.answers.length,
                             answer,
                           );

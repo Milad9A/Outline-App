@@ -8,6 +8,7 @@ part 'answer_model.g.dart';
 @freezed
 abstract class AnswerModel with _$AnswerModel {
   const factory AnswerModel({
+    @JsonKey(name: '_id') required String id,
     @JsonKey(name: 'body') required String body,
     @JsonKey(name: 'is_accepted') required bool isAccepted,
     @JsonKey(name: 'score') required int score,

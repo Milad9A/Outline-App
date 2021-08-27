@@ -8,16 +8,16 @@ import 'package:outline/config/helpers/date_foramtter.dart';
 import 'package:outline/models/answer_model/answer_model.dart';
 import 'dart:math' as math;
 
-class AnswerContainer extends StatefulWidget {
+class AnswerProfileContainer extends StatefulWidget {
   final Answer answer;
 
-  AnswerContainer({required this.answer});
+  AnswerProfileContainer({required this.answer});
 
   @override
-  _AnswerContainerState createState() => _AnswerContainerState();
+  _AnswerProfileContainerState createState() => _AnswerProfileContainerState();
 }
 
-class _AnswerContainerState extends State<AnswerContainer> {
+class _AnswerProfileContainerState extends State<AnswerProfileContainer> {
   QuillController? controller;
 
   @override

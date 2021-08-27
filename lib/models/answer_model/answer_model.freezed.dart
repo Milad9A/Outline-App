@@ -21,7 +21,8 @@ class _$AnswerModelTearOff {
   const _$AnswerModelTearOff();
 
   Answer call(
-      {@JsonKey(name: 'body') required String body,
+      {@JsonKey(name: '_id') required String id,
+      @JsonKey(name: 'body') required String body,
       @JsonKey(name: 'is_accepted') required bool isAccepted,
       @JsonKey(name: 'score') required int score,
       @JsonKey(name: 'owner_user_id') required User user,
@@ -29,6 +30,7 @@ class _$AnswerModelTearOff {
       @JsonKey(name: 'createdAt') required String createdAt,
       @JsonKey(name: 'updatedAt') required String updatedAt}) {
     return Answer(
+      id: id,
       body: body,
       isAccepted: isAccepted,
       score: score,
@@ -49,6 +51,8 @@ const $AnswerModel = _$AnswerModelTearOff();
 
 /// @nodoc
 mixin _$AnswerModel {
+  @JsonKey(name: '_id')
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'body')
   String get body => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_accepted')
@@ -76,7 +80,8 @@ abstract class $AnswerModelCopyWith<$Res> {
           AnswerModel value, $Res Function(AnswerModel) then) =
       _$AnswerModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'body') String body,
+      {@JsonKey(name: '_id') String id,
+      @JsonKey(name: 'body') String body,
       @JsonKey(name: 'is_accepted') bool isAccepted,
       @JsonKey(name: 'score') int score,
       @JsonKey(name: 'owner_user_id') User user,
@@ -95,6 +100,7 @@ class _$AnswerModelCopyWithImpl<$Res> implements $AnswerModelCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? body = freezed,
     Object? isAccepted = freezed,
     Object? score = freezed,
@@ -104,6 +110,10 @@ class _$AnswerModelCopyWithImpl<$Res> implements $AnswerModelCopyWith<$Res> {
     Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -142,7 +152,8 @@ abstract class $AnswerCopyWith<$Res> implements $AnswerModelCopyWith<$Res> {
       _$AnswerCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'body') String body,
+      {@JsonKey(name: '_id') String id,
+      @JsonKey(name: 'body') String body,
       @JsonKey(name: 'is_accepted') bool isAccepted,
       @JsonKey(name: 'score') int score,
       @JsonKey(name: 'owner_user_id') User user,
@@ -162,6 +173,7 @@ class _$AnswerCopyWithImpl<$Res> extends _$AnswerModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? body = freezed,
     Object? isAccepted = freezed,
     Object? score = freezed,
@@ -171,6 +183,10 @@ class _$AnswerCopyWithImpl<$Res> extends _$AnswerModelCopyWithImpl<$Res>
     Object? updatedAt = freezed,
   }) {
     return _then(Answer(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -208,7 +224,8 @@ class _$AnswerCopyWithImpl<$Res> extends _$AnswerModelCopyWithImpl<$Res>
 /// @nodoc
 class _$Answer with DiagnosticableTreeMixin implements Answer {
   const _$Answer(
-      {@JsonKey(name: 'body') required this.body,
+      {@JsonKey(name: '_id') required this.id,
+      @JsonKey(name: 'body') required this.body,
       @JsonKey(name: 'is_accepted') required this.isAccepted,
       @JsonKey(name: 'score') required this.score,
       @JsonKey(name: 'owner_user_id') required this.user,
@@ -219,6 +236,9 @@ class _$Answer with DiagnosticableTreeMixin implements Answer {
   factory _$Answer.fromJson(Map<String, dynamic> json) =>
       _$_$AnswerFromJson(json);
 
+  @override
+  @JsonKey(name: '_id')
+  final String id;
   @override
   @JsonKey(name: 'body')
   final String body;
@@ -243,7 +263,7 @@ class _$Answer with DiagnosticableTreeMixin implements Answer {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AnswerModel(body: $body, isAccepted: $isAccepted, score: $score, user: $user, questionId: $questionId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'AnswerModel(id: $id, body: $body, isAccepted: $isAccepted, score: $score, user: $user, questionId: $questionId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -251,6 +271,7 @@ class _$Answer with DiagnosticableTreeMixin implements Answer {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'AnswerModel'))
+      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('body', body))
       ..add(DiagnosticsProperty('isAccepted', isAccepted))
       ..add(DiagnosticsProperty('score', score))
@@ -264,6 +285,8 @@ class _$Answer with DiagnosticableTreeMixin implements Answer {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is Answer &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.body, body) ||
                 const DeepCollectionEquality().equals(other.body, body)) &&
             (identical(other.isAccepted, isAccepted) ||
@@ -287,6 +310,7 @@ class _$Answer with DiagnosticableTreeMixin implements Answer {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(body) ^
       const DeepCollectionEquality().hash(isAccepted) ^
       const DeepCollectionEquality().hash(score) ^
@@ -308,7 +332,8 @@ class _$Answer with DiagnosticableTreeMixin implements Answer {
 
 abstract class Answer implements AnswerModel {
   const factory Answer(
-      {@JsonKey(name: 'body') required String body,
+      {@JsonKey(name: '_id') required String id,
+      @JsonKey(name: 'body') required String body,
       @JsonKey(name: 'is_accepted') required bool isAccepted,
       @JsonKey(name: 'score') required int score,
       @JsonKey(name: 'owner_user_id') required User user,
@@ -318,6 +343,9 @@ abstract class Answer implements AnswerModel {
 
   factory Answer.fromJson(Map<String, dynamic> json) = _$Answer.fromJson;
 
+  @override
+  @JsonKey(name: '_id')
+  String get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'body')
   String get body => throw _privateConstructorUsedError;

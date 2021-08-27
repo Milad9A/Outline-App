@@ -15,7 +15,7 @@ _$Question _$_$QuestionFromJson(Map<String, dynamic> json) {
     isAnswered: json['is_answered'] as bool,
     viewCount: json['view_count'] as int,
     answers: (json['answers'] as List<dynamic>)
-        .map((e) => Answer.fromJson(e as Map<String, dynamic>))
+        .map((e) => AnswerVote.fromJson(e as Map<String, dynamic>))
         .toList(),
     score: json['score'] as int,
     tags: (json['tags'] as List<dynamic>)

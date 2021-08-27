@@ -7,7 +7,7 @@ class AddAnswerState with _$AddAnswerState {
   const factory AddAnswerState.loading() = AddAnswerLoading;
 
   const factory AddAnswerState.success({
-    required Answer answer,
+    required AnswerVote answer,
   }) = AddAnswerSuccess;
 
   const factory AddAnswerState.error({required NetworkExceptions error}) =

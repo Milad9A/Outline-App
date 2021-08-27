@@ -311,7 +311,7 @@ class _$AddAnswerStateTearOff {
     return const AddAnswerLoading();
   }
 
-  AddAnswerSuccess success({required Answer answer}) {
+  AddAnswerSuccess success({required AnswerVote answer}) {
     return AddAnswerSuccess(
       answer: answer,
     );
@@ -333,7 +333,7 @@ mixin _$AddAnswerState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Answer answer) success,
+    required TResult Function(AnswerVote answer) success,
     required TResult Function(NetworkExceptions error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -341,7 +341,7 @@ mixin _$AddAnswerState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Answer answer)? success,
+    TResult Function(AnswerVote answer)? success,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) =>
@@ -420,7 +420,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Answer answer) success,
+    required TResult Function(AnswerVote answer) success,
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
@@ -431,7 +431,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Answer answer)? success,
+    TResult Function(AnswerVote answer)? success,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) {
@@ -513,7 +513,7 @@ class _$AddAnswerLoading implements AddAnswerLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Answer answer) success,
+    required TResult Function(AnswerVote answer) success,
     required TResult Function(NetworkExceptions error) error,
   }) {
     return loading();
@@ -524,7 +524,7 @@ class _$AddAnswerLoading implements AddAnswerLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Answer answer)? success,
+    TResult Function(AnswerVote answer)? success,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) {
@@ -570,7 +570,7 @@ abstract class $AddAnswerSuccessCopyWith<$Res> {
   factory $AddAnswerSuccessCopyWith(
           AddAnswerSuccess value, $Res Function(AddAnswerSuccess) then) =
       _$AddAnswerSuccessCopyWithImpl<$Res>;
-  $Res call({Answer answer});
+  $Res call({AnswerVote answer});
 }
 
 /// @nodoc
@@ -592,7 +592,7 @@ class _$AddAnswerSuccessCopyWithImpl<$Res>
       answer: answer == freezed
           ? _value.answer
           : answer // ignore: cast_nullable_to_non_nullable
-              as Answer,
+              as AnswerVote,
     ));
   }
 }
@@ -602,7 +602,7 @@ class _$AddAnswerSuccess implements AddAnswerSuccess {
   const _$AddAnswerSuccess({required this.answer});
 
   @override
-  final Answer answer;
+  final AnswerVote answer;
 
   @override
   String toString() {
@@ -631,7 +631,7 @@ class _$AddAnswerSuccess implements AddAnswerSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Answer answer) success,
+    required TResult Function(AnswerVote answer) success,
     required TResult Function(NetworkExceptions error) error,
   }) {
     return success(answer);
@@ -642,7 +642,7 @@ class _$AddAnswerSuccess implements AddAnswerSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Answer answer)? success,
+    TResult Function(AnswerVote answer)? success,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) {
@@ -680,9 +680,10 @@ class _$AddAnswerSuccess implements AddAnswerSuccess {
 }
 
 abstract class AddAnswerSuccess implements AddAnswerState {
-  const factory AddAnswerSuccess({required Answer answer}) = _$AddAnswerSuccess;
+  const factory AddAnswerSuccess({required AnswerVote answer}) =
+      _$AddAnswerSuccess;
 
-  Answer get answer => throw _privateConstructorUsedError;
+  AnswerVote get answer => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AddAnswerSuccessCopyWith<AddAnswerSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -763,7 +764,7 @@ class _$AddAnswerError implements AddAnswerError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Answer answer) success,
+    required TResult Function(AnswerVote answer) success,
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
@@ -774,7 +775,7 @@ class _$AddAnswerError implements AddAnswerError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Answer answer)? success,
+    TResult Function(AnswerVote answer)? success,
     TResult Function(NetworkExceptions error)? error,
     required TResult orElse(),
   }) {
