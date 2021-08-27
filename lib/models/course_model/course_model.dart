@@ -11,8 +11,9 @@ abstract class CourseModel with _$CourseModel {
   const factory CourseModel({
     @JsonKey(name: '_id') required String id,
     @JsonKey(name: 'is_paid') required bool isPaid,
-    @JsonKey(name: 'num_of_subscribers') required int numOfSubscribers,
-    @JsonKey(name: 'num_of_lectures') required int numOfLectures,
+    @JsonKey(name: 'subscribers') required List<String> subscribers,
+    @JsonKey(name: 'length_of_the_course_in_seconds')
+        required int lengthOfTheCourseInSeconds,
     @JsonKey(name: 'avg_rating') required double avgRating,
     @JsonKey(name: 'contents') required List<Content> contents,
     @JsonKey(name: 'requirements') required String requirements,

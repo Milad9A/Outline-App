@@ -22,10 +22,15 @@ class CoursesRepository {
     );
   }
 
-  Future<ApiResult<List<Course>>> getAllCourses() async {
+  Future<ApiResult<List<Course>>> getAllCourses({
+    int limit = 10,
+  }) async {
     try {
       final response = await dioClient.get(
         '/courses',
+        queryParameters: {
+          'limit': limit,
+        },
       );
 
       final coursesList = CoursesList.fromJson({'coursesList': response});

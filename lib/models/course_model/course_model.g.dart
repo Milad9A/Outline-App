@@ -10,8 +10,9 @@ _$Course _$_$CourseFromJson(Map<String, dynamic> json) {
   return _$Course(
     id: json['_id'] as String,
     isPaid: json['is_paid'] as bool,
-    numOfSubscribers: json['num_of_subscribers'] as int,
-    numOfLectures: json['num_of_lectures'] as int,
+    subscribers:
+        (json['subscribers'] as List<dynamic>).map((e) => e as String).toList(),
+    lengthOfTheCourseInSeconds: json['length_of_the_course_in_seconds'] as int,
     avgRating: (json['avg_rating'] as num).toDouble(),
     contents: (json['contents'] as List<dynamic>)
         .map((e) => Content.fromJson(e as Map<String, dynamic>))
@@ -28,8 +29,8 @@ _$Course _$_$CourseFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$CourseToJson(_$Course instance) => <String, dynamic>{
       '_id': instance.id,
       'is_paid': instance.isPaid,
-      'num_of_subscribers': instance.numOfSubscribers,
-      'num_of_lectures': instance.numOfLectures,
+      'subscribers': instance.subscribers,
+      'length_of_the_course_in_seconds': instance.lengthOfTheCourseInSeconds,
       'avg_rating': instance.avgRating,
       'contents': instance.contents,
       'requirements': instance.requirements,

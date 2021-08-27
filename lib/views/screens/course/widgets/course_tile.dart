@@ -26,63 +26,68 @@ class CourseTile extends StatelessWidget {
           ),
         );
       },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10.0),
-              boxShadow: [Consts.outlineBoxShadow],
-            ),
-            child: Hero(
-              tag: course.id,
-              transitionOnUserGestures: true,
-              child: ClipRRect(
+      child: SizedBox(
+        width: 180.0,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(10.0),
-                child: CachedNetworkImage(
-                  imageUrl: course.banner,
-                  fit: BoxFit.fitWidth,
-                  height: 99.0,
-                  width: 176.0,
+                boxShadow: [Consts.outlineBoxShadow],
+              ),
+              child: Hero(
+                tag: course.id,
+                transitionOnUserGestures: true,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: CachedNetworkImage(
+                    imageUrl: course.banner,
+                    fit: BoxFit.fitWidth,
+                    height: 99.0,
+                    width: 176.0,
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox(height: 6.0),
-          Text(
-            course.title,
-            style: TextStyle(
-              color: ColorRepository.blackish,
+            SizedBox(height: 6.0),
+            Text(
+              course.title,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: ColorRepository.blackish,
+              ),
             ),
-          ),
-          Text(
-            course.ownerUserId.name,
-            style: TextStyle(
-              fontSize: 12,
-              color: ColorRepository.blackish,
+            Text(
+              course.ownerUserId.name,
+              style: TextStyle(
+                fontSize: 12,
+                color: ColorRepository.blackish,
+              ),
             ),
-          ),
-          Container(
-            width: 176.0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(Icons.star, color: Colors.yellow),
-                    Text(course.avgRating.toString()),
-                  ],
-                ),
-                Text(
-                  '${course.price}\$',
-                  style: TextStyle(color: ColorRepository.darkBlue),
-                ),
-              ],
+            Container(
+              width: 176.0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.star, color: Colors.yellow),
+                      Text(course.avgRating.toString()),
+                    ],
+                  ),
+                  Text(
+                    '${course.price}\$',
+                    style: TextStyle(color: ColorRepository.darkBlue),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

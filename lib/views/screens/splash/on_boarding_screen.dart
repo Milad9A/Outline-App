@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/views/screens/login_and_sign_up/login_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoardingScreen extends StatefulWidget {
+  static Route get route =>
+      MaterialPageRoute<void>(builder: (_) => OnBoardingScreen());
+
   @override
   _OnBoardingScreenState createState() => _OnBoardingScreenState();
 }
@@ -11,7 +15,10 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
-  void _onIntroEnd(context) {
+  void _onIntroEnd(context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('first_time', false);
+
     Navigator.of(context).push(
       MaterialPageRoute(builder: (_) => LoginScreen()),
     );

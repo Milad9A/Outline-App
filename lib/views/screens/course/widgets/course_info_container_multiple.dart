@@ -30,11 +30,11 @@ class CourseInfoContainerMultiple extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Icon(
-                      Icons.widgets,
+                      Icons.group,
                       color: ColorRepository.pink,
                     ),
                     Text(
-                      '19\nSections',
+                      '${course.subscribers.length}\nStudents',
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -64,7 +64,7 @@ class CourseInfoContainerMultiple extends StatelessWidget {
                       color: ColorRepository.green,
                     ),
                     Text(
-                      '24h\n23m',
+                      '${Duration(seconds: course.lengthOfTheCourseInSeconds).inHours}\nhr',
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -79,7 +79,7 @@ class CourseInfoContainerMultiple extends StatelessWidget {
                       color: ColorRepository.orange,
                     ),
                     Text(
-                      '${course.avgRating}\n(23.232)',
+                      '${course.avgRating}\n',
                       textAlign: TextAlign.center,
                     ),
                   ],

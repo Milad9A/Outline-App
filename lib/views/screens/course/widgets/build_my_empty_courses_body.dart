@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/theme/color_repository.dart';
+import 'package:outline/providers/course/my_courses/my_courses_bloc.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 Column buildMyEmptyCoursesBody(
@@ -35,6 +37,15 @@ Column buildMyEmptyCoursesBody(
               tabController.previousIndex,
             );
           },
+        ),
+      ),
+      SizedBox(height: 30.0),
+      Container(
+        width: MediaQuery.of(context).size.width * 0.9,
+        child: OutlineTextButton(
+          text: 'Refresh',
+          onPressed: () =>
+              BlocProvider.of<MyCoursesBloc>(context).add(GetMyCourses()),
         ),
       ),
     ],

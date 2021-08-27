@@ -21,23 +21,35 @@ class _$CourseModelTearOff {
   const _$CourseModelTearOff();
 
   Course call(
-      {@JsonKey(name: '_id') required String id,
-      @JsonKey(name: 'is_paid') required bool isPaid,
-      @JsonKey(name: 'num_of_subscribers') required int numOfSubscribers,
-      @JsonKey(name: 'num_of_lectures') required int numOfLectures,
-      @JsonKey(name: 'avg_rating') required double avgRating,
-      @JsonKey(name: 'contents') required List<Content> contents,
-      @JsonKey(name: 'requirements') required String requirements,
-      @JsonKey(name: 'price') required double price,
-      @JsonKey(name: 'description') required String description,
-      @JsonKey(name: 'title') required String title,
-      @JsonKey(name: 'owner_user_id') required User ownerUserId,
-      @JsonKey(name: 'banner') required String banner}) {
+      {@JsonKey(name: '_id')
+          required String id,
+      @JsonKey(name: 'is_paid')
+          required bool isPaid,
+      @JsonKey(name: 'subscribers')
+          required List<String> subscribers,
+      @JsonKey(name: 'length_of_the_course_in_seconds')
+          required int lengthOfTheCourseInSeconds,
+      @JsonKey(name: 'avg_rating')
+          required double avgRating,
+      @JsonKey(name: 'contents')
+          required List<Content> contents,
+      @JsonKey(name: 'requirements')
+          required String requirements,
+      @JsonKey(name: 'price')
+          required double price,
+      @JsonKey(name: 'description')
+          required String description,
+      @JsonKey(name: 'title')
+          required String title,
+      @JsonKey(name: 'owner_user_id')
+          required User ownerUserId,
+      @JsonKey(name: 'banner')
+          required String banner}) {
     return Course(
       id: id,
       isPaid: isPaid,
-      numOfSubscribers: numOfSubscribers,
-      numOfLectures: numOfLectures,
+      subscribers: subscribers,
+      lengthOfTheCourseInSeconds: lengthOfTheCourseInSeconds,
       avgRating: avgRating,
       contents: contents,
       requirements: requirements,
@@ -63,10 +75,10 @@ mixin _$CourseModel {
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_paid')
   bool get isPaid => throw _privateConstructorUsedError;
-  @JsonKey(name: 'num_of_subscribers')
-  int get numOfSubscribers => throw _privateConstructorUsedError;
-  @JsonKey(name: 'num_of_lectures')
-  int get numOfLectures => throw _privateConstructorUsedError;
+  @JsonKey(name: 'subscribers')
+  List<String> get subscribers => throw _privateConstructorUsedError;
+  @JsonKey(name: 'length_of_the_course_in_seconds')
+  int get lengthOfTheCourseInSeconds => throw _privateConstructorUsedError;
   @JsonKey(name: 'avg_rating')
   double get avgRating => throw _privateConstructorUsedError;
   @JsonKey(name: 'contents')
@@ -96,18 +108,30 @@ abstract class $CourseModelCopyWith<$Res> {
           CourseModel value, $Res Function(CourseModel) then) =
       _$CourseModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: '_id') String id,
-      @JsonKey(name: 'is_paid') bool isPaid,
-      @JsonKey(name: 'num_of_subscribers') int numOfSubscribers,
-      @JsonKey(name: 'num_of_lectures') int numOfLectures,
-      @JsonKey(name: 'avg_rating') double avgRating,
-      @JsonKey(name: 'contents') List<Content> contents,
-      @JsonKey(name: 'requirements') String requirements,
-      @JsonKey(name: 'price') double price,
-      @JsonKey(name: 'description') String description,
-      @JsonKey(name: 'title') String title,
-      @JsonKey(name: 'owner_user_id') User ownerUserId,
-      @JsonKey(name: 'banner') String banner});
+      {@JsonKey(name: '_id')
+          String id,
+      @JsonKey(name: 'is_paid')
+          bool isPaid,
+      @JsonKey(name: 'subscribers')
+          List<String> subscribers,
+      @JsonKey(name: 'length_of_the_course_in_seconds')
+          int lengthOfTheCourseInSeconds,
+      @JsonKey(name: 'avg_rating')
+          double avgRating,
+      @JsonKey(name: 'contents')
+          List<Content> contents,
+      @JsonKey(name: 'requirements')
+          String requirements,
+      @JsonKey(name: 'price')
+          double price,
+      @JsonKey(name: 'description')
+          String description,
+      @JsonKey(name: 'title')
+          String title,
+      @JsonKey(name: 'owner_user_id')
+          User ownerUserId,
+      @JsonKey(name: 'banner')
+          String banner});
 }
 
 /// @nodoc
@@ -122,8 +146,8 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? isPaid = freezed,
-    Object? numOfSubscribers = freezed,
-    Object? numOfLectures = freezed,
+    Object? subscribers = freezed,
+    Object? lengthOfTheCourseInSeconds = freezed,
     Object? avgRating = freezed,
     Object? contents = freezed,
     Object? requirements = freezed,
@@ -142,13 +166,13 @@ class _$CourseModelCopyWithImpl<$Res> implements $CourseModelCopyWith<$Res> {
           ? _value.isPaid
           : isPaid // ignore: cast_nullable_to_non_nullable
               as bool,
-      numOfSubscribers: numOfSubscribers == freezed
-          ? _value.numOfSubscribers
-          : numOfSubscribers // ignore: cast_nullable_to_non_nullable
-              as int,
-      numOfLectures: numOfLectures == freezed
-          ? _value.numOfLectures
-          : numOfLectures // ignore: cast_nullable_to_non_nullable
+      subscribers: subscribers == freezed
+          ? _value.subscribers
+          : subscribers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      lengthOfTheCourseInSeconds: lengthOfTheCourseInSeconds == freezed
+          ? _value.lengthOfTheCourseInSeconds
+          : lengthOfTheCourseInSeconds // ignore: cast_nullable_to_non_nullable
               as int,
       avgRating: avgRating == freezed
           ? _value.avgRating
@@ -192,18 +216,30 @@ abstract class $CourseCopyWith<$Res> implements $CourseModelCopyWith<$Res> {
       _$CourseCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: '_id') String id,
-      @JsonKey(name: 'is_paid') bool isPaid,
-      @JsonKey(name: 'num_of_subscribers') int numOfSubscribers,
-      @JsonKey(name: 'num_of_lectures') int numOfLectures,
-      @JsonKey(name: 'avg_rating') double avgRating,
-      @JsonKey(name: 'contents') List<Content> contents,
-      @JsonKey(name: 'requirements') String requirements,
-      @JsonKey(name: 'price') double price,
-      @JsonKey(name: 'description') String description,
-      @JsonKey(name: 'title') String title,
-      @JsonKey(name: 'owner_user_id') User ownerUserId,
-      @JsonKey(name: 'banner') String banner});
+      {@JsonKey(name: '_id')
+          String id,
+      @JsonKey(name: 'is_paid')
+          bool isPaid,
+      @JsonKey(name: 'subscribers')
+          List<String> subscribers,
+      @JsonKey(name: 'length_of_the_course_in_seconds')
+          int lengthOfTheCourseInSeconds,
+      @JsonKey(name: 'avg_rating')
+          double avgRating,
+      @JsonKey(name: 'contents')
+          List<Content> contents,
+      @JsonKey(name: 'requirements')
+          String requirements,
+      @JsonKey(name: 'price')
+          double price,
+      @JsonKey(name: 'description')
+          String description,
+      @JsonKey(name: 'title')
+          String title,
+      @JsonKey(name: 'owner_user_id')
+          User ownerUserId,
+      @JsonKey(name: 'banner')
+          String banner});
 }
 
 /// @nodoc
@@ -219,8 +255,8 @@ class _$CourseCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? isPaid = freezed,
-    Object? numOfSubscribers = freezed,
-    Object? numOfLectures = freezed,
+    Object? subscribers = freezed,
+    Object? lengthOfTheCourseInSeconds = freezed,
     Object? avgRating = freezed,
     Object? contents = freezed,
     Object? requirements = freezed,
@@ -239,13 +275,13 @@ class _$CourseCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
           ? _value.isPaid
           : isPaid // ignore: cast_nullable_to_non_nullable
               as bool,
-      numOfSubscribers: numOfSubscribers == freezed
-          ? _value.numOfSubscribers
-          : numOfSubscribers // ignore: cast_nullable_to_non_nullable
-              as int,
-      numOfLectures: numOfLectures == freezed
-          ? _value.numOfLectures
-          : numOfLectures // ignore: cast_nullable_to_non_nullable
+      subscribers: subscribers == freezed
+          ? _value.subscribers
+          : subscribers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      lengthOfTheCourseInSeconds: lengthOfTheCourseInSeconds == freezed
+          ? _value.lengthOfTheCourseInSeconds
+          : lengthOfTheCourseInSeconds // ignore: cast_nullable_to_non_nullable
               as int,
       avgRating: avgRating == freezed
           ? _value.avgRating
@@ -288,18 +324,30 @@ class _$CourseCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
 /// @nodoc
 class _$Course with DiagnosticableTreeMixin implements Course {
   const _$Course(
-      {@JsonKey(name: '_id') required this.id,
-      @JsonKey(name: 'is_paid') required this.isPaid,
-      @JsonKey(name: 'num_of_subscribers') required this.numOfSubscribers,
-      @JsonKey(name: 'num_of_lectures') required this.numOfLectures,
-      @JsonKey(name: 'avg_rating') required this.avgRating,
-      @JsonKey(name: 'contents') required this.contents,
-      @JsonKey(name: 'requirements') required this.requirements,
-      @JsonKey(name: 'price') required this.price,
-      @JsonKey(name: 'description') required this.description,
-      @JsonKey(name: 'title') required this.title,
-      @JsonKey(name: 'owner_user_id') required this.ownerUserId,
-      @JsonKey(name: 'banner') required this.banner});
+      {@JsonKey(name: '_id')
+          required this.id,
+      @JsonKey(name: 'is_paid')
+          required this.isPaid,
+      @JsonKey(name: 'subscribers')
+          required this.subscribers,
+      @JsonKey(name: 'length_of_the_course_in_seconds')
+          required this.lengthOfTheCourseInSeconds,
+      @JsonKey(name: 'avg_rating')
+          required this.avgRating,
+      @JsonKey(name: 'contents')
+          required this.contents,
+      @JsonKey(name: 'requirements')
+          required this.requirements,
+      @JsonKey(name: 'price')
+          required this.price,
+      @JsonKey(name: 'description')
+          required this.description,
+      @JsonKey(name: 'title')
+          required this.title,
+      @JsonKey(name: 'owner_user_id')
+          required this.ownerUserId,
+      @JsonKey(name: 'banner')
+          required this.banner});
 
   factory _$Course.fromJson(Map<String, dynamic> json) =>
       _$_$CourseFromJson(json);
@@ -311,11 +359,11 @@ class _$Course with DiagnosticableTreeMixin implements Course {
   @JsonKey(name: 'is_paid')
   final bool isPaid;
   @override
-  @JsonKey(name: 'num_of_subscribers')
-  final int numOfSubscribers;
+  @JsonKey(name: 'subscribers')
+  final List<String> subscribers;
   @override
-  @JsonKey(name: 'num_of_lectures')
-  final int numOfLectures;
+  @JsonKey(name: 'length_of_the_course_in_seconds')
+  final int lengthOfTheCourseInSeconds;
   @override
   @JsonKey(name: 'avg_rating')
   final double avgRating;
@@ -343,7 +391,7 @@ class _$Course with DiagnosticableTreeMixin implements Course {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CourseModel(id: $id, isPaid: $isPaid, numOfSubscribers: $numOfSubscribers, numOfLectures: $numOfLectures, avgRating: $avgRating, contents: $contents, requirements: $requirements, price: $price, description: $description, title: $title, ownerUserId: $ownerUserId, banner: $banner)';
+    return 'CourseModel(id: $id, isPaid: $isPaid, subscribers: $subscribers, lengthOfTheCourseInSeconds: $lengthOfTheCourseInSeconds, avgRating: $avgRating, contents: $contents, requirements: $requirements, price: $price, description: $description, title: $title, ownerUserId: $ownerUserId, banner: $banner)';
   }
 
   @override
@@ -353,8 +401,9 @@ class _$Course with DiagnosticableTreeMixin implements Course {
       ..add(DiagnosticsProperty('type', 'CourseModel'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('isPaid', isPaid))
-      ..add(DiagnosticsProperty('numOfSubscribers', numOfSubscribers))
-      ..add(DiagnosticsProperty('numOfLectures', numOfLectures))
+      ..add(DiagnosticsProperty('subscribers', subscribers))
+      ..add(DiagnosticsProperty(
+          'lengthOfTheCourseInSeconds', lengthOfTheCourseInSeconds))
       ..add(DiagnosticsProperty('avgRating', avgRating))
       ..add(DiagnosticsProperty('contents', contents))
       ..add(DiagnosticsProperty('requirements', requirements))
@@ -373,12 +422,14 @@ class _$Course with DiagnosticableTreeMixin implements Course {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.isPaid, isPaid) ||
                 const DeepCollectionEquality().equals(other.isPaid, isPaid)) &&
-            (identical(other.numOfSubscribers, numOfSubscribers) ||
+            (identical(other.subscribers, subscribers) ||
                 const DeepCollectionEquality()
-                    .equals(other.numOfSubscribers, numOfSubscribers)) &&
-            (identical(other.numOfLectures, numOfLectures) ||
-                const DeepCollectionEquality()
-                    .equals(other.numOfLectures, numOfLectures)) &&
+                    .equals(other.subscribers, subscribers)) &&
+            (identical(other.lengthOfTheCourseInSeconds,
+                    lengthOfTheCourseInSeconds) ||
+                const DeepCollectionEquality().equals(
+                    other.lengthOfTheCourseInSeconds,
+                    lengthOfTheCourseInSeconds)) &&
             (identical(other.avgRating, avgRating) ||
                 const DeepCollectionEquality()
                     .equals(other.avgRating, avgRating)) &&
@@ -407,8 +458,8 @@ class _$Course with DiagnosticableTreeMixin implements Course {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(isPaid) ^
-      const DeepCollectionEquality().hash(numOfSubscribers) ^
-      const DeepCollectionEquality().hash(numOfLectures) ^
+      const DeepCollectionEquality().hash(subscribers) ^
+      const DeepCollectionEquality().hash(lengthOfTheCourseInSeconds) ^
       const DeepCollectionEquality().hash(avgRating) ^
       const DeepCollectionEquality().hash(contents) ^
       const DeepCollectionEquality().hash(requirements) ^
@@ -431,18 +482,30 @@ class _$Course with DiagnosticableTreeMixin implements Course {
 
 abstract class Course implements CourseModel {
   const factory Course(
-      {@JsonKey(name: '_id') required String id,
-      @JsonKey(name: 'is_paid') required bool isPaid,
-      @JsonKey(name: 'num_of_subscribers') required int numOfSubscribers,
-      @JsonKey(name: 'num_of_lectures') required int numOfLectures,
-      @JsonKey(name: 'avg_rating') required double avgRating,
-      @JsonKey(name: 'contents') required List<Content> contents,
-      @JsonKey(name: 'requirements') required String requirements,
-      @JsonKey(name: 'price') required double price,
-      @JsonKey(name: 'description') required String description,
-      @JsonKey(name: 'title') required String title,
-      @JsonKey(name: 'owner_user_id') required User ownerUserId,
-      @JsonKey(name: 'banner') required String banner}) = _$Course;
+      {@JsonKey(name: '_id')
+          required String id,
+      @JsonKey(name: 'is_paid')
+          required bool isPaid,
+      @JsonKey(name: 'subscribers')
+          required List<String> subscribers,
+      @JsonKey(name: 'length_of_the_course_in_seconds')
+          required int lengthOfTheCourseInSeconds,
+      @JsonKey(name: 'avg_rating')
+          required double avgRating,
+      @JsonKey(name: 'contents')
+          required List<Content> contents,
+      @JsonKey(name: 'requirements')
+          required String requirements,
+      @JsonKey(name: 'price')
+          required double price,
+      @JsonKey(name: 'description')
+          required String description,
+      @JsonKey(name: 'title')
+          required String title,
+      @JsonKey(name: 'owner_user_id')
+          required User ownerUserId,
+      @JsonKey(name: 'banner')
+          required String banner}) = _$Course;
 
   factory Course.fromJson(Map<String, dynamic> json) = _$Course.fromJson;
 
@@ -453,11 +516,11 @@ abstract class Course implements CourseModel {
   @JsonKey(name: 'is_paid')
   bool get isPaid => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'num_of_subscribers')
-  int get numOfSubscribers => throw _privateConstructorUsedError;
+  @JsonKey(name: 'subscribers')
+  List<String> get subscribers => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'num_of_lectures')
-  int get numOfLectures => throw _privateConstructorUsedError;
+  @JsonKey(name: 'length_of_the_course_in_seconds')
+  int get lengthOfTheCourseInSeconds => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'avg_rating')
   double get avgRating => throw _privateConstructorUsedError;

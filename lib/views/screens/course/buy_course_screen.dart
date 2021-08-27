@@ -69,6 +69,7 @@ class _BuyCourseScreenState extends State<BuyCourseScreen> {
               content: 'The Course has been purchased successfully',
               onPressed: () {
                 Navigator.pop(context);
+                Navigator.pop(context);
               },
             );
           },

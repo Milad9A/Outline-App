@@ -61,10 +61,10 @@ class CourseInfoTab extends StatelessWidget {
               CourseInfoContainerSingle(
                 color: ColorRepository.lowOpacityPink,
                 icon: Icon(
-                  Icons.widgets,
+                  Icons.group,
                   color: ColorRepository.pink,
                 ),
-                text: '19\nSections',
+                text: '${course.subscribers.length}\nStudents',
               ),
               SizedBox(width: 10.0),
               CourseInfoContainerSingle(
@@ -82,7 +82,8 @@ class CourseInfoTab extends StatelessWidget {
                   Icons.query_builder,
                   color: ColorRepository.green,
                 ),
-                text: '24h\n23m',
+                text:
+                    '${Duration(seconds: course.lengthOfTheCourseInSeconds).inHours}\nhr',
               ),
               SizedBox(width: 10.0),
               CourseInfoContainerSingle(
@@ -91,7 +92,7 @@ class CourseInfoTab extends StatelessWidget {
                   Icons.star,
                   color: ColorRepository.orange,
                 ),
-                text: '${course.avgRating}\n(23.232)',
+                text: '${course.avgRating}\n',
               ),
             ],
           ),
