@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/models/answer_model/answer_model.dart';
-import 'package:outline/providers/answer/answer_bloc.dart';
+import 'package:outline/providers/answer/answer/answer_bloc.dart';
 import 'package:outline/views/widgets/answer_container.dart';
 import 'package:outline/views/widgets/widgets.dart';
 

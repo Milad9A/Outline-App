@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:outline/models/answer_model/answer_model.dart';
 import 'package:outline/models/tag_model/tag_model.dart';
 import 'package:outline/models/user_model/user_model.dart';
 
@@ -15,7 +16,7 @@ abstract class QuestionModel with _$QuestionModel {
     @JsonKey(name: 'title') required String title,
     @JsonKey(name: 'is_answered') required bool isAnswered,
     @JsonKey(name: 'view_count') required int viewCount,
-    @JsonKey(name: 'answer_count') required int answerCount,
+    @JsonKey(name: 'answers') required List<Answer> answers,
     @JsonKey(name: 'score') required int score,
     @JsonKey(name: 'tags') required List<Tag> tags,
     @JsonKey(name: 'createdAt') required String createdAt,

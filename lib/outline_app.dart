@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:outline/providers/answer/answer_bloc.dart';
+import 'package:outline/providers/answer/add_answer/add_answer_bloc.dart';
+import 'package:outline/providers/answer/answer/answer_bloc.dart';
 import 'package:outline/providers/article/article_comments/article_comments_bloc.dart';
 import 'package:outline/providers/article/artilce/article_bloc.dart';
 import 'package:outline/providers/authentication/authentication/authentication_bloc.dart';
@@ -87,6 +88,11 @@ class _OutlineAppState extends State<OutlineApp> {
         ),
         BlocProvider(
           create: (context) => AnswerBloc(
+            answerRepository: AnswerRepository(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => AddAnswerBloc(
             answerRepository: AnswerRepository(),
           ),
         ),

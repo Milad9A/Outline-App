@@ -153,8 +153,10 @@ handleMessageOpened(
   } else if (messageData['screen_name'] == 'question_details_screen') {
     navigatorKey.currentState!.push(
       MaterialPageRoute(
-        builder: (context) =>
-            QuestionDetailsScreen(question: messageData['id']),
+        builder: (context) => QuestionDetailsScreen(
+          questionVote: messageData['id'],
+          onVoteChanged: (newQuestionVote) {},
+        ),
       ),
     );
   } else if (messageData['screen_name'] == 'conversation_screen') {

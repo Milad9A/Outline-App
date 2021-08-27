@@ -26,7 +26,7 @@ class CommentsListView extends StatefulWidget {
 class _CommentsListViewState extends State<CommentsListView> {
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
 
-  Widget slideIt(BuildContext context, int index, animation) {
+  Widget slideComment(BuildContext context, int index, animation) {
     Comment comment = widget.comments[index];
     return SlideTransition(
       position: Tween<Offset>(
@@ -103,21 +103,6 @@ class _CommentsListViewState extends State<CommentsListView> {
 
             widget.comments.insert(0, comment);
 
-            print(
-              BlocProvider.of<HomeBloc>(context)
-                  .feed
-                  .firstWhere(
-                    (FeedPost feedPost) {
-                      ArticleLike article = feedPost.post;
-                      return article.article.id == widget.articleId;
-                    },
-                  )
-                  .post
-                  .article
-                  .comments
-                  .length,
-            );
-
             BlocProvider.of<HomeBloc>(context)
                 .feed
                 .firstWhere(
@@ -131,20 +116,6 @@ class _CommentsListViewState extends State<CommentsListView> {
                 .comments
                 .insert(0, comment.id);
 
-            print(
-              BlocProvider.of<HomeBloc>(context)
-                  .feed
-                  .firstWhere(
-                    (FeedPost feedPost) {
-                      ArticleLike article = feedPost.post;
-                      return article.article.id == widget.articleId;
-                    },
-                  )
-                  .post
-                  .article
-                  .comments
-                  .length,
-            );
             setState(() {});
           },
           orElse: () {},
@@ -163,7 +134,7 @@ class _CommentsListViewState extends State<CommentsListView> {
           int index,
           Animation animation,
         ) {
-          return slideIt(context, index, animation);
+          return slideComment(context, index, animation);
         },
       ),
     );

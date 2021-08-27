@@ -24,7 +24,7 @@ class _$AnswerModelTearOff {
       {@JsonKey(name: 'body') required String body,
       @JsonKey(name: 'is_accepted') required bool isAccepted,
       @JsonKey(name: 'score') required int score,
-      @JsonKey(name: 'owner_user_id') required String ownerUserId,
+      @JsonKey(name: 'owner_user_id') required User user,
       @JsonKey(name: 'question_id') required String questionId,
       @JsonKey(name: 'createdAt') required String createdAt,
       @JsonKey(name: 'updatedAt') required String updatedAt}) {
@@ -32,7 +32,7 @@ class _$AnswerModelTearOff {
       body: body,
       isAccepted: isAccepted,
       score: score,
-      ownerUserId: ownerUserId,
+      user: user,
       questionId: questionId,
       createdAt: createdAt,
       updatedAt: updatedAt,
@@ -56,7 +56,7 @@ mixin _$AnswerModel {
   @JsonKey(name: 'score')
   int get score => throw _privateConstructorUsedError;
   @JsonKey(name: 'owner_user_id')
-  String get ownerUserId => throw _privateConstructorUsedError;
+  User get user => throw _privateConstructorUsedError;
   @JsonKey(name: 'question_id')
   String get questionId => throw _privateConstructorUsedError;
   @JsonKey(name: 'createdAt')
@@ -79,7 +79,7 @@ abstract class $AnswerModelCopyWith<$Res> {
       {@JsonKey(name: 'body') String body,
       @JsonKey(name: 'is_accepted') bool isAccepted,
       @JsonKey(name: 'score') int score,
-      @JsonKey(name: 'owner_user_id') String ownerUserId,
+      @JsonKey(name: 'owner_user_id') User user,
       @JsonKey(name: 'question_id') String questionId,
       @JsonKey(name: 'createdAt') String createdAt,
       @JsonKey(name: 'updatedAt') String updatedAt});
@@ -98,7 +98,7 @@ class _$AnswerModelCopyWithImpl<$Res> implements $AnswerModelCopyWith<$Res> {
     Object? body = freezed,
     Object? isAccepted = freezed,
     Object? score = freezed,
-    Object? ownerUserId = freezed,
+    Object? user = freezed,
     Object? questionId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -116,10 +116,10 @@ class _$AnswerModelCopyWithImpl<$Res> implements $AnswerModelCopyWith<$Res> {
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
               as int,
-      ownerUserId: ownerUserId == freezed
-          ? _value.ownerUserId
-          : ownerUserId // ignore: cast_nullable_to_non_nullable
-              as String,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
       questionId: questionId == freezed
           ? _value.questionId
           : questionId // ignore: cast_nullable_to_non_nullable
@@ -145,7 +145,7 @@ abstract class $AnswerCopyWith<$Res> implements $AnswerModelCopyWith<$Res> {
       {@JsonKey(name: 'body') String body,
       @JsonKey(name: 'is_accepted') bool isAccepted,
       @JsonKey(name: 'score') int score,
-      @JsonKey(name: 'owner_user_id') String ownerUserId,
+      @JsonKey(name: 'owner_user_id') User user,
       @JsonKey(name: 'question_id') String questionId,
       @JsonKey(name: 'createdAt') String createdAt,
       @JsonKey(name: 'updatedAt') String updatedAt});
@@ -165,7 +165,7 @@ class _$AnswerCopyWithImpl<$Res> extends _$AnswerModelCopyWithImpl<$Res>
     Object? body = freezed,
     Object? isAccepted = freezed,
     Object? score = freezed,
-    Object? ownerUserId = freezed,
+    Object? user = freezed,
     Object? questionId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -183,10 +183,10 @@ class _$AnswerCopyWithImpl<$Res> extends _$AnswerModelCopyWithImpl<$Res>
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
               as int,
-      ownerUserId: ownerUserId == freezed
-          ? _value.ownerUserId
-          : ownerUserId // ignore: cast_nullable_to_non_nullable
-              as String,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
       questionId: questionId == freezed
           ? _value.questionId
           : questionId // ignore: cast_nullable_to_non_nullable
@@ -211,7 +211,7 @@ class _$Answer with DiagnosticableTreeMixin implements Answer {
       {@JsonKey(name: 'body') required this.body,
       @JsonKey(name: 'is_accepted') required this.isAccepted,
       @JsonKey(name: 'score') required this.score,
-      @JsonKey(name: 'owner_user_id') required this.ownerUserId,
+      @JsonKey(name: 'owner_user_id') required this.user,
       @JsonKey(name: 'question_id') required this.questionId,
       @JsonKey(name: 'createdAt') required this.createdAt,
       @JsonKey(name: 'updatedAt') required this.updatedAt});
@@ -230,7 +230,7 @@ class _$Answer with DiagnosticableTreeMixin implements Answer {
   final int score;
   @override
   @JsonKey(name: 'owner_user_id')
-  final String ownerUserId;
+  final User user;
   @override
   @JsonKey(name: 'question_id')
   final String questionId;
@@ -243,7 +243,7 @@ class _$Answer with DiagnosticableTreeMixin implements Answer {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AnswerModel(body: $body, isAccepted: $isAccepted, score: $score, ownerUserId: $ownerUserId, questionId: $questionId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'AnswerModel(body: $body, isAccepted: $isAccepted, score: $score, user: $user, questionId: $questionId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -254,7 +254,7 @@ class _$Answer with DiagnosticableTreeMixin implements Answer {
       ..add(DiagnosticsProperty('body', body))
       ..add(DiagnosticsProperty('isAccepted', isAccepted))
       ..add(DiagnosticsProperty('score', score))
-      ..add(DiagnosticsProperty('ownerUserId', ownerUserId))
+      ..add(DiagnosticsProperty('user', user))
       ..add(DiagnosticsProperty('questionId', questionId))
       ..add(DiagnosticsProperty('createdAt', createdAt))
       ..add(DiagnosticsProperty('updatedAt', updatedAt));
@@ -271,9 +271,8 @@ class _$Answer with DiagnosticableTreeMixin implements Answer {
                     .equals(other.isAccepted, isAccepted)) &&
             (identical(other.score, score) ||
                 const DeepCollectionEquality().equals(other.score, score)) &&
-            (identical(other.ownerUserId, ownerUserId) ||
-                const DeepCollectionEquality()
-                    .equals(other.ownerUserId, ownerUserId)) &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)) &&
             (identical(other.questionId, questionId) ||
                 const DeepCollectionEquality()
                     .equals(other.questionId, questionId)) &&
@@ -291,7 +290,7 @@ class _$Answer with DiagnosticableTreeMixin implements Answer {
       const DeepCollectionEquality().hash(body) ^
       const DeepCollectionEquality().hash(isAccepted) ^
       const DeepCollectionEquality().hash(score) ^
-      const DeepCollectionEquality().hash(ownerUserId) ^
+      const DeepCollectionEquality().hash(user) ^
       const DeepCollectionEquality().hash(questionId) ^
       const DeepCollectionEquality().hash(createdAt) ^
       const DeepCollectionEquality().hash(updatedAt);
@@ -312,7 +311,7 @@ abstract class Answer implements AnswerModel {
       {@JsonKey(name: 'body') required String body,
       @JsonKey(name: 'is_accepted') required bool isAccepted,
       @JsonKey(name: 'score') required int score,
-      @JsonKey(name: 'owner_user_id') required String ownerUserId,
+      @JsonKey(name: 'owner_user_id') required User user,
       @JsonKey(name: 'question_id') required String questionId,
       @JsonKey(name: 'createdAt') required String createdAt,
       @JsonKey(name: 'updatedAt') required String updatedAt}) = _$Answer;
@@ -330,7 +329,7 @@ abstract class Answer implements AnswerModel {
   int get score => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'owner_user_id')
-  String get ownerUserId => throw _privateConstructorUsedError;
+  User get user => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'question_id')
   String get questionId => throw _privateConstructorUsedError;

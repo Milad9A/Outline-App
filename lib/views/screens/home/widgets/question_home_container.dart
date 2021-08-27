@@ -7,10 +7,10 @@ import 'package:flutter_quill/models/documents/document.dart';
 import 'package:flutter_quill/widgets/controller.dart';
 import 'package:flutter_quill/widgets/editor.dart';
 import 'package:flutter_tags/flutter_tags.dart';
-import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/question_model/question_vote_model.dart';
 import 'package:outline/providers/question/question_vote/question_vote_bloc.dart';
 import 'package:outline/repositories/question_repository.dart';
+import 'package:outline/views/screens/create_article_question/question_details_screen.dart';
 import 'package:outline/views/screens/home/widgets/question_vote_container.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
@@ -24,11 +24,13 @@ class QuestionHomeContainer extends StatefulWidget {
 }
 
 class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
+  late QuestionVote questionVote;
   QuillController? controller;
 
   @override
   void initState() {
     super.initState();
+    questionVote = widget.questionVote;
     try {
       controller = QuillController(
         document:
@@ -55,7 +57,7 @@ class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
                 CircleAvatar(
                   radius: 24.0,
                   backgroundImage: CachedNetworkImageProvider(
-                    widget.questionVote.question.user.avatar,
+                    questionVote.question.user.avatar,
                   ),
                 ),
                 Expanded(
@@ -64,11 +66,11 @@ class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: Text(widget.questionVote.question.user.name),
+                        child: Text(questionVote.question.user.name),
                       ),
                       Container(
-                        child: widget.questionVote.question.tags.isNotEmpty
-                            ? TagsRow(tags: widget.questionVote.question.tags)
+                        child: questionVote.question.tags.isNotEmpty
+                            ? TagsRow(tags: questionVote.question.tags)
                             : SizedBox.shrink(),
                       ),
                     ],
@@ -78,7 +80,7 @@ class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
             ),
             SizedBox(height: 10.0),
             Text(
-              widget.questionVote.question.title,
+              questionVote.question.title,
               style: Theme.of(context).textTheme.subtitle1!.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
@@ -88,7 +90,13 @@ class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
             Row(
               children: [
                 QuestionVoteContainer(
-                  questionVote: widget.questionVote,
+                  key: UniqueKey(),
+                  questionVote: questionVote,
+                  onChanged: (newQuestionVote) {
+                    setState(() {
+                      questionVote = newQuestionVote;
+                    });
+                  },
                 ),
                 SizedBox(width: 10.0),
                 controller != null
@@ -107,15 +115,39 @@ class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
                       )
                     : Expanded(
                         child: Text(
-                          widget.questionVote.question.body,
+                          questionVote.question.body,
                           style: Theme.of(context).textTheme.bodyText1,
                         ),
                       ),
               ],
             ),
             SizedBox(height: 10.0),
-            Text(
-              widget.questionVote.question.answerCount.toString() + ' Answers',
+            InkWell(
+              onTap: () async {
+                questionVote = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BlocProvider(
+                      create: (context) => QuestionVoteBloc(
+                        questionRepository: QuestionRepository(),
+                      ),
+                      child: QuestionDetailsScreen(
+                        questionVote: questionVote,
+                        onVoteChanged: (newQuestionVote) {
+                          setState(() {
+                            questionVote = newQuestionVote;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                );
+
+                setState(() {});
+              },
+              child: Text(
+                questionVote.question.answers.length.toString() + ' Answers',
+              ),
             ),
           ],
         ),

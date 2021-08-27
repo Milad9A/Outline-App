@@ -8,9 +8,15 @@ import 'package:outline/providers/question/question_vote/question_vote_bloc.dart
 import 'dart:math' as math;
 
 class QuestionVoteContainer extends StatefulWidget {
+  final Key key;
   final QuestionVote questionVote;
+  final void Function(QuestionVote) onChanged;
 
-  QuestionVoteContainer({required this.questionVote});
+  QuestionVoteContainer({
+    required this.questionVote,
+    required this.onChanged,
+    required this.key,
+  }) : super(key: key);
 
   @override
   _QuestionVoteContainerState createState() => _QuestionVoteContainerState();
@@ -33,6 +39,7 @@ class _QuestionVoteContainerState extends State<QuestionVoteContainer> {
           voteOnQuestionSuccess: (QuestionVote data) {
             setState(() {
               questionVote = data;
+              widget.onChanged(data);
             });
           },
           error: (NetworkExceptions message) {

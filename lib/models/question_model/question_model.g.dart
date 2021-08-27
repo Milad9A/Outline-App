@@ -14,7 +14,9 @@ _$Question _$_$QuestionFromJson(Map<String, dynamic> json) {
     title: json['title'] as String,
     isAnswered: json['is_answered'] as bool,
     viewCount: json['view_count'] as int,
-    answerCount: json['answer_count'] as int,
+    answers: (json['answers'] as List<dynamic>)
+        .map((e) => Answer.fromJson(e as Map<String, dynamic>))
+        .toList(),
     score: json['score'] as int,
     tags: (json['tags'] as List<dynamic>)
         .map((e) => Tag.fromJson(e as Map<String, dynamic>))
@@ -32,7 +34,7 @@ Map<String, dynamic> _$_$QuestionToJson(_$Question instance) =>
       'title': instance.title,
       'is_answered': instance.isAnswered,
       'view_count': instance.viewCount,
-      'answer_count': instance.answerCount,
+      'answers': instance.answers,
       'score': instance.score,
       'tags': instance.tags,
       'createdAt': instance.createdAt,

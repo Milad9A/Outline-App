@@ -36,4 +36,23 @@ class AnswerRepository {
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }
+
+  Future<ApiResult<Answer>> addAnswerToQuestion({
+    required String questionId,
+    required String body,
+  }) async {
+    try {
+      final response = await dioClient.post('/answers', data: {
+        'body': body,
+        'question_id': questionId,
+      });
+
+      final answer = Answer.fromJson(response);
+
+      return ApiResult.success(data: answer);
+    } catch (e) {
+      print(e);
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
+  }
 }

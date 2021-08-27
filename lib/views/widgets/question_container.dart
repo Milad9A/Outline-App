@@ -9,6 +9,7 @@ import 'package:outline/config/helpers/date_foramtter.dart';
 import 'dart:math' as math;
 
 import 'package:outline/models/question_model/question_model.dart';
+import 'package:outline/views/screens/create_article_question/question_details_screen.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class QuestionContainer extends StatefulWidget {
@@ -112,7 +113,7 @@ class _QuestionContainerState extends State<QuestionContainer> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(widget.question.answerCount.toString() + ' Answers'),
+              Text(widget.question.answers.length.toString() + ' Answers'),
               Text(
                 DateFormatter().getVerboseDateTimeRepresentation(
                   DateTime.parse(
