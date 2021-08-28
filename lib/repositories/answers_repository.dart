@@ -38,7 +38,7 @@ class AnswerRepository {
     }
   }
 
-  Future<ApiResult<AnswerVote>> addAnswerToQuestion({
+  Future<ApiResult<Answer>> addAnswerToQuestion({
     required String questionId,
     required String body,
   }) async {
@@ -48,7 +48,7 @@ class AnswerRepository {
         'question_id': questionId,
       });
 
-      final answer = AnswerVote.fromJson(response);
+      final answer = Answer.fromJson(response);
 
       return ApiResult.success(data: answer);
     } catch (e) {

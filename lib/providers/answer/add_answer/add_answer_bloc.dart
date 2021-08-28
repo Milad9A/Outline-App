@@ -26,14 +26,13 @@ class AddAnswerBloc extends Bloc<AddAnswerEvent, AddAnswerState> {
     if (event is AddAnswerButtonPressed) {
       yield AddAnswerLoading();
 
-      ApiResult<AnswerVote> apiResult =
-          await answerRepository.addAnswerToQuestion(
+      ApiResult<Answer> apiResult = await answerRepository.addAnswerToQuestion(
         questionId: event.questionId,
         body: event.body,
       );
 
       apiResult.when(
-        success: (AnswerVote data) {
+        success: (Answer data) {
           emit(AddAnswerSuccess(answer: data));
         },
         failure: (NetworkExceptions error) {

@@ -195,7 +195,7 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
                   BlocListener<AddAnswerBloc, AddAnswerState>(
                     listener: (context, state) {
                       state.maybeWhen(
-                        success: (AnswerVote answer) {
+                        success: (Answer answer) {
                           scrollController.animateTo(
                             scrollController.position.maxScrollExtent,
                             duration: Duration(milliseconds: 500),
@@ -209,7 +209,10 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
 
                           widget.questionVote.question.answers.insert(
                             widget.questionVote.question.answers.length,
-                            answer,
+                            AnswerVote(
+                              answer: answer,
+                              myVote: 0,
+                            ),
                           );
 
                           setState(() {});
