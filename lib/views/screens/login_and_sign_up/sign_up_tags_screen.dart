@@ -54,6 +54,7 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
             );
           },
           success: (User user) {
+            Loader.hide();
             Navigator.push(context, NavigationScreen.route);
           },
           orElse: () {},

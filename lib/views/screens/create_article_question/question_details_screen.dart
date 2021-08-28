@@ -16,6 +16,7 @@ import 'package:outline/providers/answer/answer_vote/answer_vote_bloc.dart';
 import 'package:outline/repositories/answers_repository.dart';
 import 'package:outline/views/screens/create_article_question/widgets/answer_container.dart';
 import 'package:outline/views/screens/home/widgets/question_vote_container.dart';
+import 'package:outline/views/screens/profile/profile_screen.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class QuestionDetailsScreen extends StatefulWidget {
@@ -104,10 +105,22 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
                 children: [
                   Row(
                     children: [
-                      CircleAvatar(
-                        radius: 24.0,
-                        backgroundImage: CachedNetworkImageProvider(
-                          questionVote.question.user.avatar,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProfileScreen(
+                                userId: questionVote.question.user.id,
+                              ),
+                            ),
+                          );
+                        },
+                        child: CircleAvatar(
+                          radius: 24.0,
+                          backgroundImage: CachedNetworkImageProvider(
+                            questionVote.question.user.avatar,
+                          ),
                         ),
                       ),
                       Expanded(

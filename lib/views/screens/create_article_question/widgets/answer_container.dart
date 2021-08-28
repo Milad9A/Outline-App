@@ -9,6 +9,7 @@ import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/answer_model/answer_vote_model.dart';
 import 'package:outline/providers/answer/answer_vote/answer_vote_bloc.dart';
 import 'package:outline/views/screens/create_article_question/widgets/answer_vote_row.dart';
+import 'package:outline/views/screens/profile/profile_screen.dart';
 
 class AnswerContainer extends StatefulWidget {
   final Key key;
@@ -58,10 +59,22 @@ class _AnswerContainerState extends State<AnswerContainer> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CircleAvatar(
-            radius: 24.0,
-            backgroundImage: CachedNetworkImageProvider(
-              widget.answerVote.answer.user.avatar,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProfileScreen(
+                    userId: widget.answerVote.answer.user.id,
+                  ),
+                ),
+              );
+            },
+            child: CircleAvatar(
+              radius: 24.0,
+              backgroundImage: CachedNetworkImageProvider(
+                widget.answerVote.answer.user.avatar,
+              ),
             ),
           ),
           Expanded(

@@ -2,43 +2,71 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_tags/flutter_tags.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/user_model/user_model.dart';
-import 'package:outline/providers/user/get_user/get_user_bloc.dart';
-import 'package:outline/repositories/chat_repository.dart';
-import 'package:outline/views/screens/chat/conversation_screen.dart';
+import 'package:outline/providers/authentication/authentication/authentication_bloc.dart';
+import 'package:outline/views/screens/login_and_sign_up/login_screen.dart';
+import 'package:outline/views/screens/profile/edit_profile_screen.dart';
+import 'package:outline/views/screens/profile/widgets/profile_answers_tab.dart';
+import 'package:outline/views/screens/profile/widgets/profile_articles_tab.dart';
+import 'package:outline/views/screens/profile/widgets/profile_questions_tab.dart';
 import 'package:outline/views/widgets/outline_circular_progress_indicator.dart';
+import 'package:outline/views/widgets/outline_tab_bar.dart';
 import 'package:outline/views/widgets/outline_text_button.dart';
 
-class ProfileScreen extends StatefulWidget {
-  final String userId;
-
-  const ProfileScreen({
-    required this.userId,
-  });
-
+class MyProfileScreen extends StatefulWidget {
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  _MyProfileScreenState createState() => _MyProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen>
+class _MyProfileScreenState extends State<MyProfileScreen>
     with SingleTickerProviderStateMixin {
+  late TabController tabController;
+  int selectedIndex = 0;
+
   @override
   void initState() {
-    BlocProvider.of<GetUserBloc>(context)
-        .add(GetUserInfoById(id: widget.userId));
     super.initState();
+
+    tabController = TabController(
+      initialIndex: selectedIndex,
+      length: 3,
+      vsync: this,
+    );
+  }
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildProfileScreenAppBar(context),
-      body: BlocBuilder<GetUserBloc, GetUserState>(
+      appBar: _buildMyProfileScreenAppBar(context),
+      body: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           return state.maybeWhen(
-            success: (user) => _buildProfileScreenBody(user: user),
+            authenticated: (user) => _buildMyProfileScreenBodyAuthenticated(
+              user: user,
+            ),
+            unAuthenticated: () => Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: OutlineTextButton(
+                  text: 'Login',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => LoginScreen()),
+                    );
+                  },
+                ),
+              ),
+            ),
             loading: () => Center(child: OutlineCircularProgressIndicator()),
             orElse: () => SizedBox.shrink(),
           );
@@ -47,22 +75,60 @@ class _ProfileScreenState extends State<ProfileScreen>
     );
   }
 
-  AppBar _buildProfileScreenAppBar(BuildContext context) {
+  AppBar _buildMyProfileScreenAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
-      elevation: 1.0,
       iconTheme: IconThemeData(
         color: ColorRepository.darkBlue,
       ),
       actionsIconTheme: IconThemeData(
         color: ColorRepository.darkBlue,
       ),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.more_vert_outlined),
+          onPressed: () {
+            showModalBottomSheet(
+              context: context,
+              enableDrag: true,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(10.0),
+                ),
+              ),
+              builder: (context) {
+                return Container(
+                  height: 250.0,
+                  child: Column(
+                    children: [
+                      Icon(
+                        CupertinoIcons.minus,
+                        color: Colors.grey.shade200,
+                        size: 60.0,
+                      ),
+                      ListTile(
+                        onTap: () {
+                          BlocProvider.of<AuthenticationBloc>(context).add(
+                            AuthenticationLoggedOut(),
+                          );
+                          Navigator.pop(context);
+                        },
+                        leading: Icon(Icons.logout),
+                        title: Text('Logout'),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
+          },
+        ),
+      ],
     );
   }
 
-  Widget _buildProfileScreenBody({required User user}) {
+  Widget _buildMyProfileScreenBodyAuthenticated({required User user}) {
     return SingleChildScrollView(
-      padding: EdgeInsets.only(top: 10.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -77,7 +143,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               width: 68.0,
               child: ClipOval(
                 child: CachedNetworkImage(
-                  imageUrl: user.avatar,
+                  imageUrl: Consts.avatar!,
                   fit: BoxFit.cover,
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
                       CircularProgressIndicator(
@@ -94,7 +160,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                user.name,
+                Consts.username!,
                 style: Theme.of(context)
                     .textTheme
                     .headline6!
@@ -109,7 +175,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             ],
           ),
           SizedBox(height: 6.0),
-          Text(user.aboutMe),
+          Text(Consts.bio!),
           SizedBox(height: 10.0),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
@@ -126,7 +192,7 @@ class _ProfileScreenState extends State<ProfileScreen>
           Container(
             width: 187.0,
             child: OutlineTextButton(
-              text: 'Message',
+              text: 'Edit Profile',
               backgroundColor: Colors.white,
               textColor: ColorRepository.darkBlue,
               borderSide: BorderSide(color: ColorRepository.darkBlue),
@@ -134,15 +200,13 @@ class _ProfileScreenState extends State<ProfileScreen>
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ConversationScreen(
-                      name: user.name,
-                      email: user.email,
-                      avatar: user.avatar,
-                      chatRoomId: ChatRepository().createChatRoomIdFromEmails(
-                        user.email,
-                        Consts.email!,
-                      ),
-                    ),
+                    builder: (context) => EditProfileScreen(
+                        user: user.copyWith(
+                      name: Consts.username!,
+                      avatar: Consts.avatar!,
+                      aboutMe: Consts.bio!,
+                      tags: Consts.tags,
+                    )),
                   ),
                 );
               },
@@ -201,7 +265,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                     child: Column(
                       children: [
                         Text(
-                          user.tags.length.toString(),
+                          Consts.tags.length.toString(),
                           style:
                               Theme.of(context).textTheme.headline6!.copyWith(
                                     fontWeight: FontWeight.bold,
@@ -216,6 +280,73 @@ class _ProfileScreenState extends State<ProfileScreen>
                 ],
               ),
             ),
+          ),
+          SizedBox(height: 10.0),
+          ListView(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            children: [
+              OutlineTabBar(
+                tabController: tabController,
+                onTap: (index) {
+                  setState(() {
+                    selectedIndex = index;
+                    tabController.animateTo(index);
+                  });
+                },
+                firstTitle: '',
+                secondTitle: '',
+                tabs: [
+                  Tab(
+                    child: Text(
+                      'Articles',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      'Questions',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      'Answers',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                color: ColorRepository.scaffoldBackground,
+                child: IndexedStack(
+                  index: selectedIndex,
+                  children: [
+                    Visibility(
+                      visible: selectedIndex == 0,
+                      child: ProfileArticlesTab(),
+                    ),
+                    Visibility(
+                      visible: selectedIndex == 1,
+                      child: ProfileQuestionsTab(),
+                    ),
+                    Visibility(
+                      visible: selectedIndex == 2,
+                      child: ProfileAnswersTab(),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ],
       ),

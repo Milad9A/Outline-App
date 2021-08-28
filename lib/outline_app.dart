@@ -14,6 +14,7 @@ import 'package:outline/providers/search/article_search/article_search_bloc.dart
 import 'package:outline/providers/search/course_search/course_search_bloc.dart';
 import 'package:outline/providers/search/question_search/question_search_bloc.dart';
 import 'package:outline/providers/tags/tags_bloc.dart';
+import 'package:outline/providers/user/get_user/get_user_bloc.dart';
 import 'package:outline/providers/user/update_user/update_user_bloc.dart';
 import 'package:outline/providers/user/user/user_bloc.dart';
 import 'package:outline/repositories/answers_repository.dart';
@@ -63,6 +64,11 @@ class _OutlineAppState extends State<OutlineApp> {
         ),
         BlocProvider(
           create: (context) => UpdateUserBloc(
+            userRepository: UserRepository(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => GetUserBloc(
             userRepository: UserRepository(),
           ),
         ),

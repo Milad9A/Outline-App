@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/course_model/course_model.dart';
 import 'package:outline/views/screens/course/widgets/widgets.dart';
+import 'package:outline/views/screens/profile/profile_screen.dart';
 
 class CourseInfoTab extends StatelessWidget {
   final Course course;
@@ -31,10 +32,22 @@ class CourseInfoTab extends StatelessWidget {
           SizedBox(height: 6.0),
           Row(
             children: [
-              CircleAvatar(
-                radius: 25.0,
-                backgroundImage: CachedNetworkImageProvider(
-                  course.ownerUserId.avatar,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfileScreen(
+                        userId: course.ownerUserId.id,
+                      ),
+                    ),
+                  );
+                },
+                child: CircleAvatar(
+                  radius: 25.0,
+                  backgroundImage: CachedNetworkImageProvider(
+                    course.ownerUserId.avatar,
+                  ),
                 ),
               ),
               SizedBox(width: 8.0),

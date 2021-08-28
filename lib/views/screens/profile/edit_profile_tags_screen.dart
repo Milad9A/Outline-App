@@ -4,13 +4,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:flutter_tags/flutter_tags.dart';
 import 'package:outline/config/theme/color_repository.dart';
-import 'package:outline/models/tag_model/tag_model.dart';
 import 'package:outline/providers/tags/tags_bloc.dart';
 import 'package:outline/views/widgets/outline_text_button.dart';
 import 'package:outline/views/widgets/outline_text_field.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class EditProfileTagsScreen extends StatefulWidget {
+  static Route get route => MaterialPageRoute<void>(
+      builder: (_) => EditProfileTagsScreen(
+            ids: [],
+          ));
+
   final List<String> ids;
 
   const EditProfileTagsScreen({

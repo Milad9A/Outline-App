@@ -7,6 +7,7 @@ import 'package:outline/models/comment_model/comment_model.dart';
 import 'package:outline/models/feed_post_model/feed_post_model.dart';
 import 'package:outline/providers/comment/comment_bloc.dart';
 import 'package:outline/providers/home/home_bloc.dart';
+import 'package:outline/views/screens/profile/profile_screen.dart';
 
 // ignore: must_be_immutable
 class CommentsListView extends StatefulWidget {
@@ -47,10 +48,22 @@ class _CommentsListViewState extends State<CommentsListView> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(
-                  radius: 24.0,
-                  backgroundImage: CachedNetworkImageProvider(
-                    comment.user.avatar,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProfileScreen(
+                          userId: comment.user.id,
+                        ),
+                      ),
+                    );
+                  },
+                  child: CircleAvatar(
+                    radius: 24.0,
+                    backgroundImage: CachedNetworkImageProvider(
+                      comment.user.avatar,
+                    ),
                   ),
                 ),
                 Expanded(

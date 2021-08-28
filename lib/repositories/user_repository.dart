@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -63,6 +62,22 @@ class UserRepository {
     try {
       final response = await dioClient.get(
         '/users/me',
+      );
+
+      User user = User.fromJson(response);
+
+      return ApiResult.success(data: user);
+    } catch (e) {
+      return ApiResult.failure(error: NetworkExceptions.getDioException(e));
+    }
+  }
+
+  Future<ApiResult<User>> getUserInfoById({
+    required String id,
+  }) async {
+    try {
+      final response = await dioClient.get(
+        '/users/$id',
       );
 
       User user = User.fromJson(response);

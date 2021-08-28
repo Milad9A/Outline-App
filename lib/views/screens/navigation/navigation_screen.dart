@@ -8,7 +8,7 @@ import 'package:outline/providers/authentication/authentication/authentication_b
 import 'package:outline/views/screens/course/course_screen.dart';
 import 'package:outline/views/screens/create_article_question/create_post_screen.dart';
 import 'package:outline/views/screens/home/home_screen.dart';
-import 'package:outline/views/screens/profile/profile_screen.dart';
+import 'package:outline/views/screens/profile/my_profile_screen.dart';
 import 'package:outline/views/screens/search/search_screen.dart';
 
 class NavigationScreen extends StatefulWidget {
@@ -56,7 +56,7 @@ class _NavigationScreenState extends State<NavigationScreen>
               SearchScreen(),
               CreatePostScreen(),
               CourseScreen(),
-              ProfileScreen(),
+              MyProfileScreen(),
             ],
           ),
         ),

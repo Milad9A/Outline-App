@@ -14,6 +14,7 @@ import 'package:outline/providers/article/article_like/article_like_bloc.dart';
 import 'package:outline/repositories/article_repository.dart';
 import 'package:outline/views/screens/create_article_question/article_details_screen.dart';
 import 'package:outline/views/screens/create_article_question/comments_screen.dart';
+import 'package:outline/views/screens/profile/profile_screen.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class ArticleHomeContainer extends StatefulWidget {
@@ -61,10 +62,22 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
         children: [
           Row(
             children: [
-              CircleAvatar(
-                radius: 24.0,
-                backgroundImage: CachedNetworkImageProvider(
-                  articleLike.article.user.avatar,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfileScreen(
+                        userId: articleLike.article.user.id,
+                      ),
+                    ),
+                  );
+                },
+                child: CircleAvatar(
+                  radius: 24.0,
+                  backgroundImage: CachedNetworkImageProvider(
+                    articleLike.article.user.avatar,
+                  ),
                 ),
               ),
               Expanded(
