@@ -101,6 +101,7 @@ class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
             ),
             SizedBox(height: 6.0),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 QuestionVoteContainer(
                   key: UniqueKey(),
