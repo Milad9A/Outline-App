@@ -1,16 +1,20 @@
 # outline
 
-A new Flutter project.
+<img align="center" width="535" alt="outline" src="https://user-images.githubusercontent.com/43892355/160640809-ac399333-bcee-4a03-b2da-6a085686bce2.png">
 
-## Getting Started
+This app uses [Outline-API](https://github.com/Milad9A/Outline-API) as a Back-End
 
-This project is a starting point for a Flutter application.
+Outline is a platform for programmers. 
+Users can:
+  1. Read, write and react to articles
+  2. Buy courses (using [Banker-App](https://github.com/Milad9A/Banker-App) and [Banker-API](https://github.com/Milad9A/Banker-API) and rate and comment on them. Only instructors can create new courses though
+  3. Ask questions and post answers
+  4. Chat and make video calls with other users and instructors
+  5. Follow a number of categroies and get notified about new articles and questions in those categories
+  6. Discover new articles, questions and courses using the search and news-feed features
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Some of the used technologies and packages:
+  - [Flutter](https://flutter.dev/) (this app is created using the Flutter SDK)
+  - [Firebase](https://firebase.google.com/) (used for notifications and messaging features)
+  - [Quill](https://quilljs.com/) (used for creating rich-text articles and questions)
+  - [CodeMagic](https://codemagic.io/start/) (CI/CD)
