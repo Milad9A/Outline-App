@@ -17,7 +17,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc({
     required this.authenticationBloc,
     required this.userRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final UserRepository userRepository;
   final AuthenticationBloc authenticationBloc;
@@ -27,19 +27,19 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginEvent event,
   ) async* {
     if (event is LoginButtonPressed) {
-      yield LoginLoading();
+      yield const LoginLoading();
 
       ApiResult<User> apiResult = await userRepository.loginUser(
         userLoginCredentials: event.userLogin,
       );
 
       apiResult.when(
-        success: (User data) {
+        success: (User data) async* {
           authenticationBloc.add(AuthenticationLoggedIn(user: data));
-          emit(LoginSuccess(user: data));
+          yield (LoginSuccess(user: data));
         },
-        failure: (NetworkExceptions error) {
-          emit(LoginError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (LoginError(error: error));
         },
       );
     }

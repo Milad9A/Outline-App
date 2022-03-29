@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
-import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 
@@ -16,8 +15,9 @@ class BuyCourseScreen extends StatefulWidget {
   final Course course;
 
   const BuyCourseScreen({
+    Key? key,
     required this.course,
-  });
+  }) : super(key: key);
 
   @override
   _BuyCourseScreenState createState() => _BuyCourseScreenState();
@@ -34,7 +34,7 @@ class _BuyCourseScreenState extends State<BuyCourseScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: ColorRepository.darkBlue),
+        iconTheme: const IconThemeData(color: ColorRepository.darkBlue),
         title: Text(
           widget.course.title,
           style: Theme.of(context).textTheme.headline5,
@@ -58,7 +58,7 @@ class _BuyCourseScreenState extends State<BuyCourseScreen> {
           buyLoading: () {
             Loader.show(
               context,
-              progressIndicator: OutlineCircularProgressIndicator(),
+              progressIndicator: const OutlineCircularProgressIndicator(),
             );
           },
           buySuccess: () {
@@ -88,14 +88,14 @@ class _BuyCourseScreenState extends State<BuyCourseScreen> {
         );
       },
       child: SingleChildScrollView(
-        padding: EdgeInsets.only(bottom: 10.0),
+        padding: const EdgeInsets.only(bottom: 10.0),
         child: Column(
           children: [
             Hero(
               tag: widget.course.id,
               transitionOnUserGestures: true,
               child: ClipRRect(
-                borderRadius: BorderRadius.vertical(
+                borderRadius: const BorderRadius.vertical(
                   bottom: Radius.circular(12.0),
                 ),
                 child: CachedNetworkImage(
@@ -120,11 +120,11 @@ class _BuyCourseScreenState extends State<BuyCourseScreen> {
                         .subtitle1!
                         .copyWith(color: ColorRepository.darkBlue),
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   CourseInfoContainerMultiple(
                     course: widget.course,
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   Text(
                     'Course Description',
                     style: Theme.of(context).textTheme.headline6!.copyWith(
@@ -132,12 +132,12 @@ class _BuyCourseScreenState extends State<BuyCourseScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                   ),
-                  SizedBox(height: 12.0),
+                  const SizedBox(height: 12.0),
                   Text(
                     widget.course.description,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   Text(
                     'Requirements',
                     style: Theme.of(context).textTheme.headline6!.copyWith(
@@ -145,12 +145,12 @@ class _BuyCourseScreenState extends State<BuyCourseScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                   ),
-                  SizedBox(height: 12.0),
+                  const SizedBox(height: 12.0),
                   Text(
                     widget.course.requirements,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   Text(
                     'Contents',
                     style: Theme.of(context).textTheme.headline6!.copyWith(
@@ -158,13 +158,13 @@ class _BuyCourseScreenState extends State<BuyCourseScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                   ),
-                  SizedBox(height: 2.0),
+                  const SizedBox(height: 2.0),
                   widget.course.contents.isNotEmpty
                       ? CourseOverviewTab(
                           contents: widget.course.contents,
                           inBuyCourseScreen: true,
                         )
-                      : Text(
+                      : const Text(
                           "The Course doesn't have any contents yet!",
                           style: TextStyle(color: Colors.black),
                         ),

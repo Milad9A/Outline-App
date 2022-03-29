@@ -13,7 +13,7 @@ import 'package:outline/models/question_model/questions_vote_list_model.dart';
 
 class SearchRepository {
   late DioClient dioClient;
-  String _baseUrl = Consts.baseUrl;
+  final String _baseUrl = Consts.baseUrl;
 
   SearchRepository() {
     var dio = Dio();
@@ -41,7 +41,6 @@ class SearchRepository {
 
       return ApiResult.success(data: articlesList.articlesList);
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }
@@ -65,7 +64,6 @@ class SearchRepository {
         data: questionsVoteList.questionsVoteList,
       );
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }
@@ -87,7 +85,6 @@ class SearchRepository {
 
       return ApiResult.success(data: coursesList.coursesList);
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }

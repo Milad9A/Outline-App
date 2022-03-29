@@ -15,7 +15,7 @@ class ArticleCommentsBloc
     extends Bloc<ArticleCommentsEvent, ArticleCommentsState> {
   ArticleCommentsBloc({
     required this.articleRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final ArticleRepository articleRepository;
 
@@ -24,7 +24,7 @@ class ArticleCommentsBloc
     ArticleCommentsEvent event,
   ) async* {
     if (event is ArticleCommentsGetComments) {
-      yield ArticleCommentsLoading();
+      yield const ArticleCommentsLoading();
 
       ApiResult<List<Comment>> apiResult =
           await articleRepository.getArticleComments(
@@ -32,11 +32,11 @@ class ArticleCommentsBloc
       );
 
       apiResult.when(
-        success: (List<Comment> data) {
-          emit(ArticleCommentsSuccess(comments: data));
+        success: (List<Comment> data) async* {
+          yield (ArticleCommentsSuccess(comments: data));
         },
-        failure: (NetworkExceptions error) {
-          emit(ArticleCommentsError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (ArticleCommentsError(error: error));
         },
       );
     }

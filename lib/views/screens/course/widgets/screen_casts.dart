@@ -13,7 +13,7 @@ class ScreenCasts extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10.0),
-        boxShadow: [Consts.outlineBoxShadow],
+        boxShadow: const [Consts.outlineBoxShadow],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'user_sign_up_model.dart';
 
@@ -33,7 +35,7 @@ class _$UserSignUpModelTearOff {
     );
   }
 
-  UserSignUpModel fromJson(Map<String, Object> json) {
+  UserSignUpModel fromJson(Map<String, Object?> json) {
     return UserSignUpModel.fromJson(json);
   }
 }
@@ -158,9 +160,8 @@ class _$UserSignUpCopyWithImpl<$Res> extends _$UserSignUpModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$UserSignUp with DiagnosticableTreeMixin implements UserSignUp {
   const _$UserSignUp(
       {@JsonKey(name: 'name') required this.name,
@@ -169,7 +170,7 @@ class _$UserSignUp with DiagnosticableTreeMixin implements UserSignUp {
       @JsonKey(name: 'confirm_password') required this.confirmPassword});
 
   factory _$UserSignUp.fromJson(Map<String, dynamic> json) =>
-      _$_$UserSignUpFromJson(json);
+      _$$UserSignUpFromJson(json);
 
   @override
   @JsonKey(name: 'name')
@@ -203,26 +204,22 @@ class _$UserSignUp with DiagnosticableTreeMixin implements UserSignUp {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is UserSignUp &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)) &&
-            (identical(other.confirmPassword, confirmPassword) ||
-                const DeepCollectionEquality()
-                    .equals(other.confirmPassword, confirmPassword)));
+        (other.runtimeType == runtimeType &&
+            other is UserSignUp &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.password, password) &&
+            const DeepCollectionEquality()
+                .equals(other.confirmPassword, confirmPassword));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(password) ^
-      const DeepCollectionEquality().hash(confirmPassword);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(password),
+      const DeepCollectionEquality().hash(confirmPassword));
 
   @JsonKey(ignore: true)
   @override
@@ -231,7 +228,7 @@ class _$UserSignUp with DiagnosticableTreeMixin implements UserSignUp {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$UserSignUpToJson(this);
+    return _$$UserSignUpToJson(this);
   }
 }
 
@@ -248,16 +245,16 @@ abstract class UserSignUp implements UserSignUpModel {
 
   @override
   @JsonKey(name: 'name')
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(name: 'email')
-  String get email => throw _privateConstructorUsedError;
+  String get email;
   @override
   @JsonKey(name: 'password')
-  String get password => throw _privateConstructorUsedError;
+  String get password;
   @override
   @JsonKey(name: 'confirm_password')
-  String get confirmPassword => throw _privateConstructorUsedError;
+  String get confirmPassword;
   @override
   @JsonKey(ignore: true)
   $UserSignUpCopyWith<UserSignUp> get copyWith =>

@@ -16,7 +16,7 @@ part 'comment_bloc.freezed.dart';
 class CommentBloc extends Bloc<CommentEvent, CommentState> {
   CommentBloc({
     required this.commentRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final CommentRepository commentRepository;
 
@@ -25,17 +25,17 @@ class CommentBloc extends Bloc<CommentEvent, CommentState> {
     CommentEvent event,
   ) async* {
     if (event is CreateCommentButtonPressed) {
-      yield CommentLoading();
+      yield const CommentLoading();
 
       ApiResult<Comment> apiResult = await commentRepository.createComment(
         commentData: event.commentCreate,
       );
       apiResult.when(
-        success: (Comment data) {
-          emit(CreateCommentSuccess(comment: data));
+        success: (Comment data) async* {
+          yield (CreateCommentSuccess(comment: data));
         },
-        failure: (NetworkExceptions error) {
-          emit(CommentError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (CommentError(error: error));
         },
       );
     }

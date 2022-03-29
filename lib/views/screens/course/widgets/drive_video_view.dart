@@ -7,9 +7,10 @@ class DriveVideoView extends StatelessWidget {
   final String videoLink;
 
   const DriveVideoView({
+    Key? key,
     required this.videoName,
     required this.videoLink,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +20,11 @@ class DriveVideoView extends StatelessWidget {
           backgroundColor: Colors.white,
           title: Text(
             videoName,
-            style: TextStyle(
+            style: const TextStyle(
               color: ColorRepository.darkBlue,
             ),
           ),
-          iconTheme: IconThemeData(
+          iconTheme: const IconThemeData(
             color: ColorRepository.darkBlue,
           ),
         ),

@@ -1,11 +1,9 @@
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
-import 'package:flutter_tags/flutter_tags.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/services/network_exceptions.dart';
@@ -14,7 +12,6 @@ import 'package:outline/models/user_model/user_model.dart';
 import 'package:outline/models/user_model/user_update_model.dart';
 import 'package:outline/providers/user/update_user/update_user_bloc.dart';
 import 'package:outline/views/screens/profile/widgets/edit_profile_text_field.dart';
-import 'package:outline/views/widgets/outline_text_button.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 import 'edit_profile_tags_screen.dart';
@@ -22,7 +19,7 @@ import 'edit_profile_tags_screen.dart';
 class EditProfileScreen extends StatefulWidget {
   final User user;
 
-  const EditProfileScreen({required this.user});
+  const EditProfileScreen({Key? key, required this.user}) : super(key: key);
 
   @override
   _EditProfileScreenState createState() => _EditProfileScreenState();
@@ -37,15 +34,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   File? image;
 
   Future getImage() async {
-    final pickedFile = await picker.getImage(
+    final pickedFile = await picker.pickImage(
       source: ImageSource.gallery,
     );
 
     setState(() {
       if (pickedFile != null) {
         image = File(pickedFile.path);
-      } else {
-        print('No Image Selected');
       }
     });
   }
@@ -68,7 +63,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        FocusScope.of(context).requestFocus(new FocusNode());
+        FocusScope.of(context).requestFocus(FocusNode());
       },
       child: Scaffold(
         appBar: _buildEditProfileScreenAppBar(context),
@@ -82,10 +77,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   AppBar _buildEditProfileScreenAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
-      iconTheme: IconThemeData(
+      iconTheme: const IconThemeData(
         color: ColorRepository.darkBlue,
       ),
-      actionsIconTheme: IconThemeData(
+      actionsIconTheme: const IconThemeData(
         color: ColorRepository.darkBlue,
       ),
     );
@@ -110,7 +105,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           loading: () {
             Loader.show(
               context,
-              progressIndicator: OutlineCircularProgressIndicator(),
+              progressIndicator: const OutlineCircularProgressIndicator(),
             );
           },
           error: (NetworkExceptions error) {
@@ -128,7 +123,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         );
       },
       child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,7 +134,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 clipBehavior: Clip.none,
                 children: [
                   Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                     ),
                     height: 68.0,
@@ -153,7 +148,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   (context, url, downloadProgress) =>
                                       CircularProgressIndicator(
                                 value: downloadProgress.progress,
-                                valueColor: AlwaysStoppedAnimation<Color>(
+                                valueColor: const AlwaysStoppedAnimation<Color>(
                                   ColorRepository.darkBlue,
                                 ),
                               ),
@@ -172,12 +167,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         await getImage();
                       },
                       child: Container(
-                        padding: EdgeInsets.all(7.0),
-                        decoration: BoxDecoration(
+                        padding: const EdgeInsets.all(7.0),
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: ColorRepository.darkBlue,
                         ),
-                        child: Icon(
+                        child: const Icon(
                           Icons.add_a_photo,
                           size: 18.0,
                           color: Colors.white,
@@ -188,36 +183,36 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 25.0),
+            const SizedBox(height: 25.0),
             EditProfileTextField(
               controller: usernameController,
               label: 'username',
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             EditProfileTextField(
               controller: bioController,
               label: 'bio',
             ),
-            SizedBox(height: 25.0),
+            const SizedBox(height: 25.0),
             InkWell(
               onTap: () {},
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.password,
                     color: ColorRepository.darkBlue,
                   ),
-                  SizedBox(width: 8.0),
+                  const SizedBox(width: 8.0),
                   Text(
                     'Change Password',
                     style: Theme.of(context).textTheme.bodyText1!.copyWith(
                           color: ColorRepository.darkBlue,
                         ),
                   ),
-                  SizedBox(width: 6.0),
-                  Icon(
+                  const SizedBox(width: 6.0),
+                  const Icon(
                     Icons.arrow_forward_ios,
                     size: 18.0,
                     color: ColorRepository.darkBlue,
@@ -225,7 +220,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             InkWell(
               onTap: () async {
                 tagsIDs = await Navigator.push(
@@ -242,19 +237,19 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.tag,
                     color: ColorRepository.darkBlue,
                   ),
-                  SizedBox(width: 8.0),
+                  const SizedBox(width: 8.0),
                   Text(
                     'Edit Tags',
                     style: Theme.of(context).textTheme.bodyText1!.copyWith(
                           color: ColorRepository.darkBlue,
                         ),
                   ),
-                  SizedBox(width: 6.0),
-                  Icon(
+                  const SizedBox(width: 6.0),
+                  const Icon(
                     Icons.arrow_forward_ios,
                     size: 18.0,
                     color: ColorRepository.darkBlue,
@@ -262,7 +257,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 200.0),
+            const SizedBox(height: 200.0),
             OutlineTextButton(
               text: 'Save Changes',
               onPressed: () {

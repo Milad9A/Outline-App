@@ -17,7 +17,7 @@ class BuyCourseBloc extends Bloc<BuyCourseEvent, BuyCourseState> {
   BuyCourseBloc({
     required this.coursesRepository,
     required this.bankerRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final CoursesRepository coursesRepository;
   final BankerRepository bankerRepository;
@@ -27,7 +27,7 @@ class BuyCourseBloc extends Bloc<BuyCourseEvent, BuyCourseState> {
     BuyCourseEvent event,
   ) async* {
     if (event is BuyCourseButtonPressed) {
-      yield BuyCourseLoading();
+      yield const BuyCourseLoading();
 
       ApiResult apiResultBanker = await bankerRepository.loginUser(
         userLoginCredentials:
@@ -41,17 +41,17 @@ class BuyCourseBloc extends Bloc<BuyCourseEvent, BuyCourseState> {
             bankerAuthorizationToken: token,
           );
           apiResult.when(
-            success: (value) {
+            success: (value) async* {
               Consts.purchasedCourses.add(event.courseId);
-              emit(BuyCourseSuccess());
+              yield (const BuyCourseSuccess());
             },
-            failure: (NetworkExceptions error) {
-              emit(BuyCourseError(error: error));
+            failure: (NetworkExceptions error) async* {
+              yield (BuyCourseError(error: error));
             },
           );
         },
-        failure: (NetworkExceptions error) {
-          emit(BuyCourseError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (BuyCourseError(error: error));
         },
       );
     }

@@ -15,7 +15,7 @@ part 'question_bloc.freezed.dart';
 class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
   QuestionBloc({
     required this.questionRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final QuestionRepository questionRepository;
 
@@ -24,34 +24,34 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
     QuestionEvent event,
   ) async* {
     if (event is QuestionCreateButtonPressed) {
-      yield CreateQuestionLoading();
+      yield const CreateQuestionLoading();
 
       ApiResult<Question> apiResult = await questionRepository.createQuestion(
         questionData: event.questionCreateData,
       );
 
       apiResult.when(
-        success: (Question data) {
-          emit(CreateQuestionSuccess(question: data));
+        success: (Question data) async* {
+          yield (CreateQuestionSuccess(question: data));
         },
-        failure: (NetworkExceptions error) {
-          emit(QuestionError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (QuestionError(error: error));
         },
       );
     }
 
     if (event is QuestionGetMyQuestions) {
-      yield GetQuestionsLoading();
+      yield const GetQuestionsLoading();
 
       ApiResult<List<Question>> apiResult =
           await questionRepository.getMyQuestions();
 
       apiResult.when(
-        success: (List<Question> data) {
-          emit(GetMyQuestionsSuccess(questions: data));
+        success: (List<Question> data) async* {
+          yield (GetMyQuestionsSuccess(questions: data));
         },
-        failure: (NetworkExceptions error) {
-          emit(QuestionError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (QuestionError(error: error));
         },
       );
     }

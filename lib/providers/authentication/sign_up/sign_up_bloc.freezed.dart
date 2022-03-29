@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'sign_up_bloc.dart';
 
@@ -39,6 +41,12 @@ mixin _$SignUpEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(UserSignUp userSignUp)? signUpButtonPressed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(UserSignUp userSignUp)? signUpButtonPressed,
@@ -49,6 +57,12 @@ mixin _$SignUpEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(SignUpButtonPressed value) signUpButtonPressed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(SignUpButtonPressed value)? signUpButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,6 +107,7 @@ class __$StartedCopyWithImpl<$Res> extends _$SignUpEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started with DiagnosticableTreeMixin implements _Started {
   const _$_Started();
 
@@ -109,7 +124,8 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -122,6 +138,15 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
     required TResult Function(UserSignUp userSignUp) signUpButtonPressed,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(UserSignUp userSignUp)? signUpButtonPressed,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -144,6 +169,15 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
     required TResult Function(SignUpButtonPressed value) signUpButtonPressed,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(SignUpButtonPressed value)? signUpButtonPressed,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -197,6 +231,7 @@ class _$SignUpButtonPressedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$SignUpButtonPressed
     with DiagnosticableTreeMixin
     implements SignUpButtonPressed {
@@ -221,15 +256,15 @@ class _$SignUpButtonPressed
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is SignUpButtonPressed &&
-            (identical(other.userSignUp, userSignUp) ||
-                const DeepCollectionEquality()
-                    .equals(other.userSignUp, userSignUp)));
+        (other.runtimeType == runtimeType &&
+            other is SignUpButtonPressed &&
+            const DeepCollectionEquality()
+                .equals(other.userSignUp, userSignUp));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(userSignUp);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(userSignUp));
 
   @JsonKey(ignore: true)
   @override
@@ -243,6 +278,15 @@ class _$SignUpButtonPressed
     required TResult Function(UserSignUp userSignUp) signUpButtonPressed,
   }) {
     return signUpButtonPressed(userSignUp);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(UserSignUp userSignUp)? signUpButtonPressed,
+  }) {
+    return signUpButtonPressed?.call(userSignUp);
   }
 
   @override
@@ -269,6 +313,15 @@ class _$SignUpButtonPressed
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(SignUpButtonPressed value)? signUpButtonPressed,
+  }) {
+    return signUpButtonPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(SignUpButtonPressed value)? signUpButtonPressed,
@@ -285,7 +338,7 @@ abstract class SignUpButtonPressed implements SignUpEvent {
   const factory SignUpButtonPressed({required UserSignUp userSignUp}) =
       _$SignUpButtonPressed;
 
-  UserSignUp get userSignUp => throw _privateConstructorUsedError;
+  UserSignUp get userSignUp;
   @JsonKey(ignore: true)
   $SignUpButtonPressedCopyWith<SignUpButtonPressed> get copyWith =>
       throw _privateConstructorUsedError;
@@ -330,6 +383,14 @@ mixin _$SignUpState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -344,6 +405,14 @@ mixin _$SignUpState {
     required TResult Function(SignUpLoading value) loading,
     required TResult Function(SignUpSuccess value) success,
     required TResult Function(SignUpError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(SignUpLoading value)? loading,
+    TResult Function(SignUpSuccess value)? success,
+    TResult Function(SignUpError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -390,6 +459,7 @@ class __$InitialCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   const _$_Initial();
 
@@ -406,7 +476,8 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -421,6 +492,17 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -447,6 +529,17 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(SignUpError value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(SignUpLoading value)? loading,
+    TResult Function(SignUpSuccess value)? success,
+    TResult Function(SignUpError value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -488,6 +581,7 @@ class _$SignUpLoadingCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$SignUpLoading with DiagnosticableTreeMixin implements SignUpLoading {
   const _$SignUpLoading();
 
@@ -504,7 +598,8 @@ class _$SignUpLoading with DiagnosticableTreeMixin implements SignUpLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is SignUpLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is SignUpLoading);
   }
 
   @override
@@ -519,6 +614,17 @@ class _$SignUpLoading with DiagnosticableTreeMixin implements SignUpLoading {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return loading?.call();
   }
 
   @override
@@ -545,6 +651,17 @@ class _$SignUpLoading with DiagnosticableTreeMixin implements SignUpLoading {
     required TResult Function(SignUpError value) error,
   }) {
     return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(SignUpLoading value)? loading,
+    TResult Function(SignUpSuccess value)? success,
+    TResult Function(SignUpError value)? error,
+  }) {
+    return loading?.call(this);
   }
 
   @override
@@ -599,6 +716,7 @@ class _$SignUpSuccessCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$SignUpSuccess with DiagnosticableTreeMixin implements SignUpSuccess {
   const _$SignUpSuccess({required this.user});
 
@@ -621,14 +739,14 @@ class _$SignUpSuccess with DiagnosticableTreeMixin implements SignUpSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is SignUpSuccess &&
-            (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user)));
+        (other.runtimeType == runtimeType &&
+            other is SignUpSuccess &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
@@ -644,6 +762,17 @@ class _$SignUpSuccess with DiagnosticableTreeMixin implements SignUpSuccess {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return success(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return success?.call(user);
   }
 
   @override
@@ -674,6 +803,17 @@ class _$SignUpSuccess with DiagnosticableTreeMixin implements SignUpSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(SignUpLoading value)? loading,
+    TResult Function(SignUpSuccess value)? success,
+    TResult Function(SignUpError value)? error,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(SignUpLoading value)? loading,
@@ -691,7 +831,7 @@ class _$SignUpSuccess with DiagnosticableTreeMixin implements SignUpSuccess {
 abstract class SignUpSuccess implements SignUpState {
   const factory SignUpSuccess({required User user}) = _$SignUpSuccess;
 
-  User get user => throw _privateConstructorUsedError;
+  User get user;
   @JsonKey(ignore: true)
   $SignUpSuccessCopyWith<SignUpSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -738,6 +878,7 @@ class _$SignUpErrorCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$SignUpError with DiagnosticableTreeMixin implements SignUpError {
   const _$SignUpError({required this.error});
 
@@ -760,14 +901,14 @@ class _$SignUpError with DiagnosticableTreeMixin implements SignUpError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is SignUpError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is SignUpError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -783,6 +924,17 @@ class _$SignUpError with DiagnosticableTreeMixin implements SignUpError {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return error?.call(this.error);
   }
 
   @override
@@ -813,6 +965,17 @@ class _$SignUpError with DiagnosticableTreeMixin implements SignUpError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(SignUpLoading value)? loading,
+    TResult Function(SignUpSuccess value)? success,
+    TResult Function(SignUpError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(SignUpLoading value)? loading,
@@ -830,7 +993,7 @@ class _$SignUpError with DiagnosticableTreeMixin implements SignUpError {
 abstract class SignUpError implements SignUpState {
   const factory SignUpError({required NetworkExceptions error}) = _$SignUpError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $SignUpErrorCopyWith<SignUpError> get copyWith =>
       throw _privateConstructorUsedError;

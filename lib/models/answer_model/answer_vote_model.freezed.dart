@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'answer_vote_model.dart';
 
@@ -29,7 +31,7 @@ class _$AnswerVoteModelTearOff {
     );
   }
 
-  AnswerVoteModel fromJson(Map<String, Object> json) {
+  AnswerVoteModel fromJson(Map<String, Object?> json) {
     return AnswerVoteModel.fromJson(json);
   }
 }
@@ -126,16 +128,15 @@ class _$AnswerVoteCopyWithImpl<$Res> extends _$AnswerVoteModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$AnswerVote with DiagnosticableTreeMixin implements AnswerVote {
   const _$AnswerVote(
       {@JsonKey(name: 'answer') required this.answer,
       @JsonKey(name: 'my_vote') required this.myVote});
 
   factory _$AnswerVote.fromJson(Map<String, dynamic> json) =>
-      _$_$AnswerVoteFromJson(json);
+      _$$AnswerVoteFromJson(json);
 
   @override
   @JsonKey(name: 'answer')
@@ -161,18 +162,17 @@ class _$AnswerVote with DiagnosticableTreeMixin implements AnswerVote {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is AnswerVote &&
-            (identical(other.answer, answer) ||
-                const DeepCollectionEquality().equals(other.answer, answer)) &&
-            (identical(other.myVote, myVote) ||
-                const DeepCollectionEquality().equals(other.myVote, myVote)));
+        (other.runtimeType == runtimeType &&
+            other is AnswerVote &&
+            const DeepCollectionEquality().equals(other.answer, answer) &&
+            const DeepCollectionEquality().equals(other.myVote, myVote));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(answer) ^
-      const DeepCollectionEquality().hash(myVote);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(answer),
+      const DeepCollectionEquality().hash(myVote));
 
   @JsonKey(ignore: true)
   @override
@@ -181,7 +181,7 @@ class _$AnswerVote with DiagnosticableTreeMixin implements AnswerVote {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$AnswerVoteToJson(this);
+    return _$$AnswerVoteToJson(this);
   }
 }
 
@@ -195,10 +195,10 @@ abstract class AnswerVote implements AnswerVoteModel {
 
   @override
   @JsonKey(name: 'answer')
-  Answer get answer => throw _privateConstructorUsedError;
+  Answer get answer;
   @override
   @JsonKey(name: 'my_vote')
-  int get myVote => throw _privateConstructorUsedError;
+  int get myVote;
   @override
   @JsonKey(ignore: true)
   $AnswerVoteCopyWith<AnswerVote> get copyWith =>

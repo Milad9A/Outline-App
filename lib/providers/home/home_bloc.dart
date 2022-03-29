@@ -14,7 +14,7 @@ part 'home_bloc.freezed.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc({
     required this.homeRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final HomeRepository homeRepository;
 
@@ -34,7 +34,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       if (event.refresh) {
         yield GetFeedLoadingRefresh(feed: feed);
       } else {
-        yield GetFeedLoadingInitial();
+        yield const GetFeedLoadingInitial();
         feed.clear();
       }
 
@@ -42,18 +42,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           await homeRepository.getNewsFeed(articlesSkip: 0, questionsSkip: 0);
 
       apiResult.when(
-        success: (List<FeedPost> data) {
+        success: (List<FeedPost> data) async* {
           feed = data;
-          emit(GetFeedSuccess(feed: feed));
+          yield (GetFeedSuccess(feed: feed));
         },
-        failure: (NetworkExceptions error) {
-          emit(HomeError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (HomeError(error: error));
         },
       );
     }
 
     if (event is GetNewsFeedMore) {
-      yield GetFeedLoadingMore();
+      yield const GetFeedLoadingMore();
 
       ApiResult<List<FeedPost>> apiResult = await homeRepository.getNewsFeed(
         articlesSkip: event.articlesSkip,
@@ -61,13 +61,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       );
 
       apiResult.when(
-        success: (List<FeedPost> data) {
+        success: (List<FeedPost> data) async* {
           if (data.isEmpty) loadMore = false;
           feed.addAll(data);
-          emit(GetFeedSuccess(feed: feed));
+          yield (GetFeedSuccess(feed: feed));
         },
-        failure: (NetworkExceptions error) {
-          emit(HomeError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (HomeError(error: error));
         },
       );
     }

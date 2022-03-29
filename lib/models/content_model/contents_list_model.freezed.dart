@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'contents_list_model.dart';
 
@@ -26,7 +28,7 @@ class _$ContentsListModelTearOff {
     );
   }
 
-  ContentsListModel fromJson(Map<String, Object> json) {
+  ContentsListModel fromJson(Map<String, Object?> json) {
     return ContentsListModel.fromJson(json);
   }
 }
@@ -108,14 +110,13 @@ class _$ContentsListCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$ContentsList with DiagnosticableTreeMixin implements ContentsList {
   const _$ContentsList({required this.contentsList});
 
   factory _$ContentsList.fromJson(Map<String, dynamic> json) =>
-      _$_$ContentsListFromJson(json);
+      _$$ContentsListFromJson(json);
 
   @override
   final List<Content> contentsList;
@@ -136,15 +137,15 @@ class _$ContentsList with DiagnosticableTreeMixin implements ContentsList {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ContentsList &&
-            (identical(other.contentsList, contentsList) ||
-                const DeepCollectionEquality()
-                    .equals(other.contentsList, contentsList)));
+        (other.runtimeType == runtimeType &&
+            other is ContentsList &&
+            const DeepCollectionEquality()
+                .equals(other.contentsList, contentsList));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(contentsList);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(contentsList));
 
   @JsonKey(ignore: true)
   @override
@@ -153,7 +154,7 @@ class _$ContentsList with DiagnosticableTreeMixin implements ContentsList {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$ContentsListToJson(this);
+    return _$$ContentsListToJson(this);
   }
 }
 
@@ -165,7 +166,7 @@ abstract class ContentsList implements ContentsListModel {
       _$ContentsList.fromJson;
 
   @override
-  List<Content> get contentsList => throw _privateConstructorUsedError;
+  List<Content> get contentsList;
   @override
   @JsonKey(ignore: true)
   $ContentsListCopyWith<ContentsList> get copyWith =>

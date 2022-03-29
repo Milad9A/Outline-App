@@ -6,21 +6,22 @@ import 'package:outline/repositories/chat_repository.dart';
 import 'package:outline/views/screens/chat/conversation_screen.dart';
 
 class ChatTile extends StatefulWidget {
-  ChatTile({
+  const ChatTile({
+    Key? key,
     required this.name,
     required this.email,
     required this.avatar,
     required this.chatRoomId,
     required this.lastOpenedByMe,
     required this.lastMessageTime,
-  });
+  }) : super(key: key);
 
   final String name;
   final String email;
   final String avatar;
   final String chatRoomId;
   final String lastOpenedByMe;
-  String lastMessageTime;
+  final String lastMessageTime;
 
   @override
   _ChatTileState createState() => _ChatTileState();
@@ -30,15 +31,17 @@ class _ChatTileState extends State<ChatTile> {
   final ChatRepository chatRepository = ChatRepository();
   late Stream lastMessageStream;
   late bool isOpened;
+  late String lastMessageTime;
 
   @override
   void initState() {
     super.initState();
+    lastMessageTime = widget.lastMessageTime;
     lastMessageStream = chatRepository.getConversationLastMessage(
       chatRoomId: widget.chatRoomId,
     );
     isOpened = DateTime.parse(widget.lastOpenedByMe)
-            .isBefore(DateTime.parse(widget.lastMessageTime))
+            .isBefore(DateTime.parse(lastMessageTime))
         ? false
         : true;
   }
@@ -49,7 +52,7 @@ class _ChatTileState extends State<ChatTile> {
       chatRoomId: widget.chatRoomId,
     );
     isOpened = DateTime.parse(widget.lastOpenedByMe)
-            .isBefore(DateTime.parse(widget.lastMessageTime))
+            .isBefore(DateTime.parse(lastMessageTime))
         ? false
         : true;
     return StreamBuilder(
@@ -57,7 +60,7 @@ class _ChatTileState extends State<ChatTile> {
       builder: (context, AsyncSnapshot snapshot) {
         return ListTile(
           onTap: () async {
-            widget.lastMessageTime = await Navigator.of(context).push(
+            lastMessageTime = await Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => ConversationScreen(
                   name: widget.name,
@@ -89,7 +92,7 @@ class _ChatTileState extends State<ChatTile> {
                       fontWeight: FontWeight.bold, color: Colors.black),
                 ),
               ),
-              SizedBox(width: 22.0),
+              const SizedBox(width: 22.0),
               Text(
                   snapshot.hasData && snapshot.data.docs.isNotEmpty
                       ? DateFormatter().getVerboseDateTimeRepresentation(
@@ -120,12 +123,12 @@ class _ChatTileState extends State<ChatTile> {
                       ),
               ),
               snapshot.hasData && snapshot.data.docs.isNotEmpty && !isOpened
-                  ? Icon(
+                  ? const Icon(
                       Icons.circle,
                       color: ColorRepository.lowOpacityDarkBlue,
                       size: 18.0,
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
             ],
           ),
         );

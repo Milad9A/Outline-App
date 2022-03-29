@@ -1,5 +1,3 @@
-// @dart=2.9
-
 import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -16,8 +14,8 @@ Future<void> main() async {
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-  NotificationService notificationService = new NotificationService();
+  NotificationService notificationService = NotificationService();
   await notificationService.init();
 
-  runApp(OutlineApp());
+  runApp(const OutlineApp());
 }

@@ -1,11 +1,9 @@
-// @dart = 2.9
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/providers/answer/add_answer/add_answer_bloc.dart';
 import 'package:outline/providers/answer/answer/answer_bloc.dart';
 import 'package:outline/providers/article/article_comments/article_comments_bloc.dart';
-import 'package:outline/providers/article/artilce/article_bloc.dart';
+import 'package:outline/providers/article/article/article_bloc.dart';
 import 'package:outline/providers/authentication/authentication/authentication_bloc.dart';
 import 'package:outline/providers/comment/comment_bloc.dart';
 import 'package:outline/providers/home/home_bloc.dart';
@@ -35,6 +33,8 @@ import 'repositories/user_repository.dart';
 import 'views/screens/splash/splash_screen.dart';
 
 class OutlineApp extends StatefulWidget {
+  const OutlineApp({Key? key}) : super(key: key);
+
   @override
   _OutlineAppState createState() => _OutlineAppState();
 }
@@ -149,7 +149,7 @@ class _OutlineAppState extends State<OutlineApp> {
         debugShowCheckedModeBanner: false,
         theme: CustomTheme.lightTheme,
         navigatorKey: navigatorKey,
-        home: SplashScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

@@ -1,5 +1,3 @@
-import 'dart:math' as math;
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,12 +10,11 @@ import 'package:outline/views/screens/create_article_question/widgets/answer_vot
 import 'package:outline/views/screens/profile/profile_screen.dart';
 
 class AnswerContainer extends StatefulWidget {
-  final Key key;
   final AnswerVote answerVote;
 
   const AnswerContainer({
+    Key? key,
     required this.answerVote,
-    required this.key,
   }) : super(key: key);
 
   @override
@@ -88,7 +85,7 @@ class _AnswerContainerState extends State<AnswerContainer> {
                   ),
                   child: Text(
                     widget.answerVote.answer.user.name,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
@@ -106,7 +103,7 @@ class _AnswerContainerState extends State<AnswerContainer> {
                   padding: const EdgeInsets.all(10.0),
                   child: Text(
                     widget.answerVote.answer.body,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                     ),
                   ),

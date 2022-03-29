@@ -49,17 +49,17 @@ abstract class NetworkExceptions with _$NetworkExceptions {
       case 400:
       case 401:
       case 403:
-        return NetworkExceptions.unauthorizedRequest();
+        return const NetworkExceptions.unauthorizedRequest();
       case 404:
-        return NetworkExceptions.notFound("Not found");
+        return const NetworkExceptions.notFound("Not found");
       case 409:
-        return NetworkExceptions.conflict();
+        return const NetworkExceptions.conflict();
       case 408:
-        return NetworkExceptions.requestTimeout();
+        return const NetworkExceptions.requestTimeout();
       case 500:
-        return NetworkExceptions.internalServerError();
+        return const NetworkExceptions.internalServerError();
       case 503:
-        return NetworkExceptions.serviceUnavailable();
+        return const NetworkExceptions.serviceUnavailable();
       default:
         var responseCode = response.statusCode;
         return NetworkExceptions.defaultError(
@@ -75,42 +75,42 @@ abstract class NetworkExceptions with _$NetworkExceptions {
         if (error is DioError) {
           switch (error.type) {
             case DioErrorType.cancel:
-              networkExceptions = NetworkExceptions.requestCancelled();
+              networkExceptions = const NetworkExceptions.requestCancelled();
               break;
             case DioErrorType.connectTimeout:
-              networkExceptions = NetworkExceptions.requestTimeout();
+              networkExceptions = const NetworkExceptions.requestTimeout();
               break;
             case DioErrorType.other:
-              networkExceptions = NetworkExceptions.noInternetConnection();
+              networkExceptions =
+                  const NetworkExceptions.noInternetConnection();
               break;
             case DioErrorType.receiveTimeout:
-              networkExceptions = NetworkExceptions.sendTimeout();
+              networkExceptions = const NetworkExceptions.sendTimeout();
               break;
             case DioErrorType.response:
               networkExceptions =
                   NetworkExceptions.handleResponse(error.response!);
               break;
             case DioErrorType.sendTimeout:
-              networkExceptions = NetworkExceptions.sendTimeout();
+              networkExceptions = const NetworkExceptions.sendTimeout();
               break;
           }
         } else if (error is SocketException) {
-          networkExceptions = NetworkExceptions.noInternetConnection();
+          networkExceptions = const NetworkExceptions.noInternetConnection();
         } else {
-          networkExceptions = NetworkExceptions.unexpectedError();
+          networkExceptions = const NetworkExceptions.unexpectedError();
         }
         return networkExceptions;
-      } on FormatException catch (e) {
-        // Helper.printError(e.toString());
-        return NetworkExceptions.formatException();
+      } on FormatException {
+        return const NetworkExceptions.formatException();
       } catch (_) {
-        return NetworkExceptions.unexpectedError();
+        return const NetworkExceptions.unexpectedError();
       }
     } else {
       if (error.toString().contains("is not a subtype of")) {
-        return NetworkExceptions.unableToProcess();
+        return const NetworkExceptions.unableToProcess();
       } else {
-        return NetworkExceptions.unexpectedError();
+        return const NetworkExceptions.unexpectedError();
       }
     }
   }

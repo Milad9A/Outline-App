@@ -13,9 +13,10 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 class NewsFeedBuilder extends StatefulWidget {
   final BuildContext context;
 
-  NewsFeedBuilder({
+  const NewsFeedBuilder({
+    Key? key,
     required this.context,
-  });
+  }) : super(key: key);
 
   @override
   _NewsFeedBuilderState createState() => _NewsFeedBuilderState();
@@ -33,7 +34,7 @@ class _NewsFeedBuilderState extends State<NewsFeedBuilder>
 
   void _onRefresh() async {
     BlocProvider.of<HomeBloc>(widget.context).add(
-      GetNewsFeedInitial(refresh: true),
+      const GetNewsFeedInitial(refresh: true),
     );
   }
 
@@ -80,18 +81,16 @@ class _NewsFeedBuilderState extends State<NewsFeedBuilder>
             enablePullUp: true,
             onRefresh: _onRefresh,
             onLoading: _onLoading,
-            header: MaterialClassicHeader(),
+            header: const MaterialClassicHeader(),
             footer: CustomFooter(
               builder: (BuildContext context, LoadStatus? mode) {
                 Widget body;
                 if (mode == LoadStatus.loading || state is GetFeedLoadingMore) {
-                  body = OutlineCircularProgressIndicator();
+                  body = const OutlineCircularProgressIndicator();
                 } else {
-                  body = SizedBox.shrink();
+                  body = const SizedBox.shrink();
                 }
-                return Container(
-                  child: Center(child: body),
-                );
+                return Center(child: body);
               },
             ),
             child: ListView.separated(
@@ -124,7 +123,7 @@ class _NewsFeedBuilderState extends State<NewsFeedBuilder>
                 }
               },
               separatorBuilder: (BuildContext context, int index) {
-                return Divider(
+                return const Divider(
                   thickness: 1.0,
                   indent: 15.0,
                   endIndent: 15.0,

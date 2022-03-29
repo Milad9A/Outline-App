@@ -4,13 +4,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_quill/models/documents/attribute.dart';
-import 'package:flutter_quill/models/documents/document.dart';
-import 'package:flutter_quill/widgets/controller.dart';
-import 'package:flutter_quill/widgets/default_styles.dart';
-import 'package:flutter_quill/widgets/editor.dart';
-import 'package:flutter_quill/widgets/toolbar.dart';
+import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/views/screens/create_article_question/publish_article_screen.dart';
 import 'package:path/path.dart';
@@ -18,8 +12,10 @@ import 'package:path_provider/path_provider.dart';
 import 'package:tuple/tuple.dart';
 
 class CreateArticleScreen extends StatefulWidget {
+  const CreateArticleScreen({Key? key}) : super(key: key);
+
   static Route get route =>
-      MaterialPageRoute<void>(builder: (_) => CreateArticleScreen());
+      MaterialPageRoute<void>(builder: (_) => const CreateArticleScreen());
 
   @override
   _CreateArticleScreenState createState() => _CreateArticleScreenState();
@@ -39,21 +35,21 @@ class _CreateArticleScreenState extends State<CreateArticleScreen> {
     final doc = Document()..insert(0, '');
     setState(() {
       _controller = QuillController(
-          document: doc, selection: TextSelection.collapsed(offset: 0));
+          document: doc, selection: const TextSelection.collapsed(offset: 0));
     });
   }
 
   @override
   Widget build(BuildContext context) {
     if (_controller == null) {
-      return Scaffold(body: Center(child: Text('Loading...')));
+      return const Scaffold(body: Center(child: Text('Loading...')));
     }
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1.0,
-        iconTheme: IconThemeData(color: ColorRepository.darkBlue),
+        iconTheme: const IconThemeData(color: ColorRepository.darkBlue),
         centerTitle: false,
         title: Text(
           'Create Article',
@@ -98,7 +94,6 @@ class _CreateArticleScreenState extends State<CreateArticleScreen> {
                   .formatSelection(Attribute.clone(Attribute.bold, null));
             } else {
               _controller!.formatSelection(Attribute.bold);
-              print("not bold");
             }
           }
         },
@@ -111,7 +106,7 @@ class _CreateArticleScreenState extends State<CreateArticleScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        SizedBox(height: 16.0),
+        const SizedBox(height: 16.0),
         Expanded(
           flex: 15,
           child: Container(
@@ -130,16 +125,16 @@ class _CreateArticleScreenState extends State<CreateArticleScreen> {
               padding: EdgeInsets.zero,
               customStyles: DefaultStyles(
                 h1: DefaultTextBlockStyle(
-                    TextStyle(
+                    const TextStyle(
                       fontSize: 32.0,
                       color: Colors.black,
                       height: 1.15,
                       fontWeight: FontWeight.w300,
                     ),
-                    Tuple2(16.0, 0.0),
-                    Tuple2(0.0, 0.0),
+                    const Tuple2(16.0, 0.0),
+                    const Tuple2(0.0, 0.0),
                     null),
-                sizeSmall: TextStyle(fontSize: 9.0),
+                sizeSmall: const TextStyle(fontSize: 9.0),
               ),
             ),
           ),
@@ -147,18 +142,17 @@ class _CreateArticleScreenState extends State<CreateArticleScreen> {
         kIsWeb
             ? Expanded(
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                   child: QuillToolbar.basic(
                     controller: _controller!,
                     onImagePickCallback: _onImagePickCallback,
                   ),
                 ),
               )
-            : Container(
-                child: QuillToolbar.basic(
-                  controller: _controller!,
-                  onImagePickCallback: _onImagePickCallback,
-                ),
+            : QuillToolbar.basic(
+                controller: _controller!,
+                onImagePickCallback: _onImagePickCallback,
               ),
       ],
     );

@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'update_user_bloc.dart';
 
@@ -42,6 +44,12 @@ mixin _$UpdateUserEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(UserUpdate updateUser, File? image)? updateUserRequested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(UserUpdate updateUser, File? image)? updateUserRequested,
@@ -52,6 +60,12 @@ mixin _$UpdateUserEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(UpdateUserRequested value) updateUserRequested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(UpdateUserRequested value)? updateUserRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -97,6 +111,7 @@ class __$StartedCopyWithImpl<$Res> extends _$UpdateUserEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started implements _Started {
   const _$_Started();
 
@@ -107,7 +122,8 @@ class _$_Started implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -121,6 +137,15 @@ class _$_Started implements _Started {
         updateUserRequested,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(UserUpdate updateUser, File? image)? updateUserRequested,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -143,6 +168,15 @@ class _$_Started implements _Started {
     required TResult Function(UpdateUserRequested value) updateUserRequested,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(UpdateUserRequested value)? updateUserRequested,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -201,6 +235,7 @@ class _$UpdateUserRequestedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$UpdateUserRequested implements UpdateUserRequested {
   const _$UpdateUserRequested({required this.updateUser, this.image});
 
@@ -217,19 +252,18 @@ class _$UpdateUserRequested implements UpdateUserRequested {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is UpdateUserRequested &&
-            (identical(other.updateUser, updateUser) ||
-                const DeepCollectionEquality()
-                    .equals(other.updateUser, updateUser)) &&
-            (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)));
+        (other.runtimeType == runtimeType &&
+            other is UpdateUserRequested &&
+            const DeepCollectionEquality()
+                .equals(other.updateUser, updateUser) &&
+            const DeepCollectionEquality().equals(other.image, image));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(updateUser) ^
-      const DeepCollectionEquality().hash(image);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(updateUser),
+      const DeepCollectionEquality().hash(image));
 
   @JsonKey(ignore: true)
   @override
@@ -244,6 +278,15 @@ class _$UpdateUserRequested implements UpdateUserRequested {
         updateUserRequested,
   }) {
     return updateUserRequested(updateUser, image);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(UserUpdate updateUser, File? image)? updateUserRequested,
+  }) {
+    return updateUserRequested?.call(updateUser, image);
   }
 
   @override
@@ -270,6 +313,15 @@ class _$UpdateUserRequested implements UpdateUserRequested {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(UpdateUserRequested value)? updateUserRequested,
+  }) {
+    return updateUserRequested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(UpdateUserRequested value)? updateUserRequested,
@@ -286,8 +338,8 @@ abstract class UpdateUserRequested implements UpdateUserEvent {
   const factory UpdateUserRequested(
       {required UserUpdate updateUser, File? image}) = _$UpdateUserRequested;
 
-  UserUpdate get updateUser => throw _privateConstructorUsedError;
-  File? get image => throw _privateConstructorUsedError;
+  UserUpdate get updateUser;
+  File? get image;
   @JsonKey(ignore: true)
   $UpdateUserRequestedCopyWith<UpdateUserRequested> get copyWith =>
       throw _privateConstructorUsedError;
@@ -332,6 +384,14 @@ mixin _$UpdateUserState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -346,6 +406,14 @@ mixin _$UpdateUserState {
     required TResult Function(UpdateUserLoading value) loading,
     required TResult Function(UpdateUserSuccess value) success,
     required TResult Function(UpdateUserError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(UpdateUserLoading value)? loading,
+    TResult Function(UpdateUserSuccess value)? success,
+    TResult Function(UpdateUserError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -393,6 +461,7 @@ class __$InitialCopyWithImpl<$Res> extends _$UpdateUserStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -403,7 +472,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -418,6 +488,17 @@ class _$_Initial implements _Initial {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -444,6 +525,17 @@ class _$_Initial implements _Initial {
     required TResult Function(UpdateUserError value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(UpdateUserLoading value)? loading,
+    TResult Function(UpdateUserSuccess value)? success,
+    TResult Function(UpdateUserError value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -486,6 +578,7 @@ class _$UpdateUserLoadingCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$UpdateUserLoading implements UpdateUserLoading {
   const _$UpdateUserLoading();
 
@@ -496,7 +589,8 @@ class _$UpdateUserLoading implements UpdateUserLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is UpdateUserLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is UpdateUserLoading);
   }
 
   @override
@@ -511,6 +605,17 @@ class _$UpdateUserLoading implements UpdateUserLoading {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return loading?.call();
   }
 
   @override
@@ -537,6 +642,17 @@ class _$UpdateUserLoading implements UpdateUserLoading {
     required TResult Function(UpdateUserError value) error,
   }) {
     return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(UpdateUserLoading value)? loading,
+    TResult Function(UpdateUserSuccess value)? success,
+    TResult Function(UpdateUserError value)? error,
+  }) {
+    return loading?.call(this);
   }
 
   @override
@@ -592,6 +708,7 @@ class _$UpdateUserSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$UpdateUserSuccess implements UpdateUserSuccess {
   const _$UpdateUserSuccess({required this.user});
 
@@ -606,14 +723,14 @@ class _$UpdateUserSuccess implements UpdateUserSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is UpdateUserSuccess &&
-            (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user)));
+        (other.runtimeType == runtimeType &&
+            other is UpdateUserSuccess &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
@@ -629,6 +746,17 @@ class _$UpdateUserSuccess implements UpdateUserSuccess {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return success(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return success?.call(user);
   }
 
   @override
@@ -659,6 +787,17 @@ class _$UpdateUserSuccess implements UpdateUserSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(UpdateUserLoading value)? loading,
+    TResult Function(UpdateUserSuccess value)? success,
+    TResult Function(UpdateUserError value)? error,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(UpdateUserLoading value)? loading,
@@ -676,7 +815,7 @@ class _$UpdateUserSuccess implements UpdateUserSuccess {
 abstract class UpdateUserSuccess implements UpdateUserState {
   const factory UpdateUserSuccess({required User user}) = _$UpdateUserSuccess;
 
-  User get user => throw _privateConstructorUsedError;
+  User get user;
   @JsonKey(ignore: true)
   $UpdateUserSuccessCopyWith<UpdateUserSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -724,6 +863,7 @@ class _$UpdateUserErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$UpdateUserError implements UpdateUserError {
   const _$UpdateUserError({required this.error});
 
@@ -738,14 +878,14 @@ class _$UpdateUserError implements UpdateUserError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is UpdateUserError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is UpdateUserError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -761,6 +901,17 @@ class _$UpdateUserError implements UpdateUserError {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return error?.call(this.error);
   }
 
   @override
@@ -791,6 +942,17 @@ class _$UpdateUserError implements UpdateUserError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(UpdateUserLoading value)? loading,
+    TResult Function(UpdateUserSuccess value)? success,
+    TResult Function(UpdateUserError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(UpdateUserLoading value)? loading,
@@ -809,7 +971,7 @@ abstract class UpdateUserError implements UpdateUserState {
   const factory UpdateUserError({required NetworkExceptions error}) =
       _$UpdateUserError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $UpdateUserErrorCopyWith<UpdateUserError> get copyWith =>
       throw _privateConstructorUsedError;

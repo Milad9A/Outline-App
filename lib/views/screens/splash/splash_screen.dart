@@ -8,7 +8,7 @@ import 'package:outline/views/screens/splash/on_boarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen();
+  const SplashScreen({Key? key}) : super(key: key);
 
   static Route get route =>
       MaterialPageRoute<void>(builder: (_) => const SplashScreen());
@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     BlocProvider.of<AuthenticationBloc>(context)
-        .add(AuthenticationAppStarted());
+        .add(const AuthenticationAppStarted());
   }
 
   Future<bool> isFirstTimeOpeningTheApp() async {
@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
         final isFirstTime = await isFirstTimeOpeningTheApp();
         if (isFirstTime) {
           Navigator.pushReplacement(context, OnBoardingScreen.route);
-        } else
+        } else {
           state.maybeMap(
             authenticated: (state) {
               Navigator.pushReplacement(context, NavigationScreen.route);
@@ -51,13 +51,14 @@ class _SplashScreenState extends State<SplashScreen> {
             },
             orElse: () {},
           );
+        }
       },
       child: Scaffold(
         body: BlocBuilder<AuthenticationBloc, AuthenticationState>(
           builder: (context, state) {
             return state.maybeWhen(
               initial: () {
-                return SizedBox.shrink();
+                return const SizedBox.shrink();
               },
               loading: () {
                 return Container(
@@ -71,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         width: double.infinity,
                         fit: BoxFit.fill,
                       ),
-                      Center(
+                      const Center(
                         child: CircularProgressIndicator(
                           valueColor: AlwaysStoppedAnimation<Color>(
                             Colors.white,
@@ -83,7 +84,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 );
               },
               orElse: () {
-                return SizedBox.shrink();
+                return const SizedBox.shrink();
               },
             );
           },

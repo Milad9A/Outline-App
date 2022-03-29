@@ -10,8 +10,9 @@ class CourseGrid extends StatelessWidget {
   final Course course;
 
   const CourseGrid({
+    Key? key,
     required this.course,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class CourseGrid extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10.0),
-                  boxShadow: [Consts.outlineBoxShadow],
+                  boxShadow: const [Consts.outlineBoxShadow],
                 ),
                 child: Hero(
                   tag: course.id,
@@ -51,36 +52,36 @@ class CourseGrid extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 6.0),
+              const SizedBox(height: 6.0),
               Text(
                 course.title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   color: ColorRepository.blackish,
                 ),
               ),
               Text(
                 course.ownerUserId.name,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 12,
                   color: ColorRepository.blackish,
                 ),
               ),
-              Container(
+              SizedBox(
                 width: 176.0,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.star, color: Colors.yellow),
+                        const Icon(Icons.star, color: Colors.yellow),
                         Text(course.avgRating.toString()),
                       ],
                     ),
                     Text(
                       '${course.price}\$',
-                      style: TextStyle(color: ColorRepository.darkBlue),
+                      style: const TextStyle(color: ColorRepository.darkBlue),
                     ),
                   ],
                 ),

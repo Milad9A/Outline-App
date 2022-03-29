@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'article_comments_bloc.dart';
 
@@ -39,6 +41,12 @@ mixin _$ArticleCommentsEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String id)? articleCommentGetComments,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String id)? articleCommentGetComments,
@@ -49,6 +57,13 @@ mixin _$ArticleCommentsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(ArticleCommentsGetComments value)
+        articleCommentGetComments,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ArticleCommentsGetComments value)?
         articleCommentGetComments,
   }) =>
       throw _privateConstructorUsedError;
@@ -97,6 +112,7 @@ class __$StartedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started implements _Started {
   const _$_Started();
 
@@ -107,7 +123,8 @@ class _$_Started implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -120,6 +137,15 @@ class _$_Started implements _Started {
     required TResult Function(String id) articleCommentGetComments,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String id)? articleCommentGetComments,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -143,6 +169,16 @@ class _$_Started implements _Started {
         articleCommentGetComments,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ArticleCommentsGetComments value)?
+        articleCommentGetComments,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -198,6 +234,7 @@ class _$ArticleCommentsGetCommentsCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ArticleCommentsGetComments implements ArticleCommentsGetComments {
   const _$ArticleCommentsGetComments({required this.id});
 
@@ -212,14 +249,14 @@ class _$ArticleCommentsGetComments implements ArticleCommentsGetComments {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ArticleCommentsGetComments &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+        (other.runtimeType == runtimeType &&
+            other is ArticleCommentsGetComments &&
+            const DeepCollectionEquality().equals(other.id, id));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
   @override
@@ -235,6 +272,15 @@ class _$ArticleCommentsGetComments implements ArticleCommentsGetComments {
     required TResult Function(String id) articleCommentGetComments,
   }) {
     return articleCommentGetComments(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String id)? articleCommentGetComments,
+  }) {
+    return articleCommentGetComments?.call(id);
   }
 
   @override
@@ -262,6 +308,16 @@ class _$ArticleCommentsGetComments implements ArticleCommentsGetComments {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ArticleCommentsGetComments value)?
+        articleCommentGetComments,
+  }) {
+    return articleCommentGetComments?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(ArticleCommentsGetComments value)?
@@ -279,7 +335,7 @@ abstract class ArticleCommentsGetComments implements ArticleCommentsEvent {
   const factory ArticleCommentsGetComments({required String id}) =
       _$ArticleCommentsGetComments;
 
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @JsonKey(ignore: true)
   $ArticleCommentsGetCommentsCopyWith<ArticleCommentsGetComments>
       get copyWith => throw _privateConstructorUsedError;
@@ -326,6 +382,14 @@ mixin _$ArticleCommentsState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? articleCommentsLoading,
+    TResult Function(List<Comment> comments)? articleCommentsSuccess,
+    TResult Function(NetworkExceptions error)? articleCommentsError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? articleCommentsLoading,
@@ -342,6 +406,14 @@ mixin _$ArticleCommentsState {
     required TResult Function(ArticleCommentsSuccess value)
         articleCommentsSuccess,
     required TResult Function(ArticleCommentsError value) articleCommentsError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ArticleCommentsLoading value)? articleCommentsLoading,
+    TResult Function(ArticleCommentsSuccess value)? articleCommentsSuccess,
+    TResult Function(ArticleCommentsError value)? articleCommentsError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -390,6 +462,7 @@ class __$InitialCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -400,7 +473,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -415,6 +489,17 @@ class _$_Initial implements _Initial {
     required TResult Function(NetworkExceptions error) articleCommentsError,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? articleCommentsLoading,
+    TResult Function(List<Comment> comments)? articleCommentsSuccess,
+    TResult Function(NetworkExceptions error)? articleCommentsError,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -443,6 +528,17 @@ class _$_Initial implements _Initial {
     required TResult Function(ArticleCommentsError value) articleCommentsError,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ArticleCommentsLoading value)? articleCommentsLoading,
+    TResult Function(ArticleCommentsSuccess value)? articleCommentsSuccess,
+    TResult Function(ArticleCommentsError value)? articleCommentsError,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -485,6 +581,7 @@ class _$ArticleCommentsLoadingCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ArticleCommentsLoading implements ArticleCommentsLoading {
   const _$ArticleCommentsLoading();
 
@@ -495,7 +592,8 @@ class _$ArticleCommentsLoading implements ArticleCommentsLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ArticleCommentsLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is ArticleCommentsLoading);
   }
 
   @override
@@ -510,6 +608,17 @@ class _$ArticleCommentsLoading implements ArticleCommentsLoading {
     required TResult Function(NetworkExceptions error) articleCommentsError,
   }) {
     return articleCommentsLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? articleCommentsLoading,
+    TResult Function(List<Comment> comments)? articleCommentsSuccess,
+    TResult Function(NetworkExceptions error)? articleCommentsError,
+  }) {
+    return articleCommentsLoading?.call();
   }
 
   @override
@@ -538,6 +647,17 @@ class _$ArticleCommentsLoading implements ArticleCommentsLoading {
     required TResult Function(ArticleCommentsError value) articleCommentsError,
   }) {
     return articleCommentsLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ArticleCommentsLoading value)? articleCommentsLoading,
+    TResult Function(ArticleCommentsSuccess value)? articleCommentsSuccess,
+    TResult Function(ArticleCommentsError value)? articleCommentsError,
+  }) {
+    return articleCommentsLoading?.call(this);
   }
 
   @override
@@ -593,6 +713,7 @@ class _$ArticleCommentsSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ArticleCommentsSuccess implements ArticleCommentsSuccess {
   const _$ArticleCommentsSuccess({required this.comments});
 
@@ -607,15 +728,14 @@ class _$ArticleCommentsSuccess implements ArticleCommentsSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ArticleCommentsSuccess &&
-            (identical(other.comments, comments) ||
-                const DeepCollectionEquality()
-                    .equals(other.comments, comments)));
+        (other.runtimeType == runtimeType &&
+            other is ArticleCommentsSuccess &&
+            const DeepCollectionEquality().equals(other.comments, comments));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(comments);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(comments));
 
   @JsonKey(ignore: true)
   @override
@@ -632,6 +752,17 @@ class _$ArticleCommentsSuccess implements ArticleCommentsSuccess {
     required TResult Function(NetworkExceptions error) articleCommentsError,
   }) {
     return articleCommentsSuccess(comments);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? articleCommentsLoading,
+    TResult Function(List<Comment> comments)? articleCommentsSuccess,
+    TResult Function(NetworkExceptions error)? articleCommentsError,
+  }) {
+    return articleCommentsSuccess?.call(comments);
   }
 
   @override
@@ -664,6 +795,17 @@ class _$ArticleCommentsSuccess implements ArticleCommentsSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ArticleCommentsLoading value)? articleCommentsLoading,
+    TResult Function(ArticleCommentsSuccess value)? articleCommentsSuccess,
+    TResult Function(ArticleCommentsError value)? articleCommentsError,
+  }) {
+    return articleCommentsSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(ArticleCommentsLoading value)? articleCommentsLoading,
@@ -682,7 +824,7 @@ abstract class ArticleCommentsSuccess implements ArticleCommentsState {
   const factory ArticleCommentsSuccess({required List<Comment> comments}) =
       _$ArticleCommentsSuccess;
 
-  List<Comment> get comments => throw _privateConstructorUsedError;
+  List<Comment> get comments;
   @JsonKey(ignore: true)
   $ArticleCommentsSuccessCopyWith<ArticleCommentsSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -730,6 +872,7 @@ class _$ArticleCommentsErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ArticleCommentsError implements ArticleCommentsError {
   const _$ArticleCommentsError({required this.error});
 
@@ -744,14 +887,14 @@ class _$ArticleCommentsError implements ArticleCommentsError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ArticleCommentsError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is ArticleCommentsError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -768,6 +911,17 @@ class _$ArticleCommentsError implements ArticleCommentsError {
     required TResult Function(NetworkExceptions error) articleCommentsError,
   }) {
     return articleCommentsError(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? articleCommentsLoading,
+    TResult Function(List<Comment> comments)? articleCommentsSuccess,
+    TResult Function(NetworkExceptions error)? articleCommentsError,
+  }) {
+    return articleCommentsError?.call(error);
   }
 
   @override
@@ -800,6 +954,17 @@ class _$ArticleCommentsError implements ArticleCommentsError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ArticleCommentsLoading value)? articleCommentsLoading,
+    TResult Function(ArticleCommentsSuccess value)? articleCommentsSuccess,
+    TResult Function(ArticleCommentsError value)? articleCommentsError,
+  }) {
+    return articleCommentsError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(ArticleCommentsLoading value)? articleCommentsLoading,
@@ -818,7 +983,7 @@ abstract class ArticleCommentsError implements ArticleCommentsState {
   const factory ArticleCommentsError({required NetworkExceptions error}) =
       _$ArticleCommentsError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $ArticleCommentsErrorCopyWith<ArticleCommentsError> get copyWith =>
       throw _privateConstructorUsedError;

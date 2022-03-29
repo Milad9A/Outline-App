@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:flutter_tags/flutter_tags.dart';
@@ -9,13 +8,13 @@ import 'package:outline/models/user_model/user_update_model.dart';
 import 'package:outline/providers/tags/tags_bloc.dart';
 import 'package:outline/providers/user/update_user/update_user_bloc.dart';
 import 'package:outline/views/screens/navigation/navigation_screen.dart';
-import 'package:outline/views/widgets/outline_text_button.dart';
-import 'package:outline/views/widgets/outline_text_field.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class SignUpTagsScreen extends StatefulWidget {
+  const SignUpTagsScreen({Key? key}) : super(key: key);
+
   static Route get route =>
-      MaterialPageRoute<void>(builder: (_) => SignUpTagsScreen());
+      MaterialPageRoute<void>(builder: (_) => const SignUpTagsScreen());
 
   @override
   _SignUpTagsScreenState createState() => _SignUpTagsScreenState();
@@ -31,7 +30,7 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
   void initState() {
     super.initState();
 
-    BlocProvider.of<TagBloc>(context).add(GetAllTags());
+    BlocProvider.of<TagBloc>(context).add(const GetAllTags());
     ids = [];
     searchController = TextEditingController();
   }
@@ -50,7 +49,7 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
           loading: () {
             Loader.show(
               context,
-              progressIndicator: OutlineCircularProgressIndicator(),
+              progressIndicator: const OutlineCircularProgressIndicator(),
             );
           },
           success: (User user) {
@@ -63,7 +62,7 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.black),
+          iconTheme: const IconThemeData(color: Colors.black),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,7 +77,7 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
                     Text(
                       'Technology tags that might interest you',
                       style: Theme.of(context).textTheme.headline6!.copyWith(
@@ -86,12 +85,12 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
                             color: Colors.black,
                           ),
                     ),
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
                     Text(
                       'Picking tags will help us show you much more relevant posts',
                       style: Theme.of(context).textTheme.bodyText2,
                     ),
-                    SizedBox(height: 14.0),
+                    const SizedBox(height: 14.0),
                     OutlineTextField(
                       controller: searchController,
                       textInputType: TextInputType.name,
@@ -102,16 +101,17 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
                         });
                       },
                       hintText: 'Search Tags',
-                      icon: Icon(Icons.search),
+                      icon: const Icon(Icons.search),
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     Expanded(
                       child: Center(
                         child: BlocBuilder<TagBloc, TagState>(
                           builder: (context, state) {
                             return state.when(
-                              initial: () => SizedBox.shrink(),
-                              loading: () => OutlineCircularProgressIndicator(),
+                              initial: () => const SizedBox.shrink(),
+                              loading: () =>
+                                  const OutlineCircularProgressIndicator(),
                               success: (tags) {
                                 List<DataList> items = tags
                                     .map(
@@ -122,10 +122,11 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
                                       ),
                                     )
                                     .toList();
-                                if (searchValue != '')
+                                if (searchValue != '') {
                                   items.removeWhere((element) => !element.title
                                       .toLowerCase()
                                       .contains(searchValue.toLowerCase()));
+                                }
 
                                 return SingleChildScrollView(
                                   child: Center(
@@ -138,7 +139,7 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
 
                                         return ItemTags(
                                           key: Key(index.toString()),
-                                          borderRadius: BorderRadius.all(
+                                          borderRadius: const BorderRadius.all(
                                             Radius.circular(4.0),
                                           ),
                                           border: Border.all(
@@ -166,14 +167,13 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
                                           combine:
                                               ItemTagsCombine.withTextBefore,
                                           onPressed: (item) {
-                                            print(item);
                                             setState(() {
                                               if (!ids
-                                                  .contains(item.customData))
+                                                  .contains(item.customData)) {
                                                 ids.add(item.customData);
+                                              }
                                             });
                                           },
-                                          onLongPressed: (item) => print(item),
                                         );
                                       },
                                     ),
@@ -190,7 +190,7 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Center(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -208,7 +208,7 @@ class _SignUpTagsScreenState extends State<SignUpTagsScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
           ],
         ),
       ),

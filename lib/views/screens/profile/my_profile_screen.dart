@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_tags/flutter_tags.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/user_model/user_model.dart';
@@ -17,6 +16,8 @@ import 'package:outline/views/widgets/outline_tab_bar.dart';
 import 'package:outline/views/widgets/outline_text_button.dart';
 
 class MyProfileScreen extends StatefulWidget {
+  const MyProfileScreen({Key? key}) : super(key: key);
+
   @override
   _MyProfileScreenState createState() => _MyProfileScreenState();
 }
@@ -61,14 +62,15 @@ class _MyProfileScreenState extends State<MyProfileScreen>
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => LoginScreen()),
+                      MaterialPageRoute(builder: (_) => const LoginScreen()),
                     );
                   },
                 ),
               ),
             ),
-            loading: () => Center(child: OutlineCircularProgressIndicator()),
-            orElse: () => SizedBox.shrink(),
+            loading: () =>
+                const Center(child: OutlineCircularProgressIndicator()),
+            orElse: () => const SizedBox.shrink(),
           );
         },
       ),
@@ -78,26 +80,26 @@ class _MyProfileScreenState extends State<MyProfileScreen>
   AppBar _buildMyProfileScreenAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
-      iconTheme: IconThemeData(
+      iconTheme: const IconThemeData(
         color: ColorRepository.darkBlue,
       ),
-      actionsIconTheme: IconThemeData(
+      actionsIconTheme: const IconThemeData(
         color: ColorRepository.darkBlue,
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.more_vert_outlined),
+          icon: const Icon(Icons.more_vert_outlined),
           onPressed: () {
             showModalBottomSheet(
               context: context,
               enableDrag: true,
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(10.0),
                 ),
               ),
               builder: (context) {
-                return Container(
+                return SizedBox(
                   height: 250.0,
                   child: Column(
                     children: [
@@ -109,12 +111,12 @@ class _MyProfileScreenState extends State<MyProfileScreen>
                       ListTile(
                         onTap: () {
                           BlocProvider.of<AuthenticationBloc>(context).add(
-                            AuthenticationLoggedOut(),
+                            const AuthenticationLoggedOut(),
                           );
                           Navigator.pop(context);
                         },
-                        leading: Icon(Icons.logout),
-                        title: Text('Logout'),
+                        leading: const Icon(Icons.logout),
+                        title: const Text('Logout'),
                       ),
                     ],
                   ),
@@ -136,7 +138,7 @@ class _MyProfileScreenState extends State<MyProfileScreen>
         children: [
           Center(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
               ),
               height: 68.0,
@@ -148,14 +150,14 @@ class _MyProfileScreenState extends State<MyProfileScreen>
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
                       CircularProgressIndicator(
                     value: downloadProgress.progress,
-                    valueColor:
-                        AlwaysStoppedAnimation<Color>(ColorRepository.darkBlue),
+                    valueColor: const AlwaysStoppedAnimation<Color>(
+                        ColorRepository.darkBlue),
                   ),
                 ),
               ),
             ),
           ),
-          SizedBox(height: 6.0),
+          const SizedBox(height: 6.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -166,36 +168,37 @@ class _MyProfileScreenState extends State<MyProfileScreen>
                     .headline6!
                     .copyWith(fontWeight: FontWeight.bold, color: Colors.black),
               ),
-              SizedBox(width: 4.0),
-              Icon(
+              const SizedBox(width: 4.0),
+              const Icon(
                 Icons.verified,
                 color: ColorRepository.darkBlue,
                 size: 20.0,
               )
             ],
           ),
-          SizedBox(height: 6.0),
+          const SizedBox(height: 6.0),
           Text(Consts.bio!),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
             decoration: BoxDecoration(
               color: ColorRepository.darkBlue,
               borderRadius: BorderRadius.circular(15.0),
             ),
             child: Text(
               user.role,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
           ),
-          SizedBox(height: 10.0),
-          Container(
+          const SizedBox(height: 10.0),
+          SizedBox(
             width: 187.0,
             child: OutlineTextButton(
               text: 'Edit Profile',
               backgroundColor: Colors.white,
               textColor: ColorRepository.darkBlue,
-              borderSide: BorderSide(color: ColorRepository.darkBlue),
+              borderSide: const BorderSide(color: ColorRepository.darkBlue),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -212,7 +215,7 @@ class _MyProfileScreenState extends State<MyProfileScreen>
               },
             ),
           ),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           Container(
             height: 45.0,
             alignment: Alignment.center,
@@ -232,12 +235,12 @@ class _MyProfileScreenState extends State<MyProfileScreen>
                                     color: Colors.black,
                                   ),
                         ),
-                        SizedBox(height: 2.0),
-                        Text('Reputation'),
+                        const SizedBox(height: 2.0),
+                        const Text('Reputation'),
                       ],
                     ),
                   ),
-                  VerticalDivider(
+                  const VerticalDivider(
                     color: ColorRepository.darkGrey,
                     thickness: 1.0,
                   ),
@@ -252,12 +255,12 @@ class _MyProfileScreenState extends State<MyProfileScreen>
                                     color: Colors.black,
                                   ),
                         ),
-                        SizedBox(height: 2.0),
-                        Text('Articles'),
+                        const SizedBox(height: 2.0),
+                        const Text('Articles'),
                       ],
                     ),
                   ),
-                  VerticalDivider(
+                  const VerticalDivider(
                     color: ColorRepository.darkGrey,
                     thickness: 1.0,
                   ),
@@ -272,8 +275,8 @@ class _MyProfileScreenState extends State<MyProfileScreen>
                                     color: Colors.black,
                                   ),
                         ),
-                        SizedBox(height: 2.0),
-                        Text('Tags'),
+                        const SizedBox(height: 2.0),
+                        const Text('Tags'),
                       ],
                     ),
                   ),
@@ -281,10 +284,10 @@ class _MyProfileScreenState extends State<MyProfileScreen>
               ),
             ),
           ),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           ListView(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             children: [
               OutlineTabBar(
                 tabController: tabController,
@@ -296,7 +299,7 @@ class _MyProfileScreenState extends State<MyProfileScreen>
                 },
                 firstTitle: '',
                 secondTitle: '',
-                tabs: [
+                tabs: const [
                   Tab(
                     child: Text(
                       'Articles',
@@ -333,15 +336,15 @@ class _MyProfileScreenState extends State<MyProfileScreen>
                   children: [
                     Visibility(
                       visible: selectedIndex == 0,
-                      child: ProfileArticlesTab(),
+                      child: const ProfileArticlesTab(),
                     ),
                     Visibility(
                       visible: selectedIndex == 1,
-                      child: ProfileQuestionsTab(),
+                      child: const ProfileQuestionsTab(),
                     ),
                     Visibility(
                       visible: selectedIndex == 2,
-                      child: ProfileAnswersTab(),
+                      child: const ProfileAnswersTab(),
                     ),
                   ],
                 ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
-import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/models/user_model/user_model.dart';
@@ -15,8 +14,10 @@ import 'widgets/sign_up_form.dart';
 import 'widgets/terms_and_policy_text.dart';
 
 class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
+
   static Route get route =>
-      MaterialPageRoute<void>(builder: (_) => SignUpScreen());
+      MaterialPageRoute<void>(builder: (_) => const SignUpScreen());
 
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
@@ -46,7 +47,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             ),
@@ -62,7 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               loading: () {
                 Loader.show(
                   context,
-                  progressIndicator: OutlineCircularProgressIndicator(),
+                  progressIndicator: const OutlineCircularProgressIndicator(),
                 );
               },
               success: (User user) {

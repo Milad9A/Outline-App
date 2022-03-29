@@ -6,6 +6,8 @@ import 'package:outline/views/widgets/question_container.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class ProfileQuestionsTab extends StatefulWidget {
+  const ProfileQuestionsTab({Key? key}) : super(key: key);
+
   @override
   _ProfileQuestionsTabState createState() => _ProfileQuestionsTabState();
 }
@@ -14,7 +16,7 @@ class _ProfileQuestionsTabState extends State<ProfileQuestionsTab> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<QuestionBloc>(context).add(QuestionGetMyQuestions());
+    BlocProvider.of<QuestionBloc>(context).add(const QuestionGetMyQuestions());
   }
 
   @override
@@ -26,13 +28,13 @@ class _ProfileQuestionsTabState extends State<ProfileQuestionsTab> {
             return ListView.separated(
               itemCount: questions.length,
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 Question question = questions[index];
                 return QuestionContainer(question: question);
               },
-              separatorBuilder: (context, int) {
-                return Divider(
+              separatorBuilder: (context, _) {
+                return const Divider(
                   thickness: 0.5,
                   indent: 15.0,
                   endIndent: 15.0,
@@ -43,10 +45,10 @@ class _ProfileQuestionsTabState extends State<ProfileQuestionsTab> {
           getLoading: () => Container(
             color: Colors.white,
             alignment: Alignment.center,
-            padding: EdgeInsets.only(top: 100.0),
-            child: OutlineCircularProgressIndicator(),
+            padding: const EdgeInsets.only(top: 100.0),
+            child: const OutlineCircularProgressIndicator(),
           ),
-          orElse: () => SizedBox.shrink(),
+          orElse: () => const SizedBox.shrink(),
         );
       },
     );

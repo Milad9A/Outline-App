@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'tags_list_model.dart';
 
@@ -26,7 +28,7 @@ class _$TagsListModelTearOff {
     );
   }
 
-  TagsListModel fromJson(Map<String, Object> json) {
+  TagsListModel fromJson(Map<String, Object?> json) {
     return TagsListModel.fromJson(json);
   }
 }
@@ -104,14 +106,13 @@ class _$TagsListCopyWithImpl<$Res> extends _$TagsListModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$TagsList with DiagnosticableTreeMixin implements TagsList {
   const _$TagsList({required this.tagsList});
 
   factory _$TagsList.fromJson(Map<String, dynamic> json) =>
-      _$_$TagsListFromJson(json);
+      _$$TagsListFromJson(json);
 
   @override
   final List<Tag> tagsList;
@@ -132,15 +133,14 @@ class _$TagsList with DiagnosticableTreeMixin implements TagsList {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is TagsList &&
-            (identical(other.tagsList, tagsList) ||
-                const DeepCollectionEquality()
-                    .equals(other.tagsList, tagsList)));
+        (other.runtimeType == runtimeType &&
+            other is TagsList &&
+            const DeepCollectionEquality().equals(other.tagsList, tagsList));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(tagsList);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(tagsList));
 
   @JsonKey(ignore: true)
   @override
@@ -149,7 +149,7 @@ class _$TagsList with DiagnosticableTreeMixin implements TagsList {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$TagsListToJson(this);
+    return _$$TagsListToJson(this);
   }
 }
 
@@ -159,7 +159,7 @@ abstract class TagsList implements TagsListModel {
   factory TagsList.fromJson(Map<String, dynamic> json) = _$TagsList.fromJson;
 
   @override
-  List<Tag> get tagsList => throw _privateConstructorUsedError;
+  List<Tag> get tagsList;
   @override
   @JsonKey(ignore: true)
   $TagsListCopyWith<TagsList> get copyWith =>

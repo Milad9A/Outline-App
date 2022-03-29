@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'tags_bloc.dart';
 
@@ -37,6 +39,12 @@ mixin _$TagEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getAllTags,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getAllTags,
@@ -47,6 +55,12 @@ mixin _$TagEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(GetAllTags value) getAllTags,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetAllTags value)? getAllTags,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +104,7 @@ class __$StartedCopyWithImpl<$Res> extends _$TagEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started implements _Started {
   const _$_Started();
 
@@ -100,7 +115,8 @@ class _$_Started implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -113,6 +129,15 @@ class _$_Started implements _Started {
     required TResult Function() getAllTags,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getAllTags,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -135,6 +160,15 @@ class _$_Started implements _Started {
     required TResult Function(GetAllTags value) getAllTags,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetAllTags value)? getAllTags,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -173,6 +207,7 @@ class _$GetAllTagsCopyWithImpl<$Res> extends _$TagEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$GetAllTags implements GetAllTags {
   const _$GetAllTags();
 
@@ -183,7 +218,8 @@ class _$GetAllTags implements GetAllTags {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GetAllTags);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is GetAllTags);
   }
 
   @override
@@ -196,6 +232,15 @@ class _$GetAllTags implements GetAllTags {
     required TResult Function() getAllTags,
   }) {
     return getAllTags();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getAllTags,
+  }) {
+    return getAllTags?.call();
   }
 
   @override
@@ -218,6 +263,15 @@ class _$GetAllTags implements GetAllTags {
     required TResult Function(GetAllTags value) getAllTags,
   }) {
     return getAllTags(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetAllTags value)? getAllTags,
+  }) {
+    return getAllTags?.call(this);
   }
 
   @override
@@ -277,6 +331,14 @@ mixin _$TagState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Tag> tags)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -291,6 +353,14 @@ mixin _$TagState {
     required TResult Function(TagsLoading value) loading,
     required TResult Function(TagsSuccess value) success,
     required TResult Function(TagsError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(TagsLoading value)? loading,
+    TResult Function(TagsSuccess value)? success,
+    TResult Function(TagsError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -336,6 +406,7 @@ class __$InitialCopyWithImpl<$Res> extends _$TagStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -346,7 +417,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -361,6 +433,17 @@ class _$_Initial implements _Initial {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Tag> tags)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -387,6 +470,17 @@ class _$_Initial implements _Initial {
     required TResult Function(TagsError value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(TagsLoading value)? loading,
+    TResult Function(TagsSuccess value)? success,
+    TResult Function(TagsError value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -428,6 +522,7 @@ class _$TagsLoadingCopyWithImpl<$Res> extends _$TagStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$TagsLoading implements TagsLoading {
   const _$TagsLoading();
 
@@ -438,7 +533,8 @@ class _$TagsLoading implements TagsLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is TagsLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is TagsLoading);
   }
 
   @override
@@ -453,6 +549,17 @@ class _$TagsLoading implements TagsLoading {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Tag> tags)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return loading?.call();
   }
 
   @override
@@ -479,6 +586,17 @@ class _$TagsLoading implements TagsLoading {
     required TResult Function(TagsError value) error,
   }) {
     return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(TagsLoading value)? loading,
+    TResult Function(TagsSuccess value)? success,
+    TResult Function(TagsError value)? error,
+  }) {
+    return loading?.call(this);
   }
 
   @override
@@ -533,6 +651,7 @@ class _$TagsSuccessCopyWithImpl<$Res> extends _$TagStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$TagsSuccess implements TagsSuccess {
   const _$TagsSuccess({required this.tags});
 
@@ -547,14 +666,14 @@ class _$TagsSuccess implements TagsSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is TagsSuccess &&
-            (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)));
+        (other.runtimeType == runtimeType &&
+            other is TagsSuccess &&
+            const DeepCollectionEquality().equals(other.tags, tags));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(tags);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(tags));
 
   @JsonKey(ignore: true)
   @override
@@ -570,6 +689,17 @@ class _$TagsSuccess implements TagsSuccess {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return success(tags);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Tag> tags)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return success?.call(tags);
   }
 
   @override
@@ -600,6 +730,17 @@ class _$TagsSuccess implements TagsSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(TagsLoading value)? loading,
+    TResult Function(TagsSuccess value)? success,
+    TResult Function(TagsError value)? error,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(TagsLoading value)? loading,
@@ -617,7 +758,7 @@ class _$TagsSuccess implements TagsSuccess {
 abstract class TagsSuccess implements TagState {
   const factory TagsSuccess({required List<Tag> tags}) = _$TagsSuccess;
 
-  List<Tag> get tags => throw _privateConstructorUsedError;
+  List<Tag> get tags;
   @JsonKey(ignore: true)
   $TagsSuccessCopyWith<TagsSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -662,6 +803,7 @@ class _$TagsErrorCopyWithImpl<$Res> extends _$TagStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$TagsError implements TagsError {
   const _$TagsError({required this.error});
 
@@ -676,14 +818,14 @@ class _$TagsError implements TagsError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is TagsError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is TagsError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -699,6 +841,17 @@ class _$TagsError implements TagsError {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Tag> tags)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return error?.call(this.error);
   }
 
   @override
@@ -729,6 +882,17 @@ class _$TagsError implements TagsError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(TagsLoading value)? loading,
+    TResult Function(TagsSuccess value)? success,
+    TResult Function(TagsError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(TagsLoading value)? loading,
@@ -746,7 +910,7 @@ class _$TagsError implements TagsError {
 abstract class TagsError implements TagState {
   const factory TagsError({required NetworkExceptions error}) = _$TagsError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $TagsErrorCopyWith<TagsError> get copyWith =>
       throw _privateConstructorUsedError;

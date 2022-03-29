@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'course_model.dart';
 
@@ -61,7 +63,7 @@ class _$CourseModelTearOff {
     );
   }
 
-  CourseModel fromJson(Map<String, Object> json) {
+  CourseModel fromJson(Map<String, Object?> json) {
     return CourseModel.fromJson(json);
   }
 }
@@ -319,9 +321,8 @@ class _$CourseCopyWithImpl<$Res> extends _$CourseModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$Course with DiagnosticableTreeMixin implements Course {
   const _$Course(
       {@JsonKey(name: '_id')
@@ -350,7 +351,7 @@ class _$Course with DiagnosticableTreeMixin implements Course {
           required this.banner});
 
   factory _$Course.fromJson(Map<String, dynamic> json) =>
-      _$_$CourseFromJson(json);
+      _$$CourseFromJson(json);
 
   @override
   @JsonKey(name: '_id')
@@ -417,57 +418,42 @@ class _$Course with DiagnosticableTreeMixin implements Course {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Course &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.isPaid, isPaid) ||
-                const DeepCollectionEquality().equals(other.isPaid, isPaid)) &&
-            (identical(other.subscribers, subscribers) ||
-                const DeepCollectionEquality()
-                    .equals(other.subscribers, subscribers)) &&
-            (identical(other.lengthOfTheCourseInSeconds,
-                    lengthOfTheCourseInSeconds) ||
-                const DeepCollectionEquality().equals(
-                    other.lengthOfTheCourseInSeconds,
-                    lengthOfTheCourseInSeconds)) &&
-            (identical(other.avgRating, avgRating) ||
-                const DeepCollectionEquality()
-                    .equals(other.avgRating, avgRating)) &&
-            (identical(other.contents, contents) ||
-                const DeepCollectionEquality()
-                    .equals(other.contents, contents)) &&
-            (identical(other.requirements, requirements) ||
-                const DeepCollectionEquality()
-                    .equals(other.requirements, requirements)) &&
-            (identical(other.price, price) ||
-                const DeepCollectionEquality().equals(other.price, price)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.ownerUserId, ownerUserId) ||
-                const DeepCollectionEquality()
-                    .equals(other.ownerUserId, ownerUserId)) &&
-            (identical(other.banner, banner) ||
-                const DeepCollectionEquality().equals(other.banner, banner)));
+        (other.runtimeType == runtimeType &&
+            other is Course &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.isPaid, isPaid) &&
+            const DeepCollectionEquality()
+                .equals(other.subscribers, subscribers) &&
+            const DeepCollectionEquality().equals(
+                other.lengthOfTheCourseInSeconds, lengthOfTheCourseInSeconds) &&
+            const DeepCollectionEquality().equals(other.avgRating, avgRating) &&
+            const DeepCollectionEquality().equals(other.contents, contents) &&
+            const DeepCollectionEquality()
+                .equals(other.requirements, requirements) &&
+            const DeepCollectionEquality().equals(other.price, price) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality()
+                .equals(other.ownerUserId, ownerUserId) &&
+            const DeepCollectionEquality().equals(other.banner, banner));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(isPaid) ^
-      const DeepCollectionEquality().hash(subscribers) ^
-      const DeepCollectionEquality().hash(lengthOfTheCourseInSeconds) ^
-      const DeepCollectionEquality().hash(avgRating) ^
-      const DeepCollectionEquality().hash(contents) ^
-      const DeepCollectionEquality().hash(requirements) ^
-      const DeepCollectionEquality().hash(price) ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(ownerUserId) ^
-      const DeepCollectionEquality().hash(banner);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(isPaid),
+      const DeepCollectionEquality().hash(subscribers),
+      const DeepCollectionEquality().hash(lengthOfTheCourseInSeconds),
+      const DeepCollectionEquality().hash(avgRating),
+      const DeepCollectionEquality().hash(contents),
+      const DeepCollectionEquality().hash(requirements),
+      const DeepCollectionEquality().hash(price),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(ownerUserId),
+      const DeepCollectionEquality().hash(banner));
 
   @JsonKey(ignore: true)
   @override
@@ -476,7 +462,7 @@ class _$Course with DiagnosticableTreeMixin implements Course {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$CourseToJson(this);
+    return _$$CourseToJson(this);
   }
 }
 
@@ -511,40 +497,40 @@ abstract class Course implements CourseModel {
 
   @override
   @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
   @JsonKey(name: 'is_paid')
-  bool get isPaid => throw _privateConstructorUsedError;
+  bool get isPaid;
   @override
   @JsonKey(name: 'subscribers')
-  List<String> get subscribers => throw _privateConstructorUsedError;
+  List<String> get subscribers;
   @override
   @JsonKey(name: 'length_of_the_course_in_seconds')
-  int get lengthOfTheCourseInSeconds => throw _privateConstructorUsedError;
+  int get lengthOfTheCourseInSeconds;
   @override
   @JsonKey(name: 'avg_rating')
-  double get avgRating => throw _privateConstructorUsedError;
+  double get avgRating;
   @override
   @JsonKey(name: 'contents')
-  List<Content> get contents => throw _privateConstructorUsedError;
+  List<Content> get contents;
   @override
   @JsonKey(name: 'requirements')
-  String get requirements => throw _privateConstructorUsedError;
+  String get requirements;
   @override
   @JsonKey(name: 'price')
-  double get price => throw _privateConstructorUsedError;
+  double get price;
   @override
   @JsonKey(name: 'description')
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
   @JsonKey(name: 'title')
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
   @JsonKey(name: 'owner_user_id')
-  User get ownerUserId => throw _privateConstructorUsedError;
+  User get ownerUserId;
   @override
   @JsonKey(name: 'banner')
-  String get banner => throw _privateConstructorUsedError;
+  String get banner;
   @override
   @JsonKey(ignore: true)
   $CourseCopyWith<Course> get copyWith => throw _privateConstructorUsedError;

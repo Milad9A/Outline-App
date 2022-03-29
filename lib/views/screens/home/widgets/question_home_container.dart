@@ -3,10 +3,7 @@ import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_quill/models/documents/document.dart';
-import 'package:flutter_quill/widgets/controller.dart';
-import 'package:flutter_quill/widgets/editor.dart';
-import 'package:flutter_tags/flutter_tags.dart';
+import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:outline/models/question_model/question_vote_model.dart';
 import 'package:outline/providers/question/question_vote/question_vote_bloc.dart';
 import 'package:outline/repositories/question_repository.dart';
@@ -18,7 +15,8 @@ import 'package:outline/views/widgets/widgets.dart';
 class QuestionHomeContainer extends StatefulWidget {
   final QuestionVote questionVote;
 
-  QuestionHomeContainer({required this.questionVote});
+  const QuestionHomeContainer({Key? key, required this.questionVote})
+      : super(key: key);
 
   @override
   _QuestionHomeContainerState createState() => _QuestionHomeContainerState();
@@ -32,13 +30,11 @@ class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
   void initState() {
     super.initState();
     questionVote = widget.questionVote;
-    try {
-      controller = QuillController(
-        document:
-            Document.fromJson(jsonDecode(widget.questionVote.question.body)),
-        selection: TextSelection.collapsed(offset: 0),
-      );
-    } catch (e) {}
+    controller = QuillController(
+      document:
+          Document.fromJson(jsonDecode(widget.questionVote.question.body)),
+      selection: const TextSelection.collapsed(offset: 0),
+    );
   }
 
   @override
@@ -49,7 +45,7 @@ class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
       ),
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -84,14 +80,14 @@ class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
                       Container(
                         child: questionVote.question.tags.isNotEmpty
                             ? TagsRow(tags: questionVote.question.tags)
-                            : SizedBox.shrink(),
+                            : const SizedBox.shrink(),
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             Text(
               questionVote.question.title,
               style: Theme.of(context).textTheme.subtitle1!.copyWith(
@@ -99,7 +95,7 @@ class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
                     color: Colors.black,
                   ),
             ),
-            SizedBox(height: 6.0),
+            const SizedBox(height: 6.0),
             Row(
               children: [
                 QuestionVoteContainer(
@@ -111,7 +107,7 @@ class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
                     });
                   },
                 ),
-                SizedBox(width: 10.0),
+                const SizedBox(width: 10.0),
                 controller != null
                     ? Expanded(
                         child: QuillEditor(
@@ -134,7 +130,7 @@ class _QuestionHomeContainerState extends State<QuestionHomeContainer> {
                       ),
               ],
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             InkWell(
               onTap: () async {
                 questionVote = await Navigator.push(

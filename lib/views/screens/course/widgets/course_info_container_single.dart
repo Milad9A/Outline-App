@@ -6,16 +6,17 @@ class CourseInfoContainerSingle extends StatelessWidget {
   final Icon icon;
 
   const CourseInfoContainerSingle({
+    Key? key,
     required this.color,
     required this.text,
     required this.icon,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 12.0),
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
         height: 100.0,
         decoration: BoxDecoration(
           color: color,

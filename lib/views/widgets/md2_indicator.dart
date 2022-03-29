@@ -19,7 +19,7 @@ class MD2Indicator extends Decoration {
 
   @override
   _MD2Painter createBoxPainter([VoidCallback? onChanged]) {
-    return new _MD2Painter(this, onChanged!);
+    return _MD2Painter(this, onChanged!);
   }
 }
 
@@ -51,8 +51,8 @@ class _MD2Painter extends BoxPainter {
     canvas.drawRRect(
       RRect.fromRectAndCorners(
         rect,
-        topRight: Radius.circular(8),
-        topLeft: Radius.circular(8),
+        topRight: const Radius.circular(8),
+        topLeft: const Radius.circular(8),
       ),
       paint,
     );

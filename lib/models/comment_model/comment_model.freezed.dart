@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'comment_model.dart';
 
@@ -37,7 +39,7 @@ class _$CommentModelTearOff {
     );
   }
 
-  CommentModel fromJson(Map<String, Object> json) {
+  CommentModel fromJson(Map<String, Object?> json) {
     return CommentModel.fromJson(json);
   }
 }
@@ -187,9 +189,8 @@ class _$CommentCopyWithImpl<$Res> extends _$CommentModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$Comment with DiagnosticableTreeMixin implements Comment {
   const _$Comment(
       {@JsonKey(name: '_id') required this.id,
@@ -200,7 +201,7 @@ class _$Comment with DiagnosticableTreeMixin implements Comment {
       @JsonKey(name: 'updatedAt') required this.updatedAt});
 
   factory _$Comment.fromJson(Map<String, dynamic> json) =>
-      _$_$CommentFromJson(json);
+      _$$CommentFromJson(json);
 
   @override
   @JsonKey(name: '_id')
@@ -242,33 +243,25 @@ class _$Comment with DiagnosticableTreeMixin implements Comment {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Comment &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.body, body) ||
-                const DeepCollectionEquality().equals(other.body, body)) &&
-            (identical(other.articleId, articleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.articleId, articleId)) &&
-            (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user)) &&
-            (identical(other.createdAt, createdAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)) &&
-            (identical(other.updatedAt, updatedAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.updatedAt, updatedAt)));
+        (other.runtimeType == runtimeType &&
+            other is Comment &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.body, body) &&
+            const DeepCollectionEquality().equals(other.articleId, articleId) &&
+            const DeepCollectionEquality().equals(other.user, user) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(body) ^
-      const DeepCollectionEquality().hash(articleId) ^
-      const DeepCollectionEquality().hash(user) ^
-      const DeepCollectionEquality().hash(createdAt) ^
-      const DeepCollectionEquality().hash(updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(body),
+      const DeepCollectionEquality().hash(articleId),
+      const DeepCollectionEquality().hash(user),
+      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(updatedAt));
 
   @JsonKey(ignore: true)
   @override
@@ -277,7 +270,7 @@ class _$Comment with DiagnosticableTreeMixin implements Comment {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$CommentToJson(this);
+    return _$$CommentToJson(this);
   }
 }
 
@@ -294,22 +287,22 @@ abstract class Comment implements CommentModel {
 
   @override
   @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
   @JsonKey(name: 'body')
-  String get body => throw _privateConstructorUsedError;
+  String get body;
   @override
   @JsonKey(name: 'article_id')
-  String get articleId => throw _privateConstructorUsedError;
+  String get articleId;
   @override
   @JsonKey(name: 'owner_user_id')
-  User get user => throw _privateConstructorUsedError;
+  User get user;
   @override
   @JsonKey(name: 'createdAt')
-  String get createdAt => throw _privateConstructorUsedError;
+  String get createdAt;
   @override
   @JsonKey(name: 'updatedAt')
-  String get updatedAt => throw _privateConstructorUsedError;
+  String get updatedAt;
   @override
   @JsonKey(ignore: true)
   $CommentCopyWith<Comment> get copyWith => throw _privateConstructorUsedError;

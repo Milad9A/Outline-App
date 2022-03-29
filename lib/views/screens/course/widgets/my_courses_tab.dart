@@ -8,8 +8,9 @@ class MyCoursesTab extends StatefulWidget {
   final TabController tabController;
 
   const MyCoursesTab({
+    Key? key,
     required this.tabController,
-  });
+  }) : super(key: key);
 
   @override
   _MyCoursesTabState createState() => _MyCoursesTabState();
@@ -29,10 +30,10 @@ class _MyCoursesTabState extends State<MyCoursesTab> {
             coursesList: coursesList,
             context: context,
           ),
-          loading: () => Center(
+          loading: () => const Center(
             child: OutlineCircularProgressIndicator(),
           ),
-          orElse: () => SizedBox.shrink(),
+          orElse: () => const SizedBox.shrink(),
         );
       },
     );

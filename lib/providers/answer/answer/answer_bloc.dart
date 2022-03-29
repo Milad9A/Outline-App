@@ -12,7 +12,7 @@ part 'answer_state.dart';
 part 'answer_bloc.freezed.dart';
 
 class AnswerBloc extends Bloc<AnswerEvent, AnswerState> {
-  AnswerBloc({required this.answerRepository}) : super(_Initial());
+  AnswerBloc({required this.answerRepository}) : super(const _Initial());
 
   final AnswerRepository answerRepository;
 
@@ -21,16 +21,16 @@ class AnswerBloc extends Bloc<AnswerEvent, AnswerState> {
     AnswerEvent event,
   ) async* {
     if (event is AnswerGetMyAnswers) {
-      yield GetAnswersLoading();
+      yield const GetAnswersLoading();
 
       ApiResult<List<Answer>> apiResult = await answerRepository.getMyAnswers();
 
       apiResult.when(
-        success: (List<Answer> data) {
-          emit(GetMyAnswersSuccess(answers: data));
+        success: (List<Answer> data) async* {
+          yield (GetMyAnswersSuccess(answers: data));
         },
-        failure: (NetworkExceptions error) {
-          emit(AnswerError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (AnswerError(error: error));
         },
       );
     }

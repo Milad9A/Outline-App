@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'color_repository.dart';
 
@@ -13,13 +14,12 @@ class CustomTheme {
         ),
         buttonColor: ColorRepository.darkBlue,
       ),
-      buttonColor: ColorRepository.darkBlue,
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         backgroundColor: Colors.transparent,
-        brightness: Brightness.light,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
         elevation: 0.0,
       ),
-      textTheme: TextTheme(
+      textTheme: const TextTheme(
         subtitle1: TextStyle(
           color: ColorRepository.textColor,
           fontSize: 16.0,

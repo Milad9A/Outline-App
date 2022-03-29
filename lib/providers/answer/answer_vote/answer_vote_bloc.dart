@@ -14,7 +14,7 @@ part 'answer_vote_bloc.freezed.dart';
 class AnswerVoteBloc extends Bloc<AnswerVoteEvent, AnswerVoteState> {
   AnswerVoteBloc({
     required this.answerRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final AnswerRepository answerRepository;
 
@@ -23,20 +23,20 @@ class AnswerVoteBloc extends Bloc<AnswerVoteEvent, AnswerVoteState> {
     AnswerVoteEvent event,
   ) async* {
     if (event is AnswerVoteOnAnswer) {
-      yield AnswerVoteLoading();
+      yield const AnswerVoteLoading();
       ApiResult<AnswerVote> apiResult = await answerRepository.voteAnswer(
         id: event.id,
         voteValue: event.voteValue,
       );
 
       apiResult.when(
-        success: (AnswerVote data) {
-          emit(VoteOnAnswerSuccess(answerVote: data));
-          emit(_Initial());
+        success: (AnswerVote data) async* {
+          yield (VoteOnAnswerSuccess(answerVote: data));
+          yield (const _Initial());
         },
-        failure: (NetworkExceptions error) {
-          emit(AnswerVoteError(error: error));
-          emit(_Initial());
+        failure: (NetworkExceptions error) async* {
+          yield (AnswerVoteError(error: error));
+          yield (const _Initial());
         },
       );
     }

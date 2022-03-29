@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'article_search_bloc.dart';
 
@@ -40,6 +42,12 @@ mixin _$ArticleSearchEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? articleSearchButtonPressed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String query)? articleSearchButtonPressed,
@@ -50,6 +58,13 @@ mixin _$ArticleSearchEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(ArticleSearchButtonPressed value)
+        articleSearchButtonPressed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ArticleSearchButtonPressed value)?
         articleSearchButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
@@ -98,6 +113,7 @@ class __$StartedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started implements _Started {
   const _$_Started();
 
@@ -108,7 +124,8 @@ class _$_Started implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -121,6 +138,15 @@ class _$_Started implements _Started {
     required TResult Function(String query) articleSearchButtonPressed,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? articleSearchButtonPressed,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -144,6 +170,16 @@ class _$_Started implements _Started {
         articleSearchButtonPressed,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ArticleSearchButtonPressed value)?
+        articleSearchButtonPressed,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -199,6 +235,7 @@ class _$ArticleSearchButtonPressedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ArticleSearchButtonPressed implements ArticleSearchButtonPressed {
   const _$ArticleSearchButtonPressed({required this.query});
 
@@ -213,14 +250,14 @@ class _$ArticleSearchButtonPressed implements ArticleSearchButtonPressed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ArticleSearchButtonPressed &&
-            (identical(other.query, query) ||
-                const DeepCollectionEquality().equals(other.query, query)));
+        (other.runtimeType == runtimeType &&
+            other is ArticleSearchButtonPressed &&
+            const DeepCollectionEquality().equals(other.query, query));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(query);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(query));
 
   @JsonKey(ignore: true)
   @override
@@ -236,6 +273,15 @@ class _$ArticleSearchButtonPressed implements ArticleSearchButtonPressed {
     required TResult Function(String query) articleSearchButtonPressed,
   }) {
     return articleSearchButtonPressed(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? articleSearchButtonPressed,
+  }) {
+    return articleSearchButtonPressed?.call(query);
   }
 
   @override
@@ -263,6 +309,16 @@ class _$ArticleSearchButtonPressed implements ArticleSearchButtonPressed {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ArticleSearchButtonPressed value)?
+        articleSearchButtonPressed,
+  }) {
+    return articleSearchButtonPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(ArticleSearchButtonPressed value)?
@@ -280,7 +336,7 @@ abstract class ArticleSearchButtonPressed implements ArticleSearchEvent {
   const factory ArticleSearchButtonPressed({required String query}) =
       _$ArticleSearchButtonPressed;
 
-  String get query => throw _privateConstructorUsedError;
+  String get query;
   @JsonKey(ignore: true)
   $ArticleSearchButtonPressedCopyWith<ArticleSearchButtonPressed>
       get copyWith => throw _privateConstructorUsedError;
@@ -326,6 +382,14 @@ mixin _$ArticleSearchState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<ArticleLike> articles)? articleSearchSuccess,
+    TResult Function()? articleSearchLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<ArticleLike> articles)? articleSearchSuccess,
@@ -340,6 +404,14 @@ mixin _$ArticleSearchState {
     required TResult Function(ArticleSearchSuccess value) articleSearchSuccess,
     required TResult Function(ArticleSearchLoading value) articleSearchLoading,
     required TResult Function(ArticleSearchError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ArticleSearchSuccess value)? articleSearchSuccess,
+    TResult Function(ArticleSearchLoading value)? articleSearchLoading,
+    TResult Function(ArticleSearchError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -388,6 +460,7 @@ class __$InitialCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -398,7 +471,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -413,6 +487,17 @@ class _$_Initial implements _Initial {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<ArticleLike> articles)? articleSearchSuccess,
+    TResult Function()? articleSearchLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -439,6 +524,17 @@ class _$_Initial implements _Initial {
     required TResult Function(ArticleSearchError value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ArticleSearchSuccess value)? articleSearchSuccess,
+    TResult Function(ArticleSearchLoading value)? articleSearchLoading,
+    TResult Function(ArticleSearchError value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -494,6 +590,7 @@ class _$ArticleSearchSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ArticleSearchSuccess implements ArticleSearchSuccess {
   const _$ArticleSearchSuccess({required this.articles});
 
@@ -508,15 +605,14 @@ class _$ArticleSearchSuccess implements ArticleSearchSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ArticleSearchSuccess &&
-            (identical(other.articles, articles) ||
-                const DeepCollectionEquality()
-                    .equals(other.articles, articles)));
+        (other.runtimeType == runtimeType &&
+            other is ArticleSearchSuccess &&
+            const DeepCollectionEquality().equals(other.articles, articles));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(articles);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(articles));
 
   @JsonKey(ignore: true)
   @override
@@ -533,6 +629,17 @@ class _$ArticleSearchSuccess implements ArticleSearchSuccess {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return articleSearchSuccess(articles);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<ArticleLike> articles)? articleSearchSuccess,
+    TResult Function()? articleSearchLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return articleSearchSuccess?.call(articles);
   }
 
   @override
@@ -563,6 +670,17 @@ class _$ArticleSearchSuccess implements ArticleSearchSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ArticleSearchSuccess value)? articleSearchSuccess,
+    TResult Function(ArticleSearchLoading value)? articleSearchLoading,
+    TResult Function(ArticleSearchError value)? error,
+  }) {
+    return articleSearchSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(ArticleSearchSuccess value)? articleSearchSuccess,
@@ -581,7 +699,7 @@ abstract class ArticleSearchSuccess implements ArticleSearchState {
   const factory ArticleSearchSuccess({required List<ArticleLike> articles}) =
       _$ArticleSearchSuccess;
 
-  List<ArticleLike> get articles => throw _privateConstructorUsedError;
+  List<ArticleLike> get articles;
   @JsonKey(ignore: true)
   $ArticleSearchSuccessCopyWith<ArticleSearchSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -607,6 +725,7 @@ class _$ArticleSearchLoadingCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ArticleSearchLoading implements ArticleSearchLoading {
   const _$ArticleSearchLoading();
 
@@ -617,7 +736,8 @@ class _$ArticleSearchLoading implements ArticleSearchLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ArticleSearchLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is ArticleSearchLoading);
   }
 
   @override
@@ -632,6 +752,17 @@ class _$ArticleSearchLoading implements ArticleSearchLoading {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return articleSearchLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<ArticleLike> articles)? articleSearchSuccess,
+    TResult Function()? articleSearchLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return articleSearchLoading?.call();
   }
 
   @override
@@ -658,6 +789,17 @@ class _$ArticleSearchLoading implements ArticleSearchLoading {
     required TResult Function(ArticleSearchError value) error,
   }) {
     return articleSearchLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ArticleSearchSuccess value)? articleSearchSuccess,
+    TResult Function(ArticleSearchLoading value)? articleSearchLoading,
+    TResult Function(ArticleSearchError value)? error,
+  }) {
+    return articleSearchLoading?.call(this);
   }
 
   @override
@@ -722,6 +864,7 @@ class _$ArticleSearchErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ArticleSearchError implements ArticleSearchError {
   const _$ArticleSearchError({required this.error});
 
@@ -736,14 +879,14 @@ class _$ArticleSearchError implements ArticleSearchError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ArticleSearchError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is ArticleSearchError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -759,6 +902,17 @@ class _$ArticleSearchError implements ArticleSearchError {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<ArticleLike> articles)? articleSearchSuccess,
+    TResult Function()? articleSearchLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return error?.call(this.error);
   }
 
   @override
@@ -789,6 +943,17 @@ class _$ArticleSearchError implements ArticleSearchError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(ArticleSearchSuccess value)? articleSearchSuccess,
+    TResult Function(ArticleSearchLoading value)? articleSearchLoading,
+    TResult Function(ArticleSearchError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(ArticleSearchSuccess value)? articleSearchSuccess,
@@ -807,7 +972,7 @@ abstract class ArticleSearchError implements ArticleSearchState {
   const factory ArticleSearchError({required NetworkExceptions error}) =
       _$ArticleSearchError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $ArticleSearchErrorCopyWith<ArticleSearchError> get copyWith =>
       throw _privateConstructorUsedError;

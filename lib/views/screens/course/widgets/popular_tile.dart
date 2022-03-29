@@ -10,8 +10,9 @@ class PopularTile extends StatelessWidget {
   final Course course;
 
   const PopularTile({
+    Key? key,
     required this.course,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class PopularTile extends StatelessWidget {
         );
       },
       child: Container(
-        padding: EdgeInsets.only(bottom: 10.0),
+        padding: const EdgeInsets.only(bottom: 10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,14 +45,14 @@ class PopularTile extends StatelessWidget {
                   ),
                   Text(
                     course.ownerUserId.name,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 12,
                       color: ColorRepository.blackish,
                     ),
                   ),
                   Row(
                     children: [
-                      Icon(Icons.star, color: Colors.yellow),
+                      const Icon(Icons.star, color: Colors.yellow),
                       Text(course.avgRating.toString()),
                     ],
                   ),
@@ -62,7 +63,7 @@ class PopularTile extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10.0),
-                boxShadow: [Consts.outlineBoxShadow],
+                boxShadow: const [Consts.outlineBoxShadow],
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),

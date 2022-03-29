@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'login_bloc.dart';
 
@@ -39,6 +41,12 @@ mixin _$LoginEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(UserLogin userLogin)? loginButtonPressed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(UserLogin userLogin)? loginButtonPressed,
@@ -49,6 +57,12 @@ mixin _$LoginEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(LoginButtonPressed value) loginButtonPressed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(LoginButtonPressed value)? loginButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,6 +107,7 @@ class __$StartedCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started implements _Started {
   const _$_Started();
 
@@ -103,7 +118,8 @@ class _$_Started implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -116,6 +132,15 @@ class _$_Started implements _Started {
     required TResult Function(UserLogin userLogin) loginButtonPressed,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(UserLogin userLogin)? loginButtonPressed,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -138,6 +163,15 @@ class _$_Started implements _Started {
     required TResult Function(LoginButtonPressed value) loginButtonPressed,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(LoginButtonPressed value)? loginButtonPressed,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -191,6 +225,7 @@ class _$LoginButtonPressedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$LoginButtonPressed implements LoginButtonPressed {
   const _$LoginButtonPressed({required this.userLogin});
 
@@ -205,15 +240,14 @@ class _$LoginButtonPressed implements LoginButtonPressed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is LoginButtonPressed &&
-            (identical(other.userLogin, userLogin) ||
-                const DeepCollectionEquality()
-                    .equals(other.userLogin, userLogin)));
+        (other.runtimeType == runtimeType &&
+            other is LoginButtonPressed &&
+            const DeepCollectionEquality().equals(other.userLogin, userLogin));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(userLogin);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(userLogin));
 
   @JsonKey(ignore: true)
   @override
@@ -227,6 +261,15 @@ class _$LoginButtonPressed implements LoginButtonPressed {
     required TResult Function(UserLogin userLogin) loginButtonPressed,
   }) {
     return loginButtonPressed(userLogin);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(UserLogin userLogin)? loginButtonPressed,
+  }) {
+    return loginButtonPressed?.call(userLogin);
   }
 
   @override
@@ -253,6 +296,15 @@ class _$LoginButtonPressed implements LoginButtonPressed {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(LoginButtonPressed value)? loginButtonPressed,
+  }) {
+    return loginButtonPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(LoginButtonPressed value)? loginButtonPressed,
@@ -269,7 +321,7 @@ abstract class LoginButtonPressed implements LoginEvent {
   const factory LoginButtonPressed({required UserLogin userLogin}) =
       _$LoginButtonPressed;
 
-  UserLogin get userLogin => throw _privateConstructorUsedError;
+  UserLogin get userLogin;
   @JsonKey(ignore: true)
   $LoginButtonPressedCopyWith<LoginButtonPressed> get copyWith =>
       throw _privateConstructorUsedError;
@@ -314,6 +366,14 @@ mixin _$LoginState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -328,6 +388,14 @@ mixin _$LoginState {
     required TResult Function(LoginLoading value) loading,
     required TResult Function(LoginSuccess value) success,
     required TResult Function(LoginError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(LoginLoading value)? loading,
+    TResult Function(LoginSuccess value)? success,
+    TResult Function(LoginError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -374,6 +442,7 @@ class __$InitialCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -384,7 +453,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -399,6 +469,17 @@ class _$_Initial implements _Initial {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -425,6 +506,17 @@ class _$_Initial implements _Initial {
     required TResult Function(LoginError value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(LoginLoading value)? loading,
+    TResult Function(LoginSuccess value)? success,
+    TResult Function(LoginError value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -466,6 +558,7 @@ class _$LoginLoadingCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$LoginLoading implements LoginLoading {
   const _$LoginLoading();
 
@@ -476,7 +569,8 @@ class _$LoginLoading implements LoginLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is LoginLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is LoginLoading);
   }
 
   @override
@@ -491,6 +585,17 @@ class _$LoginLoading implements LoginLoading {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return loading?.call();
   }
 
   @override
@@ -517,6 +622,17 @@ class _$LoginLoading implements LoginLoading {
     required TResult Function(LoginError value) error,
   }) {
     return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(LoginLoading value)? loading,
+    TResult Function(LoginSuccess value)? success,
+    TResult Function(LoginError value)? error,
+  }) {
+    return loading?.call(this);
   }
 
   @override
@@ -571,6 +687,7 @@ class _$LoginSuccessCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$LoginSuccess implements LoginSuccess {
   const _$LoginSuccess({required this.user});
 
@@ -585,14 +702,14 @@ class _$LoginSuccess implements LoginSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is LoginSuccess &&
-            (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user)));
+        (other.runtimeType == runtimeType &&
+            other is LoginSuccess &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
@@ -608,6 +725,17 @@ class _$LoginSuccess implements LoginSuccess {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return success(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return success?.call(user);
   }
 
   @override
@@ -638,6 +766,17 @@ class _$LoginSuccess implements LoginSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(LoginLoading value)? loading,
+    TResult Function(LoginSuccess value)? success,
+    TResult Function(LoginError value)? error,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(LoginLoading value)? loading,
@@ -655,7 +794,7 @@ class _$LoginSuccess implements LoginSuccess {
 abstract class LoginSuccess implements LoginState {
   const factory LoginSuccess({required User user}) = _$LoginSuccess;
 
-  User get user => throw _privateConstructorUsedError;
+  User get user;
   @JsonKey(ignore: true)
   $LoginSuccessCopyWith<LoginSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -701,6 +840,7 @@ class _$LoginErrorCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$LoginError implements LoginError {
   const _$LoginError({required this.error});
 
@@ -715,14 +855,14 @@ class _$LoginError implements LoginError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is LoginError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is LoginError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -738,6 +878,17 @@ class _$LoginError implements LoginError {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(User user)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return error?.call(this.error);
   }
 
   @override
@@ -768,6 +919,17 @@ class _$LoginError implements LoginError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(LoginLoading value)? loading,
+    TResult Function(LoginSuccess value)? success,
+    TResult Function(LoginError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(LoginLoading value)? loading,
@@ -785,7 +947,7 @@ class _$LoginError implements LoginError {
 abstract class LoginError implements LoginState {
   const factory LoginError({required NetworkExceptions error}) = _$LoginError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $LoginErrorCopyWith<LoginError> get copyWith =>
       throw _privateConstructorUsedError;

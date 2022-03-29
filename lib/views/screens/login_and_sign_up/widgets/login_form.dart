@@ -11,9 +11,10 @@ import '../sign_up_screen.dart';
 
 class LoginForm extends StatelessWidget {
   LoginForm({
+    Key? key,
     required this.emailController,
     required this.passwordController,
-  });
+  }) : super(key: key);
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
@@ -23,7 +24,7 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
+        const Text(
           'OUTLINE',
           style: TextStyle(
             color: ColorRepository.darkBlue,
@@ -38,7 +39,7 @@ class LoginForm extends StatelessWidget {
               .subtitle1!
               .copyWith(fontWeight: FontWeight.w500),
         ),
-        SizedBox(height: 46.0),
+        const SizedBox(height: 46.0),
         OutlineTextField(
           controller: emailController,
           hintText: 'Email',
@@ -46,7 +47,7 @@ class LoginForm extends StatelessWidget {
           textInputType: TextInputType.emailAddress,
           onChanged: (value) {},
         ),
-        SizedBox(height: 26.0),
+        const SizedBox(height: 26.0),
         OutlineTextField(
           controller: passwordController,
           hintText: 'Password',
@@ -55,7 +56,7 @@ class LoginForm extends StatelessWidget {
           obscureText: true,
           onChanged: (value) {},
         ),
-        SizedBox(height: 26.0),
+        const SizedBox(height: 26.0),
         Align(
           alignment: Alignment.bottomRight,
           child: Text(
@@ -66,7 +67,7 @@ class LoginForm extends StatelessWidget {
                 .copyWith(color: ColorRepository.greyish),
           ),
         ),
-        SizedBox(height: 26.0),
+        const SizedBox(height: 26.0),
         OutlineTextButton(
           text: 'Login',
           onPressed: () {
@@ -79,7 +80,7 @@ class LoginForm extends StatelessWidget {
             );
           },
         ),
-        SizedBox(height: 22.0),
+        const SizedBox(height: 22.0),
         RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
@@ -90,7 +91,7 @@ class LoginForm extends StatelessWidget {
             children: [
               TextSpan(
                 text: "Create One",
-                style: TextStyle(color: ColorRepository.darkBlue),
+                style: const TextStyle(color: ColorRepository.darkBlue),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     Navigator.push(context, SignUpScreen.route);

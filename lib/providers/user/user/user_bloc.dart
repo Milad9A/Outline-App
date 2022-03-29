@@ -11,7 +11,7 @@ part 'user_state.dart';
 part 'user_bloc.freezed.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
-  UserBloc({required this.userRepository}) : super(_Initial());
+  UserBloc({required this.userRepository}) : super(const _Initial());
 
   final UserRepository userRepository;
 
@@ -20,16 +20,16 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     UserEvent event,
   ) async* {
     if (event is GetAllPublicData) {
-      yield UsersLoading();
+      yield const UsersLoading();
 
       ApiResult<List> apiResult = await userRepository.getAllUsersPublicInfo();
 
       apiResult.when(
-        success: (List users) {
-          emit(UsersPublicDataSuccess(usersData: users));
+        success: (List users) async* {
+          yield (UsersPublicDataSuccess(usersData: users));
         },
-        failure: (NetworkExceptions error) {
-          emit(UsersError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (UsersError(error: error));
         },
       );
     }

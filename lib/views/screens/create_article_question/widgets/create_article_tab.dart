@@ -13,8 +13,8 @@ class CreateArticleTab extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset('assets/images/create_your_article.png'),
-        SizedBox(height: 16.0),
-        Container(
+        const SizedBox(height: 16.0),
+        SizedBox(
           width: MediaQuery.of(context).size.width * 0.9,
           child: OutlineTextButton(
             text: 'Create Article',

@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'course_bloc.dart';
 
@@ -37,6 +39,12 @@ mixin _$CourseEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getAllCourses,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getAllCourses,
@@ -47,6 +55,12 @@ mixin _$CourseEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(GetAllCourses value) getAllCourses,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetAllCourses value)? getAllCourses,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -91,6 +105,7 @@ class __$StartedCopyWithImpl<$Res> extends _$CourseEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started implements _Started {
   const _$_Started();
 
@@ -101,7 +116,8 @@ class _$_Started implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -114,6 +130,15 @@ class _$_Started implements _Started {
     required TResult Function() getAllCourses,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getAllCourses,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -136,6 +161,15 @@ class _$_Started implements _Started {
     required TResult Function(GetAllCourses value) getAllCourses,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetAllCourses value)? getAllCourses,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -175,6 +209,7 @@ class _$GetAllCoursesCopyWithImpl<$Res> extends _$CourseEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$GetAllCourses implements GetAllCourses {
   const _$GetAllCourses();
 
@@ -185,7 +220,8 @@ class _$GetAllCourses implements GetAllCourses {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GetAllCourses);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is GetAllCourses);
   }
 
   @override
@@ -198,6 +234,15 @@ class _$GetAllCourses implements GetAllCourses {
     required TResult Function() getAllCourses,
   }) {
     return getAllCourses();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getAllCourses,
+  }) {
+    return getAllCourses?.call();
   }
 
   @override
@@ -220,6 +265,15 @@ class _$GetAllCourses implements GetAllCourses {
     required TResult Function(GetAllCourses value) getAllCourses,
   }) {
     return getAllCourses(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetAllCourses value)? getAllCourses,
+  }) {
+    return getAllCourses?.call(this);
   }
 
   @override
@@ -279,6 +333,14 @@ mixin _$CourseState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Course> courses)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -293,6 +355,14 @@ mixin _$CourseState {
     required TResult Function(CoursesLoading value) loading,
     required TResult Function(CoursesSuccess value) success,
     required TResult Function(CoursesError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CoursesLoading value)? loading,
+    TResult Function(CoursesSuccess value)? success,
+    TResult Function(CoursesError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -339,6 +409,7 @@ class __$InitialCopyWithImpl<$Res> extends _$CourseStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -349,7 +420,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -364,6 +436,17 @@ class _$_Initial implements _Initial {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Course> courses)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -390,6 +473,17 @@ class _$_Initial implements _Initial {
     required TResult Function(CoursesError value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CoursesLoading value)? loading,
+    TResult Function(CoursesSuccess value)? success,
+    TResult Function(CoursesError value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -431,6 +525,7 @@ class _$CoursesLoadingCopyWithImpl<$Res> extends _$CourseStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CoursesLoading implements CoursesLoading {
   const _$CoursesLoading();
 
@@ -441,7 +536,8 @@ class _$CoursesLoading implements CoursesLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is CoursesLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is CoursesLoading);
   }
 
   @override
@@ -456,6 +552,17 @@ class _$CoursesLoading implements CoursesLoading {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Course> courses)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return loading?.call();
   }
 
   @override
@@ -482,6 +589,17 @@ class _$CoursesLoading implements CoursesLoading {
     required TResult Function(CoursesError value) error,
   }) {
     return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CoursesLoading value)? loading,
+    TResult Function(CoursesSuccess value)? success,
+    TResult Function(CoursesError value)? error,
+  }) {
+    return loading?.call(this);
   }
 
   @override
@@ -536,6 +654,7 @@ class _$CoursesSuccessCopyWithImpl<$Res> extends _$CourseStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CoursesSuccess implements CoursesSuccess {
   const _$CoursesSuccess({required this.courses});
 
@@ -550,14 +669,14 @@ class _$CoursesSuccess implements CoursesSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CoursesSuccess &&
-            (identical(other.courses, courses) ||
-                const DeepCollectionEquality().equals(other.courses, courses)));
+        (other.runtimeType == runtimeType &&
+            other is CoursesSuccess &&
+            const DeepCollectionEquality().equals(other.courses, courses));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(courses);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(courses));
 
   @JsonKey(ignore: true)
   @override
@@ -573,6 +692,17 @@ class _$CoursesSuccess implements CoursesSuccess {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return success(courses);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Course> courses)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return success?.call(courses);
   }
 
   @override
@@ -603,6 +733,17 @@ class _$CoursesSuccess implements CoursesSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CoursesLoading value)? loading,
+    TResult Function(CoursesSuccess value)? success,
+    TResult Function(CoursesError value)? error,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(CoursesLoading value)? loading,
@@ -621,7 +762,7 @@ abstract class CoursesSuccess implements CourseState {
   const factory CoursesSuccess({required List<Course> courses}) =
       _$CoursesSuccess;
 
-  List<Course> get courses => throw _privateConstructorUsedError;
+  List<Course> get courses;
   @JsonKey(ignore: true)
   $CoursesSuccessCopyWith<CoursesSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -668,6 +809,7 @@ class _$CoursesErrorCopyWithImpl<$Res> extends _$CourseStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CoursesError implements CoursesError {
   const _$CoursesError({required this.error});
 
@@ -682,14 +824,14 @@ class _$CoursesError implements CoursesError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CoursesError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is CoursesError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -705,6 +847,17 @@ class _$CoursesError implements CoursesError {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Course> courses)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return error?.call(this.error);
   }
 
   @override
@@ -735,6 +888,17 @@ class _$CoursesError implements CoursesError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CoursesLoading value)? loading,
+    TResult Function(CoursesSuccess value)? success,
+    TResult Function(CoursesError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(CoursesLoading value)? loading,
@@ -753,7 +917,7 @@ abstract class CoursesError implements CourseState {
   const factory CoursesError({required NetworkExceptions error}) =
       _$CoursesError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $CoursesErrorCopyWith<CoursesError> get copyWith =>
       throw _privateConstructorUsedError;

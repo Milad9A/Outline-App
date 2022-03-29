@@ -3,9 +3,7 @@ import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_quill/models/documents/document.dart';
-import 'package:flutter_quill/widgets/controller.dart';
-import 'package:flutter_tags/flutter_tags.dart';
+import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/config/theme/color_repository.dart';
@@ -21,10 +19,11 @@ class ArticleHomeContainer extends StatefulWidget {
   final ArticleLike articleLike;
   final void Function(ArticleLike) onLikeChanged;
 
-  ArticleHomeContainer({
+  const ArticleHomeContainer({
+    Key? key,
     required this.articleLike,
     required this.onLikeChanged,
-  });
+  }) : super(key: key);
 
   @override
   _ArticleHomeContainerState createState() => _ArticleHomeContainerState();
@@ -40,19 +39,17 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
     super.initState();
     articleLike = widget.articleLike;
 
-    try {
-      controller = QuillController(
-        document: Document.fromJson(jsonDecode(articleLike.article.content)),
-        selection: TextSelection.collapsed(offset: 0),
-      );
-    } catch (e) {}
+    controller = QuillController(
+      document: Document.fromJson(jsonDecode(articleLike.article.content)),
+      selection: const TextSelection.collapsed(offset: 0),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         left: 15.0,
         right: 15.0,
         top: 15.0,
@@ -91,14 +88,14 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
                     Container(
                       child: widget.articleLike.article.tags.isNotEmpty
                           ? TagsRow(tags: articleLike.article.tags)
-                          : SizedBox.shrink(),
+                          : const SizedBox.shrink(),
                     ),
                   ],
                 ),
               ),
             ],
           ),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           Text(
             articleLike.article.title,
             style: Theme.of(context).textTheme.subtitle1!.copyWith(
@@ -106,7 +103,7 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
                   color: Colors.black,
                 ),
           ),
-          SizedBox(height: 6.0),
+          const SizedBox(height: 6.0),
           GestureDetector(
             onTap: () async {
               articleLike = await Navigator.push(
@@ -148,7 +145,7 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
               ),
             ),
           ),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -205,9 +202,9 @@ class _ArticleHomeContainerState extends State<ArticleHomeContainer> {
                       },
                     ),
                     Text(articleLike.article.likes.length.toString()),
-                    SizedBox(width: 10.0),
+                    const SizedBox(width: 10.0),
                     IconButton(
-                      icon: Icon(Icons.chat_bubble_outline),
+                      icon: const Icon(Icons.chat_bubble_outline),
                       onPressed: () {
                         Navigator.push(
                           context,

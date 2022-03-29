@@ -15,7 +15,7 @@ class QuestionSearchBloc
     extends Bloc<QuestionSearchEvent, QuestionSearchState> {
   QuestionSearchBloc({
     required this.searchRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final SearchRepository searchRepository;
 
@@ -24,17 +24,17 @@ class QuestionSearchBloc
     QuestionSearchEvent event,
   ) async* {
     if (event is QuestionSearchButtonPressed) {
-      yield QuestionSearchLoading();
+      yield const QuestionSearchLoading();
 
       ApiResult<List<QuestionVote>> apiResult =
           await searchRepository.searchQuestions(query: event.query);
 
       apiResult.when(
-        success: (List<QuestionVote> data) {
-          emit(QuestionSearchSuccess(questions: data));
+        success: (List<QuestionVote> data) async* {
+          yield (QuestionSearchSuccess(questions: data));
         },
-        failure: (NetworkExceptions error) {
-          emit(QuestionSearchError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (QuestionSearchError(error: error));
         },
       );
     }

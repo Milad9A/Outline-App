@@ -12,7 +12,7 @@ Column buildMyEmptyCoursesBody(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Image.asset('assets/images/my_courses_tab_image.png'),
-      SizedBox(height: 16.0),
+      const SizedBox(height: 16.0),
       Text(
         'What do you want to learn first?',
         style: Theme.of(context).textTheme.headline6!.copyWith(
@@ -20,15 +20,15 @@ Column buildMyEmptyCoursesBody(
               fontWeight: FontWeight.bold,
             ),
       ),
-      SizedBox(height: 6.0),
+      const SizedBox(height: 6.0),
       Text(
         'Your Courses will go here',
         style: Theme.of(context).textTheme.subtitle2!.copyWith(
               color: ColorRepository.darkGrey,
             ),
       ),
-      SizedBox(height: 30.0),
-      Container(
+      const SizedBox(height: 30.0),
+      SizedBox(
         width: MediaQuery.of(context).size.width * 0.9,
         child: OutlineTextButton(
           text: 'Explore Courses',
@@ -39,13 +39,13 @@ Column buildMyEmptyCoursesBody(
           },
         ),
       ),
-      SizedBox(height: 30.0),
-      Container(
+      const SizedBox(height: 30.0),
+      SizedBox(
         width: MediaQuery.of(context).size.width * 0.9,
         child: OutlineTextButton(
           text: 'Refresh',
           onPressed: () =>
-              BlocProvider.of<MyCoursesBloc>(context).add(GetMyCourses()),
+              BlocProvider.of<MyCoursesBloc>(context).add(const GetMyCourses()),
         ),
       ),
     ],

@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'user_bloc.dart';
 
@@ -37,6 +39,12 @@ mixin _$UserEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getAllPublicData,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getAllPublicData,
@@ -47,6 +55,12 @@ mixin _$UserEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(GetAllPublicData value) getAllPublicData,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetAllPublicData value)? getAllPublicData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +104,7 @@ class __$StartedCopyWithImpl<$Res> extends _$UserEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started implements _Started {
   const _$_Started();
 
@@ -100,7 +115,8 @@ class _$_Started implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -113,6 +129,15 @@ class _$_Started implements _Started {
     required TResult Function() getAllPublicData,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getAllPublicData,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -135,6 +160,15 @@ class _$_Started implements _Started {
     required TResult Function(GetAllPublicData value) getAllPublicData,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetAllPublicData value)? getAllPublicData,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -174,6 +208,7 @@ class _$GetAllPublicDataCopyWithImpl<$Res> extends _$UserEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$GetAllPublicData implements GetAllPublicData {
   const _$GetAllPublicData();
 
@@ -184,7 +219,8 @@ class _$GetAllPublicData implements GetAllPublicData {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GetAllPublicData);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is GetAllPublicData);
   }
 
   @override
@@ -197,6 +233,15 @@ class _$GetAllPublicData implements GetAllPublicData {
     required TResult Function() getAllPublicData,
   }) {
     return getAllPublicData();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getAllPublicData,
+  }) {
+    return getAllPublicData?.call();
   }
 
   @override
@@ -219,6 +264,15 @@ class _$GetAllPublicData implements GetAllPublicData {
     required TResult Function(GetAllPublicData value) getAllPublicData,
   }) {
     return getAllPublicData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetAllPublicData value)? getAllPublicData,
+  }) {
+    return getAllPublicData?.call(this);
   }
 
   @override
@@ -278,6 +332,14 @@ mixin _$UserState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<dynamic> usersData)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
@@ -292,6 +354,14 @@ mixin _$UserState {
     required TResult Function(UsersLoading value) loading,
     required TResult Function(UsersPublicDataSuccess value) success,
     required TResult Function(UsersError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(UsersLoading value)? loading,
+    TResult Function(UsersPublicDataSuccess value)? success,
+    TResult Function(UsersError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -337,6 +407,7 @@ class __$InitialCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -347,7 +418,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -362,6 +434,17 @@ class _$_Initial implements _Initial {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<dynamic> usersData)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -388,6 +471,17 @@ class _$_Initial implements _Initial {
     required TResult Function(UsersError value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(UsersLoading value)? loading,
+    TResult Function(UsersPublicDataSuccess value)? success,
+    TResult Function(UsersError value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -429,6 +523,7 @@ class _$UsersLoadingCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$UsersLoading implements UsersLoading {
   const _$UsersLoading();
 
@@ -439,7 +534,8 @@ class _$UsersLoading implements UsersLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is UsersLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is UsersLoading);
   }
 
   @override
@@ -454,6 +550,17 @@ class _$UsersLoading implements UsersLoading {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<dynamic> usersData)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return loading?.call();
   }
 
   @override
@@ -480,6 +587,17 @@ class _$UsersLoading implements UsersLoading {
     required TResult Function(UsersError value) error,
   }) {
     return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(UsersLoading value)? loading,
+    TResult Function(UsersPublicDataSuccess value)? success,
+    TResult Function(UsersError value)? error,
+  }) {
+    return loading?.call(this);
   }
 
   @override
@@ -535,6 +653,7 @@ class _$UsersPublicDataSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$UsersPublicDataSuccess implements UsersPublicDataSuccess {
   const _$UsersPublicDataSuccess({required this.usersData});
 
@@ -549,15 +668,14 @@ class _$UsersPublicDataSuccess implements UsersPublicDataSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is UsersPublicDataSuccess &&
-            (identical(other.usersData, usersData) ||
-                const DeepCollectionEquality()
-                    .equals(other.usersData, usersData)));
+        (other.runtimeType == runtimeType &&
+            other is UsersPublicDataSuccess &&
+            const DeepCollectionEquality().equals(other.usersData, usersData));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(usersData);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(usersData));
 
   @JsonKey(ignore: true)
   @override
@@ -574,6 +692,17 @@ class _$UsersPublicDataSuccess implements UsersPublicDataSuccess {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return success(usersData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<dynamic> usersData)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return success?.call(usersData);
   }
 
   @override
@@ -604,6 +733,17 @@ class _$UsersPublicDataSuccess implements UsersPublicDataSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(UsersLoading value)? loading,
+    TResult Function(UsersPublicDataSuccess value)? success,
+    TResult Function(UsersError value)? error,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(UsersLoading value)? loading,
@@ -622,7 +762,7 @@ abstract class UsersPublicDataSuccess implements UserState {
   const factory UsersPublicDataSuccess({required List<dynamic> usersData}) =
       _$UsersPublicDataSuccess;
 
-  List<dynamic> get usersData => throw _privateConstructorUsedError;
+  List<dynamic> get usersData;
   @JsonKey(ignore: true)
   $UsersPublicDataSuccessCopyWith<UsersPublicDataSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -668,6 +808,7 @@ class _$UsersErrorCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$UsersError implements UsersError {
   const _$UsersError({required this.error});
 
@@ -682,14 +823,14 @@ class _$UsersError implements UsersError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is UsersError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is UsersError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -705,6 +846,17 @@ class _$UsersError implements UsersError {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<dynamic> usersData)? success,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return error?.call(this.error);
   }
 
   @override
@@ -735,6 +887,17 @@ class _$UsersError implements UsersError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(UsersLoading value)? loading,
+    TResult Function(UsersPublicDataSuccess value)? success,
+    TResult Function(UsersError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(UsersLoading value)? loading,
@@ -752,7 +915,7 @@ class _$UsersError implements UsersError {
 abstract class UsersError implements UserState {
   const factory UsersError({required NetworkExceptions error}) = _$UsersError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $UsersErrorCopyWith<UsersError> get copyWith =>
       throw _privateConstructorUsedError;

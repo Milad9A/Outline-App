@@ -7,15 +7,16 @@ class CourseInfoContainerMultiple extends StatelessWidget {
   final Course course;
 
   const CourseInfoContainerMultiple({
+    Key? key,
     required this.course,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.symmetric(vertical: 12.0),
+          padding: const EdgeInsets.symmetric(vertical: 12.0),
           height: 100.0,
           width: double.infinity,
           decoration: BoxDecoration(
@@ -29,7 +30,7 @@ class CourseInfoContainerMultiple extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.group,
                       color: ColorRepository.pink,
                     ),
@@ -44,7 +45,7 @@ class CourseInfoContainerMultiple extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.ondemand_video,
                       color: ColorRepository.lightBlue,
                     ),
@@ -59,7 +60,7 @@ class CourseInfoContainerMultiple extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.query_builder,
                       color: ColorRepository.green,
                     ),
@@ -74,7 +75,7 @@ class CourseInfoContainerMultiple extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.star,
                       color: ColorRepository.orange,
                     ),
@@ -88,7 +89,7 @@ class CourseInfoContainerMultiple extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 4.0),
+        const SizedBox(height: 4.0),
         Align(
             alignment: Alignment.bottomRight,
             child: Text('Created by ${course.ownerUserId.name}')),

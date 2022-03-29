@@ -12,6 +12,7 @@ class OutlineTextField extends StatelessWidget {
   final Function(String?) onChanged;
 
   OutlineTextField({
+    Key? key,
     required this.controller,
     required this.textInputType,
     required this.textInputAction,
@@ -19,11 +20,11 @@ class OutlineTextField extends StatelessWidget {
     required this.onChanged,
     this.obscureText = false,
     this.icon,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 44.0,
       child: TextFormField(
         controller: controller,
@@ -32,9 +33,9 @@ class OutlineTextField extends StatelessWidget {
         textInputAction: textInputAction,
         cursorColor: ColorRepository.darkBlue,
         obscureText: obscureText,
-        style: TextStyle(color: ColorRepository.blackish),
+        style: const TextStyle(color: ColorRepository.blackish),
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
           hintText: hintText,
           border: customOutlineBorder,
           enabledBorder: customOutlineBorder,

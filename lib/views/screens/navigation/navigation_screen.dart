@@ -12,8 +12,10 @@ import 'package:outline/views/screens/profile/my_profile_screen.dart';
 import 'package:outline/views/screens/search/search_screen.dart';
 
 class NavigationScreen extends StatefulWidget {
+  const NavigationScreen({Key? key}) : super(key: key);
+
   static Route get route =>
-      MaterialPageRoute<void>(builder: (_) => NavigationScreen());
+      MaterialPageRoute<void>(builder: (_) => const NavigationScreen());
 
   @override
   _NavigationScreenState createState() => _NavigationScreenState();
@@ -50,8 +52,8 @@ class _NavigationScreenState extends State<NavigationScreen>
         body: SafeArea(
           child: TabBarView(
             controller: tabBarController,
-            physics: NeverScrollableScrollPhysics(),
-            children: [
+            physics: const NeverScrollableScrollPhysics(),
+            children: const [
               HomeScreen(),
               SearchScreen(),
               CreatePostScreen(),
@@ -88,12 +90,12 @@ class _NavigationScreenState extends State<NavigationScreen>
             ),
             BottomNavigationBarItem(
               icon: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: ColorRepository.darkBlue,
                 ),
-                padding: EdgeInsets.all(12.0),
-                child: Icon(
+                padding: const EdgeInsets.all(12.0),
+                child: const Icon(
                   Icons.add,
                   color: Colors.white,
                 ),
@@ -108,7 +110,7 @@ class _NavigationScreenState extends State<NavigationScreen>
               icon: BlocBuilder<AuthenticationBloc, AuthenticationState>(
                 builder: (context, state) {
                   return Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                     ),
                     height: 24.0,
@@ -122,13 +124,13 @@ class _NavigationScreenState extends State<NavigationScreen>
                               (context, url, downloadProgress) =>
                                   CircularProgressIndicator(
                             value: downloadProgress.progress,
-                            valueColor: AlwaysStoppedAnimation<Color>(
+                            valueColor: const AlwaysStoppedAnimation<Color>(
                               ColorRepository.darkBlue,
                             ),
                           ),
                         ),
                       ),
-                      orElse: () => Icon(
+                      orElse: () => const Icon(
                         Icons.person,
                         color: ColorRepository.darkBlue,
                       ),

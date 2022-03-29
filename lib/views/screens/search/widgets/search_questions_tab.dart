@@ -8,7 +8,7 @@ import 'package:outline/providers/search/question_search/question_search_bloc.da
 class SearchQuestionsTab extends StatefulWidget {
   final String query;
 
-  const SearchQuestionsTab({required this.query});
+  const SearchQuestionsTab({Key? key, required this.query}) : super(key: key);
 
   @override
   _SearchQuestionsTabState createState() => _SearchQuestionsTabState();
@@ -18,10 +18,11 @@ class _SearchQuestionsTabState extends State<SearchQuestionsTab> {
   @override
   void initState() {
     super.initState();
-    if (widget.query.isNotEmpty)
+    if (widget.query.isNotEmpty) {
       BlocProvider.of<QuestionSearchBloc>(context).add(
         QuestionSearchButtonPressed(query: widget.query),
       );
+    }
   }
 
   @override
@@ -34,13 +35,13 @@ class _SearchQuestionsTabState extends State<SearchQuestionsTab> {
                 ? ListView.separated(
                     itemCount: questions.length,
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       QuestionVote question = questions[index];
                       return QuestionHomeContainer(questionVote: question);
                     },
-                    separatorBuilder: (context, int) {
-                      return Divider(
+                    separatorBuilder: (context, _) {
+                      return const Divider(
                         thickness: 0.5,
                         indent: 15.0,
                         endIndent: 15.0,
@@ -48,19 +49,19 @@ class _SearchQuestionsTabState extends State<SearchQuestionsTab> {
                     },
                   )
                 : Container(
-                    padding: EdgeInsets.only(top: 100.0),
-                    child: Text('No results found!'),
+                    padding: const EdgeInsets.only(top: 100.0),
+                    child: const Text('No results found!'),
                   );
           },
           questionSearchLoading: () => Container(
             color: Colors.white,
             alignment: Alignment.center,
-            padding: EdgeInsets.only(top: 100.0),
-            child: OutlineCircularProgressIndicator(),
+            padding: const EdgeInsets.only(top: 100.0),
+            child: const OutlineCircularProgressIndicator(),
           ),
           orElse: () => Container(
-            padding: EdgeInsets.only(top: 100.0),
-            child: Text(
+            padding: const EdgeInsets.only(top: 100.0),
+            child: const Text(
               'Enter a search keyword above!',
             ),
           ),

@@ -8,9 +8,10 @@ class CourseOverviewTab extends StatelessWidget {
   final bool inBuyCourseScreen;
 
   const CourseOverviewTab({
+    Key? key,
     required this.contents,
     this.inBuyCourseScreen = false,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +19,8 @@ class CourseOverviewTab extends StatelessWidget {
       itemCount: contents.length,
       shrinkWrap: true,
       physics: inBuyCourseScreen
-          ? NeverScrollableScrollPhysics()
-          : AlwaysScrollableScrollPhysics(),
+          ? const NeverScrollableScrollPhysics()
+          : const AlwaysScrollableScrollPhysics(),
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
           leading: IconButton(
@@ -44,7 +45,7 @@ class CourseOverviewTab extends StatelessWidget {
           ),
           title: Text(
             contents[index].contentName,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
             ),
           ),

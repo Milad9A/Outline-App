@@ -14,7 +14,7 @@ part 'course_search_bloc.freezed.dart';
 class CourseSearchBloc extends Bloc<CourseSearchEvent, CourseSearchState> {
   CourseSearchBloc({
     required this.searchRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final SearchRepository searchRepository;
 
@@ -23,17 +23,17 @@ class CourseSearchBloc extends Bloc<CourseSearchEvent, CourseSearchState> {
     CourseSearchEvent event,
   ) async* {
     if (event is CourseSearchButtonPressed) {
-      yield CourseSearchLoading();
+      yield const CourseSearchLoading();
 
       ApiResult<List<Course>> apiResult =
           await searchRepository.searchCourses(query: event.query);
 
       apiResult.when(
-        success: (List<Course> data) {
-          emit(CourseSearchSuccess(courses: data));
+        success: (List<Course> data) async* {
+          yield (CourseSearchSuccess(courses: data));
         },
-        failure: (NetworkExceptions error) {
-          emit(CourseSearchError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (CourseSearchError(error: error));
         },
       );
     }

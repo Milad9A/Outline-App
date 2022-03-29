@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:flutter_tags/flutter_tags.dart';
-import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/config/theme/color_repository.dart';
@@ -13,6 +12,8 @@ import 'package:outline/views/screens/navigation/navigation_screen.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class AddQuestionTagsScreen extends StatefulWidget {
+  const AddQuestionTagsScreen({Key? key}) : super(key: key);
+
   @override
   _AddQuestionTagsScreenState createState() => _AddQuestionTagsScreenState();
 }
@@ -27,7 +28,7 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
   void initState() {
     super.initState();
 
-    BlocProvider.of<TagBloc>(context).add(GetAllTags());
+    BlocProvider.of<TagBloc>(context).add(const GetAllTags());
     ids = [];
     searchController = TextEditingController();
   }
@@ -46,11 +47,10 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
           createLoading: () {
             Loader.show(
               context,
-              progressIndicator: OutlineCircularProgressIndicator(),
+              progressIndicator: const OutlineCircularProgressIndicator(),
             );
           },
           createQuestionSuccess: (Question question) {
-            print(question.toJson());
             Navigator.pushReplacement(context, NavigationScreen.route);
           },
           error: (NetworkExceptions message) {
@@ -71,7 +71,7 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          iconTheme: IconThemeData(color: ColorRepository.darkBlue),
+          iconTheme: const IconThemeData(color: ColorRepository.darkBlue),
           centerTitle: false,
           title: Text(
             'Create Question',
@@ -81,7 +81,7 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
                 ),
           ),
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               showPopUp(
                 context,
@@ -89,14 +89,14 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
                 content: 'Your changes will not be saved',
                 actions: [
                   TextButton(
-                    child: Text(
+                    child: const Text(
                       'cancel',
                       style: TextStyle(fontSize: 15.0),
                     ),
                     onPressed: () => Navigator.pop(context),
                   ),
                   TextButton(
-                    child: Text(
+                    child: const Text(
                       'exit',
                       style: TextStyle(fontSize: 15.0),
                     ),
@@ -128,7 +128,7 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             children: [
-              SizedBox(height: 14.0),
+              const SizedBox(height: 14.0),
               OutlineTextField(
                 controller: searchController,
                 textInputType: TextInputType.name,
@@ -139,16 +139,16 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
                   });
                 },
                 hintText: 'Search Tags',
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Expanded(
                 child: Center(
                   child: BlocBuilder<TagBloc, TagState>(
                     builder: (context, state) {
                       return state.when(
-                        initial: () => SizedBox.shrink(),
-                        loading: () => OutlineCircularProgressIndicator(),
+                        initial: () => const SizedBox.shrink(),
+                        loading: () => const OutlineCircularProgressIndicator(),
                         success: (tags) {
                           List<DataList> items = tags
                               .map(
@@ -159,10 +159,11 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
                                 ),
                               )
                               .toList();
-                          if (searchValue != '')
+                          if (searchValue != '') {
                             items.removeWhere((element) => !element.title
                                 .toLowerCase()
                                 .contains(searchValue.toLowerCase()));
+                          }
 
                           return SingleChildScrollView(
                             child: Center(
@@ -175,7 +176,7 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
 
                                   return ItemTags(
                                     key: Key(index.toString()),
-                                    borderRadius: BorderRadius.all(
+                                    borderRadius: const BorderRadius.all(
                                       Radius.circular(4.0),
                                     ),
                                     border: Border.all(
@@ -201,9 +202,8 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
                                         ),
                                     combine: ItemTagsCombine.withTextBefore,
                                     onPressed: (item) {
-                                      print(item);
                                       setState(() {
-                                        if (!ids.contains(item.customData))
+                                        if (!ids.contains(item.customData)) {
                                           ids.add(
                                             DataList(
                                               title: item.title!,
@@ -211,9 +211,9 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
                                               index: item.index,
                                             ),
                                           );
+                                        }
                                       });
                                     },
-                                    onLongPressed: (item) => print(item),
                                   );
                                 },
                               ),
@@ -226,7 +226,7 @@ class _AddQuestionTagsScreenState extends State<AddQuestionTagsScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 18.0),
+              const SizedBox(height: 18.0),
             ],
           ),
         ),

@@ -5,6 +5,8 @@ import 'package:outline/views/screens/create_article_question/widgets/create_que
 import 'package:outline/views/widgets/widgets.dart';
 
 class CreatePostScreen extends StatefulWidget {
+  const CreatePostScreen({Key? key}) : super(key: key);
+
   @override
   _CreatePostScreenState createState() => _CreatePostScreenState();
 }
@@ -26,7 +28,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
       body: DefaultTabController(
         length: 2,
         child: Column(
-          children: [
+          children: const [
             OutlineTabBar(
               firstTitle: 'Create Article',
               secondTitle: 'Create Question',

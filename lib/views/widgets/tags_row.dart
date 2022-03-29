@@ -6,7 +6,7 @@ import 'package:outline/models/tag_model/tag_model.dart';
 class TagsRow extends StatelessWidget {
   final List<Tag> tags;
 
-  const TagsRow({required this.tags});
+  const TagsRow({Key? key, required this.tags}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

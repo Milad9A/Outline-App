@@ -11,7 +11,7 @@ import 'package:outline/models/question_model/questions_list_model.dart';
 
 class QuestionRepository {
   late DioClient dioClient;
-  String _baseUrl = Consts.baseUrl;
+  final String _baseUrl = Consts.baseUrl;
 
   QuestionRepository() {
     var dio = Dio();
@@ -37,7 +37,6 @@ class QuestionRepository {
 
       return ApiResult.success(data: question);
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }
@@ -52,7 +51,6 @@ class QuestionRepository {
 
       return ApiResult.success(data: questionsList.questionsList);
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }
@@ -73,7 +71,6 @@ class QuestionRepository {
 
       return ApiResult.success(data: question);
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }

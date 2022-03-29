@@ -6,11 +6,13 @@ import 'package:outline/providers/authentication/sign_up/sign_up_bloc.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class SignUpForm extends StatelessWidget {
-  const SignUpForm(
-      {required this.usernameController,
-      required this.emailController,
-      required this.passwordController,
-      required this.confirmPasswordController});
+  const SignUpForm({
+    Key? key,
+    required this.usernameController,
+    required this.emailController,
+    required this.passwordController,
+    required this.confirmPasswordController,
+  }) : super(key: key);
 
   final TextEditingController usernameController;
   final TextEditingController emailController;
@@ -21,7 +23,7 @@ class SignUpForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
+        const Text(
           'OUTLINE',
           style: TextStyle(
             color: ColorRepository.darkBlue,
@@ -36,7 +38,7 @@ class SignUpForm extends StatelessWidget {
               .subtitle1!
               .copyWith(fontWeight: FontWeight.w500),
         ),
-        SizedBox(height: 46.0),
+        const SizedBox(height: 46.0),
         OutlineTextField(
           controller: usernameController,
           hintText: 'Username',
@@ -44,7 +46,7 @@ class SignUpForm extends StatelessWidget {
           textInputType: TextInputType.name,
           onChanged: (value) {},
         ),
-        SizedBox(height: 26.0),
+        const SizedBox(height: 26.0),
         OutlineTextField(
           controller: emailController,
           hintText: 'Email',
@@ -52,7 +54,7 @@ class SignUpForm extends StatelessWidget {
           textInputType: TextInputType.emailAddress,
           onChanged: (value) {},
         ),
-        SizedBox(height: 26.0),
+        const SizedBox(height: 26.0),
         OutlineTextField(
           controller: passwordController,
           hintText: 'Password',
@@ -61,7 +63,7 @@ class SignUpForm extends StatelessWidget {
           obscureText: true,
           onChanged: (value) {},
         ),
-        SizedBox(height: 26.0),
+        const SizedBox(height: 26.0),
         OutlineTextField(
           controller: confirmPasswordController,
           hintText: 'Confirm Password',
@@ -70,7 +72,7 @@ class SignUpForm extends StatelessWidget {
           obscureText: true,
           onChanged: (value) {},
         ),
-        SizedBox(height: 26.0),
+        const SizedBox(height: 26.0),
         OutlineTextButton(
           text: 'Create Account',
           onPressed: () {

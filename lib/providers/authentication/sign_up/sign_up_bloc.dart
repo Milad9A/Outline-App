@@ -18,7 +18,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   SignUpBloc({
     required this.userRepository,
     required this.authenticationBloc,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final UserRepository userRepository;
   final AuthenticationBloc authenticationBloc;
@@ -28,19 +28,19 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     SignUpEvent event,
   ) async* {
     if (event is SignUpButtonPressed) {
-      yield SignUpLoading();
+      yield const SignUpLoading();
 
       ApiResult<User> apiResult = await userRepository.signUpUser(
         userSignUpCredentials: event.userSignUp,
       );
 
       apiResult.when(
-        success: (User data) {
+        success: (User data) async* {
           authenticationBloc.add(AuthenticationSignedUp(user: data));
-          emit(SignUpSuccess(user: data));
+          yield (SignUpSuccess(user: data));
         },
-        failure: (NetworkExceptions error) {
-          emit(SignUpError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (SignUpError(error: error));
         },
       );
     }

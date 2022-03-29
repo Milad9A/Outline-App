@@ -1,21 +1,16 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_quill/models/documents/document.dart';
-import 'package:flutter_quill/widgets/controller.dart';
-import 'package:flutter_quill/widgets/editor.dart';
-import 'package:flutter_tags/flutter_tags.dart';
+import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:outline/config/helpers/date_foramtter.dart';
 import 'dart:math' as math;
-
 import 'package:outline/models/question_model/question_model.dart';
-import 'package:outline/views/screens/create_article_question/question_details_screen.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class QuestionContainer extends StatefulWidget {
   final Question question;
 
-  QuestionContainer({required this.question});
+  const QuestionContainer({Key? key, required this.question}) : super(key: key);
 
   @override
   _QuestionContainerState createState() => _QuestionContainerState();
@@ -27,25 +22,23 @@ class _QuestionContainerState extends State<QuestionContainer> {
   @override
   void initState() {
     super.initState();
-    try {
-      controller = QuillController(
-        document: Document.fromJson(jsonDecode(widget.question.body)),
-        selection: TextSelection.collapsed(offset: 0),
-      );
-    } catch (e) {}
+    controller = QuillController(
+      document: Document.fromJson(jsonDecode(widget.question.body)),
+      selection: const TextSelection.collapsed(offset: 0),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(15.0),
+      padding: const EdgeInsets.all(15.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           widget.question.tags.isNotEmpty
               ? TagsRow(tags: widget.question.tags)
-              : SizedBox.shrink(),
-          SizedBox(height: 10.0),
+              : const SizedBox.shrink(),
+          const SizedBox(height: 10.0),
           Text(
             widget.question.title,
             style: Theme.of(context).textTheme.subtitle1!.copyWith(
@@ -53,7 +46,7 @@ class _QuestionContainerState extends State<QuestionContainer> {
                   color: Colors.black,
                 ),
           ),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           Row(
             children: [
               Container(
@@ -68,7 +61,7 @@ class _QuestionContainerState extends State<QuestionContainer> {
                     Transform.rotate(
                       angle: 270 * math.pi / 180,
                       child: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.play_arrow,
                           color: Colors.green,
                         ),
@@ -79,7 +72,7 @@ class _QuestionContainerState extends State<QuestionContainer> {
                     Transform.rotate(
                       angle: 90 * math.pi / 180,
                       child: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.play_arrow,
                           color: Colors.red,
                         ),
@@ -89,7 +82,7 @@ class _QuestionContainerState extends State<QuestionContainer> {
                   ],
                 ),
               ),
-              SizedBox(width: 10.0),
+              const SizedBox(width: 10.0),
               controller != null
                   ? Expanded(
                       child: QuillEditor(
@@ -109,7 +102,7 @@ class _QuestionContainerState extends State<QuestionContainer> {
                     ),
             ],
           ),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

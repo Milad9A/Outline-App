@@ -9,7 +9,7 @@ import 'package:outline/models/comment_model/comment_model.dart';
 
 class CommentRepository {
   late DioClient dioClient;
-  String _baseUrl = Consts.baseUrl;
+  final String _baseUrl = Consts.baseUrl;
 
   CommentRepository() {
     var dio = Dio();
@@ -35,7 +35,6 @@ class CommentRepository {
 
       return ApiResult.success(data: comment);
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }

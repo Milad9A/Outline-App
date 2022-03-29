@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'buy_course_bloc.dart';
 
@@ -46,6 +48,14 @@ mixin _$BuyCourseEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(
+            String courseId, String bankerEmail, String bankerPassword)?
+        buyCourseButtonPressed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(
@@ -59,6 +69,12 @@ mixin _$BuyCourseEvent {
     required TResult Function(_Started value) started,
     required TResult Function(BuyCourseButtonPressed value)
         buyCourseButtonPressed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(BuyCourseButtonPressed value)? buyCourseButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -104,6 +120,7 @@ class __$StartedCopyWithImpl<$Res> extends _$BuyCourseEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started implements _Started {
   const _$_Started();
 
@@ -114,7 +131,8 @@ class _$_Started implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -129,6 +147,17 @@ class _$_Started implements _Started {
         buyCourseButtonPressed,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(
+            String courseId, String bankerEmail, String bankerPassword)?
+        buyCourseButtonPressed,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -154,6 +183,15 @@ class _$_Started implements _Started {
         buyCourseButtonPressed,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(BuyCourseButtonPressed value)? buyCourseButtonPressed,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -217,6 +255,7 @@ class _$BuyCourseButtonPressedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$BuyCourseButtonPressed implements BuyCourseButtonPressed {
   const _$BuyCourseButtonPressed(
       {required this.courseId,
@@ -238,24 +277,21 @@ class _$BuyCourseButtonPressed implements BuyCourseButtonPressed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is BuyCourseButtonPressed &&
-            (identical(other.courseId, courseId) ||
-                const DeepCollectionEquality()
-                    .equals(other.courseId, courseId)) &&
-            (identical(other.bankerEmail, bankerEmail) ||
-                const DeepCollectionEquality()
-                    .equals(other.bankerEmail, bankerEmail)) &&
-            (identical(other.bankerPassword, bankerPassword) ||
-                const DeepCollectionEquality()
-                    .equals(other.bankerPassword, bankerPassword)));
+        (other.runtimeType == runtimeType &&
+            other is BuyCourseButtonPressed &&
+            const DeepCollectionEquality().equals(other.courseId, courseId) &&
+            const DeepCollectionEquality()
+                .equals(other.bankerEmail, bankerEmail) &&
+            const DeepCollectionEquality()
+                .equals(other.bankerPassword, bankerPassword));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(courseId) ^
-      const DeepCollectionEquality().hash(bankerEmail) ^
-      const DeepCollectionEquality().hash(bankerPassword);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(courseId),
+      const DeepCollectionEquality().hash(bankerEmail),
+      const DeepCollectionEquality().hash(bankerPassword));
 
   @JsonKey(ignore: true)
   @override
@@ -272,6 +308,17 @@ class _$BuyCourseButtonPressed implements BuyCourseButtonPressed {
         buyCourseButtonPressed,
   }) {
     return buyCourseButtonPressed(courseId, bankerEmail, bankerPassword);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(
+            String courseId, String bankerEmail, String bankerPassword)?
+        buyCourseButtonPressed,
+  }) {
+    return buyCourseButtonPressed?.call(courseId, bankerEmail, bankerPassword);
   }
 
   @override
@@ -301,6 +348,15 @@ class _$BuyCourseButtonPressed implements BuyCourseButtonPressed {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(BuyCourseButtonPressed value)? buyCourseButtonPressed,
+  }) {
+    return buyCourseButtonPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(BuyCourseButtonPressed value)? buyCourseButtonPressed,
@@ -319,9 +375,9 @@ abstract class BuyCourseButtonPressed implements BuyCourseEvent {
       required String bankerEmail,
       required String bankerPassword}) = _$BuyCourseButtonPressed;
 
-  String get courseId => throw _privateConstructorUsedError;
-  String get bankerEmail => throw _privateConstructorUsedError;
-  String get bankerPassword => throw _privateConstructorUsedError;
+  String get courseId;
+  String get bankerEmail;
+  String get bankerPassword;
   @JsonKey(ignore: true)
   $BuyCourseButtonPressedCopyWith<BuyCourseButtonPressed> get copyWith =>
       throw _privateConstructorUsedError;
@@ -364,6 +420,14 @@ mixin _$BuyCourseState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? buyLoading,
+    TResult Function()? buySuccess,
+    TResult Function(NetworkExceptions error)? buyError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? buyLoading,
@@ -378,6 +442,14 @@ mixin _$BuyCourseState {
     required TResult Function(BuyCourseLoading value) buyLoading,
     required TResult Function(BuyCourseSuccess value) buySuccess,
     required TResult Function(BuyCourseError value) buyError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(BuyCourseLoading value)? buyLoading,
+    TResult Function(BuyCourseSuccess value)? buySuccess,
+    TResult Function(BuyCourseError value)? buyError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -425,6 +497,7 @@ class __$InitialCopyWithImpl<$Res> extends _$BuyCourseStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -435,7 +508,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -450,6 +524,17 @@ class _$_Initial implements _Initial {
     required TResult Function(NetworkExceptions error) buyError,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? buyLoading,
+    TResult Function()? buySuccess,
+    TResult Function(NetworkExceptions error)? buyError,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -476,6 +561,17 @@ class _$_Initial implements _Initial {
     required TResult Function(BuyCourseError value) buyError,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(BuyCourseLoading value)? buyLoading,
+    TResult Function(BuyCourseSuccess value)? buySuccess,
+    TResult Function(BuyCourseError value)? buyError,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -518,6 +614,7 @@ class _$BuyCourseLoadingCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$BuyCourseLoading implements BuyCourseLoading {
   const _$BuyCourseLoading();
 
@@ -528,7 +625,8 @@ class _$BuyCourseLoading implements BuyCourseLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is BuyCourseLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is BuyCourseLoading);
   }
 
   @override
@@ -543,6 +641,17 @@ class _$BuyCourseLoading implements BuyCourseLoading {
     required TResult Function(NetworkExceptions error) buyError,
   }) {
     return buyLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? buyLoading,
+    TResult Function()? buySuccess,
+    TResult Function(NetworkExceptions error)? buyError,
+  }) {
+    return buyLoading?.call();
   }
 
   @override
@@ -569,6 +678,17 @@ class _$BuyCourseLoading implements BuyCourseLoading {
     required TResult Function(BuyCourseError value) buyError,
   }) {
     return buyLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(BuyCourseLoading value)? buyLoading,
+    TResult Function(BuyCourseSuccess value)? buySuccess,
+    TResult Function(BuyCourseError value)? buyError,
+  }) {
+    return buyLoading?.call(this);
   }
 
   @override
@@ -611,6 +731,7 @@ class _$BuyCourseSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$BuyCourseSuccess implements BuyCourseSuccess {
   const _$BuyCourseSuccess();
 
@@ -621,7 +742,8 @@ class _$BuyCourseSuccess implements BuyCourseSuccess {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is BuyCourseSuccess);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is BuyCourseSuccess);
   }
 
   @override
@@ -636,6 +758,17 @@ class _$BuyCourseSuccess implements BuyCourseSuccess {
     required TResult Function(NetworkExceptions error) buyError,
   }) {
     return buySuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? buyLoading,
+    TResult Function()? buySuccess,
+    TResult Function(NetworkExceptions error)? buyError,
+  }) {
+    return buySuccess?.call();
   }
 
   @override
@@ -662,6 +795,17 @@ class _$BuyCourseSuccess implements BuyCourseSuccess {
     required TResult Function(BuyCourseError value) buyError,
   }) {
     return buySuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(BuyCourseLoading value)? buyLoading,
+    TResult Function(BuyCourseSuccess value)? buySuccess,
+    TResult Function(BuyCourseError value)? buyError,
+  }) {
+    return buySuccess?.call(this);
   }
 
   @override
@@ -726,6 +870,7 @@ class _$BuyCourseErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$BuyCourseError implements BuyCourseError {
   const _$BuyCourseError({required this.error});
 
@@ -740,14 +885,14 @@ class _$BuyCourseError implements BuyCourseError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is BuyCourseError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is BuyCourseError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -763,6 +908,17 @@ class _$BuyCourseError implements BuyCourseError {
     required TResult Function(NetworkExceptions error) buyError,
   }) {
     return buyError(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? buyLoading,
+    TResult Function()? buySuccess,
+    TResult Function(NetworkExceptions error)? buyError,
+  }) {
+    return buyError?.call(error);
   }
 
   @override
@@ -793,6 +949,17 @@ class _$BuyCourseError implements BuyCourseError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(BuyCourseLoading value)? buyLoading,
+    TResult Function(BuyCourseSuccess value)? buySuccess,
+    TResult Function(BuyCourseError value)? buyError,
+  }) {
+    return buyError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(BuyCourseLoading value)? buyLoading,
@@ -811,7 +978,7 @@ abstract class BuyCourseError implements BuyCourseState {
   const factory BuyCourseError({required NetworkExceptions error}) =
       _$BuyCourseError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $BuyCourseErrorCopyWith<BuyCourseError> get copyWith =>
       throw _privateConstructorUsedError;

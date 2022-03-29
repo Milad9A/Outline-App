@@ -7,6 +7,8 @@ import 'package:outline/providers/tags/tags_bloc.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class AddArticleTagsScreen extends StatefulWidget {
+  const AddArticleTagsScreen({Key? key}) : super(key: key);
+
   @override
   _AddArticleTagsScreenState createState() => _AddArticleTagsScreenState();
 }
@@ -21,7 +23,7 @@ class _AddArticleTagsScreenState extends State<AddArticleTagsScreen> {
   void initState() {
     super.initState();
 
-    BlocProvider.of<TagBloc>(context).add(GetAllTags());
+    BlocProvider.of<TagBloc>(context).add(const GetAllTags());
     ids = [];
     searchController = TextEditingController();
   }
@@ -39,7 +41,7 @@ class _AddArticleTagsScreenState extends State<AddArticleTagsScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         children: [
-          SizedBox(height: 14.0),
+          const SizedBox(height: 14.0),
           OutlineTextField(
             controller: searchController,
             textInputType: TextInputType.name,
@@ -50,16 +52,16 @@ class _AddArticleTagsScreenState extends State<AddArticleTagsScreen> {
               });
             },
             hintText: 'Search Tags',
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
           ),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           Expanded(
             child: Center(
               child: BlocBuilder<TagBloc, TagState>(
                 builder: (context, state) {
                   return state.when(
-                    initial: () => SizedBox.shrink(),
-                    loading: () => OutlineCircularProgressIndicator(),
+                    initial: () => const SizedBox.shrink(),
+                    loading: () => const OutlineCircularProgressIndicator(),
                     success: (tags) {
                       List<DataList> items = tags
                           .map(
@@ -70,10 +72,11 @@ class _AddArticleTagsScreenState extends State<AddArticleTagsScreen> {
                             ),
                           )
                           .toList();
-                      if (searchValue != '')
+                      if (searchValue != '') {
                         items.removeWhere((element) => !element.title
                             .toLowerCase()
                             .contains(searchValue.toLowerCase()));
+                      }
 
                       return SingleChildScrollView(
                         child: Center(
@@ -85,7 +88,7 @@ class _AddArticleTagsScreenState extends State<AddArticleTagsScreen> {
                               final item = items[index];
                               return ItemTags(
                                 key: Key(index.toString()),
-                                borderRadius: BorderRadius.all(
+                                borderRadius: const BorderRadius.all(
                                   Radius.circular(4.0),
                                 ),
                                 border: Border.all(
@@ -111,9 +114,8 @@ class _AddArticleTagsScreenState extends State<AddArticleTagsScreen> {
                                     ),
                                 combine: ItemTagsCombine.withTextBefore,
                                 onPressed: (item) {
-                                  print(item);
                                   setState(() {
-                                    if (!ids.contains(item.customData))
+                                    if (!ids.contains(item.customData)) {
                                       ids.add(
                                         DataList(
                                           title: item.title!,
@@ -121,9 +123,9 @@ class _AddArticleTagsScreenState extends State<AddArticleTagsScreen> {
                                           index: item.index,
                                         ),
                                       );
+                                    }
                                   });
                                 },
-                                onLongPressed: (item) => print(item),
                               );
                             },
                           ),
@@ -136,7 +138,7 @@ class _AddArticleTagsScreenState extends State<AddArticleTagsScreen> {
               ),
             ),
           ),
-          SizedBox(height: 18.0),
+          const SizedBox(height: 18.0),
         ],
       ),
     );
@@ -146,10 +148,10 @@ class _AddArticleTagsScreenState extends State<AddArticleTagsScreen> {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
-      iconTheme: IconThemeData(color: ColorRepository.darkBlue),
+      iconTheme: const IconThemeData(color: ColorRepository.darkBlue),
       centerTitle: false,
       leading: IconButton(
-        icon: Icon(Icons.arrow_back),
+        icon: const Icon(Icons.arrow_back),
         onPressed: () {
           showPopUp(
             context,
@@ -157,14 +159,14 @@ class _AddArticleTagsScreenState extends State<AddArticleTagsScreen> {
             content: 'Your changes will not be saved',
             actions: [
               TextButton(
-                child: Text(
+                child: const Text(
                   'cancel',
                   style: TextStyle(fontSize: 15.0),
                 ),
                 onPressed: () => Navigator.pop(context),
               ),
               TextButton(
-                child: Text(
+                child: const Text(
                   'exit',
                   style: TextStyle(fontSize: 15.0),
                 ),

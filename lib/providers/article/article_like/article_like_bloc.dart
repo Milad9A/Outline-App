@@ -14,7 +14,7 @@ part 'article_like_bloc.freezed.dart';
 class ArticleLikeBloc extends Bloc<ArticleLikeEvent, ArticleLikeState> {
   ArticleLikeBloc({
     required this.articleRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final ArticleRepository articleRepository;
 
@@ -28,13 +28,13 @@ class ArticleLikeBloc extends Bloc<ArticleLikeEvent, ArticleLikeState> {
       );
 
       apiResult.when(
-        success: (ArticleLike data) {
-          emit(LikeArticleSuccess(articleLike: data));
-          emit(_Initial());
+        success: (ArticleLike data) async* {
+          yield (LikeArticleSuccess(articleLike: data));
+          yield (const _Initial());
         },
-        failure: (NetworkExceptions error) {
-          emit(ArticleLikeError(error: error));
-          emit(_Initial());
+        failure: (NetworkExceptions error) async* {
+          yield (ArticleLikeError(error: error));
+          yield (const _Initial());
         },
       );
     }

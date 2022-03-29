@@ -1,20 +1,18 @@
 import 'dart:io';
 
 import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:flutter_tags/flutter_tags.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:outline/config/consts.dart';
-import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/article_model/article_create_model.dart';
 import 'package:outline/models/article_model/article_model.dart';
-import 'package:outline/providers/article/artilce/article_bloc.dart';
+import 'package:outline/providers/article/article/article_bloc.dart';
 import 'package:outline/views/screens/create_article_question/add_article_tags_screen.dart';
 import 'package:outline/views/screens/navigation/navigation_screen.dart';
 import 'package:outline/views/widgets/outline_circular_progress_indicator.dart';
@@ -25,8 +23,9 @@ class PublishArticleScreen extends StatefulWidget {
   final String articleContent;
 
   const PublishArticleScreen({
+    Key? key,
     required this.articleContent,
-  });
+  }) : super(key: key);
 
   @override
   _PublishArticleScreenState createState() => _PublishArticleScreenState();
@@ -39,13 +38,11 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
   File? image;
 
   Future getImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
     setState(() {
       if (pickedFile != null) {
         image = File(pickedFile.path);
-      } else {
-        print('No Image Selected');
       }
     });
   }
@@ -64,7 +61,7 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
           createLoading: () {
             Loader.show(
               context,
-              progressIndicator: OutlineCircularProgressIndicator(),
+              progressIndicator: const OutlineCircularProgressIndicator(),
             );
           },
           createSuccess: (Article article) {
@@ -96,10 +93,10 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 1.0,
-      iconTheme: IconThemeData(color: ColorRepository.darkBlue),
+      iconTheme: const IconThemeData(color: ColorRepository.darkBlue),
       centerTitle: false,
       leading: IconButton(
-        icon: Icon(Icons.arrow_back),
+        icon: const Icon(Icons.arrow_back),
         onPressed: () {
           showPopUp(
             context,
@@ -107,14 +104,14 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
             content: 'Your changes will not be saved',
             actions: [
               TextButton(
-                child: Text(
+                child: const Text(
                   'cancel',
                   style: TextStyle(fontSize: 15.0),
                 ),
                 onPressed: () => Navigator.pop(context),
               ),
               TextButton(
-                child: Text(
+                child: const Text(
                   'exit',
                   style: TextStyle(fontSize: 15.0),
                 ),
@@ -148,14 +145,14 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
           Column(
             children: [
               DottedBorder(
-                dashPattern: [10, 10],
+                dashPattern: const [10, 10],
                 strokeWidth: 1.0,
-                padding: EdgeInsets.all(0.5),
+                padding: const EdgeInsets.all(0.5),
                 color: ColorRepository.darkGrey,
                 borderType: BorderType.RRect,
-                radius: Radius.circular(10),
+                radius: const Radius.circular(10),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                  borderRadius: const BorderRadius.all(Radius.circular(12)),
                   child: GestureDetector(
                     onTap: () async => await getImage(),
                     child: Container(
@@ -166,7 +163,7 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
                           ? Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.add_photo_alternate,
                                   color: ColorRepository.darkBlue,
                                 ),
@@ -186,16 +183,16 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 30.0),
+              const SizedBox(height: 30.0),
               Row(
-                children: [
+                children: const [
                   Text(
                     'Title',
                     style: TextStyle(color: ColorRepository.darkBlue),
                   ),
                 ],
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               OutlineTextField(
                 controller: titleController,
                 textInputType: TextInputType.name,
@@ -203,23 +200,23 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
                 hintText: 'Write a title',
                 onChanged: (value) {},
               ),
-              SizedBox(height: 30.0),
+              const SizedBox(height: 30.0),
               Row(
-                children: [
+                children: const [
                   Text(
                     'Tags',
                     style: TextStyle(color: ColorRepository.darkBlue),
                   ),
                 ],
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               OutlineTextButton(
                 text: 'Select Tags',
                 onPressed: () async {
                   tags = await Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AddArticleTagsScreen(),
+                      builder: (context) => const AddArticleTagsScreen(),
                     ),
                   );
                   setState(() {});
@@ -236,7 +233,7 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
                             color: ColorRepository.darkGrey,
                           ),
                     ),
-                    Icon(
+                    const Icon(
                       Icons.arrow_forward_ios,
                       color: ColorRepository.darkGrey,
                       size: 14.0,
@@ -244,8 +241,8 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 15.0),
-              Container(
+              const SizedBox(height: 15.0),
+              SizedBox(
                 width: double.infinity,
                 child: Tags(
                   itemCount: tags.length,
@@ -261,7 +258,7 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
                       elevation: 0.0,
                       textColor: ColorRepository.darkBlue,
                       textActiveColor: ColorRepository.darkBlue,
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(4.0),
                       ),
                       border: Border.all(
@@ -285,7 +282,7 @@ class _PublishArticleScreenState extends State<PublishArticleScreen> {
                   },
                 ),
               ),
-              SizedBox(height: 40.0),
+              const SizedBox(height: 40.0),
             ],
           ),
           Padding(

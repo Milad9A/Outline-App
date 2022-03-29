@@ -15,7 +15,7 @@ import 'package:outline/models/comment_model/comments_list_model.dart';
 
 class ArticleRepository {
   late DioClient dioClient;
-  String _baseUrl = Consts.baseUrl;
+  final String _baseUrl = Consts.baseUrl;
 
   ArticleRepository() {
     var dio = Dio();
@@ -35,13 +35,14 @@ class ArticleRepository {
     try {
       FormData data = FormData.fromMap(articleData.toJson());
 
-      if (image != null)
+      if (image != null) {
         data.files.add(
           MapEntry(
             'banner',
             await MultipartFile.fromFile(image.path),
           ),
         );
+      }
 
       final response = await dioClient.post(
         '/articles',
@@ -52,7 +53,6 @@ class ArticleRepository {
 
       return ApiResult.success(data: article);
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }
@@ -67,7 +67,6 @@ class ArticleRepository {
 
       return ApiResult.success(data: articlesList.articlesList);
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }
@@ -84,7 +83,6 @@ class ArticleRepository {
 
       return ApiResult.success(data: commentsList.commentsList);
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }
@@ -101,7 +99,6 @@ class ArticleRepository {
 
       return ApiResult.success(data: question);
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }

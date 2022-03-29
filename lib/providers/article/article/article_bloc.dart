@@ -18,7 +18,7 @@ part 'article_bloc.freezed.dart';
 class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
   ArticleBloc({
     required this.articleRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final ArticleRepository articleRepository;
 
@@ -27,7 +27,7 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
     ArticleEvent event,
   ) async* {
     if (event is ArticleCreateButtonPressed) {
-      yield CreateArticleLoading();
+      yield const CreateArticleLoading();
 
       ApiResult<Article> apiResult = await articleRepository.createArticle(
         articleData: event.articleCreateData,
@@ -35,27 +35,27 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
       );
 
       apiResult.when(
-        success: (Article data) {
-          emit(CreateArticleSuccess(article: data));
+        success: (Article data) async* {
+          yield (CreateArticleSuccess(article: data));
         },
-        failure: (NetworkExceptions error) {
-          emit(ArticleError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (ArticleError(error: error));
         },
       );
     }
 
     if (event is ArticleGetMyArticles) {
-      yield GetArticlesLoading();
+      yield const GetArticlesLoading();
 
       ApiResult<List<ArticleLike>> apiResult =
           await articleRepository.getMyArticles();
 
       apiResult.when(
-        success: (List<ArticleLike> data) {
-          emit(GetMyArticlesSuccess(articles: data));
+        success: (List<ArticleLike> data) async* {
+          yield (GetMyArticlesSuccess(articles: data));
         },
-        failure: (NetworkExceptions error) {
-          emit(ArticleError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (ArticleError(error: error));
         },
       );
     }

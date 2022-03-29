@@ -7,8 +7,9 @@ class PopularCoursesContainer extends StatelessWidget {
   final List<Course> coursesList;
 
   const PopularCoursesContainer({
+    Key? key,
     required this.coursesList,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class PopularCoursesContainer extends StatelessWidget {
                     ),
               ),
               IconButton(
-                icon: Icon(Icons.arrow_forward),
+                icon: const Icon(Icons.arrow_forward),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -44,11 +45,11 @@ class PopularCoursesContainer extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 10.0),
+        const SizedBox(height: 10.0),
         ListView.builder(
           itemCount: coursesList.length,
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemBuilder: (BuildContext context, int index) {
             Course course = coursesList[index];

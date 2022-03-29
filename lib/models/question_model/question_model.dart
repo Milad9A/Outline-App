@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:outline/models/answer_model/answer_model.dart';
 import 'package:outline/models/answer_model/answer_vote_model.dart';
 import 'package:outline/models/tag_model/tag_model.dart';
 import 'package:outline/models/user_model/user_model.dart';

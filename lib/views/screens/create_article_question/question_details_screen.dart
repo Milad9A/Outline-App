@@ -4,9 +4,7 @@ import 'package:auto_direction/auto_direction.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_quill/models/documents/document.dart';
-import 'package:flutter_quill/widgets/controller.dart';
-import 'package:flutter_quill/widgets/editor.dart';
+import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/models/answer_model/answer_model.dart';
 import 'package:outline/models/answer_model/answer_vote_model.dart';
@@ -24,9 +22,10 @@ class QuestionDetailsScreen extends StatefulWidget {
   final void Function(QuestionVote) onVoteChanged;
 
   const QuestionDetailsScreen({
+    Key? key,
     required this.questionVote,
     required this.onVoteChanged,
-  });
+  }) : super(key: key);
 
   @override
   _QuestionDetailsScreenState createState() => _QuestionDetailsScreenState();
@@ -44,17 +43,17 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
     return SlideTransition(
       position: Tween<Offset>(
         begin: const Offset(-1, 0),
-        end: Offset(0, 0),
+        end: const Offset(0, 0),
       ).animate(animation),
       child: Column(
         children: [
           index != 0
-              ? Divider(
+              ? const Divider(
                   thickness: 1.0,
                   indent: 5.0,
                   endIndent: 5.0,
                 )
-              : SizedBox.shrink(),
+              : const SizedBox.shrink(),
           BlocProvider(
             create: (context) => AnswerVoteBloc(
               answerRepository: AnswerRepository(),
@@ -73,13 +72,11 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
   void initState() {
     super.initState();
     questionVote = widget.questionVote;
-    try {
-      controller = QuillController(
-        document:
-            Document.fromJson(jsonDecode(widget.questionVote.question.body)),
-        selection: TextSelection.collapsed(offset: 0),
-      );
-    } catch (e) {}
+    controller = QuillController(
+      document:
+          Document.fromJson(jsonDecode(widget.questionVote.question.body)),
+      selection: const TextSelection.collapsed(offset: 0),
+    );
   }
 
   @override
@@ -91,7 +88,7 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(color: ColorRepository.darkBlue),
+          iconTheme: const IconThemeData(color: ColorRepository.darkBlue),
           backgroundColor: Colors.white,
           elevation: 1.0,
         ),
@@ -135,14 +132,14 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
                             Container(
                               child: questionVote.question.tags.isNotEmpty
                                   ? TagsRow(tags: questionVote.question.tags)
-                                  : SizedBox.shrink(),
+                                  : const SizedBox.shrink(),
                             ),
                           ],
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   Text(
                     questionVote.question.title,
                     style: Theme.of(context).textTheme.subtitle1!.copyWith(
@@ -150,7 +147,7 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
                           color: Colors.black,
                         ),
                   ),
-                  SizedBox(height: 6.0),
+                  const SizedBox(height: 6.0),
                   Row(
                     children: [
                       QuestionVoteContainer(
@@ -163,7 +160,7 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
                           });
                         },
                       ),
-                      SizedBox(width: 10.0),
+                      const SizedBox(width: 10.0),
                       controller != null
                           ? Expanded(
                               child: QuillEditor(
@@ -186,19 +183,19 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
                             ),
                     ],
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   Text(
                     questionVote.question.answers.length.toString() +
                         ' Answers',
                   ),
-                  SizedBox(height: 25.0),
+                  const SizedBox(height: 25.0),
                   BlocListener<AddAnswerBloc, AddAnswerState>(
                     listener: (context, state) {
                       state.maybeWhen(
                         success: (Answer answer) {
                           scrollController.animateTo(
                             scrollController.position.maxScrollExtent,
-                            duration: Duration(milliseconds: 500),
+                            duration: const Duration(milliseconds: 500),
                             curve: Curves.easeOut,
                           );
 
@@ -223,7 +220,7 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
                     child: AnimatedList(
                       key: listKey,
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       initialItemCount: questionVote.question.answers.length,
                       itemBuilder: (
                         BuildContext context,
@@ -234,14 +231,14 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
                       },
                     ),
                   ),
-                  SizedBox(height: 60.0),
+                  const SizedBox(height: 60.0),
                 ],
               ),
             ),
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
                 height: 60,
                 width: double.infinity,
                 color: Colors.white,
@@ -265,7 +262,7 @@ class _QuestionDetailsScreenState extends State<QuestionDetailsScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 5.0),
                       child: IconButton(
                         splashRadius: 0.1,
-                        icon: Icon(Icons.send),
+                        icon: const Icon(Icons.send),
                         onPressed: () {
                           if (answerController.text.isNotEmpty) {
                             BlocProvider.of<AddAnswerBloc>(context).add(

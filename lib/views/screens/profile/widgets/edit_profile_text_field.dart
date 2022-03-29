@@ -6,34 +6,35 @@ class EditProfileTextField extends StatelessWidget {
   final String label;
 
   const EditProfileTextField({
+    Key? key,
     required this.controller,
     required this.label,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 44.0,
       child: TextField(
         controller: controller,
         decoration: InputDecoration(
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             borderSide: BorderSide(
               color: ColorRepository.darkBlue,
             ),
           ),
-          enabledBorder: OutlineInputBorder(
+          enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               color: ColorRepository.darkBlue,
             ),
           ),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               color: ColorRepository.darkBlue,
             ),
           ),
           labelText: label,
-          labelStyle: TextStyle(
+          labelStyle: const TextStyle(
             color: ColorRepository.darkBlue,
           ),
         ),

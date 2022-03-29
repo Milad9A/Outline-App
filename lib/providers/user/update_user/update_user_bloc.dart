@@ -17,7 +17,7 @@ part 'update_user_bloc.freezed.dart';
 class UpdateUserBloc extends Bloc<UpdateUserEvent, UpdateUserState> {
   UpdateUserBloc({
     required this.userRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final UserRepository userRepository;
 
@@ -26,14 +26,14 @@ class UpdateUserBloc extends Bloc<UpdateUserEvent, UpdateUserState> {
     UpdateUserEvent event,
   ) async* {
     if (event is UpdateUserRequested) {
-      yield UpdateUserLoading();
+      yield const UpdateUserLoading();
 
       ApiResult<User> apiResult = await userRepository.updateUser(
         userUpdateValues: event.updateUser,
       );
 
       apiResult.when(
-        success: (User data) async {
+        success: (User data) async* {
           Consts.avatar = data.avatar;
           Consts.username = data.name;
           Consts.bio = data.aboutMe;
@@ -44,20 +44,20 @@ class UpdateUserBloc extends Bloc<UpdateUserEvent, UpdateUserState> {
               image: event.image!,
             );
             result.when(
-              success: (String avatarURL) {
+              success: (String avatarURL) async* {
                 Consts.avatar = avatarURL;
-                emit(UpdateUserState.success(user: data));
+                yield (UpdateUserState.success(user: data));
               },
-              failure: (NetworkExceptions error) {
-                emit(UpdateUserError(error: error));
+              failure: (NetworkExceptions error) async* {
+                yield (UpdateUserError(error: error));
               },
             );
           } else {
-            emit(UpdateUserSuccess(user: data));
+            yield (UpdateUserSuccess(user: data));
           }
         },
-        failure: (NetworkExceptions error) {
-          emit(UpdateUserError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (UpdateUserError(error: error));
         },
       );
     }

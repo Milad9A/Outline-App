@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'articles_list_model.dart';
 
@@ -26,7 +28,7 @@ class _$ArticlesListModelTearOff {
     );
   }
 
-  ArticlesListModel fromJson(Map<String, Object> json) {
+  ArticlesListModel fromJson(Map<String, Object?> json) {
     return ArticlesListModel.fromJson(json);
   }
 }
@@ -108,14 +110,13 @@ class _$ArticlesListCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$ArticlesList with DiagnosticableTreeMixin implements ArticlesList {
   const _$ArticlesList({required this.articlesList});
 
   factory _$ArticlesList.fromJson(Map<String, dynamic> json) =>
-      _$_$ArticlesListFromJson(json);
+      _$$ArticlesListFromJson(json);
 
   @override
   final List<ArticleLike> articlesList;
@@ -136,15 +137,15 @@ class _$ArticlesList with DiagnosticableTreeMixin implements ArticlesList {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ArticlesList &&
-            (identical(other.articlesList, articlesList) ||
-                const DeepCollectionEquality()
-                    .equals(other.articlesList, articlesList)));
+        (other.runtimeType == runtimeType &&
+            other is ArticlesList &&
+            const DeepCollectionEquality()
+                .equals(other.articlesList, articlesList));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(articlesList);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(articlesList));
 
   @JsonKey(ignore: true)
   @override
@@ -153,7 +154,7 @@ class _$ArticlesList with DiagnosticableTreeMixin implements ArticlesList {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$ArticlesListToJson(this);
+    return _$$ArticlesListToJson(this);
   }
 }
 
@@ -165,7 +166,7 @@ abstract class ArticlesList implements ArticlesListModel {
       _$ArticlesList.fromJson;
 
   @override
-  List<ArticleLike> get articlesList => throw _privateConstructorUsedError;
+  List<ArticleLike> get articlesList;
   @override
   @JsonKey(ignore: true)
   $ArticlesListCopyWith<ArticlesList> get copyWith =>

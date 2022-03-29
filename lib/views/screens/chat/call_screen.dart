@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:agora_rtc_engine/rtc_engine.dart';
-import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
-import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
+import 'package:agora_rtc_engine/rtc_local_view.dart' as rtc_local_view;
+import 'package:agora_rtc_engine/rtc_remote_view.dart' as rtc_remote_view;
 import 'package:outline/config/services/api_result.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/config/utils/agora_app_id.dart';
@@ -13,9 +13,10 @@ class CallScreen extends StatefulWidget {
   final String otherUserEmail;
 
   const CallScreen({
+    Key? key,
     required this.channelName,
     required this.otherUserEmail,
-  });
+  }) : super(key: key);
 
   @override
   _CallScreenState createState() => _CallScreenState();
@@ -139,31 +140,31 @@ class _CallScreenState extends State<CallScreen> {
               color: muted ? Colors.white : Colors.blueAccent,
               size: 20.0,
             ),
-            shape: CircleBorder(),
+            shape: const CircleBorder(),
             elevation: 2.0,
             fillColor: muted ? Colors.blueAccent : Colors.white,
             padding: const EdgeInsets.all(12.0),
           ),
           RawMaterialButton(
             onPressed: () => _onCallEnd(context),
-            child: Icon(
+            child: const Icon(
               Icons.call_end,
               color: Colors.white,
               size: 35.0,
             ),
-            shape: CircleBorder(),
+            shape: const CircleBorder(),
             elevation: 2.0,
             fillColor: Colors.redAccent,
             padding: const EdgeInsets.all(15.0),
           ),
           RawMaterialButton(
             onPressed: _onSwitchCamera,
-            child: Icon(
+            child: const Icon(
               Icons.switch_camera,
               color: Colors.blueAccent,
               size: 20.0,
             ),
-            shape: CircleBorder(),
+            shape: const CircleBorder(),
             elevation: 2.0,
             fillColor: Colors.white,
             padding: const EdgeInsets.all(12.0),
@@ -186,13 +187,13 @@ class _CallScreenState extends State<CallScreen> {
                 context: context,
                 enableDrag: true,
                 isScrollControlled: true,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(10.0),
                   ),
                 ),
                 builder: (context) => Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(10.0),
                     ),
@@ -205,7 +206,7 @@ class _CallScreenState extends State<CallScreen> {
                 ),
               );
             },
-            icon: Icon(Icons.person_add),
+            icon: const Icon(Icons.person_add),
           ),
         ],
       ),
@@ -223,8 +224,15 @@ class _CallScreenState extends State<CallScreen> {
 
   List<Widget> _getRenderViews() {
     final List<StatefulWidget> list = [];
-    list.add(RtcLocalView.SurfaceView());
-    _users.forEach((int uid) => list.add(RtcRemoteView.SurfaceView(uid: uid)));
+    list.add(const rtc_local_view.SurfaceView());
+    for (var uid in _users) {
+      list.add(
+        rtc_remote_view.SurfaceView(
+          uid: uid,
+          channelId: widget.channelName,
+        ),
+      );
+    }
     return list;
   }
 
@@ -245,34 +253,30 @@ class _CallScreenState extends State<CallScreen> {
     final views = _getRenderViews();
     switch (views.length) {
       case 1:
-        return Container(
-            child: Column(
+        return Column(
           children: <Widget>[_videoView(views[0])],
-        ));
+        );
       case 2:
-        return Container(
-            child: Column(
+        return Column(
           children: <Widget>[
             _expandedVideoRow([views[0]]),
             _expandedVideoRow([views[1]])
           ],
-        ));
+        );
       case 3:
-        return Container(
-            child: Column(
+        return Column(
           children: <Widget>[
             _expandedVideoRow(views.sublist(0, 2)),
             _expandedVideoRow(views.sublist(2, 3))
           ],
-        ));
+        );
       case 4:
-        return Container(
-            child: Column(
+        return Column(
           children: <Widget>[
             _expandedVideoRow(views.sublist(0, 2)),
             _expandedVideoRow(views.sublist(2, 4))
           ],
-        ));
+        );
       default:
     }
     return Container();

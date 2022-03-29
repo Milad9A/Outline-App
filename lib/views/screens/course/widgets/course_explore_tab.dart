@@ -5,6 +5,8 @@ import 'package:outline/views/screens/course/widgets/widgets.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class CorseExploreTab extends StatefulWidget {
+  const CorseExploreTab({Key? key}) : super(key: key);
+
   @override
   _CorseExploreTabState createState() => _CorseExploreTabState();
 }
@@ -21,30 +23,30 @@ class _CorseExploreTabState extends State<CorseExploreTab> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ScreenCasts(),
-                  SizedBox(height: 30.0),
+                  const ScreenCasts(),
+                  const SizedBox(height: 30.0),
                   CoursesContainer(
                     title: 'Featured Courses',
                     coursesList: coursesList,
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   CoursesContainer(
                     title: 'Top Courses',
                     coursesList: coursesList,
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   PopularCoursesContainer(
                     coursesList: coursesList,
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                 ],
               ),
             );
           },
-          loading: () => Center(
+          loading: () => const Center(
             child: OutlineCircularProgressIndicator(),
           ),
-          orElse: () => SizedBox.shrink(),
+          orElse: () => const SizedBox.shrink(),
         );
       },
     );

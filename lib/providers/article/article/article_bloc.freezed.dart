@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'article_bloc.dart';
 
@@ -47,6 +49,14 @@ mixin _$ArticleEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(ArticleCreate articleCreateData, File? image)?
+        createArticleButtonPressed,
+    TResult Function()? getMyArticles,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(ArticleCreate articleCreateData, File? image)?
@@ -61,6 +71,14 @@ mixin _$ArticleEvent {
     required TResult Function(ArticleCreateButtonPressed value)
         createArticleButtonPressed,
     required TResult Function(ArticleGetMyArticles value) getMyArticles,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ArticleCreateButtonPressed value)?
+        createArticleButtonPressed,
+    TResult Function(ArticleGetMyArticles value)? getMyArticles,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -107,6 +125,7 @@ class __$StartedCopyWithImpl<$Res> extends _$ArticleEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started with DiagnosticableTreeMixin implements _Started {
   const _$_Started();
 
@@ -123,7 +142,8 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -138,6 +158,17 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
     required TResult Function() getMyArticles,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(ArticleCreate articleCreateData, File? image)?
+        createArticleButtonPressed,
+    TResult Function()? getMyArticles,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -164,6 +195,17 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
     required TResult Function(ArticleGetMyArticles value) getMyArticles,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ArticleCreateButtonPressed value)?
+        createArticleButtonPressed,
+    TResult Function(ArticleGetMyArticles value)? getMyArticles,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -225,6 +267,7 @@ class _$ArticleCreateButtonPressedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ArticleCreateButtonPressed
     with DiagnosticableTreeMixin
     implements ArticleCreateButtonPressed {
@@ -254,19 +297,18 @@ class _$ArticleCreateButtonPressed
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ArticleCreateButtonPressed &&
-            (identical(other.articleCreateData, articleCreateData) ||
-                const DeepCollectionEquality()
-                    .equals(other.articleCreateData, articleCreateData)) &&
-            (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)));
+        (other.runtimeType == runtimeType &&
+            other is ArticleCreateButtonPressed &&
+            const DeepCollectionEquality()
+                .equals(other.articleCreateData, articleCreateData) &&
+            const DeepCollectionEquality().equals(other.image, image));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(articleCreateData) ^
-      const DeepCollectionEquality().hash(image);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(articleCreateData),
+      const DeepCollectionEquality().hash(image));
 
   @JsonKey(ignore: true)
   @override
@@ -284,6 +326,17 @@ class _$ArticleCreateButtonPressed
     required TResult Function() getMyArticles,
   }) {
     return createArticleButtonPressed(articleCreateData, image);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(ArticleCreate articleCreateData, File? image)?
+        createArticleButtonPressed,
+    TResult Function()? getMyArticles,
+  }) {
+    return createArticleButtonPressed?.call(articleCreateData, image);
   }
 
   @override
@@ -314,6 +367,17 @@ class _$ArticleCreateButtonPressed
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ArticleCreateButtonPressed value)?
+        createArticleButtonPressed,
+    TResult Function(ArticleGetMyArticles value)? getMyArticles,
+  }) {
+    return createArticleButtonPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(ArticleCreateButtonPressed value)?
@@ -333,8 +397,8 @@ abstract class ArticleCreateButtonPressed implements ArticleEvent {
       {required ArticleCreate articleCreateData,
       File? image}) = _$ArticleCreateButtonPressed;
 
-  ArticleCreate get articleCreateData => throw _privateConstructorUsedError;
-  File? get image => throw _privateConstructorUsedError;
+  ArticleCreate get articleCreateData;
+  File? get image;
   @JsonKey(ignore: true)
   $ArticleCreateButtonPressedCopyWith<ArticleCreateButtonPressed>
       get copyWith => throw _privateConstructorUsedError;
@@ -360,6 +424,7 @@ class _$ArticleGetMyArticlesCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ArticleGetMyArticles
     with DiagnosticableTreeMixin
     implements ArticleGetMyArticles {
@@ -378,7 +443,8 @@ class _$ArticleGetMyArticles
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ArticleGetMyArticles);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is ArticleGetMyArticles);
   }
 
   @override
@@ -393,6 +459,17 @@ class _$ArticleGetMyArticles
     required TResult Function() getMyArticles,
   }) {
     return getMyArticles();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(ArticleCreate articleCreateData, File? image)?
+        createArticleButtonPressed,
+    TResult Function()? getMyArticles,
+  }) {
+    return getMyArticles?.call();
   }
 
   @override
@@ -419,6 +496,17 @@ class _$ArticleGetMyArticles
     required TResult Function(ArticleGetMyArticles value) getMyArticles,
   }) {
     return getMyArticles(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ArticleCreateButtonPressed value)?
+        createArticleButtonPressed,
+    TResult Function(ArticleGetMyArticles value)? getMyArticles,
+  }) {
+    return getMyArticles?.call(this);
   }
 
   @override
@@ -493,6 +581,16 @@ mixin _$ArticleState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Article article)? createSuccess,
+    TResult Function(List<ArticleLike> articles)? getMyArticlesSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? createLoading,
@@ -511,6 +609,16 @@ mixin _$ArticleState {
     required TResult Function(GetMyArticlesSuccess value) getMyArticlesSuccess,
     required TResult Function(GetArticlesLoading value) getLoading,
     required TResult Function(ArticleError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateArticleLoading value)? createLoading,
+    TResult Function(CreateArticleSuccess value)? createSuccess,
+    TResult Function(GetMyArticlesSuccess value)? getMyArticlesSuccess,
+    TResult Function(GetArticlesLoading value)? getLoading,
+    TResult Function(ArticleError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -559,6 +667,7 @@ class __$InitialCopyWithImpl<$Res> extends _$ArticleStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   const _$_Initial();
 
@@ -575,7 +684,8 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -592,6 +702,19 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Article article)? createSuccess,
+    TResult Function(List<ArticleLike> articles)? getMyArticlesSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -622,6 +745,19 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(ArticleError value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateArticleLoading value)? createLoading,
+    TResult Function(CreateArticleSuccess value)? createSuccess,
+    TResult Function(GetMyArticlesSuccess value)? getMyArticlesSuccess,
+    TResult Function(GetArticlesLoading value)? getLoading,
+    TResult Function(ArticleError value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -666,6 +802,7 @@ class _$CreateArticleLoadingCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CreateArticleLoading
     with DiagnosticableTreeMixin
     implements CreateArticleLoading {
@@ -684,7 +821,8 @@ class _$CreateArticleLoading
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is CreateArticleLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is CreateArticleLoading);
   }
 
   @override
@@ -701,6 +839,19 @@ class _$CreateArticleLoading
     required TResult Function(NetworkExceptions error) error,
   }) {
     return createLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Article article)? createSuccess,
+    TResult Function(List<ArticleLike> articles)? getMyArticlesSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return createLoading?.call();
   }
 
   @override
@@ -731,6 +882,19 @@ class _$CreateArticleLoading
     required TResult Function(ArticleError value) error,
   }) {
     return createLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateArticleLoading value)? createLoading,
+    TResult Function(CreateArticleSuccess value)? createSuccess,
+    TResult Function(GetMyArticlesSuccess value)? getMyArticlesSuccess,
+    TResult Function(GetArticlesLoading value)? getLoading,
+    TResult Function(ArticleError value)? error,
+  }) {
+    return createLoading?.call(this);
   }
 
   @override
@@ -788,6 +952,7 @@ class _$CreateArticleSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CreateArticleSuccess
     with DiagnosticableTreeMixin
     implements CreateArticleSuccess {
@@ -812,14 +977,14 @@ class _$CreateArticleSuccess
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CreateArticleSuccess &&
-            (identical(other.article, article) ||
-                const DeepCollectionEquality().equals(other.article, article)));
+        (other.runtimeType == runtimeType &&
+            other is CreateArticleSuccess &&
+            const DeepCollectionEquality().equals(other.article, article));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(article);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(article));
 
   @JsonKey(ignore: true)
   @override
@@ -838,6 +1003,19 @@ class _$CreateArticleSuccess
     required TResult Function(NetworkExceptions error) error,
   }) {
     return createSuccess(article);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Article article)? createSuccess,
+    TResult Function(List<ArticleLike> articles)? getMyArticlesSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return createSuccess?.call(article);
   }
 
   @override
@@ -872,6 +1050,19 @@ class _$CreateArticleSuccess
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateArticleLoading value)? createLoading,
+    TResult Function(CreateArticleSuccess value)? createSuccess,
+    TResult Function(GetMyArticlesSuccess value)? getMyArticlesSuccess,
+    TResult Function(GetArticlesLoading value)? getLoading,
+    TResult Function(ArticleError value)? error,
+  }) {
+    return createSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(CreateArticleLoading value)? createLoading,
@@ -892,7 +1083,7 @@ abstract class CreateArticleSuccess implements ArticleState {
   const factory CreateArticleSuccess({required Article article}) =
       _$CreateArticleSuccess;
 
-  Article get article => throw _privateConstructorUsedError;
+  Article get article;
   @JsonKey(ignore: true)
   $CreateArticleSuccessCopyWith<CreateArticleSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -931,6 +1122,7 @@ class _$GetMyArticlesSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$GetMyArticlesSuccess
     with DiagnosticableTreeMixin
     implements GetMyArticlesSuccess {
@@ -955,15 +1147,14 @@ class _$GetMyArticlesSuccess
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is GetMyArticlesSuccess &&
-            (identical(other.articles, articles) ||
-                const DeepCollectionEquality()
-                    .equals(other.articles, articles)));
+        (other.runtimeType == runtimeType &&
+            other is GetMyArticlesSuccess &&
+            const DeepCollectionEquality().equals(other.articles, articles));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(articles);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(articles));
 
   @JsonKey(ignore: true)
   @override
@@ -982,6 +1173,19 @@ class _$GetMyArticlesSuccess
     required TResult Function(NetworkExceptions error) error,
   }) {
     return getMyArticlesSuccess(articles);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Article article)? createSuccess,
+    TResult Function(List<ArticleLike> articles)? getMyArticlesSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return getMyArticlesSuccess?.call(articles);
   }
 
   @override
@@ -1016,6 +1220,19 @@ class _$GetMyArticlesSuccess
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateArticleLoading value)? createLoading,
+    TResult Function(CreateArticleSuccess value)? createSuccess,
+    TResult Function(GetMyArticlesSuccess value)? getMyArticlesSuccess,
+    TResult Function(GetArticlesLoading value)? getLoading,
+    TResult Function(ArticleError value)? error,
+  }) {
+    return getMyArticlesSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(CreateArticleLoading value)? createLoading,
@@ -1036,7 +1253,7 @@ abstract class GetMyArticlesSuccess implements ArticleState {
   const factory GetMyArticlesSuccess({required List<ArticleLike> articles}) =
       _$GetMyArticlesSuccess;
 
-  List<ArticleLike> get articles => throw _privateConstructorUsedError;
+  List<ArticleLike> get articles;
   @JsonKey(ignore: true)
   $GetMyArticlesSuccessCopyWith<GetMyArticlesSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1062,6 +1279,7 @@ class _$GetArticlesLoadingCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$GetArticlesLoading
     with DiagnosticableTreeMixin
     implements GetArticlesLoading {
@@ -1080,7 +1298,8 @@ class _$GetArticlesLoading
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GetArticlesLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is GetArticlesLoading);
   }
 
   @override
@@ -1097,6 +1316,19 @@ class _$GetArticlesLoading
     required TResult Function(NetworkExceptions error) error,
   }) {
     return getLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Article article)? createSuccess,
+    TResult Function(List<ArticleLike> articles)? getMyArticlesSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return getLoading?.call();
   }
 
   @override
@@ -1127,6 +1359,19 @@ class _$GetArticlesLoading
     required TResult Function(ArticleError value) error,
   }) {
     return getLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateArticleLoading value)? createLoading,
+    TResult Function(CreateArticleSuccess value)? createSuccess,
+    TResult Function(GetMyArticlesSuccess value)? getMyArticlesSuccess,
+    TResult Function(GetArticlesLoading value)? getLoading,
+    TResult Function(ArticleError value)? error,
+  }) {
+    return getLoading?.call(this);
   }
 
   @override
@@ -1192,6 +1437,7 @@ class _$ArticleErrorCopyWithImpl<$Res> extends _$ArticleStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ArticleError with DiagnosticableTreeMixin implements ArticleError {
   const _$ArticleError({required this.error});
 
@@ -1214,14 +1460,14 @@ class _$ArticleError with DiagnosticableTreeMixin implements ArticleError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ArticleError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is ArticleError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -1239,6 +1485,19 @@ class _$ArticleError with DiagnosticableTreeMixin implements ArticleError {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Article article)? createSuccess,
+    TResult Function(List<ArticleLike> articles)? getMyArticlesSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return error?.call(this.error);
   }
 
   @override
@@ -1273,6 +1532,19 @@ class _$ArticleError with DiagnosticableTreeMixin implements ArticleError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateArticleLoading value)? createLoading,
+    TResult Function(CreateArticleSuccess value)? createSuccess,
+    TResult Function(GetMyArticlesSuccess value)? getMyArticlesSuccess,
+    TResult Function(GetArticlesLoading value)? getLoading,
+    TResult Function(ArticleError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(CreateArticleLoading value)? createLoading,
@@ -1293,7 +1565,7 @@ abstract class ArticleError implements ArticleState {
   const factory ArticleError({required NetworkExceptions error}) =
       _$ArticleError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $ArticleErrorCopyWith<ArticleError> get copyWith =>
       throw _privateConstructorUsedError;

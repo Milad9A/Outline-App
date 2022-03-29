@@ -10,12 +10,13 @@ import 'package:outline/providers/home/home_bloc.dart';
 import 'package:outline/views/screens/chat/chats_screen.dart';
 import 'package:outline/views/screens/home/widgets/news_feed_builder.dart';
 import 'package:outline/views/screens/profile/edit_profile_screen.dart';
-import 'package:outline/views/screens/profile/edit_profile_tags_screen.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   static Route get route =>
-      MaterialPageRoute<void>(builder: (_) => HomeScreen());
+      MaterialPageRoute<void>(builder: (_) => const HomeScreen());
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -26,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     BlocProvider.of<HomeBloc>(context).add(
-      GetNewsFeedInitial(refresh: false),
+      const GetNewsFeedInitial(refresh: false),
     );
   }
 
@@ -37,16 +38,16 @@ class _HomeScreenState extends State<HomeScreen> {
       body: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           return state.when(
-            initial: () => OutlineCircularProgressIndicator(),
-            loading: () => OutlineCircularProgressIndicator(),
-            unAuthenticated: () => Center(
+            initial: () => const OutlineCircularProgressIndicator(),
+            loading: () => const OutlineCircularProgressIndicator(),
+            unAuthenticated: () => const Center(
               child: Text('Please Login or Sign Up to View the News Feed!'),
             ),
             authenticated: (user) {
               return BlocBuilder<HomeBloc, HomeState>(
                 builder: (context, state) {
                   return state.maybeWhen(
-                    getFeedLoadingInitial: () => Center(
+                    getFeedLoadingInitial: () => const Center(
                       child: OutlineCircularProgressIndicator(),
                     ),
                     getFeedLoadingRefresh: (List<FeedPost> feed) {
@@ -56,12 +57,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       return NewsFeedBuilder(context: context);
                     },
                     getFeedSuccess: (List<FeedPost> feed) {
-                      if (feed.isNotEmpty)
+                      if (feed.isNotEmpty) {
                         return NewsFeedBuilder(context: context);
-                      else
+                      } else {
                         return EmptyNewsFeedBuilder(user: user);
+                      }
                     },
-                    orElse: () => SizedBox.shrink(),
+                    orElse: () => const SizedBox.shrink(),
                   );
                 },
               );
@@ -86,12 +88,12 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.chat_bubble_outline),
+          icon: const Icon(Icons.chat_bubble_outline),
           onPressed: () {
             if (Consts.isAuthenticated) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ChatsScreen()),
+                MaterialPageRoute(builder: (context) => const ChatsScreen()),
               );
             } else {
               showPopUp(
@@ -114,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
 class EmptyNewsFeedBuilder extends StatelessWidget {
   final User user;
 
-  const EmptyNewsFeedBuilder({required this.user});
+  const EmptyNewsFeedBuilder({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -123,8 +125,8 @@ class EmptyNewsFeedBuilder extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("Your News Feed is Empty!"),
-          SizedBox(height: 20.0),
+          const Text("Your News Feed is Empty!"),
+          const SizedBox(height: 20.0),
           OutlineTextButton(
             text: 'Start following new tags',
             onPressed: () async {
@@ -135,7 +137,7 @@ class EmptyNewsFeedBuilder extends StatelessWidget {
                 ),
               );
               BlocProvider.of<HomeBloc>(context).add(
-                GetNewsFeedInitial(refresh: false),
+                const GetNewsFeedInitial(refresh: false),
               );
             },
           ),

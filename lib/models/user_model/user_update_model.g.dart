@@ -6,18 +6,16 @@ part of 'user_update_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UserUpdate _$_$UserUpdateFromJson(Map<String, dynamic> json) {
-  return _$UserUpdate(
-    name: json['name'] as String?,
-    password: json['password'] as String?,
-    aboutMe: json['aboutMe'] as String?,
-    reputation: json['reputation'] as int?,
-    acceptRate: json['accept_rate'] as int?,
-    tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String?).toList(),
-  );
-}
+_$UserUpdate _$$UserUpdateFromJson(Map<String, dynamic> json) => _$UserUpdate(
+      name: json['name'] as String?,
+      password: json['password'] as String?,
+      aboutMe: json['aboutMe'] as String?,
+      reputation: json['reputation'] as int?,
+      acceptRate: json['accept_rate'] as int?,
+      tags: (json['tags'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+    );
 
-Map<String, dynamic> _$_$UserUpdateToJson(_$UserUpdate instance) =>
+Map<String, dynamic> _$$UserUpdateToJson(_$UserUpdate instance) =>
     <String, dynamic>{
       'name': instance.name,
       'password': instance.password,

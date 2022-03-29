@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'tag_model.dart';
 
@@ -29,7 +31,7 @@ class _$TagModelTearOff {
     );
   }
 
-  TagModel fromJson(Map<String, Object> json) {
+  TagModel fromJson(Map<String, Object?> json) {
     return TagModel.fromJson(json);
   }
 }
@@ -120,15 +122,14 @@ class _$TagCopyWithImpl<$Res> extends _$TagModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$Tag with DiagnosticableTreeMixin implements Tag {
   const _$Tag(
       {@JsonKey(name: 'name') required this.name,
       @JsonKey(name: '_id') required this.id});
 
-  factory _$Tag.fromJson(Map<String, dynamic> json) => _$_$TagFromJson(json);
+  factory _$Tag.fromJson(Map<String, dynamic> json) => _$$TagFromJson(json);
 
   @override
   @JsonKey(name: 'name')
@@ -154,18 +155,17 @@ class _$Tag with DiagnosticableTreeMixin implements Tag {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Tag &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+        (other.runtimeType == runtimeType &&
+            other is Tag &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.id, id));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(id);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
   @override
@@ -173,7 +173,7 @@ class _$Tag with DiagnosticableTreeMixin implements Tag {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$TagToJson(this);
+    return _$$TagToJson(this);
   }
 }
 
@@ -186,10 +186,10 @@ abstract class Tag implements TagModel {
 
   @override
   @JsonKey(name: 'name')
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
   @JsonKey(ignore: true)
   $TagCopyWith<Tag> get copyWith => throw _privateConstructorUsedError;

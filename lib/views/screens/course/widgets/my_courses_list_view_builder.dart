@@ -11,19 +11,19 @@ class MyCoursesListViewBuilder extends StatelessWidget {
   final BuildContext context;
 
   MyCoursesListViewBuilder({
+    Key? key,
     required this.coursesList,
     required this.context,
-  });
+  }) : super(key: key);
 
   final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
   void _onRefresh() async {
-    BlocProvider.of<MyCoursesBloc>(context).add(GetMyCourses());
+    BlocProvider.of<MyCoursesBloc>(context).add(const GetMyCourses());
 
     BlocListener<MyCoursesBloc, MyCoursesState>(
       listener: (context, state) {
-        print(state);
         state.maybeWhen(
           success: (List<Course> courses) {
             _refreshController.refreshCompleted();
@@ -45,10 +45,10 @@ class MyCoursesListViewBuilder extends StatelessWidget {
       controller: _refreshController,
       enablePullDown: true,
       enablePullUp: false,
-      header: MaterialClassicHeader(),
+      header: const MaterialClassicHeader(),
       onRefresh: _onRefresh,
       child: ListView.builder(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         itemCount: coursesList.length,
         itemBuilder: (BuildContext context, int index) {
           return MyCoursesTile(course: coursesList[index]);

@@ -9,7 +9,7 @@ import 'package:outline/models/feed_post_model/feed_posts_list_model.dart';
 
 class HomeRepository {
   late DioClient dioClient;
-  String _baseUrl = Consts.baseUrl;
+  final String _baseUrl = Consts.baseUrl;
 
   HomeRepository() {
     var dio = Dio();
@@ -40,7 +40,6 @@ class HomeRepository {
 
       return ApiResult.success(data: feed.feed);
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }

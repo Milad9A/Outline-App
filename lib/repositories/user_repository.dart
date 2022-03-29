@@ -14,7 +14,7 @@ import 'package:outline/models/user_model/user_update_model.dart';
 
 class UserRepository {
   late DioClient dioClient;
-  String _baseUrl = Consts.baseUrl;
+  final String _baseUrl = Consts.baseUrl;
 
   UserRepository() {
     var dio = Dio();
@@ -96,7 +96,6 @@ class UserRepository {
 
       return ApiResult.success(data: response);
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }

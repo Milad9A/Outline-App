@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'home_bloc.dart';
 
@@ -49,6 +51,13 @@ mixin _$HomeEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(bool refresh)? getNewsFeedInitial,
+    TResult Function(int articlesSkip, int questionsSkip)? getNewsFeedMore,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(bool refresh)? getNewsFeedInitial,
@@ -61,6 +70,13 @@ mixin _$HomeEvent {
     required TResult Function(_Started value) started,
     required TResult Function(GetNewsFeedInitial value) getNewsFeedInitial,
     required TResult Function(GetNewsFeedMore value) getNewsFeedMore,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetNewsFeedInitial value)? getNewsFeedInitial,
+    TResult Function(GetNewsFeedMore value)? getNewsFeedMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -105,6 +121,7 @@ class __$StartedCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started implements _Started {
   const _$_Started();
 
@@ -115,7 +132,8 @@ class _$_Started implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -130,6 +148,16 @@ class _$_Started implements _Started {
         getNewsFeedMore,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(bool refresh)? getNewsFeedInitial,
+    TResult Function(int articlesSkip, int questionsSkip)? getNewsFeedMore,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -154,6 +182,16 @@ class _$_Started implements _Started {
     required TResult Function(GetNewsFeedMore value) getNewsFeedMore,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetNewsFeedInitial value)? getNewsFeedInitial,
+    TResult Function(GetNewsFeedMore value)? getNewsFeedMore,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -208,6 +246,7 @@ class _$GetNewsFeedInitialCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$GetNewsFeedInitial implements GetNewsFeedInitial {
   const _$GetNewsFeedInitial({required this.refresh});
 
@@ -222,14 +261,14 @@ class _$GetNewsFeedInitial implements GetNewsFeedInitial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is GetNewsFeedInitial &&
-            (identical(other.refresh, refresh) ||
-                const DeepCollectionEquality().equals(other.refresh, refresh)));
+        (other.runtimeType == runtimeType &&
+            other is GetNewsFeedInitial &&
+            const DeepCollectionEquality().equals(other.refresh, refresh));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(refresh);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(refresh));
 
   @JsonKey(ignore: true)
   @override
@@ -245,6 +284,16 @@ class _$GetNewsFeedInitial implements GetNewsFeedInitial {
         getNewsFeedMore,
   }) {
     return getNewsFeedInitial(refresh);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(bool refresh)? getNewsFeedInitial,
+    TResult Function(int articlesSkip, int questionsSkip)? getNewsFeedMore,
+  }) {
+    return getNewsFeedInitial?.call(refresh);
   }
 
   @override
@@ -273,6 +322,16 @@ class _$GetNewsFeedInitial implements GetNewsFeedInitial {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetNewsFeedInitial value)? getNewsFeedInitial,
+    TResult Function(GetNewsFeedMore value)? getNewsFeedMore,
+  }) {
+    return getNewsFeedInitial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(GetNewsFeedInitial value)? getNewsFeedInitial,
@@ -290,7 +349,7 @@ abstract class GetNewsFeedInitial implements HomeEvent {
   const factory GetNewsFeedInitial({required bool refresh}) =
       _$GetNewsFeedInitial;
 
-  bool get refresh => throw _privateConstructorUsedError;
+  bool get refresh;
   @JsonKey(ignore: true)
   $GetNewsFeedInitialCopyWith<GetNewsFeedInitial> get copyWith =>
       throw _privateConstructorUsedError;
@@ -333,6 +392,7 @@ class _$GetNewsFeedMoreCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$GetNewsFeedMore implements GetNewsFeedMore {
   const _$GetNewsFeedMore(
       {required this.articlesSkip, required this.questionsSkip});
@@ -350,20 +410,19 @@ class _$GetNewsFeedMore implements GetNewsFeedMore {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is GetNewsFeedMore &&
-            (identical(other.articlesSkip, articlesSkip) ||
-                const DeepCollectionEquality()
-                    .equals(other.articlesSkip, articlesSkip)) &&
-            (identical(other.questionsSkip, questionsSkip) ||
-                const DeepCollectionEquality()
-                    .equals(other.questionsSkip, questionsSkip)));
+        (other.runtimeType == runtimeType &&
+            other is GetNewsFeedMore &&
+            const DeepCollectionEquality()
+                .equals(other.articlesSkip, articlesSkip) &&
+            const DeepCollectionEquality()
+                .equals(other.questionsSkip, questionsSkip));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(articlesSkip) ^
-      const DeepCollectionEquality().hash(questionsSkip);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(articlesSkip),
+      const DeepCollectionEquality().hash(questionsSkip));
 
   @JsonKey(ignore: true)
   @override
@@ -379,6 +438,16 @@ class _$GetNewsFeedMore implements GetNewsFeedMore {
         getNewsFeedMore,
   }) {
     return getNewsFeedMore(articlesSkip, questionsSkip);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(bool refresh)? getNewsFeedInitial,
+    TResult Function(int articlesSkip, int questionsSkip)? getNewsFeedMore,
+  }) {
+    return getNewsFeedMore?.call(articlesSkip, questionsSkip);
   }
 
   @override
@@ -407,6 +476,16 @@ class _$GetNewsFeedMore implements GetNewsFeedMore {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(GetNewsFeedInitial value)? getNewsFeedInitial,
+    TResult Function(GetNewsFeedMore value)? getNewsFeedMore,
+  }) {
+    return getNewsFeedMore?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(GetNewsFeedInitial value)? getNewsFeedInitial,
@@ -425,8 +504,8 @@ abstract class GetNewsFeedMore implements HomeEvent {
       {required int articlesSkip,
       required int questionsSkip}) = _$GetNewsFeedMore;
 
-  int get articlesSkip => throw _privateConstructorUsedError;
-  int get questionsSkip => throw _privateConstructorUsedError;
+  int get articlesSkip;
+  int get questionsSkip;
   @JsonKey(ignore: true)
   $GetNewsFeedMoreCopyWith<GetNewsFeedMore> get copyWith =>
       throw _privateConstructorUsedError;
@@ -483,6 +562,16 @@ mixin _$HomeState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFeedLoadingInitial,
+    TResult Function()? getFeedLoadingMore,
+    TResult Function(List<FeedPost> feed)? getFeedLoadingRefresh,
+    TResult Function(List<FeedPost> feed)? getFeedSuccess,
+    TResult Function(NetworkExceptions error)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? getFeedLoadingInitial,
@@ -503,6 +592,16 @@ mixin _$HomeState {
         getFeedLoadingRefresh,
     required TResult Function(GetFeedSuccess value) getFeedSuccess,
     required TResult Function(HomeError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
+    TResult Function(GetFeedLoadingMore value)? getFeedLoadingMore,
+    TResult Function(GetFeedLoadingRefresh value)? getFeedLoadingRefresh,
+    TResult Function(GetFeedSuccess value)? getFeedSuccess,
+    TResult Function(HomeError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -550,6 +649,7 @@ class __$InitialCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -560,7 +660,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -577,6 +678,19 @@ class _$_Initial implements _Initial {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFeedLoadingInitial,
+    TResult Function()? getFeedLoadingMore,
+    TResult Function(List<FeedPost> feed)? getFeedLoadingRefresh,
+    TResult Function(List<FeedPost> feed)? getFeedSuccess,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -609,6 +723,19 @@ class _$_Initial implements _Initial {
     required TResult Function(HomeError value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
+    TResult Function(GetFeedLoadingMore value)? getFeedLoadingMore,
+    TResult Function(GetFeedLoadingRefresh value)? getFeedLoadingRefresh,
+    TResult Function(GetFeedSuccess value)? getFeedSuccess,
+    TResult Function(HomeError value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -653,6 +780,7 @@ class _$GetFeedLoadingInitialCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$GetFeedLoadingInitial implements GetFeedLoadingInitial {
   const _$GetFeedLoadingInitial();
 
@@ -663,7 +791,8 @@ class _$GetFeedLoadingInitial implements GetFeedLoadingInitial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GetFeedLoadingInitial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is GetFeedLoadingInitial);
   }
 
   @override
@@ -680,6 +809,19 @@ class _$GetFeedLoadingInitial implements GetFeedLoadingInitial {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return getFeedLoadingInitial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFeedLoadingInitial,
+    TResult Function()? getFeedLoadingMore,
+    TResult Function(List<FeedPost> feed)? getFeedLoadingRefresh,
+    TResult Function(List<FeedPost> feed)? getFeedSuccess,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return getFeedLoadingInitial?.call();
   }
 
   @override
@@ -712,6 +854,19 @@ class _$GetFeedLoadingInitial implements GetFeedLoadingInitial {
     required TResult Function(HomeError value) error,
   }) {
     return getFeedLoadingInitial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
+    TResult Function(GetFeedLoadingMore value)? getFeedLoadingMore,
+    TResult Function(GetFeedLoadingRefresh value)? getFeedLoadingRefresh,
+    TResult Function(GetFeedSuccess value)? getFeedSuccess,
+    TResult Function(HomeError value)? error,
+  }) {
+    return getFeedLoadingInitial?.call(this);
   }
 
   @override
@@ -756,6 +911,7 @@ class _$GetFeedLoadingMoreCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$GetFeedLoadingMore implements GetFeedLoadingMore {
   const _$GetFeedLoadingMore();
 
@@ -766,7 +922,8 @@ class _$GetFeedLoadingMore implements GetFeedLoadingMore {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GetFeedLoadingMore);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is GetFeedLoadingMore);
   }
 
   @override
@@ -783,6 +940,19 @@ class _$GetFeedLoadingMore implements GetFeedLoadingMore {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return getFeedLoadingMore();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFeedLoadingInitial,
+    TResult Function()? getFeedLoadingMore,
+    TResult Function(List<FeedPost> feed)? getFeedLoadingRefresh,
+    TResult Function(List<FeedPost> feed)? getFeedSuccess,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return getFeedLoadingMore?.call();
   }
 
   @override
@@ -815,6 +985,19 @@ class _$GetFeedLoadingMore implements GetFeedLoadingMore {
     required TResult Function(HomeError value) error,
   }) {
     return getFeedLoadingMore(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
+    TResult Function(GetFeedLoadingMore value)? getFeedLoadingMore,
+    TResult Function(GetFeedLoadingRefresh value)? getFeedLoadingRefresh,
+    TResult Function(GetFeedSuccess value)? getFeedSuccess,
+    TResult Function(HomeError value)? error,
+  }) {
+    return getFeedLoadingMore?.call(this);
   }
 
   @override
@@ -872,6 +1055,7 @@ class _$GetFeedLoadingRefreshCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$GetFeedLoadingRefresh implements GetFeedLoadingRefresh {
   const _$GetFeedLoadingRefresh({required this.feed});
 
@@ -886,14 +1070,14 @@ class _$GetFeedLoadingRefresh implements GetFeedLoadingRefresh {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is GetFeedLoadingRefresh &&
-            (identical(other.feed, feed) ||
-                const DeepCollectionEquality().equals(other.feed, feed)));
+        (other.runtimeType == runtimeType &&
+            other is GetFeedLoadingRefresh &&
+            const DeepCollectionEquality().equals(other.feed, feed));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(feed);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(feed));
 
   @JsonKey(ignore: true)
   @override
@@ -912,6 +1096,19 @@ class _$GetFeedLoadingRefresh implements GetFeedLoadingRefresh {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return getFeedLoadingRefresh(feed);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFeedLoadingInitial,
+    TResult Function()? getFeedLoadingMore,
+    TResult Function(List<FeedPost> feed)? getFeedLoadingRefresh,
+    TResult Function(List<FeedPost> feed)? getFeedSuccess,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return getFeedLoadingRefresh?.call(feed);
   }
 
   @override
@@ -948,6 +1145,19 @@ class _$GetFeedLoadingRefresh implements GetFeedLoadingRefresh {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
+    TResult Function(GetFeedLoadingMore value)? getFeedLoadingMore,
+    TResult Function(GetFeedLoadingRefresh value)? getFeedLoadingRefresh,
+    TResult Function(GetFeedSuccess value)? getFeedSuccess,
+    TResult Function(HomeError value)? error,
+  }) {
+    return getFeedLoadingRefresh?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
@@ -968,7 +1178,7 @@ abstract class GetFeedLoadingRefresh implements HomeState {
   const factory GetFeedLoadingRefresh({required List<FeedPost> feed}) =
       _$GetFeedLoadingRefresh;
 
-  List<FeedPost> get feed => throw _privateConstructorUsedError;
+  List<FeedPost> get feed;
   @JsonKey(ignore: true)
   $GetFeedLoadingRefreshCopyWith<GetFeedLoadingRefresh> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1006,6 +1216,7 @@ class _$GetFeedSuccessCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$GetFeedSuccess implements GetFeedSuccess {
   const _$GetFeedSuccess({required this.feed});
 
@@ -1020,14 +1231,14 @@ class _$GetFeedSuccess implements GetFeedSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is GetFeedSuccess &&
-            (identical(other.feed, feed) ||
-                const DeepCollectionEquality().equals(other.feed, feed)));
+        (other.runtimeType == runtimeType &&
+            other is GetFeedSuccess &&
+            const DeepCollectionEquality().equals(other.feed, feed));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(feed);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(feed));
 
   @JsonKey(ignore: true)
   @override
@@ -1045,6 +1256,19 @@ class _$GetFeedSuccess implements GetFeedSuccess {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return getFeedSuccess(feed);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFeedLoadingInitial,
+    TResult Function()? getFeedLoadingMore,
+    TResult Function(List<FeedPost> feed)? getFeedLoadingRefresh,
+    TResult Function(List<FeedPost> feed)? getFeedSuccess,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return getFeedSuccess?.call(feed);
   }
 
   @override
@@ -1081,6 +1305,19 @@ class _$GetFeedSuccess implements GetFeedSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
+    TResult Function(GetFeedLoadingMore value)? getFeedLoadingMore,
+    TResult Function(GetFeedLoadingRefresh value)? getFeedLoadingRefresh,
+    TResult Function(GetFeedSuccess value)? getFeedSuccess,
+    TResult Function(HomeError value)? error,
+  }) {
+    return getFeedSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
@@ -1101,7 +1338,7 @@ abstract class GetFeedSuccess implements HomeState {
   const factory GetFeedSuccess({required List<FeedPost> feed}) =
       _$GetFeedSuccess;
 
-  List<FeedPost> get feed => throw _privateConstructorUsedError;
+  List<FeedPost> get feed;
   @JsonKey(ignore: true)
   $GetFeedSuccessCopyWith<GetFeedSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1146,6 +1383,7 @@ class _$HomeErrorCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$HomeError implements HomeError {
   const _$HomeError({required this.error});
 
@@ -1160,14 +1398,14 @@ class _$HomeError implements HomeError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is HomeError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is HomeError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -1185,6 +1423,19 @@ class _$HomeError implements HomeError {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getFeedLoadingInitial,
+    TResult Function()? getFeedLoadingMore,
+    TResult Function(List<FeedPost> feed)? getFeedLoadingRefresh,
+    TResult Function(List<FeedPost> feed)? getFeedSuccess,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return error?.call(this.error);
   }
 
   @override
@@ -1221,6 +1472,19 @@ class _$HomeError implements HomeError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
+    TResult Function(GetFeedLoadingMore value)? getFeedLoadingMore,
+    TResult Function(GetFeedLoadingRefresh value)? getFeedLoadingRefresh,
+    TResult Function(GetFeedSuccess value)? getFeedSuccess,
+    TResult Function(HomeError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(GetFeedLoadingInitial value)? getFeedLoadingInitial,
@@ -1240,7 +1504,7 @@ class _$HomeError implements HomeError {
 abstract class HomeError implements HomeState {
   const factory HomeError({required NetworkExceptions error}) = _$HomeError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $HomeErrorCopyWith<HomeError> get copyWith =>
       throw _privateConstructorUsedError;

@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'feed_post_model.dart';
 
@@ -31,7 +33,7 @@ class _$FeedPostModelTearOff {
     );
   }
 
-  FeedPostModel fromJson(Map<String, Object> json) {
+  FeedPostModel fromJson(Map<String, Object?> json) {
     return FeedPostModel.fromJson(json);
   }
 }
@@ -140,9 +142,8 @@ class _$FeedPostCopyWithImpl<$Res> extends _$FeedPostModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$FeedPost with DiagnosticableTreeMixin implements FeedPost {
   const _$FeedPost(
       {@JsonKey(name: 'date') required this.date,
@@ -150,7 +151,7 @@ class _$FeedPost with DiagnosticableTreeMixin implements FeedPost {
       @PostConverter() required this.post});
 
   factory _$FeedPost.fromJson(Map<String, dynamic> json) =>
-      _$_$FeedPostFromJson(json);
+      _$$FeedPostFromJson(json);
 
   @override
   @JsonKey(name: 'date')
@@ -180,21 +181,19 @@ class _$FeedPost with DiagnosticableTreeMixin implements FeedPost {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is FeedPost &&
-            (identical(other.date, date) ||
-                const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.post, post) ||
-                const DeepCollectionEquality().equals(other.post, post)));
+        (other.runtimeType == runtimeType &&
+            other is FeedPost &&
+            const DeepCollectionEquality().equals(other.date, date) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.post, post));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(post);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(date),
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(post));
 
   @JsonKey(ignore: true)
   @override
@@ -203,7 +202,7 @@ class _$FeedPost with DiagnosticableTreeMixin implements FeedPost {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$FeedPostToJson(this);
+    return _$$FeedPostToJson(this);
   }
 }
 
@@ -217,13 +216,13 @@ abstract class FeedPost implements FeedPostModel {
 
   @override
   @JsonKey(name: 'date')
-  String get date => throw _privateConstructorUsedError;
+  String get date;
   @override
   @JsonKey(name: 'type')
-  String get type => throw _privateConstructorUsedError;
+  String get type;
   @override
   @PostConverter()
-  dynamic get post => throw _privateConstructorUsedError;
+  dynamic get post;
   @override
   @JsonKey(ignore: true)
   $FeedPostCopyWith<FeedPost> get copyWith =>

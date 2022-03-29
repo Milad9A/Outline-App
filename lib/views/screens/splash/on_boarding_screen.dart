@@ -5,8 +5,10 @@ import 'package:outline/views/screens/login_and_sign_up/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({Key? key}) : super(key: key);
+
   static Route get route =>
-      MaterialPageRoute<void>(builder: (_) => OnBoardingScreen());
+      MaterialPageRoute<void>(builder: (_) => const OnBoardingScreen());
 
   @override
   _OnBoardingScreenState createState() => _OnBoardingScreenState();
@@ -20,7 +22,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     prefs.setBool('first_time', false);
 
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => LoginScreen()),
+      MaterialPageRoute(builder: (_) => const LoginScreen()),
     );
   }
 
@@ -44,7 +46,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             fontWeight: FontWeight.w500,
           ),
       bodyTextStyle: bodyStyle,
-      descriptionPadding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 16.0),
+      descriptionPadding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 16.0),
       pageColor: Colors.white,
       imagePadding: EdgeInsets.zero,
       bodyFlex: 3,
@@ -97,24 +99,24 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         ),
       ),
       next: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: ColorRepository.darkBlue,
           shape: BoxShape.circle,
         ),
         padding: const EdgeInsets.all(10.0),
-        child: Icon(
+        child: const Icon(
           Icons.arrow_forward,
           color: Colors.white,
         ),
       ),
 
       done: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: ColorRepository.darkBlue,
           shape: BoxShape.circle,
         ),
         padding: const EdgeInsets.all(10.0),
-        child: Icon(
+        child: const Icon(
           Icons.arrow_forward,
           color: Colors.white,
         ),

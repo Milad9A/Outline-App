@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:flutter_tags/flutter_tags.dart';
 import 'package:outline/config/theme/color_repository.dart';
 import 'package:outline/providers/tags/tags_bloc.dart';
-import 'package:outline/views/widgets/outline_text_button.dart';
-import 'package:outline/views/widgets/outline_text_field.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class EditProfileTagsScreen extends StatefulWidget {
   static Route get route => MaterialPageRoute<void>(
-      builder: (_) => EditProfileTagsScreen(
+      builder: (_) => const EditProfileTagsScreen(
             ids: [],
           ));
 
   final List<String> ids;
 
   const EditProfileTagsScreen({
+    Key? key,
     required this.ids,
-  });
+  }) : super(key: key);
 
   @override
   _EditProfileTagsScreenState createState() => _EditProfileTagsScreenState();
@@ -35,7 +33,7 @@ class _EditProfileTagsScreenState extends State<EditProfileTagsScreen> {
   void initState() {
     super.initState();
 
-    BlocProvider.of<TagBloc>(context).add(GetAllTags());
+    BlocProvider.of<TagBloc>(context).add(const GetAllTags());
     ids = widget.ids;
     searchController = TextEditingController();
   }
@@ -51,7 +49,7 @@ class _EditProfileTagsScreenState extends State<EditProfileTagsScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: ColorRepository.darkBlue),
+        iconTheme: const IconThemeData(color: ColorRepository.darkBlue),
         elevation: 1.0,
       ),
       body: Column(
@@ -63,7 +61,7 @@ class _EditProfileTagsScreenState extends State<EditProfileTagsScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   OutlineTextField(
                     controller: searchController,
                     textInputType: TextInputType.name,
@@ -74,16 +72,17 @@ class _EditProfileTagsScreenState extends State<EditProfileTagsScreen> {
                       });
                     },
                     hintText: 'Search Tags',
-                    icon: Icon(Icons.search),
+                    icon: const Icon(Icons.search),
                   ),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   Expanded(
                     child: Center(
                       child: BlocBuilder<TagBloc, TagState>(
                         builder: (context, state) {
                           return state.when(
-                            initial: () => SizedBox.shrink(),
-                            loading: () => OutlineCircularProgressIndicator(),
+                            initial: () => const SizedBox.shrink(),
+                            loading: () =>
+                                const OutlineCircularProgressIndicator(),
                             success: (tags) {
                               List<DataList> items = tags
                                   .map(
@@ -94,10 +93,11 @@ class _EditProfileTagsScreenState extends State<EditProfileTagsScreen> {
                                     ),
                                   )
                                   .toList();
-                              if (searchValue != '')
+                              if (searchValue != '') {
                                 items.removeWhere((element) => !element.title
                                     .toLowerCase()
                                     .contains(searchValue.toLowerCase()));
+                              }
 
                               return SingleChildScrollView(
                                 child: Center(
@@ -110,7 +110,7 @@ class _EditProfileTagsScreenState extends State<EditProfileTagsScreen> {
 
                                       return ItemTags(
                                         key: Key(index.toString()),
-                                        borderRadius: BorderRadius.all(
+                                        borderRadius: const BorderRadius.all(
                                           Radius.circular(4.0),
                                         ),
                                         border: Border.all(
@@ -136,16 +136,15 @@ class _EditProfileTagsScreenState extends State<EditProfileTagsScreen> {
                                             ),
                                         combine: ItemTagsCombine.withTextBefore,
                                         onPressed: (item) {
-                                          print(item);
                                           setState(() {
-                                            if (!ids.contains(item.customData))
+                                            if (!ids
+                                                .contains(item.customData)) {
                                               ids.add(item.customData);
-                                            else {
+                                            } else {
                                               ids.remove(item.customData);
                                             }
                                           });
                                         },
-                                        onLongPressed: (item) => print(item),
                                       );
                                     },
                                   ),
@@ -162,7 +161,7 @@ class _EditProfileTagsScreenState extends State<EditProfileTagsScreen> {
               ),
             ),
           ),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -174,7 +173,7 @@ class _EditProfileTagsScreenState extends State<EditProfileTagsScreen> {
               ),
             ),
           ),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
         ],
       ),
     );

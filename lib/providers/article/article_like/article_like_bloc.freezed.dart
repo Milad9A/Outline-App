@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'article_like_bloc.dart';
 
@@ -39,6 +41,12 @@ mixin _$ArticleLikeEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String id)? likeArticle,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String id)? likeArticle,
@@ -49,6 +57,12 @@ mixin _$ArticleLikeEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(ArticleLikeArticle value) likeArticle,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ArticleLikeArticle value)? likeArticle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -94,6 +108,7 @@ class __$StartedCopyWithImpl<$Res> extends _$ArticleLikeEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started implements _Started {
   const _$_Started();
 
@@ -104,7 +119,8 @@ class _$_Started implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -117,6 +133,15 @@ class _$_Started implements _Started {
     required TResult Function(String id) likeArticle,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String id)? likeArticle,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -139,6 +164,15 @@ class _$_Started implements _Started {
     required TResult Function(ArticleLikeArticle value) likeArticle,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ArticleLikeArticle value)? likeArticle,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -192,6 +226,7 @@ class _$ArticleLikeArticleCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ArticleLikeArticle implements ArticleLikeArticle {
   const _$ArticleLikeArticle({required this.id});
 
@@ -206,14 +241,14 @@ class _$ArticleLikeArticle implements ArticleLikeArticle {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ArticleLikeArticle &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+        (other.runtimeType == runtimeType &&
+            other is ArticleLikeArticle &&
+            const DeepCollectionEquality().equals(other.id, id));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
   @override
@@ -227,6 +262,15 @@ class _$ArticleLikeArticle implements ArticleLikeArticle {
     required TResult Function(String id) likeArticle,
   }) {
     return likeArticle(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String id)? likeArticle,
+  }) {
+    return likeArticle?.call(id);
   }
 
   @override
@@ -253,6 +297,15 @@ class _$ArticleLikeArticle implements ArticleLikeArticle {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(ArticleLikeArticle value)? likeArticle,
+  }) {
+    return likeArticle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(ArticleLikeArticle value)? likeArticle,
@@ -268,7 +321,7 @@ class _$ArticleLikeArticle implements ArticleLikeArticle {
 abstract class ArticleLikeArticle implements ArticleLikeEvent {
   const factory ArticleLikeArticle({required String id}) = _$ArticleLikeArticle;
 
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @JsonKey(ignore: true)
   $ArticleLikeArticleCopyWith<ArticleLikeArticle> get copyWith =>
       throw _privateConstructorUsedError;
@@ -308,6 +361,13 @@ mixin _$ArticleLikeState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ArticleLike articleLike)? likeArticleSuccess,
+    TResult Function(NetworkExceptions error)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(ArticleLike articleLike)? likeArticleSuccess,
@@ -320,6 +380,13 @@ mixin _$ArticleLikeState {
     required TResult Function(_Initial value) initial,
     required TResult Function(LikeArticleSuccess value) likeArticleSuccess,
     required TResult Function(ArticleLikeError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(LikeArticleSuccess value)? likeArticleSuccess,
+    TResult Function(ArticleLikeError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -366,6 +433,7 @@ class __$InitialCopyWithImpl<$Res> extends _$ArticleLikeStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -376,7 +444,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -390,6 +459,16 @@ class _$_Initial implements _Initial {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ArticleLike articleLike)? likeArticleSuccess,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -414,6 +493,16 @@ class _$_Initial implements _Initial {
     required TResult Function(ArticleLikeError value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(LikeArticleSuccess value)? likeArticleSuccess,
+    TResult Function(ArticleLikeError value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -468,6 +557,7 @@ class _$LikeArticleSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$LikeArticleSuccess implements LikeArticleSuccess {
   const _$LikeArticleSuccess({required this.articleLike});
 
@@ -482,15 +572,15 @@ class _$LikeArticleSuccess implements LikeArticleSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is LikeArticleSuccess &&
-            (identical(other.articleLike, articleLike) ||
-                const DeepCollectionEquality()
-                    .equals(other.articleLike, articleLike)));
+        (other.runtimeType == runtimeType &&
+            other is LikeArticleSuccess &&
+            const DeepCollectionEquality()
+                .equals(other.articleLike, articleLike));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(articleLike);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(articleLike));
 
   @JsonKey(ignore: true)
   @override
@@ -505,6 +595,16 @@ class _$LikeArticleSuccess implements LikeArticleSuccess {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return likeArticleSuccess(articleLike);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ArticleLike articleLike)? likeArticleSuccess,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return likeArticleSuccess?.call(articleLike);
   }
 
   @override
@@ -533,6 +633,16 @@ class _$LikeArticleSuccess implements LikeArticleSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(LikeArticleSuccess value)? likeArticleSuccess,
+    TResult Function(ArticleLikeError value)? error,
+  }) {
+    return likeArticleSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(LikeArticleSuccess value)? likeArticleSuccess,
@@ -550,7 +660,7 @@ abstract class LikeArticleSuccess implements ArticleLikeState {
   const factory LikeArticleSuccess({required ArticleLike articleLike}) =
       _$LikeArticleSuccess;
 
-  ArticleLike get articleLike => throw _privateConstructorUsedError;
+  ArticleLike get articleLike;
   @JsonKey(ignore: true)
   $LikeArticleSuccessCopyWith<LikeArticleSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -598,6 +708,7 @@ class _$ArticleLikeErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ArticleLikeError implements ArticleLikeError {
   const _$ArticleLikeError({required this.error});
 
@@ -612,14 +723,14 @@ class _$ArticleLikeError implements ArticleLikeError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ArticleLikeError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is ArticleLikeError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -634,6 +745,16 @@ class _$ArticleLikeError implements ArticleLikeError {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ArticleLike articleLike)? likeArticleSuccess,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return error?.call(this.error);
   }
 
   @override
@@ -662,6 +783,16 @@ class _$ArticleLikeError implements ArticleLikeError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(LikeArticleSuccess value)? likeArticleSuccess,
+    TResult Function(ArticleLikeError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(LikeArticleSuccess value)? likeArticleSuccess,
@@ -679,7 +810,7 @@ abstract class ArticleLikeError implements ArticleLikeState {
   const factory ArticleLikeError({required NetworkExceptions error}) =
       _$ArticleLikeError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $ArticleLikeErrorCopyWith<ArticleLikeError> get copyWith =>
       throw _privateConstructorUsedError;

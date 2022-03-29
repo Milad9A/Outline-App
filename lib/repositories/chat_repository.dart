@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:outline/config/consts.dart';
 import 'package:outline/config/helpers/interceptor.dart';
 import 'package:outline/config/services/api_result.dart';
@@ -8,7 +9,7 @@ import 'package:outline/config/services/network_exceptions.dart';
 
 class ChatRepository {
   late DioClient dioClient;
-  String _baseUrl = Consts.baseUrl;
+  final String _baseUrl = Consts.baseUrl;
 
   ChatRepository() {
     var dio = Dio();
@@ -31,7 +32,9 @@ class ChatRepository {
           .doc(chatRoomId)
           .set(chatRoomMap);
     } catch (e) {
-      print(e.toString());
+      if (kDebugMode) {
+        print(e.toString());
+      }
     }
   }
 
@@ -58,7 +61,9 @@ class ChatRepository {
           .doc(chatRoomId)
           .update({'last_message_time': DateTime.now().toIso8601String()});
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 
@@ -74,18 +79,20 @@ class ChatRepository {
 
       List users = chatRoom.get('users');
 
-      users.forEach((element) {
+      for (var element in users) {
         if (element['email'] == userEmail) {
           element['last_opened'] = DateTime.now().toIso8601String();
         }
-      });
+      }
 
       await FirebaseFirestore.instance
           .collection('chatroom')
           .doc(chatRoomId)
           .update({'users': users});
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 
@@ -142,7 +149,9 @@ class ChatRepository {
 
       return ApiResult.success(data: response);
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }
@@ -164,7 +173,9 @@ class ChatRepository {
 
       return ApiResult.success(data: response);
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }

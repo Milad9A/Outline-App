@@ -11,6 +11,7 @@ class OutlineTextButton extends StatelessWidget {
   final double? height;
 
   const OutlineTextButton({
+    Key? key,
     required this.text,
     required this.onPressed,
     this.backgroundColor = ColorRepository.darkBlue,
@@ -18,11 +19,11 @@ class OutlineTextButton extends StatelessWidget {
     this.height = 44.0,
     this.borderSide,
     this.child,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: height,
       width: double.infinity,
       child: TextButton(

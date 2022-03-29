@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'question_bloc.dart';
 
@@ -46,6 +48,14 @@ mixin _$QuestionEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(QuestionCreate questionCreateData)?
+        createQuestionButtonPressed,
+    TResult Function()? getMyQuestions,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(QuestionCreate questionCreateData)?
@@ -60,6 +70,14 @@ mixin _$QuestionEvent {
     required TResult Function(QuestionCreateButtonPressed value)
         createQuestionButtonPressed,
     required TResult Function(QuestionGetMyQuestions value) getMyQuestions,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(QuestionCreateButtonPressed value)?
+        createQuestionButtonPressed,
+    TResult Function(QuestionGetMyQuestions value)? getMyQuestions,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -107,6 +125,7 @@ class __$StartedCopyWithImpl<$Res> extends _$QuestionEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started implements _Started {
   const _$_Started();
 
@@ -117,7 +136,8 @@ class _$_Started implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -132,6 +152,17 @@ class _$_Started implements _Started {
     required TResult Function() getMyQuestions,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(QuestionCreate questionCreateData)?
+        createQuestionButtonPressed,
+    TResult Function()? getMyQuestions,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -158,6 +189,17 @@ class _$_Started implements _Started {
     required TResult Function(QuestionGetMyQuestions value) getMyQuestions,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(QuestionCreateButtonPressed value)?
+        createQuestionButtonPressed,
+    TResult Function(QuestionGetMyQuestions value)? getMyQuestions,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -215,6 +257,7 @@ class _$QuestionCreateButtonPressedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$QuestionCreateButtonPressed implements QuestionCreateButtonPressed {
   const _$QuestionCreateButtonPressed({required this.questionCreateData});
 
@@ -229,16 +272,15 @@ class _$QuestionCreateButtonPressed implements QuestionCreateButtonPressed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is QuestionCreateButtonPressed &&
-            (identical(other.questionCreateData, questionCreateData) ||
-                const DeepCollectionEquality()
-                    .equals(other.questionCreateData, questionCreateData)));
+        (other.runtimeType == runtimeType &&
+            other is QuestionCreateButtonPressed &&
+            const DeepCollectionEquality()
+                .equals(other.questionCreateData, questionCreateData));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(questionCreateData);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(questionCreateData));
 
   @JsonKey(ignore: true)
   @override
@@ -255,6 +297,17 @@ class _$QuestionCreateButtonPressed implements QuestionCreateButtonPressed {
     required TResult Function() getMyQuestions,
   }) {
     return createQuestionButtonPressed(questionCreateData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(QuestionCreate questionCreateData)?
+        createQuestionButtonPressed,
+    TResult Function()? getMyQuestions,
+  }) {
+    return createQuestionButtonPressed?.call(questionCreateData);
   }
 
   @override
@@ -285,6 +338,17 @@ class _$QuestionCreateButtonPressed implements QuestionCreateButtonPressed {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(QuestionCreateButtonPressed value)?
+        createQuestionButtonPressed,
+    TResult Function(QuestionGetMyQuestions value)? getMyQuestions,
+  }) {
+    return createQuestionButtonPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(QuestionCreateButtonPressed value)?
@@ -304,7 +368,7 @@ abstract class QuestionCreateButtonPressed implements QuestionEvent {
           {required QuestionCreate questionCreateData}) =
       _$QuestionCreateButtonPressed;
 
-  QuestionCreate get questionCreateData => throw _privateConstructorUsedError;
+  QuestionCreate get questionCreateData;
   @JsonKey(ignore: true)
   $QuestionCreateButtonPressedCopyWith<QuestionCreateButtonPressed>
       get copyWith => throw _privateConstructorUsedError;
@@ -330,6 +394,7 @@ class _$QuestionGetMyQuestionsCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$QuestionGetMyQuestions implements QuestionGetMyQuestions {
   const _$QuestionGetMyQuestions();
 
@@ -340,7 +405,8 @@ class _$QuestionGetMyQuestions implements QuestionGetMyQuestions {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is QuestionGetMyQuestions);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is QuestionGetMyQuestions);
   }
 
   @override
@@ -355,6 +421,17 @@ class _$QuestionGetMyQuestions implements QuestionGetMyQuestions {
     required TResult Function() getMyQuestions,
   }) {
     return getMyQuestions();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(QuestionCreate questionCreateData)?
+        createQuestionButtonPressed,
+    TResult Function()? getMyQuestions,
+  }) {
+    return getMyQuestions?.call();
   }
 
   @override
@@ -381,6 +458,17 @@ class _$QuestionGetMyQuestions implements QuestionGetMyQuestions {
     required TResult Function(QuestionGetMyQuestions value) getMyQuestions,
   }) {
     return getMyQuestions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(QuestionCreateButtonPressed value)?
+        createQuestionButtonPressed,
+    TResult Function(QuestionGetMyQuestions value)? getMyQuestions,
+  }) {
+    return getMyQuestions?.call(this);
   }
 
   @override
@@ -455,6 +543,16 @@ mixin _$QuestionState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Question question)? createQuestionSuccess,
+    TResult Function(List<Question> questions)? getMyQuestionsSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? createLoading,
@@ -475,6 +573,16 @@ mixin _$QuestionState {
         getMyQuestionsSuccess,
     required TResult Function(GetQuestionsLoading value) getLoading,
     required TResult Function(QuestionError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateQuestionLoading value)? createLoading,
+    TResult Function(CreateQuestionSuccess value)? createQuestionSuccess,
+    TResult Function(GetMyQuestionsSuccess value)? getMyQuestionsSuccess,
+    TResult Function(GetQuestionsLoading value)? getLoading,
+    TResult Function(QuestionError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -524,6 +632,7 @@ class __$InitialCopyWithImpl<$Res> extends _$QuestionStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -534,7 +643,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -551,6 +661,19 @@ class _$_Initial implements _Initial {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Question question)? createQuestionSuccess,
+    TResult Function(List<Question> questions)? getMyQuestionsSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -583,6 +706,19 @@ class _$_Initial implements _Initial {
     required TResult Function(QuestionError value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateQuestionLoading value)? createLoading,
+    TResult Function(CreateQuestionSuccess value)? createQuestionSuccess,
+    TResult Function(GetMyQuestionsSuccess value)? getMyQuestionsSuccess,
+    TResult Function(GetQuestionsLoading value)? getLoading,
+    TResult Function(QuestionError value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -627,6 +763,7 @@ class _$CreateQuestionLoadingCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CreateQuestionLoading implements CreateQuestionLoading {
   const _$CreateQuestionLoading();
 
@@ -637,7 +774,8 @@ class _$CreateQuestionLoading implements CreateQuestionLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is CreateQuestionLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is CreateQuestionLoading);
   }
 
   @override
@@ -654,6 +792,19 @@ class _$CreateQuestionLoading implements CreateQuestionLoading {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return createLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Question question)? createQuestionSuccess,
+    TResult Function(List<Question> questions)? getMyQuestionsSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return createLoading?.call();
   }
 
   @override
@@ -686,6 +837,19 @@ class _$CreateQuestionLoading implements CreateQuestionLoading {
     required TResult Function(QuestionError value) error,
   }) {
     return createLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateQuestionLoading value)? createLoading,
+    TResult Function(CreateQuestionSuccess value)? createQuestionSuccess,
+    TResult Function(GetMyQuestionsSuccess value)? getMyQuestionsSuccess,
+    TResult Function(GetQuestionsLoading value)? getLoading,
+    TResult Function(QuestionError value)? error,
+  }) {
+    return createLoading?.call(this);
   }
 
   @override
@@ -743,6 +907,7 @@ class _$CreateQuestionSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CreateQuestionSuccess implements CreateQuestionSuccess {
   const _$CreateQuestionSuccess({required this.question});
 
@@ -757,15 +922,14 @@ class _$CreateQuestionSuccess implements CreateQuestionSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CreateQuestionSuccess &&
-            (identical(other.question, question) ||
-                const DeepCollectionEquality()
-                    .equals(other.question, question)));
+        (other.runtimeType == runtimeType &&
+            other is CreateQuestionSuccess &&
+            const DeepCollectionEquality().equals(other.question, question));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(question);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(question));
 
   @JsonKey(ignore: true)
   @override
@@ -784,6 +948,19 @@ class _$CreateQuestionSuccess implements CreateQuestionSuccess {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return createQuestionSuccess(question);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Question question)? createQuestionSuccess,
+    TResult Function(List<Question> questions)? getMyQuestionsSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return createQuestionSuccess?.call(question);
   }
 
   @override
@@ -820,6 +997,19 @@ class _$CreateQuestionSuccess implements CreateQuestionSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateQuestionLoading value)? createLoading,
+    TResult Function(CreateQuestionSuccess value)? createQuestionSuccess,
+    TResult Function(GetMyQuestionsSuccess value)? getMyQuestionsSuccess,
+    TResult Function(GetQuestionsLoading value)? getLoading,
+    TResult Function(QuestionError value)? error,
+  }) {
+    return createQuestionSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(CreateQuestionLoading value)? createLoading,
@@ -840,7 +1030,7 @@ abstract class CreateQuestionSuccess implements QuestionState {
   const factory CreateQuestionSuccess({required Question question}) =
       _$CreateQuestionSuccess;
 
-  Question get question => throw _privateConstructorUsedError;
+  Question get question;
   @JsonKey(ignore: true)
   $CreateQuestionSuccessCopyWith<CreateQuestionSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -879,6 +1069,7 @@ class _$GetMyQuestionsSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$GetMyQuestionsSuccess implements GetMyQuestionsSuccess {
   const _$GetMyQuestionsSuccess({required this.questions});
 
@@ -893,15 +1084,14 @@ class _$GetMyQuestionsSuccess implements GetMyQuestionsSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is GetMyQuestionsSuccess &&
-            (identical(other.questions, questions) ||
-                const DeepCollectionEquality()
-                    .equals(other.questions, questions)));
+        (other.runtimeType == runtimeType &&
+            other is GetMyQuestionsSuccess &&
+            const DeepCollectionEquality().equals(other.questions, questions));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(questions);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(questions));
 
   @JsonKey(ignore: true)
   @override
@@ -920,6 +1110,19 @@ class _$GetMyQuestionsSuccess implements GetMyQuestionsSuccess {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return getMyQuestionsSuccess(questions);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Question question)? createQuestionSuccess,
+    TResult Function(List<Question> questions)? getMyQuestionsSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return getMyQuestionsSuccess?.call(questions);
   }
 
   @override
@@ -956,6 +1159,19 @@ class _$GetMyQuestionsSuccess implements GetMyQuestionsSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateQuestionLoading value)? createLoading,
+    TResult Function(CreateQuestionSuccess value)? createQuestionSuccess,
+    TResult Function(GetMyQuestionsSuccess value)? getMyQuestionsSuccess,
+    TResult Function(GetQuestionsLoading value)? getLoading,
+    TResult Function(QuestionError value)? error,
+  }) {
+    return getMyQuestionsSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(CreateQuestionLoading value)? createLoading,
@@ -976,7 +1192,7 @@ abstract class GetMyQuestionsSuccess implements QuestionState {
   const factory GetMyQuestionsSuccess({required List<Question> questions}) =
       _$GetMyQuestionsSuccess;
 
-  List<Question> get questions => throw _privateConstructorUsedError;
+  List<Question> get questions;
   @JsonKey(ignore: true)
   $GetMyQuestionsSuccessCopyWith<GetMyQuestionsSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1002,6 +1218,7 @@ class _$GetQuestionsLoadingCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$GetQuestionsLoading implements GetQuestionsLoading {
   const _$GetQuestionsLoading();
 
@@ -1012,7 +1229,8 @@ class _$GetQuestionsLoading implements GetQuestionsLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is GetQuestionsLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is GetQuestionsLoading);
   }
 
   @override
@@ -1029,6 +1247,19 @@ class _$GetQuestionsLoading implements GetQuestionsLoading {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return getLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Question question)? createQuestionSuccess,
+    TResult Function(List<Question> questions)? getMyQuestionsSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return getLoading?.call();
   }
 
   @override
@@ -1061,6 +1292,19 @@ class _$GetQuestionsLoading implements GetQuestionsLoading {
     required TResult Function(QuestionError value) error,
   }) {
     return getLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateQuestionLoading value)? createLoading,
+    TResult Function(CreateQuestionSuccess value)? createQuestionSuccess,
+    TResult Function(GetMyQuestionsSuccess value)? getMyQuestionsSuccess,
+    TResult Function(GetQuestionsLoading value)? getLoading,
+    TResult Function(QuestionError value)? error,
+  }) {
+    return getLoading?.call(this);
   }
 
   @override
@@ -1127,6 +1371,7 @@ class _$QuestionErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$QuestionError implements QuestionError {
   const _$QuestionError({required this.error});
 
@@ -1141,14 +1386,14 @@ class _$QuestionError implements QuestionError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is QuestionError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is QuestionError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -1166,6 +1411,19 @@ class _$QuestionError implements QuestionError {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? createLoading,
+    TResult Function(Question question)? createQuestionSuccess,
+    TResult Function(List<Question> questions)? getMyQuestionsSuccess,
+    TResult Function()? getLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return error?.call(this.error);
   }
 
   @override
@@ -1202,6 +1460,19 @@ class _$QuestionError implements QuestionError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CreateQuestionLoading value)? createLoading,
+    TResult Function(CreateQuestionSuccess value)? createQuestionSuccess,
+    TResult Function(GetMyQuestionsSuccess value)? getMyQuestionsSuccess,
+    TResult Function(GetQuestionsLoading value)? getLoading,
+    TResult Function(QuestionError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(CreateQuestionLoading value)? createLoading,
@@ -1222,7 +1493,7 @@ abstract class QuestionError implements QuestionState {
   const factory QuestionError({required NetworkExceptions error}) =
       _$QuestionError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $QuestionErrorCopyWith<QuestionError> get copyWith =>
       throw _privateConstructorUsedError;

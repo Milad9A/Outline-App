@@ -15,8 +15,10 @@ import 'widgets/login_form.dart';
 import 'widgets/terms_and_policy_text.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
   static Route get route =>
-      MaterialPageRoute<void>(builder: (_) => LoginScreen());
+      MaterialPageRoute<void>(builder: (_) => const LoginScreen());
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -43,10 +45,10 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          leading: SizedBox.shrink(),
+          leading: const SizedBox.shrink(),
           actions: [
             IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_forward,
                 color: ColorRepository.greyish,
               ),
@@ -66,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
               loading: () {
                 Loader.show(
                   context,
-                  progressIndicator: OutlineCircularProgressIndicator(),
+                  progressIndicator: const OutlineCircularProgressIndicator(),
                 );
               },
               success: (User user) {

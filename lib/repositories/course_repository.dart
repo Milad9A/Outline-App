@@ -9,7 +9,7 @@ import 'package:outline/models/course_model/courses_list_model.dart';
 
 class CoursesRepository {
   late DioClient dioClient;
-  String _baseUrl = Consts.baseUrl;
+  final String _baseUrl = Consts.baseUrl;
 
   CoursesRepository() {
     var dio = Dio();
@@ -37,7 +37,6 @@ class CoursesRepository {
 
       return ApiResult.success(data: coursesList.coursesList);
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }
@@ -52,7 +51,6 @@ class CoursesRepository {
 
       return ApiResult.success(data: coursesList.coursesList);
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }
@@ -62,16 +60,15 @@ class CoursesRepository {
     required String bankerAuthorizationToken,
   }) async {
     try {
-      final response = await dioClient.post(
+      await dioClient.post(
         '/courses/$courseId/purchase',
         data: {
           "authorization": bankerAuthorizationToken,
         },
       );
 
-      return ApiResult.success(data: '');
+      return const ApiResult.success(data: '');
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }

@@ -2,7 +2,7 @@ import 'package:outline/config/consts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefsHelper {
-  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   Future<void> persistToken(String token) async {
     final SharedPreferences prefs = await _prefs;
@@ -17,10 +17,11 @@ class SharedPrefsHelper {
   Future<bool> hasToken() async {
     final SharedPreferences prefs = await _prefs;
     final token = prefs.getString('token');
-    if (token != null)
+    if (token != null) {
       return true;
-    else
+    } else {
       return false;
+    }
   }
 
   Future<String?> getToken() async {

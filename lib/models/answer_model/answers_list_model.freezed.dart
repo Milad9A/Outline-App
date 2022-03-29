@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'answers_list_model.dart';
 
@@ -26,7 +28,7 @@ class _$AnswersListModelTearOff {
     );
   }
 
-  AnswersListModel fromJson(Map<String, Object> json) {
+  AnswersListModel fromJson(Map<String, Object?> json) {
     return AnswersListModel.fromJson(json);
   }
 }
@@ -108,14 +110,13 @@ class _$AnswersListCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$AnswersList with DiagnosticableTreeMixin implements AnswersList {
   const _$AnswersList({required this.answersList});
 
   factory _$AnswersList.fromJson(Map<String, dynamic> json) =>
-      _$_$AnswersListFromJson(json);
+      _$$AnswersListFromJson(json);
 
   @override
   final List<Answer> answersList;
@@ -136,15 +137,15 @@ class _$AnswersList with DiagnosticableTreeMixin implements AnswersList {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is AnswersList &&
-            (identical(other.answersList, answersList) ||
-                const DeepCollectionEquality()
-                    .equals(other.answersList, answersList)));
+        (other.runtimeType == runtimeType &&
+            other is AnswersList &&
+            const DeepCollectionEquality()
+                .equals(other.answersList, answersList));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(answersList);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(answersList));
 
   @JsonKey(ignore: true)
   @override
@@ -153,7 +154,7 @@ class _$AnswersList with DiagnosticableTreeMixin implements AnswersList {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$AnswersListToJson(this);
+    return _$$AnswersListToJson(this);
   }
 }
 
@@ -165,7 +166,7 @@ abstract class AnswersList implements AnswersListModel {
       _$AnswersList.fromJson;
 
   @override
-  List<Answer> get answersList => throw _privateConstructorUsedError;
+  List<Answer> get answersList;
   @override
   @JsonKey(ignore: true)
   $AnswersListCopyWith<AnswersList> get copyWith =>

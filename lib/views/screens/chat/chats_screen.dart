@@ -9,6 +9,8 @@ import 'package:outline/views/screens/chat/widgets/widgets.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class ChatsScreen extends StatefulWidget {
+  const ChatsScreen({Key? key}) : super(key: key);
+
   @override
   _ChatsScreenState createState() => _ChatsScreenState();
 }
@@ -35,11 +37,11 @@ class _ChatsScreenState extends State<ChatsScreen> {
       body: _buildChatsScreenBody(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorRepository.darkBlue,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => CreateChatScreen()),
+            MaterialPageRoute(builder: (context) => const CreateChatScreen()),
           );
         },
       ),
@@ -51,7 +53,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
       backgroundColor: Colors.white,
       systemOverlayStyle: SystemUiOverlayStyle.light,
       elevation: 1.0,
-      iconTheme: IconThemeData(color: ColorRepository.darkBlue),
+      iconTheme: const IconThemeData(color: ColorRepository.darkBlue),
       centerTitle: false,
       leadingWidth: 50.0,
       title: Text(
@@ -63,10 +65,10 @@ class _ChatsScreenState extends State<ChatsScreen> {
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.more_vert_outlined),
+          icon: const Icon(Icons.more_vert_outlined),
           onPressed: () {},
         ),
-        SizedBox(width: 3.0),
+        const SizedBox(width: 3.0),
       ],
     );
   }
@@ -82,7 +84,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                   ? Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(height: 14.0),
+                        const SizedBox(height: 14.0),
                         OutlineTextField(
                           controller: searchController,
                           textInputType: TextInputType.name,
@@ -93,11 +95,11 @@ class _ChatsScreenState extends State<ChatsScreen> {
                             });
                           },
                           hintText: 'Search Chats',
-                          icon: Icon(Icons.search),
+                          icon: const Icon(Icons.search),
                         ),
                         ListView.builder(
                           shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           itemCount: snapshot.data.docs.length,
                           itemBuilder: (BuildContext context, int index) {
                             final QueryDocumentSnapshot chatRoom =
@@ -128,7 +130,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Image.asset('assets/images/no_chats_yet.png'),
-                            SizedBox(height: 20.0),
+                            const SizedBox(height: 20.0),
                             Text(
                               'No Chats Yet.',
                               textAlign: TextAlign.center,
@@ -138,8 +140,8 @@ class _ChatsScreenState extends State<ChatsScreen> {
                         ),
                       ),
                     )
-              : Padding(
-                  padding: const EdgeInsets.only(top: 150.0),
+              : const Padding(
+                  padding: EdgeInsets.only(top: 150.0),
                   child: Center(
                     child: OutlineCircularProgressIndicator(),
                   ),

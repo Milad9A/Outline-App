@@ -12,13 +12,13 @@ import 'package:outline/views/screens/profile/profile_screen.dart';
 // ignore: must_be_immutable
 class CommentsListView extends StatefulWidget {
   final String articleId;
+  final List<Comment> comments;
 
-  List<Comment> comments;
-
-  CommentsListView({
+  const CommentsListView({
+    Key? key,
     required this.comments,
     required this.articleId,
-  });
+  }) : super(key: key);
 
   @override
   _CommentsListViewState createState() => _CommentsListViewState();
@@ -32,17 +32,17 @@ class _CommentsListViewState extends State<CommentsListView> {
     return SlideTransition(
       position: Tween<Offset>(
         begin: const Offset(-1, 0),
-        end: Offset(0, 0),
+        end: const Offset(0, 0),
       ).animate(animation),
       child: Column(
         children: [
           index != 0
-              ? Divider(
+              ? const Divider(
                   thickness: 1.0,
                   indent: 5.0,
                   endIndent: 5.0,
                 )
-              : SizedBox.shrink(),
+              : const SizedBox.shrink(),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5.0),
             child: Row(
@@ -80,14 +80,14 @@ class _CommentsListViewState extends State<CommentsListView> {
                                     color: Colors.black,
                                   ),
                         ),
-                        SizedBox(height: 2.0),
+                        const SizedBox(height: 2.0),
                         Text(comment.body),
-                        SizedBox(height: 4.0),
+                        const SizedBox(height: 4.0),
                         Text(
                           DateFormatter().getVerboseDateTimeRepresentation(
                             DateTime.parse(comment.updatedAt),
                           ),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 12.0,
                           ),
                         ),
@@ -138,7 +138,7 @@ class _CommentsListViewState extends State<CommentsListView> {
         key: listKey,
         shrinkWrap: true,
         initialItemCount: widget.comments.length,
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 15.0,
           vertical: 15.0,
         ),

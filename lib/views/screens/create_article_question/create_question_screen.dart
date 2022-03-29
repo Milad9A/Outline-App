@@ -2,20 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
-import 'package:flutter_quill/models/documents/attribute.dart';
-import 'package:flutter_quill/models/documents/document.dart';
-import 'package:flutter_quill/widgets/controller.dart';
-import 'package:flutter_quill/widgets/default_styles.dart';
-import 'package:flutter_quill/widgets/editor.dart';
-import 'package:flutter_quill/widgets/toolbar.dart';
+import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:flutter_tags/flutter_tags.dart';
 import 'package:outline/config/consts.dart';
-import 'package:outline/config/functions/show_loading_gif.dart';
 import 'package:outline/config/functions/show_pop_up.dart';
 import 'package:outline/config/services/network_exceptions.dart';
 import 'package:outline/config/theme/color_repository.dart';
@@ -23,7 +15,6 @@ import 'package:outline/models/question_model/question_create_model.dart';
 import 'package:outline/models/question_model/question_model.dart';
 import 'package:outline/providers/question/question/question_bloc.dart';
 import 'package:outline/views/screens/navigation/navigation_screen.dart';
-import 'package:outline/views/widgets/outline_text_button.dart';
 import 'package:outline/views/widgets/widgets.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -32,8 +23,10 @@ import 'package:tuple/tuple.dart';
 import 'add_question_tags_screen.dart';
 
 class CreateQuestionScreen extends StatefulWidget {
+  const CreateQuestionScreen({Key? key}) : super(key: key);
+
   static Route get route =>
-      MaterialPageRoute<void>(builder: (_) => CreateQuestionScreen());
+      MaterialPageRoute<void>(builder: (_) => const CreateQuestionScreen());
 
   @override
   _CreateQuestionScreenState createState() => _CreateQuestionScreenState();
@@ -61,14 +54,14 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
     final doc = Document()..insert(0, '');
     setState(() {
       _controller = QuillController(
-          document: doc, selection: TextSelection.collapsed(offset: 0));
+          document: doc, selection: const TextSelection.collapsed(offset: 0));
     });
   }
 
   @override
   Widget build(BuildContext context) {
     if (_controller == null) {
-      return Scaffold(body: Center(child: Text('Loading...')));
+      return const Scaffold(body: Center(child: Text('Loading...')));
     }
 
     return BlocListener<QuestionBloc, QuestionState>(
@@ -77,7 +70,7 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
           createLoading: () {
             Loader.show(
               context,
-              progressIndicator: OutlineCircularProgressIndicator(),
+              progressIndicator: const OutlineCircularProgressIndicator(),
             );
           },
           createQuestionSuccess: (Question question) {
@@ -117,7 +110,6 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
             _controller!.formatSelection(Attribute.clone(Attribute.bold, null));
           } else {
             _controller!.formatSelection(Attribute.bold);
-            print("not bold");
           }
         }
       },
@@ -129,7 +121,7 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
-      iconTheme: IconThemeData(color: ColorRepository.darkBlue),
+      iconTheme: const IconThemeData(color: ColorRepository.darkBlue),
       centerTitle: false,
       title: Text(
         'Create Question',
@@ -171,17 +163,17 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
       children: [
         ListView(
           shrinkWrap: true,
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           children: [
             Row(
-              children: [
+              children: const [
                 Text(
                   'Title',
                   style: TextStyle(color: ColorRepository.darkBlue),
                 ),
               ],
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             OutlineTextField(
               controller: titleController,
               textInputType: TextInputType.name,
@@ -189,16 +181,16 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
               hintText: 'Write a title',
               onChanged: (value) {},
             ),
-            SizedBox(height: 30.0),
+            const SizedBox(height: 30.0),
             Row(
-              children: [
+              children: const [
                 Text(
                   'Content',
                   style: TextStyle(color: ColorRepository.darkBlue),
                 ),
               ],
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -224,40 +216,40 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                 placeholder: 'Add content',
                 enableInteractiveSelection: true,
                 expands: true,
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 customStyles: DefaultStyles(
-                  sizeSmall: TextStyle(fontSize: 9.0),
+                  sizeSmall: const TextStyle(fontSize: 9.0),
                   h1: DefaultTextBlockStyle(
-                    TextStyle(
+                    const TextStyle(
                       fontSize: 32.0,
                       color: Colors.black,
                       height: 1.15,
                       fontWeight: FontWeight.w300,
                     ),
-                    Tuple2(16.0, 0.0),
-                    Tuple2(0.0, 0.0),
+                    const Tuple2(16.0, 0.0),
+                    const Tuple2(0.0, 0.0),
                     null,
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 30.0),
+            const SizedBox(height: 30.0),
             Row(
-              children: [
+              children: const [
                 Text(
                   'Tags',
                   style: TextStyle(color: ColorRepository.darkBlue),
                 ),
               ],
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             OutlineTextButton(
               text: 'Select Tags',
               onPressed: () async {
                 tags = await Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AddQuestionTagsScreen(),
+                    builder: (context) => const AddQuestionTagsScreen(),
                   ),
                 );
                 setState(() {});
@@ -274,7 +266,7 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                           color: ColorRepository.darkGrey,
                         ),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.arrow_forward_ios,
                     color: ColorRepository.darkGrey,
                     size: 14.0,
@@ -282,8 +274,8 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 15.0),
-            Container(
+            const SizedBox(height: 15.0),
+            SizedBox(
               width: double.infinity,
               child: Tags(
                 itemCount: tags.length,
@@ -299,7 +291,7 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                     elevation: 0.0,
                     textColor: ColorRepository.darkBlue,
                     textActiveColor: ColorRepository.darkBlue,
-                    borderRadius: BorderRadius.all(
+                    borderRadius: const BorderRadius.all(
                       Radius.circular(4.0),
                     ),
                     border: Border.all(
@@ -323,21 +315,19 @@ class _CreateQuestionScreenState extends State<CreateQuestionScreen> {
                 },
               ),
             ),
-            SizedBox(height: 40.0),
+            const SizedBox(height: 40.0),
           ],
         ),
         Align(
           alignment: Alignment.bottomCenter,
           child: MediaQuery.of(context).viewInsets.bottom != 0
-              ? Container(
-                  child: QuillToolbar.basic(
-                    controller: _controller!,
-                    onImagePickCallback: _onImagePickCallback,
-                  ),
+              ? QuillToolbar.basic(
+                  controller: _controller!,
+                  onImagePickCallback: _onImagePickCallback,
                 )
-              : SizedBox.shrink(),
+              : const SizedBox.shrink(),
         ),
-        SizedBox(height: 30.0),
+        const SizedBox(height: 30.0),
       ],
     );
   }

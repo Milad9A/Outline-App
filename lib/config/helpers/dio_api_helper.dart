@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 class DioApiHelper {
-  static final String url = 'https://outline-app-api.herokuapp.com';
+  static const String url = 'https://outline-app-api.herokuapp.com';
   static BaseOptions opts = BaseOptions(
     baseUrl: url,
     responseType: ResponseType.json,
@@ -21,7 +22,9 @@ class DioApiHelper {
                 (RequestOptions options, RequestInterceptorHandler handler) =>
                     requestInterceptor(options),
             onError: (DioError e, ErrorInterceptorHandler handler) async {
-              print(e);
+              if (kDebugMode) {
+                print(e);
+              }
               return e.error;
             }),
       );

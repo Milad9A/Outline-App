@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'user_model.dart';
 
@@ -61,7 +63,7 @@ class _$UserModelTearOff {
     );
   }
 
-  UserModel fromJson(Map<String, Object> json) {
+  UserModel fromJson(Map<String, Object?> json) {
     return UserModel.fromJson(json);
   }
 }
@@ -294,9 +296,8 @@ class _$UserCopyWithImpl<$Res> extends _$UserModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$User with DiagnosticableTreeMixin implements User {
   const _$User(
       {@JsonKey(name: '_id') required this.id,
@@ -312,7 +313,7 @@ class _$User with DiagnosticableTreeMixin implements User {
       @JsonKey(name: 'courses') required this.courses,
       @JsonKey(name: 'purchased_courses') required this.purchasedCourses});
 
-  factory _$User.fromJson(Map<String, dynamic> json) => _$_$UserFromJson(json);
+  factory _$User.fromJson(Map<String, dynamic> json) => _$$UserFromJson(json);
 
   @override
   @JsonKey(name: '_id')
@@ -378,54 +379,40 @@ class _$User with DiagnosticableTreeMixin implements User {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is User &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.role, role) ||
-                const DeepCollectionEquality().equals(other.role, role)) &&
-            (identical(other.aboutMe, aboutMe) ||
-                const DeepCollectionEquality()
-                    .equals(other.aboutMe, aboutMe)) &&
-            (identical(other.reputation, reputation) ||
-                const DeepCollectionEquality()
-                    .equals(other.reputation, reputation)) &&
-            (identical(other.acceptRate, acceptRate) ||
-                const DeepCollectionEquality()
-                    .equals(other.acceptRate, acceptRate)) &&
-            (identical(other.avatar, avatar) ||
-                const DeepCollectionEquality().equals(other.avatar, avatar)) &&
-            (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)) &&
-            (identical(other.articles, articles) ||
-                const DeepCollectionEquality()
-                    .equals(other.articles, articles)) &&
-            (identical(other.courses, courses) ||
-                const DeepCollectionEquality()
-                    .equals(other.courses, courses)) &&
-            (identical(other.purchasedCourses, purchasedCourses) ||
-                const DeepCollectionEquality()
-                    .equals(other.purchasedCourses, purchasedCourses)));
+        (other.runtimeType == runtimeType &&
+            other is User &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.role, role) &&
+            const DeepCollectionEquality().equals(other.aboutMe, aboutMe) &&
+            const DeepCollectionEquality()
+                .equals(other.reputation, reputation) &&
+            const DeepCollectionEquality()
+                .equals(other.acceptRate, acceptRate) &&
+            const DeepCollectionEquality().equals(other.avatar, avatar) &&
+            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality().equals(other.articles, articles) &&
+            const DeepCollectionEquality().equals(other.courses, courses) &&
+            const DeepCollectionEquality()
+                .equals(other.purchasedCourses, purchasedCourses));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(role) ^
-      const DeepCollectionEquality().hash(aboutMe) ^
-      const DeepCollectionEquality().hash(reputation) ^
-      const DeepCollectionEquality().hash(acceptRate) ^
-      const DeepCollectionEquality().hash(avatar) ^
-      const DeepCollectionEquality().hash(tags) ^
-      const DeepCollectionEquality().hash(articles) ^
-      const DeepCollectionEquality().hash(courses) ^
-      const DeepCollectionEquality().hash(purchasedCourses);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(role),
+      const DeepCollectionEquality().hash(aboutMe),
+      const DeepCollectionEquality().hash(reputation),
+      const DeepCollectionEquality().hash(acceptRate),
+      const DeepCollectionEquality().hash(avatar),
+      const DeepCollectionEquality().hash(tags),
+      const DeepCollectionEquality().hash(articles),
+      const DeepCollectionEquality().hash(courses),
+      const DeepCollectionEquality().hash(purchasedCourses));
 
   @JsonKey(ignore: true)
   @override
@@ -434,7 +421,7 @@ class _$User with DiagnosticableTreeMixin implements User {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$UserToJson(this);
+    return _$$UserToJson(this);
   }
 }
 
@@ -469,40 +456,40 @@ abstract class User implements UserModel {
 
   @override
   @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
   @JsonKey(name: 'name')
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(name: 'email')
-  String get email => throw _privateConstructorUsedError;
+  String get email;
   @override
   @JsonKey(name: 'role')
-  String get role => throw _privateConstructorUsedError;
+  String get role;
   @override
   @JsonKey(name: 'aboutMe')
-  String get aboutMe => throw _privateConstructorUsedError;
+  String get aboutMe;
   @override
   @JsonKey(name: 'reputation')
-  int get reputation => throw _privateConstructorUsedError;
+  int get reputation;
   @override
   @JsonKey(name: 'accept_rate')
-  int get acceptRate => throw _privateConstructorUsedError;
+  int get acceptRate;
   @override
   @JsonKey(name: 'avatar')
-  String get avatar => throw _privateConstructorUsedError;
+  String get avatar;
   @override
   @JsonKey(name: 'tags')
-  List<String> get tags => throw _privateConstructorUsedError;
+  List<String> get tags;
   @override
   @JsonKey(name: 'articles')
-  List<String> get articles => throw _privateConstructorUsedError;
+  List<String> get articles;
   @override
   @JsonKey(name: 'courses')
-  List<String> get courses => throw _privateConstructorUsedError;
+  List<String> get courses;
   @override
   @JsonKey(name: 'purchased_courses')
-  List<String> get purchasedCourses => throw _privateConstructorUsedError;
+  List<String> get purchasedCourses;
   @override
   @JsonKey(ignore: true)
   $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;

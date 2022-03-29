@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:outline/config/consts.dart';
@@ -15,8 +14,9 @@ class ProfileScreen extends StatefulWidget {
   final String userId;
 
   const ProfileScreen({
+    Key? key,
     required this.userId,
-  });
+  }) : super(key: key);
 
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -39,8 +39,9 @@ class _ProfileScreenState extends State<ProfileScreen>
         builder: (context, state) {
           return state.maybeWhen(
             success: (user) => _buildProfileScreenBody(user: user),
-            loading: () => Center(child: OutlineCircularProgressIndicator()),
-            orElse: () => SizedBox.shrink(),
+            loading: () =>
+                const Center(child: OutlineCircularProgressIndicator()),
+            orElse: () => const SizedBox.shrink(),
           );
         },
       ),
@@ -51,10 +52,10 @@ class _ProfileScreenState extends State<ProfileScreen>
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 1.0,
-      iconTheme: IconThemeData(
+      iconTheme: const IconThemeData(
         color: ColorRepository.darkBlue,
       ),
-      actionsIconTheme: IconThemeData(
+      actionsIconTheme: const IconThemeData(
         color: ColorRepository.darkBlue,
       ),
     );
@@ -62,7 +63,7 @@ class _ProfileScreenState extends State<ProfileScreen>
 
   Widget _buildProfileScreenBody({required User user}) {
     return SingleChildScrollView(
-      padding: EdgeInsets.only(top: 10.0),
+      padding: const EdgeInsets.only(top: 10.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -70,7 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen>
         children: [
           Center(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
               ),
               height: 68.0,
@@ -82,14 +83,14 @@ class _ProfileScreenState extends State<ProfileScreen>
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
                       CircularProgressIndicator(
                     value: downloadProgress.progress,
-                    valueColor:
-                        AlwaysStoppedAnimation<Color>(ColorRepository.darkBlue),
+                    valueColor: const AlwaysStoppedAnimation<Color>(
+                        ColorRepository.darkBlue),
                   ),
                 ),
               ),
             ),
           ),
-          SizedBox(height: 6.0),
+          const SizedBox(height: 6.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -100,36 +101,37 @@ class _ProfileScreenState extends State<ProfileScreen>
                     .headline6!
                     .copyWith(fontWeight: FontWeight.bold, color: Colors.black),
               ),
-              SizedBox(width: 4.0),
-              Icon(
+              const SizedBox(width: 4.0),
+              const Icon(
                 Icons.verified,
                 color: ColorRepository.darkBlue,
                 size: 20.0,
               )
             ],
           ),
-          SizedBox(height: 6.0),
+          const SizedBox(height: 6.0),
           Text(user.aboutMe),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
             decoration: BoxDecoration(
               color: ColorRepository.darkBlue,
               borderRadius: BorderRadius.circular(15.0),
             ),
             child: Text(
               user.role,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
           ),
-          SizedBox(height: 10.0),
-          Container(
+          const SizedBox(height: 10.0),
+          SizedBox(
             width: 187.0,
             child: OutlineTextButton(
               text: 'Message',
               backgroundColor: Colors.white,
               textColor: ColorRepository.darkBlue,
-              borderSide: BorderSide(color: ColorRepository.darkBlue),
+              borderSide: const BorderSide(color: ColorRepository.darkBlue),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -148,7 +150,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               },
             ),
           ),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           Container(
             height: 45.0,
             alignment: Alignment.center,
@@ -168,12 +170,12 @@ class _ProfileScreenState extends State<ProfileScreen>
                                     color: Colors.black,
                                   ),
                         ),
-                        SizedBox(height: 2.0),
-                        Text('Reputation'),
+                        const SizedBox(height: 2.0),
+                        const Text('Reputation'),
                       ],
                     ),
                   ),
-                  VerticalDivider(
+                  const VerticalDivider(
                     color: ColorRepository.darkGrey,
                     thickness: 1.0,
                   ),
@@ -188,12 +190,12 @@ class _ProfileScreenState extends State<ProfileScreen>
                                     color: Colors.black,
                                   ),
                         ),
-                        SizedBox(height: 2.0),
-                        Text('Articles'),
+                        const SizedBox(height: 2.0),
+                        const Text('Articles'),
                       ],
                     ),
                   ),
-                  VerticalDivider(
+                  const VerticalDivider(
                     color: ColorRepository.darkGrey,
                     thickness: 1.0,
                   ),
@@ -208,8 +210,8 @@ class _ProfileScreenState extends State<ProfileScreen>
                                     color: Colors.black,
                                   ),
                         ),
-                        SizedBox(height: 2.0),
-                        Text('Tags'),
+                        const SizedBox(height: 2.0),
+                        const Text('Tags'),
                       ],
                     ),
                   ),

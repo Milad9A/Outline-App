@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:outline/repositories/user_repository.dart';
@@ -13,7 +14,7 @@ import 'package:permission_handler/permission_handler.dart';
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   'high_importance_channel',
   'High Importance Notifications',
-  'This channel is used for important notifications.',
+  description: 'This channel is used for important notifications.',
   importance: Importance.high,
 );
 
@@ -30,11 +31,14 @@ class NotificationService {
 
   NotificationService._internal();
 
+  // ignore: unused_field
   String? _token;
   Stream<String>? _tokenStream;
 
   void setFCMToken(String? token) async {
-    print('FCM Token: $token');
+    if (kDebugMode) {
+      print('FCM Token: $token');
+    }
     UserRepository userRepository = UserRepository();
     await userRepository.updateFCMToken(newFcmToken: token!);
     _token = token;
@@ -66,7 +70,9 @@ class NotificationService {
       String? payload,
     ) async {
       if (payload != null) {
-        print('notification payload: $payload');
+        if (kDebugMode) {
+          print('notification payload: $payload');
+        }
         try {
           Map<String, dynamic> messageData = jsonDecode(payload);
           handleMessageOpened(
@@ -74,7 +80,9 @@ class NotificationService {
             navigatorKey,
           );
         } catch (e) {
-          print(e);
+          if (kDebugMode) {
+            print(e);
+          }
         }
       }
     }
@@ -93,7 +101,7 @@ class NotificationService {
               android: AndroidNotificationDetails(
                 channel.id,
                 channel.name,
-                channel.description,
+                channelDescription: channel.description,
                 icon: 'app_icon',
               ),
             ),
@@ -104,7 +112,6 @@ class NotificationService {
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print('A new onMessageOpenedApp event was published!');
       handleMessageOpened(
         message.data,
         navigatorKey,
@@ -122,10 +129,10 @@ class NotificationService {
       }
     });
 
-    final AndroidInitializationSettings initializationSettingsAndroid =
+    const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('app_icon');
 
-    final InitializationSettings initializationSettings =
+    const InitializationSettings initializationSettings =
         InitializationSettings(
       android: initializationSettingsAndroid,
     );

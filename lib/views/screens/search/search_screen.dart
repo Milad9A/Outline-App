@@ -7,6 +7,8 @@ import 'package:outline/views/screens/search/widgets/widget.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class SearchScreen extends StatefulWidget {
+  const SearchScreen({Key? key}) : super(key: key);
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -59,7 +61,7 @@ class _SearchScreenState extends State<SearchScreen>
                   ),
                   IconButton(
                     onPressed: () {
-                      if (searchController.text.isNotEmpty)
+                      if (searchController.text.isNotEmpty) {
                         switch (selectedIndex) {
                           case 0:
                             BlocProvider.of<ArticleSearchBloc>(context).add(
@@ -84,13 +86,14 @@ class _SearchScreenState extends State<SearchScreen>
                             break;
                           default:
                         }
+                      }
                     },
-                    icon: Icon(Icons.search),
+                    icon: const Icon(Icons.search),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             OutlineTabBar(
               tabController: tabController,
               onTap: (index) {
@@ -101,7 +104,7 @@ class _SearchScreenState extends State<SearchScreen>
               },
               firstTitle: '',
               secondTitle: '',
-              tabs: [
+              tabs: const [
                 Tab(
                   child: Text(
                     'Articles',
@@ -131,24 +134,22 @@ class _SearchScreenState extends State<SearchScreen>
                 ),
               ],
             ),
-            Container(
-              child: IndexedStack(
-                index: selectedIndex,
-                children: [
-                  Visibility(
-                    visible: selectedIndex == 0,
-                    child: SearchArticlesTab(query: searchController.text),
-                  ),
-                  Visibility(
-                    visible: selectedIndex == 1,
-                    child: SearchQuestionsTab(query: searchController.text),
-                  ),
-                  Visibility(
-                    visible: selectedIndex == 2,
-                    child: SearchCoursesTab(query: searchController.text),
-                  ),
-                ],
-              ),
+            IndexedStack(
+              index: selectedIndex,
+              children: [
+                Visibility(
+                  visible: selectedIndex == 0,
+                  child: SearchArticlesTab(query: searchController.text),
+                ),
+                Visibility(
+                  visible: selectedIndex == 1,
+                  child: SearchQuestionsTab(query: searchController.text),
+                ),
+                Visibility(
+                  visible: selectedIndex == 2,
+                  child: SearchCoursesTab(query: searchController.text),
+                ),
+              ],
             ),
           ],
         ),

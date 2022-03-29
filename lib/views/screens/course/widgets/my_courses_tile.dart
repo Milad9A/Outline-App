@@ -11,25 +11,26 @@ class MyCoursesTile extends StatelessWidget {
   final Course course;
 
   const MyCoursesTile({
+    Key? key,
     required this.course,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.0),
-      margin: EdgeInsets.only(bottom: 10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      margin: const EdgeInsets.only(bottom: 10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         color: Colors.white,
-        boxShadow: [
+        boxShadow: const [
           Consts.outlineBoxShadow,
         ],
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(height: 6.0),
+          const SizedBox(height: 6.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -44,7 +45,7 @@ class MyCoursesTile extends StatelessWidget {
                   showModalBottomSheet(
                     context: context,
                     enableDrag: true,
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
                         top: Radius.circular(10.0),
                       ),
@@ -52,7 +53,7 @@ class MyCoursesTile extends StatelessWidget {
                     builder: (context) => Container(
                       height: 250.0,
                       alignment: Alignment.topCenter,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.vertical(
                           top: Radius.circular(10.0),
@@ -66,7 +67,7 @@ class MyCoursesTile extends StatelessWidget {
                             color: Colors.grey.shade200,
                             size: 60.0,
                           ),
-                          ListTile(
+                          const ListTile(
                             leading: Icon(
                               Icons.list,
                             ),
@@ -75,11 +76,11 @@ class MyCoursesTile extends StatelessWidget {
                               style: TextStyle(color: Colors.black),
                             ),
                           ),
-                          Divider(
+                          const Divider(
                             indent: 65.0,
                             endIndent: 65.0,
                           ),
-                          ListTile(
+                          const ListTile(
                             leading: Icon(
                               Icons.delete,
                             ),
@@ -93,7 +94,7 @@ class MyCoursesTile extends StatelessWidget {
                     ),
                   );
                 },
-                child: Icon(Icons.more_horiz),
+                child: const Icon(Icons.more_horiz),
               ),
             ],
           ),
@@ -107,17 +108,17 @@ class MyCoursesTile extends StatelessWidget {
                   ),
             ),
           ),
-          SizedBox(height: 16.0),
+          const SizedBox(height: 16.0),
           LinearPercentIndicator(
             animation: true,
             lineHeight: 8.0,
             animationDuration: 2000,
             percent: 0.7,
-            linearStrokeCap: LinearStrokeCap.roundAll,
+            barRadius: const Radius.circular(100),
             progressColor: ColorRepository.green,
             backgroundColor: ColorRepository.lowOpacityGreen,
           ),
-          SizedBox(height: 16.0),
+          const SizedBox(height: 16.0),
           OutlineTextButton(
             text: 'Continue',
             onPressed: () {
@@ -131,7 +132,7 @@ class MyCoursesTile extends StatelessWidget {
               );
             },
           ),
-          SizedBox(height: 16.0),
+          const SizedBox(height: 16.0),
         ],
       ),
     );

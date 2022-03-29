@@ -9,8 +9,9 @@ class CourseInfoTab extends StatelessWidget {
   final Course course;
 
   const CourseInfoTab({
+    Key? key,
     required this.course,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class CourseInfoTab extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
           ),
-          SizedBox(height: 6.0),
+          const SizedBox(height: 6.0),
           Row(
             children: [
               GestureDetector(
@@ -50,7 +51,7 @@ class CourseInfoTab extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(width: 8.0),
+              const SizedBox(width: 8.0),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,41 +68,41 @@ class CourseInfoTab extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 14.0),
+          const SizedBox(height: 14.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               CourseInfoContainerSingle(
                 color: ColorRepository.lowOpacityPink,
-                icon: Icon(
+                icon: const Icon(
                   Icons.group,
                   color: ColorRepository.pink,
                 ),
                 text: '${course.subscribers.length}\nStudents',
               ),
-              SizedBox(width: 10.0),
+              const SizedBox(width: 10.0),
               CourseInfoContainerSingle(
                 color: ColorRepository.lowOpacityLightBlue,
-                icon: Icon(
+                icon: const Icon(
                   Icons.ondemand_video,
                   color: ColorRepository.lightBlue,
                 ),
                 text: '${course.contents.length}\nVideos',
               ),
-              SizedBox(width: 10.0),
+              const SizedBox(width: 10.0),
               CourseInfoContainerSingle(
                 color: ColorRepository.lowOpacityGreen,
-                icon: Icon(
+                icon: const Icon(
                   Icons.query_builder,
                   color: ColorRepository.green,
                 ),
                 text:
                     '${Duration(seconds: course.lengthOfTheCourseInSeconds).inHours}\nhr',
               ),
-              SizedBox(width: 10.0),
+              const SizedBox(width: 10.0),
               CourseInfoContainerSingle(
                 color: ColorRepository.lowOpacityOrange,
-                icon: Icon(
+                icon: const Icon(
                   Icons.star,
                   color: ColorRepository.orange,
                 ),
@@ -109,7 +110,7 @@ class CourseInfoTab extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           Text(
             'Course Description',
             style: Theme.of(context).textTheme.headline6!.copyWith(
@@ -117,12 +118,12 @@ class CourseInfoTab extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
           ),
-          SizedBox(height: 12.0),
+          const SizedBox(height: 12.0),
           Text(
             course.description,
-            style: TextStyle(color: Colors.black),
+            style: const TextStyle(color: Colors.black),
           ),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           Text(
             'Requirements',
             style: Theme.of(context).textTheme.headline6!.copyWith(
@@ -130,10 +131,10 @@ class CourseInfoTab extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
           ),
-          SizedBox(height: 12.0),
+          const SizedBox(height: 12.0),
           Text(
             course.requirements,
-            style: TextStyle(color: Colors.black),
+            style: const TextStyle(color: Colors.black),
           ),
         ],
       ),

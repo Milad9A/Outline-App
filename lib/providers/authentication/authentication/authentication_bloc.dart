@@ -19,7 +19,7 @@ class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   AuthenticationBloc({
     required this.userRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final UserRepository userRepository;
 
@@ -32,12 +32,12 @@ class AuthenticationBloc
       final bool hasToken = await prefs.hasToken();
 
       if (hasToken) {
-        yield AuthenticationLoading();
+        yield const AuthenticationLoading();
 
         ApiResult<User> apiResult = await userRepository.getUserInfo();
 
         apiResult.when(
-          success: (User data) async {
+          success: (User data) async* {
             Consts.username = data.name;
             Consts.email = data.email;
             Consts.avatar = data.avatar;
@@ -49,19 +49,19 @@ class AuthenticationBloc
               email: data.email,
               username: data.name,
             );
-            emit(AuthenticationAuthenticated(user: data));
+            yield (AuthenticationAuthenticated(user: data));
           },
-          failure: (NetworkExceptions error) {
-            emit(AuthenticationUnAuthenticated());
+          failure: (NetworkExceptions error) async* {
+            yield (const AuthenticationUnAuthenticated());
           },
         );
       } else {
-        yield AuthenticationUnAuthenticated();
+        yield const AuthenticationUnAuthenticated();
       }
     }
 
     if (event is AuthenticationLoggedIn) {
-      yield AuthenticationLoading();
+      yield const AuthenticationLoading();
       final SharedPrefsHelper prefs = SharedPrefsHelper();
 
       Consts.username = event.user.name;
@@ -76,14 +76,14 @@ class AuthenticationBloc
         username: event.user.name,
       );
 
-      NotificationService notificationService = new NotificationService();
+      NotificationService notificationService = NotificationService();
       notificationService.init(afterNewLogin: true);
 
       yield AuthenticationAuthenticated(user: event.user);
     }
 
     if (event is AuthenticationSignedUp) {
-      yield AuthenticationLoading();
+      yield const AuthenticationLoading();
       final SharedPrefsHelper prefs = SharedPrefsHelper();
 
       Consts.username = event.user.name;
@@ -101,7 +101,7 @@ class AuthenticationBloc
     }
 
     if (event is AuthenticationLoggedOut) {
-      yield AuthenticationLoading();
+      yield const AuthenticationLoading();
       final SharedPrefsHelper prefs = SharedPrefsHelper();
       await prefs.deleteToken();
 
@@ -118,7 +118,7 @@ class AuthenticationBloc
       Consts.fcmToken = '';
       await FirebaseMessaging.instance.deleteToken();
 
-      yield AuthenticationUnAuthenticated();
+      yield const AuthenticationUnAuthenticated();
     }
   }
 }

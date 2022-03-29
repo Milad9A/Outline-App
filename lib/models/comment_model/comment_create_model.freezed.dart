@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'comment_create_model.dart';
 
@@ -29,7 +31,7 @@ class _$CommentCreateModelTearOff {
     );
   }
 
-  CommentCreateModel fromJson(Map<String, Object> json) {
+  CommentCreateModel fromJson(Map<String, Object?> json) {
     return CommentCreateModel.fromJson(json);
   }
 }
@@ -128,16 +130,15 @@ class _$CommentCreateCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$CommentCreate with DiagnosticableTreeMixin implements CommentCreate {
   const _$CommentCreate(
       {@JsonKey(name: 'body') required this.body,
       @JsonKey(name: 'article_id') required this.articleId});
 
   factory _$CommentCreate.fromJson(Map<String, dynamic> json) =>
-      _$_$CommentCreateFromJson(json);
+      _$$CommentCreateFromJson(json);
 
   @override
   @JsonKey(name: 'body')
@@ -163,19 +164,17 @@ class _$CommentCreate with DiagnosticableTreeMixin implements CommentCreate {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommentCreate &&
-            (identical(other.body, body) ||
-                const DeepCollectionEquality().equals(other.body, body)) &&
-            (identical(other.articleId, articleId) ||
-                const DeepCollectionEquality()
-                    .equals(other.articleId, articleId)));
+        (other.runtimeType == runtimeType &&
+            other is CommentCreate &&
+            const DeepCollectionEquality().equals(other.body, body) &&
+            const DeepCollectionEquality().equals(other.articleId, articleId));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(body) ^
-      const DeepCollectionEquality().hash(articleId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(body),
+      const DeepCollectionEquality().hash(articleId));
 
   @JsonKey(ignore: true)
   @override
@@ -184,7 +183,7 @@ class _$CommentCreate with DiagnosticableTreeMixin implements CommentCreate {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$CommentCreateToJson(this);
+    return _$$CommentCreateToJson(this);
   }
 }
 
@@ -199,10 +198,10 @@ abstract class CommentCreate implements CommentCreateModel {
 
   @override
   @JsonKey(name: 'body')
-  String get body => throw _privateConstructorUsedError;
+  String get body;
   @override
   @JsonKey(name: 'article_id')
-  String get articleId => throw _privateConstructorUsedError;
+  String get articleId;
   @override
   @JsonKey(ignore: true)
   $CommentCreateCopyWith<CommentCreate> get copyWith =>

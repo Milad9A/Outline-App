@@ -14,7 +14,7 @@ part 'course_bloc.freezed.dart';
 class CourseBloc extends Bloc<CourseEvent, CourseState> {
   CourseBloc({
     required this.coursesRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final CoursesRepository coursesRepository;
 
@@ -23,17 +23,17 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
     CourseEvent event,
   ) async* {
     if (event is GetAllCourses) {
-      yield CoursesLoading();
+      yield const CoursesLoading();
 
       ApiResult<List<Course>> apiResult =
           await coursesRepository.getAllCourses();
 
       apiResult.when(
-        success: (List<Course> courses) {
-          emit(CoursesSuccess(courses: courses));
+        success: (List<Course> courses) async* {
+          yield (CoursesSuccess(courses: courses));
         },
-        failure: (NetworkExceptions error) {
-          emit(CoursesError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (CoursesError(error: error));
         },
       );
     }

@@ -14,7 +14,7 @@ part 'get_user_bloc.freezed.dart';
 class GetUserBloc extends Bloc<GetUserEvent, GetUserState> {
   GetUserBloc({
     required this.userRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final UserRepository userRepository;
 
@@ -23,18 +23,18 @@ class GetUserBloc extends Bloc<GetUserEvent, GetUserState> {
     GetUserEvent event,
   ) async* {
     if (event is GetUserInfoById) {
-      yield GetUserLoading();
+      yield const GetUserLoading();
 
       ApiResult<User> apiResult = await userRepository.getUserInfoById(
         id: event.id,
       );
 
       apiResult.when(
-        success: (User user) {
-          emit(GetUserSuccess(user: user));
+        success: (User user) async* {
+          yield (GetUserSuccess(user: user));
         },
-        failure: (NetworkExceptions error) {
-          emit(GetUserError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (GetUserError(error: error));
         },
       );
     }

@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'content_model.dart';
 
@@ -43,7 +45,7 @@ class _$ContentModelTearOff {
     );
   }
 
-  ContentModel fromJson(Map<String, Object> json) {
+  ContentModel fromJson(Map<String, Object?> json) {
     return ContentModel.fromJson(json);
   }
 }
@@ -193,9 +195,8 @@ class _$ContentCopyWithImpl<$Res> extends _$ContentModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$Content with DiagnosticableTreeMixin implements Content {
   const _$Content(
       {@JsonKey(name: '_id')
@@ -212,7 +213,7 @@ class _$Content with DiagnosticableTreeMixin implements Content {
           required this.durationInSeconds});
 
   factory _$Content.fromJson(Map<String, dynamic> json) =>
-      _$_$ContentFromJson(json);
+      _$$ContentFromJson(json);
 
   @override
   @JsonKey(name: '_id')
@@ -254,35 +255,29 @@ class _$Content with DiagnosticableTreeMixin implements Content {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Content &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.contentType, contentType) ||
-                const DeepCollectionEquality()
-                    .equals(other.contentType, contentType)) &&
-            (identical(other.contentName, contentName) ||
-                const DeepCollectionEquality()
-                    .equals(other.contentName, contentName)) &&
-            (identical(other.contentLink, contentLink) ||
-                const DeepCollectionEquality()
-                    .equals(other.contentLink, contentLink)) &&
-            (identical(other.courseId, courseId) ||
-                const DeepCollectionEquality()
-                    .equals(other.courseId, courseId)) &&
-            (identical(other.durationInSeconds, durationInSeconds) ||
-                const DeepCollectionEquality()
-                    .equals(other.durationInSeconds, durationInSeconds)));
+        (other.runtimeType == runtimeType &&
+            other is Content &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.contentType, contentType) &&
+            const DeepCollectionEquality()
+                .equals(other.contentName, contentName) &&
+            const DeepCollectionEquality()
+                .equals(other.contentLink, contentLink) &&
+            const DeepCollectionEquality().equals(other.courseId, courseId) &&
+            const DeepCollectionEquality()
+                .equals(other.durationInSeconds, durationInSeconds));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(contentType) ^
-      const DeepCollectionEquality().hash(contentName) ^
-      const DeepCollectionEquality().hash(contentLink) ^
-      const DeepCollectionEquality().hash(courseId) ^
-      const DeepCollectionEquality().hash(durationInSeconds);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(contentType),
+      const DeepCollectionEquality().hash(contentName),
+      const DeepCollectionEquality().hash(contentLink),
+      const DeepCollectionEquality().hash(courseId),
+      const DeepCollectionEquality().hash(durationInSeconds));
 
   @JsonKey(ignore: true)
   @override
@@ -291,7 +286,7 @@ class _$Content with DiagnosticableTreeMixin implements Content {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$ContentToJson(this);
+    return _$$ContentToJson(this);
   }
 }
 
@@ -314,22 +309,22 @@ abstract class Content implements ContentModel {
 
   @override
   @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
   @JsonKey(name: 'content_type')
-  String get contentType => throw _privateConstructorUsedError;
+  String get contentType;
   @override
   @JsonKey(name: 'content_name')
-  String get contentName => throw _privateConstructorUsedError;
+  String get contentName;
   @override
   @JsonKey(name: 'content_link')
-  String get contentLink => throw _privateConstructorUsedError;
+  String get contentLink;
   @override
   @JsonKey(name: 'course_id')
-  String get courseId => throw _privateConstructorUsedError;
+  String get courseId;
   @override
   @JsonKey(name: 'video_duration_in_seconds')
-  String get durationInSeconds => throw _privateConstructorUsedError;
+  String get durationInSeconds;
   @override
   @JsonKey(ignore: true)
   $ContentCopyWith<Content> get copyWith => throw _privateConstructorUsedError;

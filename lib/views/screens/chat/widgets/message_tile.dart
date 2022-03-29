@@ -5,11 +5,12 @@ import 'package:outline/config/theme/color_repository.dart';
 import 'package:auto_direction/auto_direction.dart';
 
 class MessageTile extends StatefulWidget {
-  MessageTile({
+  const MessageTile({
+    Key? key,
     required this.message,
-  });
+  }) : super(key: key);
 
-  final message;
+  final Map<String, dynamic> message;
 
   @override
   _MessageTileState createState() => _MessageTileState();
@@ -21,7 +22,7 @@ class _MessageTileState extends State<MessageTile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: 14.0,
         vertical: 5.0,
       ),
@@ -60,7 +61,7 @@ class _MessageTileState extends State<MessageTile> {
                         ),
                   ),
                 ),
-                SizedBox(width: 4.0),
+                const SizedBox(width: 4.0),
                 Text(
                   DateFormatter().getVerboseDateTimeRepresentation(
                     DateTime.parse(

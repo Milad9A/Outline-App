@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'user_login_model.dart';
 
@@ -29,7 +31,7 @@ class _$UserLoginModelTearOff {
     );
   }
 
-  UserLoginModel fromJson(Map<String, Object> json) {
+  UserLoginModel fromJson(Map<String, Object?> json) {
     return UserLoginModel.fromJson(json);
   }
 }
@@ -125,16 +127,15 @@ class _$UserLoginCopyWithImpl<$Res> extends _$UserLoginModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$UserLogin with DiagnosticableTreeMixin implements UserLogin {
   const _$UserLogin(
       {@JsonKey(name: 'email') required this.email,
       @JsonKey(name: 'password') required this.password});
 
   factory _$UserLogin.fromJson(Map<String, dynamic> json) =>
-      _$_$UserLoginFromJson(json);
+      _$$UserLoginFromJson(json);
 
   @override
   @JsonKey(name: 'email')
@@ -160,19 +161,17 @@ class _$UserLogin with DiagnosticableTreeMixin implements UserLogin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is UserLogin &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)));
+        (other.runtimeType == runtimeType &&
+            other is UserLogin &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.password, password));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(password);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(password));
 
   @JsonKey(ignore: true)
   @override
@@ -181,7 +180,7 @@ class _$UserLogin with DiagnosticableTreeMixin implements UserLogin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$UserLoginToJson(this);
+    return _$$UserLoginToJson(this);
   }
 }
 
@@ -194,10 +193,10 @@ abstract class UserLogin implements UserLoginModel {
 
   @override
   @JsonKey(name: 'email')
-  String get email => throw _privateConstructorUsedError;
+  String get email;
   @override
   @JsonKey(name: 'password')
-  String get password => throw _privateConstructorUsedError;
+  String get password;
   @override
   @JsonKey(ignore: true)
   $UserLoginCopyWith<UserLogin> get copyWith =>

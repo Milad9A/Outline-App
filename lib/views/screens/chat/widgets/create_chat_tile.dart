@@ -15,17 +15,18 @@ class CreateChatTile extends StatelessWidget {
   final ChatRepository chatRepository = ChatRepository();
 
   CreateChatTile({
+    Key? key,
     required this.name,
     required this.email,
     required this.avatar,
     required this.channelName,
     this.isFromInviteToCall = false,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: EdgeInsets.symmetric(vertical: 4.0),
+      contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
       leading: CircleAvatar(
         backgroundImage: CachedNetworkImageProvider(avatar),
         backgroundColor: ColorRepository.greyish,

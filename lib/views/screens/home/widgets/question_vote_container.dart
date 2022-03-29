@@ -8,16 +8,14 @@ import 'package:outline/providers/question/question_vote/question_vote_bloc.dart
 import 'dart:math' as math;
 
 class QuestionVoteContainer extends StatefulWidget {
-  final Key key;
   final QuestionVote questionVote;
   final void Function(QuestionVote) onChanged;
 
-  QuestionVoteContainer({
+  const QuestionVoteContainer({
+    Key? key,
     required this.questionVote,
     required this.onChanged,
-    required this.key,
   }) : super(key: key);
-
   @override
   _QuestionVoteContainerState createState() => _QuestionVoteContainerState();
 }

@@ -1,9 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_quill/models/documents/document.dart';
-import 'package:flutter_quill/widgets/controller.dart';
-import 'package:flutter_quill/widgets/editor.dart';
+import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:outline/config/helpers/date_foramtter.dart';
 import 'package:outline/models/answer_model/answer_model.dart';
 import 'dart:math' as math;
@@ -11,7 +9,8 @@ import 'dart:math' as math;
 class AnswerProfileContainer extends StatefulWidget {
   final Answer answer;
 
-  AnswerProfileContainer({required this.answer});
+  const AnswerProfileContainer({Key? key, required this.answer})
+      : super(key: key);
 
   @override
   _AnswerProfileContainerState createState() => _AnswerProfileContainerState();
@@ -24,18 +23,16 @@ class _AnswerProfileContainerState extends State<AnswerProfileContainer> {
   void initState() {
     super.initState();
 
-    try {
-      controller = QuillController(
-        document: Document.fromJson(jsonDecode(widget.answer.body)),
-        selection: TextSelection.collapsed(offset: 0),
-      );
-    } catch (e) {}
+    controller = QuillController(
+      document: Document.fromJson(jsonDecode(widget.answer.body)),
+      selection: const TextSelection.collapsed(offset: 0),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(15.0),
+      padding: const EdgeInsets.all(15.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -53,7 +50,7 @@ class _AnswerProfileContainerState extends State<AnswerProfileContainer> {
                     Transform.rotate(
                       angle: 270 * math.pi / 180,
                       child: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.play_arrow,
                           color: Colors.green,
                         ),
@@ -64,7 +61,7 @@ class _AnswerProfileContainerState extends State<AnswerProfileContainer> {
                     Transform.rotate(
                       angle: 90 * math.pi / 180,
                       child: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.play_arrow,
                           color: Colors.red,
                         ),
@@ -74,7 +71,7 @@ class _AnswerProfileContainerState extends State<AnswerProfileContainer> {
                   ],
                 ),
               ),
-              SizedBox(width: 10.0),
+              const SizedBox(width: 10.0),
               controller != null
                   ? Expanded(
                       child: QuillEditor.basic(
@@ -87,7 +84,7 @@ class _AnswerProfileContainerState extends State<AnswerProfileContainer> {
                     ),
             ],
           ),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           Align(
             alignment: Alignment.centerRight,
             child: Text(

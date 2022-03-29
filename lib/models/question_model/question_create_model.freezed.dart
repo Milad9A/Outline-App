@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'question_create_model.dart';
 
@@ -31,7 +33,7 @@ class _$QuestionCreateModelTearOff {
     );
   }
 
-  QuestionCreateModel fromJson(Map<String, Object> json) {
+  QuestionCreateModel fromJson(Map<String, Object?> json) {
     return QuestionCreateModel.fromJson(json);
   }
 }
@@ -144,9 +146,8 @@ class _$QuestionCreateCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$QuestionCreate with DiagnosticableTreeMixin implements QuestionCreate {
   const _$QuestionCreate(
       {@JsonKey(name: 'body') required this.body,
@@ -154,7 +155,7 @@ class _$QuestionCreate with DiagnosticableTreeMixin implements QuestionCreate {
       @JsonKey(name: 'tags') required this.tags});
 
   factory _$QuestionCreate.fromJson(Map<String, dynamic> json) =>
-      _$_$QuestionCreateFromJson(json);
+      _$$QuestionCreateFromJson(json);
 
   @override
   @JsonKey(name: 'body')
@@ -184,21 +185,19 @@ class _$QuestionCreate with DiagnosticableTreeMixin implements QuestionCreate {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is QuestionCreate &&
-            (identical(other.body, body) ||
-                const DeepCollectionEquality().equals(other.body, body)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)));
+        (other.runtimeType == runtimeType &&
+            other is QuestionCreate &&
+            const DeepCollectionEquality().equals(other.body, body) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.tags, tags));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(body) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(tags);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(body),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(tags));
 
   @JsonKey(ignore: true)
   @override
@@ -207,7 +206,7 @@ class _$QuestionCreate with DiagnosticableTreeMixin implements QuestionCreate {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$QuestionCreateToJson(this);
+    return _$$QuestionCreateToJson(this);
   }
 }
 
@@ -222,13 +221,13 @@ abstract class QuestionCreate implements QuestionCreateModel {
 
   @override
   @JsonKey(name: 'body')
-  String get body => throw _privateConstructorUsedError;
+  String get body;
   @override
   @JsonKey(name: 'title')
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
   @JsonKey(name: 'tags')
-  List<String> get tags => throw _privateConstructorUsedError;
+  List<String> get tags;
   @override
   @JsonKey(ignore: true)
   $QuestionCreateCopyWith<QuestionCreate> get copyWith =>

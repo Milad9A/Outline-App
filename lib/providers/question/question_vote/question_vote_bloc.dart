@@ -14,7 +14,7 @@ part 'question_vote_bloc.freezed.dart';
 class QuestionVoteBloc extends Bloc<QuestionVoteEvent, QuestionVoteState> {
   QuestionVoteBloc({
     required this.questionRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final QuestionRepository questionRepository;
 
@@ -29,13 +29,13 @@ class QuestionVoteBloc extends Bloc<QuestionVoteEvent, QuestionVoteState> {
       );
 
       apiResult.when(
-        success: (QuestionVote data) {
-          emit(VoteOnQuestionSuccess(questionVote: data));
-          emit(_Initial());
+        success: (QuestionVote data) async* {
+          yield (VoteOnQuestionSuccess(questionVote: data));
+          yield (const _Initial());
         },
-        failure: (NetworkExceptions error) {
-          emit(QuestionVoteError(error: error));
-          emit(_Initial());
+        failure: (NetworkExceptions error) async* {
+          yield (QuestionVoteError(error: error));
+          yield (const _Initial());
         },
       );
     }

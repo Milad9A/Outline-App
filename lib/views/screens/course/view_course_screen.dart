@@ -12,8 +12,9 @@ class ViewCourseScreen extends StatefulWidget {
   final Course course;
 
   const ViewCourseScreen({
+    Key? key,
     required this.course,
-  });
+  }) : super(key: key);
 
   @override
   _ViewCourseScreenState createState() => _ViewCourseScreenState();
@@ -26,8 +27,8 @@ class _ViewCourseScreenState extends State<ViewCourseScreen>
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<CourseBloc>(context).add(GetAllCourses());
-    BlocProvider.of<MyCoursesBloc>(context).add(GetMyCourses());
+    BlocProvider.of<CourseBloc>(context).add(const GetAllCourses());
+    BlocProvider.of<MyCoursesBloc>(context).add(const GetMyCourses());
     _tabController = TabController(length: 2, vsync: this);
   }
 
@@ -39,7 +40,7 @@ class _ViewCourseScreenState extends State<ViewCourseScreen>
         backgroundColor: ColorRepository.darkBlue,
         actions: [
           IconButton(
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert),
             onPressed: () {},
           ),
         ],
@@ -49,7 +50,7 @@ class _ViewCourseScreenState extends State<ViewCourseScreen>
           Container(
             width: double.infinity,
             color: ColorRepository.darkBlue,
-            padding: EdgeInsets.only(left: 50.0),
+            padding: const EdgeInsets.only(left: 50.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

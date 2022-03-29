@@ -14,7 +14,7 @@ part 'article_search_bloc.freezed.dart';
 class ArticleSearchBloc extends Bloc<ArticleSearchEvent, ArticleSearchState> {
   ArticleSearchBloc({
     required this.searchRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final SearchRepository searchRepository;
 
@@ -23,17 +23,17 @@ class ArticleSearchBloc extends Bloc<ArticleSearchEvent, ArticleSearchState> {
     ArticleSearchEvent event,
   ) async* {
     if (event is ArticleSearchButtonPressed) {
-      yield ArticleSearchLoading();
+      yield const ArticleSearchLoading();
 
       ApiResult<List<ArticleLike>> apiResult =
           await searchRepository.searchArticles(query: event.query);
 
       apiResult.when(
-        success: (List<ArticleLike> data) {
-          emit(ArticleSearchSuccess(articles: data));
+        success: (List<ArticleLike> data) async* {
+          yield (ArticleSearchSuccess(articles: data));
         },
-        failure: (NetworkExceptions error) {
-          emit(ArticleSearchError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (ArticleSearchError(error: error));
         },
       );
     }

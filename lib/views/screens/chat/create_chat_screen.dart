@@ -14,9 +14,10 @@ class CreateChatScreen extends StatefulWidget {
   final String? channelName;
 
   const CreateChatScreen({
+    Key? key,
     this.isFromInviteToCall = false,
     this.channelName = '',
-  });
+  }) : super(key: key);
 
   @override
   _CreateChatScreenState createState() => _CreateChatScreenState();
@@ -32,7 +33,7 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<UserBloc>(context).add(GetAllPublicData());
+    BlocProvider.of<UserBloc>(context).add(const GetAllPublicData());
   }
 
   @override
@@ -64,7 +65,7 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 1.0,
-      iconTheme: IconThemeData(color: ColorRepository.darkBlue),
+      iconTheme: const IconThemeData(color: ColorRepository.darkBlue),
       centerTitle: false,
       title: Text(
         !widget.isFromInviteToCall ? 'Create New Chat' : 'Invite to call',
@@ -76,7 +77,7 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
       actions: !widget.isFromInviteToCall
           ? [
               IconButton(
-                icon: Icon(Icons.more_vert_outlined),
+                icon: const Icon(Icons.more_vert_outlined),
                 onPressed: () {},
               ),
             ]
@@ -89,7 +90,7 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Column(
         children: [
-          SizedBox(height: 14.0),
+          const SizedBox(height: 14.0),
           OutlineTextField(
             controller: searchController,
             textInputType: TextInputType.name,
@@ -100,22 +101,22 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
               });
             },
             hintText: 'Search Users',
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
           ),
           BlocBuilder<UserBloc, UserState>(
             builder: (context, state) {
               return state.maybeWhen(
-                initial: () => Padding(
-                  padding: const EdgeInsets.only(top: 150.0),
+                initial: () => const Padding(
+                  padding: EdgeInsets.only(top: 150.0),
                   child: OutlineCircularProgressIndicator(),
                 ),
-                loading: () => Padding(
-                  padding: const EdgeInsets.only(top: 150.0),
+                loading: () => const Padding(
+                  padding: EdgeInsets.only(top: 150.0),
                   child: OutlineCircularProgressIndicator(),
                 ),
                 success: (users) {
                   return ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: users.length,
                     itemBuilder: (BuildContext context, int index) {
@@ -129,7 +130,7 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
                     },
                   );
                 },
-                orElse: () => SizedBox.shrink(),
+                orElse: () => const SizedBox.shrink(),
               );
             },
           )

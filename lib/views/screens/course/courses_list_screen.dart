@@ -10,9 +10,10 @@ class CoursesListScreen extends StatefulWidget {
   final List<Course> coursesList;
 
   const CoursesListScreen({
+    Key? key,
     required this.title,
     required this.coursesList,
-  });
+  }) : super(key: key);
 
   @override
   _CoursesListScreenState createState() => _CoursesListScreenState();
@@ -26,7 +27,7 @@ class _CoursesListScreenState extends State<CoursesListScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: ColorRepository.darkBlue,
           ),
@@ -42,7 +43,7 @@ class _CoursesListScreenState extends State<CoursesListScreen> {
                 color: ColorRepository.darkBlue,
               ),
         ),
-        actions: [
+        actions: const [
           Icon(
             Icons.shopping_bag_outlined,
             color: ColorRepository.darkBlue,
@@ -52,7 +53,7 @@ class _CoursesListScreenState extends State<CoursesListScreen> {
       ),
       body: GridView.count(
         crossAxisCount: 2,
-        padding: EdgeInsets.only(top: 12.0),
+        padding: const EdgeInsets.only(top: 12.0),
         children: widget.coursesList
             .map(
               (course) => CourseGrid(

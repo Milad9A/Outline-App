@@ -8,15 +8,15 @@ import 'package:outline/models/comment_model/comment_model.dart';
 import 'package:outline/providers/article/article_comments/article_comments_bloc.dart';
 import 'package:outline/providers/comment/comment_bloc.dart';
 import 'package:outline/views/screens/create_article_question/widgets/comments_list_view.dart';
-import 'package:outline/views/widgets/outline_circular_progress_indicator.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class CommentsScreen extends StatefulWidget {
   final String articleId;
 
   const CommentsScreen({
+    Key? key,
     required this.articleId,
-  });
+  }) : super(key: key);
 
   @override
   _CommentsScreenState createState() => _CommentsScreenState();
@@ -37,7 +37,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: ColorRepository.darkBlue),
+        iconTheme: const IconThemeData(color: ColorRepository.darkBlue),
         backgroundColor: Colors.white,
         elevation: 1.0,
       ),
@@ -49,10 +49,10 @@ class _CommentsScreenState extends State<CommentsScreen> {
                 child: BlocBuilder<ArticleCommentsBloc, ArticleCommentsState>(
                   builder: (context, state) {
                     return state.when(
-                      initial: () => Center(
+                      initial: () => const Center(
                         child: OutlineCircularProgressIndicator(),
                       ),
-                      articleCommentsLoading: () => Center(
+                      articleCommentsLoading: () => const Center(
                         child: OutlineCircularProgressIndicator(),
                       ),
                       articleCommentsSuccess: (List<Comment> comments) {
@@ -62,18 +62,18 @@ class _CommentsScreenState extends State<CommentsScreen> {
                         );
                       },
                       articleCommentsError: (NetworkExceptions error) =>
-                          SizedBox.shrink(),
+                          const SizedBox.shrink(),
                     );
                   },
                 ),
               ),
-              SizedBox(height: 60.0),
+              const SizedBox(height: 60.0),
             ],
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+              padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
               height: 60,
               width: double.infinity,
               color: Colors.white,
@@ -97,7 +97,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: IconButton(
                       splashRadius: 0.1,
-                      icon: Icon(Icons.add_comment),
+                      icon: const Icon(Icons.add_comment),
                       onPressed: () {
                         if (commentController.text.isNotEmpty) {
                           BlocProvider.of<CommentBloc>(context).add(

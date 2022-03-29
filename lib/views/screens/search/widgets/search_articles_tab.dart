@@ -8,7 +8,7 @@ import 'package:outline/views/widgets/widgets.dart';
 class SearchArticlesTab extends StatefulWidget {
   final String query;
 
-  const SearchArticlesTab({required this.query});
+  const SearchArticlesTab({Key? key, required this.query}) : super(key: key);
 
   @override
   _SearchArticlesTabState createState() => _SearchArticlesTabState();
@@ -18,10 +18,11 @@ class _SearchArticlesTabState extends State<SearchArticlesTab> {
   @override
   void initState() {
     super.initState();
-    if (widget.query.isNotEmpty)
+    if (widget.query.isNotEmpty) {
       BlocProvider.of<ArticleSearchBloc>(context).add(
         ArticleSearchButtonPressed(query: widget.query),
       );
+    }
   }
 
   @override
@@ -34,13 +35,13 @@ class _SearchArticlesTabState extends State<SearchArticlesTab> {
                 ? ListView.separated(
                     itemCount: articles.length,
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       ArticleLike article = articles[index];
                       return ArticleContainer(articleLike: article);
                     },
-                    separatorBuilder: (context, int) {
-                      return Divider(
+                    separatorBuilder: (context, _) {
+                      return const Divider(
                         thickness: 0.5,
                         indent: 15.0,
                         endIndent: 15.0,
@@ -48,19 +49,19 @@ class _SearchArticlesTabState extends State<SearchArticlesTab> {
                     },
                   )
                 : Container(
-                    padding: EdgeInsets.only(top: 100.0),
-                    child: Text('No results found!'),
+                    padding: const EdgeInsets.only(top: 100.0),
+                    child: const Text('No results found!'),
                   );
           },
           articleSearchLoading: () => Container(
             color: Colors.white,
             alignment: Alignment.center,
-            padding: EdgeInsets.only(top: 100.0),
-            child: OutlineCircularProgressIndicator(),
+            padding: const EdgeInsets.only(top: 100.0),
+            child: const OutlineCircularProgressIndicator(),
           ),
           orElse: () => Container(
-            padding: EdgeInsets.only(top: 100.0),
-            child: Text(
+            padding: const EdgeInsets.only(top: 100.0),
+            child: const Text(
               'Enter a search keyword above!',
             ),
           ),

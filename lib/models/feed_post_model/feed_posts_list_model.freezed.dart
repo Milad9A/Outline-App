@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'feed_posts_list_model.dart';
 
@@ -26,7 +28,7 @@ class _$FeedPostsListModelTearOff {
     );
   }
 
-  FeedPostsListModel fromJson(Map<String, Object> json) {
+  FeedPostsListModel fromJson(Map<String, Object?> json) {
     return FeedPostsListModel.fromJson(json);
   }
 }
@@ -105,13 +107,12 @@ class _$FeedCopyWithImpl<$Res> extends _$FeedPostsListModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$Feed with DiagnosticableTreeMixin implements Feed {
   const _$Feed({required this.feed});
 
-  factory _$Feed.fromJson(Map<String, dynamic> json) => _$_$FeedFromJson(json);
+  factory _$Feed.fromJson(Map<String, dynamic> json) => _$$FeedFromJson(json);
 
   @override
   final List<FeedPost> feed;
@@ -132,14 +133,14 @@ class _$Feed with DiagnosticableTreeMixin implements Feed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Feed &&
-            (identical(other.feed, feed) ||
-                const DeepCollectionEquality().equals(other.feed, feed)));
+        (other.runtimeType == runtimeType &&
+            other is Feed &&
+            const DeepCollectionEquality().equals(other.feed, feed));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(feed);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(feed));
 
   @JsonKey(ignore: true)
   @override
@@ -148,7 +149,7 @@ class _$Feed with DiagnosticableTreeMixin implements Feed {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$FeedToJson(this);
+    return _$$FeedToJson(this);
   }
 }
 
@@ -158,7 +159,7 @@ abstract class Feed implements FeedPostsListModel {
   factory Feed.fromJson(Map<String, dynamic> json) = _$Feed.fromJson;
 
   @override
-  List<FeedPost> get feed => throw _privateConstructorUsedError;
+  List<FeedPost> get feed;
   @override
   @JsonKey(ignore: true)
   $FeedCopyWith<Feed> get copyWith => throw _privateConstructorUsedError;

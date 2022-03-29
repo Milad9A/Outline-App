@@ -9,7 +9,7 @@ import 'package:outline/models/tag_model/tags_list_model.dart';
 
 class TagsRepository {
   late DioClient dioClient;
-  String _baseUrl = Consts.baseUrl;
+  final String _baseUrl = Consts.baseUrl;
 
   TagsRepository() {
     var dio = Dio();
@@ -32,7 +32,6 @@ class TagsRepository {
 
       return ApiResult.success(data: tagList.tagsList);
     } catch (e) {
-      print(e);
       return ApiResult.failure(error: NetworkExceptions.getDioException(e));
     }
   }

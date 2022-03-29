@@ -14,7 +14,7 @@ part 'tags_bloc.freezed.dart';
 class TagBloc extends Bloc<TagEvent, TagState> {
   TagBloc({
     required this.tagsRepository,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   final TagsRepository tagsRepository;
   List<Tag>? tags;
@@ -24,17 +24,17 @@ class TagBloc extends Bloc<TagEvent, TagState> {
     TagEvent event,
   ) async* {
     if (event is GetAllTags) {
-      yield TagsLoading();
+      yield const TagsLoading();
 
       ApiResult<List<Tag>> apiResult = await tagsRepository.getAllTags();
 
       apiResult.when(
-        success: (List<Tag> data) {
+        success: (List<Tag> data) async* {
           tags = data;
-          emit(TagsSuccess(tags: data));
+          yield (TagsSuccess(tags: data));
         },
-        failure: (NetworkExceptions error) {
-          emit(TagsError(error: error));
+        failure: (NetworkExceptions error) async* {
+          yield (TagsError(error: error));
         },
       );
     }

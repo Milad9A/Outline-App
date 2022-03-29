@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'article_model.dart';
 
@@ -47,7 +49,7 @@ class _$ArticleModelTearOff {
     );
   }
 
-  ArticleModel fromJson(Map<String, Object> json) {
+  ArticleModel fromJson(Map<String, Object?> json) {
     return ArticleModel.fromJson(json);
   }
 }
@@ -267,9 +269,8 @@ class _$ArticleCopyWithImpl<$Res> extends _$ArticleModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$Article with DiagnosticableTreeMixin implements Article {
   const _$Article(
       {@JsonKey(name: '_id') required this.id,
@@ -285,7 +286,7 @@ class _$Article with DiagnosticableTreeMixin implements Article {
       @JsonKey(name: 'updatedAt') required this.updatedAt});
 
   factory _$Article.fromJson(Map<String, dynamic> json) =>
-      _$_$ArticleFromJson(json);
+      _$$ArticleFromJson(json);
 
   @override
   @JsonKey(name: '_id')
@@ -347,50 +348,35 @@ class _$Article with DiagnosticableTreeMixin implements Article {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Article &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user)) &&
-            (identical(other.content, content) ||
-                const DeepCollectionEquality()
-                    .equals(other.content, content)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.banner, banner) ||
-                const DeepCollectionEquality().equals(other.banner, banner)) &&
-            (identical(other.viewCount, viewCount) ||
-                const DeepCollectionEquality()
-                    .equals(other.viewCount, viewCount)) &&
-            (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)) &&
-            (identical(other.likes, likes) ||
-                const DeepCollectionEquality().equals(other.likes, likes)) &&
-            (identical(other.comments, comments) ||
-                const DeepCollectionEquality()
-                    .equals(other.comments, comments)) &&
-            (identical(other.createdAt, createdAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)) &&
-            (identical(other.updatedAt, updatedAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.updatedAt, updatedAt)));
+        (other.runtimeType == runtimeType &&
+            other is Article &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.user, user) &&
+            const DeepCollectionEquality().equals(other.content, content) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.banner, banner) &&
+            const DeepCollectionEquality().equals(other.viewCount, viewCount) &&
+            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality().equals(other.likes, likes) &&
+            const DeepCollectionEquality().equals(other.comments, comments) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(user) ^
-      const DeepCollectionEquality().hash(content) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(banner) ^
-      const DeepCollectionEquality().hash(viewCount) ^
-      const DeepCollectionEquality().hash(tags) ^
-      const DeepCollectionEquality().hash(likes) ^
-      const DeepCollectionEquality().hash(comments) ^
-      const DeepCollectionEquality().hash(createdAt) ^
-      const DeepCollectionEquality().hash(updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(user),
+      const DeepCollectionEquality().hash(content),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(banner),
+      const DeepCollectionEquality().hash(viewCount),
+      const DeepCollectionEquality().hash(tags),
+      const DeepCollectionEquality().hash(likes),
+      const DeepCollectionEquality().hash(comments),
+      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(updatedAt));
 
   @JsonKey(ignore: true)
   @override
@@ -399,7 +385,7 @@ class _$Article with DiagnosticableTreeMixin implements Article {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$ArticleToJson(this);
+    return _$$ArticleToJson(this);
   }
 }
 
@@ -421,37 +407,37 @@ abstract class Article implements ArticleModel {
 
   @override
   @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
   @JsonKey(name: 'owner_user_id')
-  User get user => throw _privateConstructorUsedError;
+  User get user;
   @override
   @JsonKey(name: 'content')
-  String get content => throw _privateConstructorUsedError;
+  String get content;
   @override
   @JsonKey(name: 'title')
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
   @JsonKey(name: 'banner')
-  String get banner => throw _privateConstructorUsedError;
+  String get banner;
   @override
   @JsonKey(name: 'view_count')
-  int get viewCount => throw _privateConstructorUsedError;
+  int get viewCount;
   @override
   @JsonKey(name: 'tags')
-  List<Tag> get tags => throw _privateConstructorUsedError;
+  List<Tag> get tags;
   @override
   @JsonKey(name: 'likes')
-  List<String> get likes => throw _privateConstructorUsedError;
+  List<String> get likes;
   @override
   @JsonKey(name: 'comments')
-  List<String> get comments => throw _privateConstructorUsedError;
+  List<String> get comments;
   @override
   @JsonKey(name: 'createdAt')
-  String get createdAt => throw _privateConstructorUsedError;
+  String get createdAt;
   @override
   @JsonKey(name: 'updatedAt')
-  String get updatedAt => throw _privateConstructorUsedError;
+  String get updatedAt;
   @override
   @JsonKey(ignore: true)
   $ArticleCopyWith<Article> get copyWith => throw _privateConstructorUsedError;

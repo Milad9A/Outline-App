@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'course_search_bloc.dart';
 
@@ -39,6 +41,12 @@ mixin _$CourseSearchEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? courseSearchButtonPressed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String query)? courseSearchButtonPressed,
@@ -49,6 +57,13 @@ mixin _$CourseSearchEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(CourseSearchButtonPressed value)
+        courseSearchButtonPressed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(CourseSearchButtonPressed value)?
         courseSearchButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
@@ -96,6 +111,7 @@ class __$StartedCopyWithImpl<$Res> extends _$CourseSearchEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started implements _Started {
   const _$_Started();
 
@@ -106,7 +122,8 @@ class _$_Started implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -119,6 +136,15 @@ class _$_Started implements _Started {
     required TResult Function(String query) courseSearchButtonPressed,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? courseSearchButtonPressed,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -142,6 +168,16 @@ class _$_Started implements _Started {
         courseSearchButtonPressed,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(CourseSearchButtonPressed value)?
+        courseSearchButtonPressed,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -197,6 +233,7 @@ class _$CourseSearchButtonPressedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CourseSearchButtonPressed implements CourseSearchButtonPressed {
   const _$CourseSearchButtonPressed({required this.query});
 
@@ -211,14 +248,14 @@ class _$CourseSearchButtonPressed implements CourseSearchButtonPressed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CourseSearchButtonPressed &&
-            (identical(other.query, query) ||
-                const DeepCollectionEquality().equals(other.query, query)));
+        (other.runtimeType == runtimeType &&
+            other is CourseSearchButtonPressed &&
+            const DeepCollectionEquality().equals(other.query, query));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(query);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(query));
 
   @JsonKey(ignore: true)
   @override
@@ -233,6 +270,15 @@ class _$CourseSearchButtonPressed implements CourseSearchButtonPressed {
     required TResult Function(String query) courseSearchButtonPressed,
   }) {
     return courseSearchButtonPressed(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String query)? courseSearchButtonPressed,
+  }) {
+    return courseSearchButtonPressed?.call(query);
   }
 
   @override
@@ -260,6 +306,16 @@ class _$CourseSearchButtonPressed implements CourseSearchButtonPressed {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(CourseSearchButtonPressed value)?
+        courseSearchButtonPressed,
+  }) {
+    return courseSearchButtonPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(CourseSearchButtonPressed value)?
@@ -277,7 +333,7 @@ abstract class CourseSearchButtonPressed implements CourseSearchEvent {
   const factory CourseSearchButtonPressed({required String query}) =
       _$CourseSearchButtonPressed;
 
-  String get query => throw _privateConstructorUsedError;
+  String get query;
   @JsonKey(ignore: true)
   $CourseSearchButtonPressedCopyWith<CourseSearchButtonPressed> get copyWith =>
       throw _privateConstructorUsedError;
@@ -322,6 +378,14 @@ mixin _$CourseSearchState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<Course> courses)? courseSearchSuccess,
+    TResult Function()? courseSearchLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<Course> courses)? courseSearchSuccess,
@@ -336,6 +400,14 @@ mixin _$CourseSearchState {
     required TResult Function(CourseSearchSuccess value) courseSearchSuccess,
     required TResult Function(CourseSearchLoading value) courseSearchLoading,
     required TResult Function(CourseSearchError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CourseSearchSuccess value)? courseSearchSuccess,
+    TResult Function(CourseSearchLoading value)? courseSearchLoading,
+    TResult Function(CourseSearchError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -383,6 +455,7 @@ class __$InitialCopyWithImpl<$Res> extends _$CourseSearchStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -393,7 +466,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -408,6 +482,17 @@ class _$_Initial implements _Initial {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<Course> courses)? courseSearchSuccess,
+    TResult Function()? courseSearchLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -434,6 +519,17 @@ class _$_Initial implements _Initial {
     required TResult Function(CourseSearchError value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CourseSearchSuccess value)? courseSearchSuccess,
+    TResult Function(CourseSearchLoading value)? courseSearchLoading,
+    TResult Function(CourseSearchError value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -489,6 +585,7 @@ class _$CourseSearchSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CourseSearchSuccess implements CourseSearchSuccess {
   const _$CourseSearchSuccess({required this.courses});
 
@@ -503,14 +600,14 @@ class _$CourseSearchSuccess implements CourseSearchSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CourseSearchSuccess &&
-            (identical(other.courses, courses) ||
-                const DeepCollectionEquality().equals(other.courses, courses)));
+        (other.runtimeType == runtimeType &&
+            other is CourseSearchSuccess &&
+            const DeepCollectionEquality().equals(other.courses, courses));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(courses);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(courses));
 
   @JsonKey(ignore: true)
   @override
@@ -526,6 +623,17 @@ class _$CourseSearchSuccess implements CourseSearchSuccess {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return courseSearchSuccess(courses);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<Course> courses)? courseSearchSuccess,
+    TResult Function()? courseSearchLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return courseSearchSuccess?.call(courses);
   }
 
   @override
@@ -556,6 +664,17 @@ class _$CourseSearchSuccess implements CourseSearchSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CourseSearchSuccess value)? courseSearchSuccess,
+    TResult Function(CourseSearchLoading value)? courseSearchLoading,
+    TResult Function(CourseSearchError value)? error,
+  }) {
+    return courseSearchSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(CourseSearchSuccess value)? courseSearchSuccess,
@@ -574,7 +693,7 @@ abstract class CourseSearchSuccess implements CourseSearchState {
   const factory CourseSearchSuccess({required List<Course> courses}) =
       _$CourseSearchSuccess;
 
-  List<Course> get courses => throw _privateConstructorUsedError;
+  List<Course> get courses;
   @JsonKey(ignore: true)
   $CourseSearchSuccessCopyWith<CourseSearchSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -600,6 +719,7 @@ class _$CourseSearchLoadingCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CourseSearchLoading implements CourseSearchLoading {
   const _$CourseSearchLoading();
 
@@ -610,7 +730,8 @@ class _$CourseSearchLoading implements CourseSearchLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is CourseSearchLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is CourseSearchLoading);
   }
 
   @override
@@ -625,6 +746,17 @@ class _$CourseSearchLoading implements CourseSearchLoading {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return courseSearchLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<Course> courses)? courseSearchSuccess,
+    TResult Function()? courseSearchLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return courseSearchLoading?.call();
   }
 
   @override
@@ -651,6 +783,17 @@ class _$CourseSearchLoading implements CourseSearchLoading {
     required TResult Function(CourseSearchError value) error,
   }) {
     return courseSearchLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CourseSearchSuccess value)? courseSearchSuccess,
+    TResult Function(CourseSearchLoading value)? courseSearchLoading,
+    TResult Function(CourseSearchError value)? error,
+  }) {
+    return courseSearchLoading?.call(this);
   }
 
   @override
@@ -715,6 +858,7 @@ class _$CourseSearchErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CourseSearchError implements CourseSearchError {
   const _$CourseSearchError({required this.error});
 
@@ -729,14 +873,14 @@ class _$CourseSearchError implements CourseSearchError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CourseSearchError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is CourseSearchError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -752,6 +896,17 @@ class _$CourseSearchError implements CourseSearchError {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<Course> courses)? courseSearchSuccess,
+    TResult Function()? courseSearchLoading,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return error?.call(this.error);
   }
 
   @override
@@ -782,6 +937,17 @@ class _$CourseSearchError implements CourseSearchError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CourseSearchSuccess value)? courseSearchSuccess,
+    TResult Function(CourseSearchLoading value)? courseSearchLoading,
+    TResult Function(CourseSearchError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(CourseSearchSuccess value)? courseSearchSuccess,
@@ -800,7 +966,7 @@ abstract class CourseSearchError implements CourseSearchState {
   const factory CourseSearchError({required NetworkExceptions error}) =
       _$CourseSearchError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $CourseSearchErrorCopyWith<CourseSearchError> get copyWith =>
       throw _privateConstructorUsedError;

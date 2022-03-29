@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'comment_bloc.dart';
 
@@ -41,6 +43,12 @@ mixin _$CommentEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(CommentCreate commentCreate)? createCommentButtonPressed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(CommentCreate commentCreate)? createCommentButtonPressed,
@@ -51,6 +59,13 @@ mixin _$CommentEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(CreateCommentButtonPressed value)
+        createCommentButtonPressed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(CreateCommentButtonPressed value)?
         createCommentButtonPressed,
   }) =>
       throw _privateConstructorUsedError;
@@ -97,6 +112,7 @@ class __$StartedCopyWithImpl<$Res> extends _$CommentEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started with DiagnosticableTreeMixin implements _Started {
   const _$_Started();
 
@@ -113,7 +129,8 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -127,6 +144,15 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
         createCommentButtonPressed,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(CommentCreate commentCreate)? createCommentButtonPressed,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -150,6 +176,16 @@ class _$_Started with DiagnosticableTreeMixin implements _Started {
         createCommentButtonPressed,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(CreateCommentButtonPressed value)?
+        createCommentButtonPressed,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -205,6 +241,7 @@ class _$CreateCommentButtonPressedCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CreateCommentButtonPressed
     with DiagnosticableTreeMixin
     implements CreateCommentButtonPressed {
@@ -230,15 +267,15 @@ class _$CreateCommentButtonPressed
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CreateCommentButtonPressed &&
-            (identical(other.commentCreate, commentCreate) ||
-                const DeepCollectionEquality()
-                    .equals(other.commentCreate, commentCreate)));
+        (other.runtimeType == runtimeType &&
+            other is CreateCommentButtonPressed &&
+            const DeepCollectionEquality()
+                .equals(other.commentCreate, commentCreate));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(commentCreate);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(commentCreate));
 
   @JsonKey(ignore: true)
   @override
@@ -255,6 +292,15 @@ class _$CreateCommentButtonPressed
         createCommentButtonPressed,
   }) {
     return createCommentButtonPressed(commentCreate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(CommentCreate commentCreate)? createCommentButtonPressed,
+  }) {
+    return createCommentButtonPressed?.call(commentCreate);
   }
 
   @override
@@ -282,6 +328,16 @@ class _$CreateCommentButtonPressed
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(CreateCommentButtonPressed value)?
+        createCommentButtonPressed,
+  }) {
+    return createCommentButtonPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(CreateCommentButtonPressed value)?
@@ -299,7 +355,7 @@ abstract class CreateCommentButtonPressed implements CommentEvent {
   const factory CreateCommentButtonPressed(
       {required CommentCreate commentCreate}) = _$CreateCommentButtonPressed;
 
-  CommentCreate get commentCreate => throw _privateConstructorUsedError;
+  CommentCreate get commentCreate;
   @JsonKey(ignore: true)
   $CreateCommentButtonPressedCopyWith<CreateCommentButtonPressed>
       get copyWith => throw _privateConstructorUsedError;
@@ -344,6 +400,14 @@ mixin _$CommentState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? commentLoading,
+    TResult Function(Comment comment)? createCommentSuccess,
+    TResult Function(NetworkExceptions error)? commentError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? commentLoading,
@@ -358,6 +422,14 @@ mixin _$CommentState {
     required TResult Function(CommentLoading value) commentLoading,
     required TResult Function(CreateCommentSuccess value) createCommentSuccess,
     required TResult Function(CommentError value) commentError,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CommentLoading value)? commentLoading,
+    TResult Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult Function(CommentError value)? commentError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -404,6 +476,7 @@ class __$InitialCopyWithImpl<$Res> extends _$CommentStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   const _$_Initial();
 
@@ -420,7 +493,8 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -435,6 +509,17 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(NetworkExceptions error) commentError,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? commentLoading,
+    TResult Function(Comment comment)? createCommentSuccess,
+    TResult Function(NetworkExceptions error)? commentError,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -461,6 +546,17 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(CommentError value) commentError,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CommentLoading value)? commentLoading,
+    TResult Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult Function(CommentError value)? commentError,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -503,6 +599,7 @@ class _$CommentLoadingCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CommentLoading with DiagnosticableTreeMixin implements CommentLoading {
   const _$CommentLoading();
 
@@ -519,7 +616,8 @@ class _$CommentLoading with DiagnosticableTreeMixin implements CommentLoading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is CommentLoading);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is CommentLoading);
   }
 
   @override
@@ -534,6 +632,17 @@ class _$CommentLoading with DiagnosticableTreeMixin implements CommentLoading {
     required TResult Function(NetworkExceptions error) commentError,
   }) {
     return commentLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? commentLoading,
+    TResult Function(Comment comment)? createCommentSuccess,
+    TResult Function(NetworkExceptions error)? commentError,
+  }) {
+    return commentLoading?.call();
   }
 
   @override
@@ -560,6 +669,17 @@ class _$CommentLoading with DiagnosticableTreeMixin implements CommentLoading {
     required TResult Function(CommentError value) commentError,
   }) {
     return commentLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CommentLoading value)? commentLoading,
+    TResult Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult Function(CommentError value)? commentError,
+  }) {
+    return commentLoading?.call(this);
   }
 
   @override
@@ -615,6 +735,7 @@ class _$CreateCommentSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CreateCommentSuccess
     with DiagnosticableTreeMixin
     implements CreateCommentSuccess {
@@ -639,14 +760,14 @@ class _$CreateCommentSuccess
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CreateCommentSuccess &&
-            (identical(other.comment, comment) ||
-                const DeepCollectionEquality().equals(other.comment, comment)));
+        (other.runtimeType == runtimeType &&
+            other is CreateCommentSuccess &&
+            const DeepCollectionEquality().equals(other.comment, comment));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(comment);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(comment));
 
   @JsonKey(ignore: true)
   @override
@@ -663,6 +784,17 @@ class _$CreateCommentSuccess
     required TResult Function(NetworkExceptions error) commentError,
   }) {
     return createCommentSuccess(comment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? commentLoading,
+    TResult Function(Comment comment)? createCommentSuccess,
+    TResult Function(NetworkExceptions error)? commentError,
+  }) {
+    return createCommentSuccess?.call(comment);
   }
 
   @override
@@ -693,6 +825,17 @@ class _$CreateCommentSuccess
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CommentLoading value)? commentLoading,
+    TResult Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult Function(CommentError value)? commentError,
+  }) {
+    return createCommentSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(CommentLoading value)? commentLoading,
@@ -711,7 +854,7 @@ abstract class CreateCommentSuccess implements CommentState {
   const factory CreateCommentSuccess({required Comment comment}) =
       _$CreateCommentSuccess;
 
-  Comment get comment => throw _privateConstructorUsedError;
+  Comment get comment;
   @JsonKey(ignore: true)
   $CreateCommentSuccessCopyWith<CreateCommentSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -758,6 +901,7 @@ class _$CommentErrorCopyWithImpl<$Res> extends _$CommentStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$CommentError with DiagnosticableTreeMixin implements CommentError {
   const _$CommentError({required this.error});
 
@@ -780,14 +924,14 @@ class _$CommentError with DiagnosticableTreeMixin implements CommentError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommentError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is CommentError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -803,6 +947,17 @@ class _$CommentError with DiagnosticableTreeMixin implements CommentError {
     required TResult Function(NetworkExceptions error) commentError,
   }) {
     return commentError(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? commentLoading,
+    TResult Function(Comment comment)? createCommentSuccess,
+    TResult Function(NetworkExceptions error)? commentError,
+  }) {
+    return commentError?.call(error);
   }
 
   @override
@@ -833,6 +988,17 @@ class _$CommentError with DiagnosticableTreeMixin implements CommentError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CommentLoading value)? commentLoading,
+    TResult Function(CreateCommentSuccess value)? createCommentSuccess,
+    TResult Function(CommentError value)? commentError,
+  }) {
+    return commentError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(CommentLoading value)? commentLoading,
@@ -851,7 +1017,7 @@ abstract class CommentError implements CommentState {
   const factory CommentError({required NetworkExceptions error}) =
       _$CommentError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $CommentErrorCopyWith<CommentError> get copyWith =>
       throw _privateConstructorUsedError;

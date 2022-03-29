@@ -10,8 +10,7 @@ import 'package:auto_direction/auto_direction.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 Future<void> handleCameraAndMic(Permission permission) async {
-  final status = await permission.request();
-  print(status);
+  await permission.request();
 }
 
 class ConversationScreen extends StatefulWidget {
@@ -21,11 +20,12 @@ class ConversationScreen extends StatefulWidget {
   final String chatRoomId;
 
   const ConversationScreen({
+    Key? key,
     required this.name,
     required this.email,
     required this.avatar,
     required this.chatRoomId,
-  });
+  }) : super(key: key);
 
   @override
   _ConversationScreenState createState() => _ConversationScreenState();
@@ -84,7 +84,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 1.0,
-      iconTheme: IconThemeData(color: ColorRepository.darkBlue),
+      iconTheme: const IconThemeData(color: ColorRepository.darkBlue),
       centerTitle: false,
       leadingWidth: 50.0,
       title: Row(
@@ -94,7 +94,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
             backgroundColor: ColorRepository.greyish,
             radius: 17.0,
           ),
-          SizedBox(width: 10.0),
+          const SizedBox(width: 10.0),
           Expanded(
             child: Text(
               widget.name,
@@ -109,17 +109,17 @@ class _ConversationScreenState extends State<ConversationScreen> {
       ),
       actions: [
         IconButton(
-          icon: Icon(Icons.videocam),
+          icon: const Icon(Icons.videocam),
           onPressed: () {
             onJoin();
           },
         ),
         IconButton(
-          icon: Icon(Icons.call),
+          icon: const Icon(Icons.call),
           onPressed: () {},
         ),
         IconButton(
-          icon: Icon(Icons.more_vert_outlined),
+          icon: const Icon(Icons.more_vert_outlined),
           onPressed: () {},
         ),
       ],
@@ -141,21 +141,21 @@ class _ConversationScreenState extends State<ConversationScreen> {
                           itemCount: snapshot.data.docs.length,
                           shrinkWrap: true,
                           controller: scrollController,
-                          padding: EdgeInsets.only(top: 10, bottom: 2.0),
+                          padding: const EdgeInsets.only(top: 10, bottom: 2.0),
                           itemBuilder: (context, index) {
                             var message = snapshot.data.docs[index];
                             return MessageTile(message: message);
                           },
                         ),
                       ),
-                      SizedBox(height: 60.0),
+                      const SizedBox(height: 60.0),
                     ],
                   )
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
             Align(
               alignment: Alignment.bottomLeft,
               child: Container(
-                padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+                padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
                 height: 60,
                 width: double.infinity,
                 color: Colors.white,
@@ -179,7 +179,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 5.0),
                       child: IconButton(
                         splashRadius: 0.1,
-                        icon: Icon(Icons.send),
+                        icon: const Icon(Icons.send),
                         onPressed: () {
                           if (messageController.text.isNotEmpty) {
                             chatRepository.addConversationMessage(

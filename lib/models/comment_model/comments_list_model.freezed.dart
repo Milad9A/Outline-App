@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'comments_list_model.dart';
 
@@ -26,7 +28,7 @@ class _$CommentsListModelTearOff {
     );
   }
 
-  CommentsListModel fromJson(Map<String, Object> json) {
+  CommentsListModel fromJson(Map<String, Object?> json) {
     return CommentsListModel.fromJson(json);
   }
 }
@@ -108,14 +110,13 @@ class _$CommentsListCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$CommentsList with DiagnosticableTreeMixin implements CommentsList {
   const _$CommentsList({required this.commentsList});
 
   factory _$CommentsList.fromJson(Map<String, dynamic> json) =>
-      _$_$CommentsListFromJson(json);
+      _$$CommentsListFromJson(json);
 
   @override
   final List<Comment> commentsList;
@@ -136,15 +137,15 @@ class _$CommentsList with DiagnosticableTreeMixin implements CommentsList {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommentsList &&
-            (identical(other.commentsList, commentsList) ||
-                const DeepCollectionEquality()
-                    .equals(other.commentsList, commentsList)));
+        (other.runtimeType == runtimeType &&
+            other is CommentsList &&
+            const DeepCollectionEquality()
+                .equals(other.commentsList, commentsList));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(commentsList);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(commentsList));
 
   @JsonKey(ignore: true)
   @override
@@ -153,7 +154,7 @@ class _$CommentsList with DiagnosticableTreeMixin implements CommentsList {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$CommentsListToJson(this);
+    return _$$CommentsListToJson(this);
   }
 }
 
@@ -165,7 +166,7 @@ abstract class CommentsList implements CommentsListModel {
       _$CommentsList.fromJson;
 
   @override
-  List<Comment> get commentsList => throw _privateConstructorUsedError;
+  List<Comment> get commentsList;
   @override
   @JsonKey(ignore: true)
   $CommentsListCopyWith<CommentsList> get copyWith =>

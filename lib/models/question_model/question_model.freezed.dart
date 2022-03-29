@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'question_model.dart';
 
@@ -47,7 +49,7 @@ class _$QuestionModelTearOff {
     );
   }
 
-  QuestionModel fromJson(Map<String, Object> json) {
+  QuestionModel fromJson(Map<String, Object?> json) {
     return QuestionModel.fromJson(json);
   }
 }
@@ -268,9 +270,8 @@ class _$QuestionCopyWithImpl<$Res> extends _$QuestionModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$Question with DiagnosticableTreeMixin implements Question {
   const _$Question(
       {@JsonKey(name: '_id') required this.id,
@@ -286,7 +287,7 @@ class _$Question with DiagnosticableTreeMixin implements Question {
       @JsonKey(name: 'updatedAt') required this.updatedAt});
 
   factory _$Question.fromJson(Map<String, dynamic> json) =>
-      _$_$QuestionFromJson(json);
+      _$$QuestionFromJson(json);
 
   @override
   @JsonKey(name: '_id')
@@ -348,50 +349,36 @@ class _$Question with DiagnosticableTreeMixin implements Question {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is Question &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user)) &&
-            (identical(other.body, body) ||
-                const DeepCollectionEquality().equals(other.body, body)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.isAnswered, isAnswered) ||
-                const DeepCollectionEquality()
-                    .equals(other.isAnswered, isAnswered)) &&
-            (identical(other.viewCount, viewCount) ||
-                const DeepCollectionEquality()
-                    .equals(other.viewCount, viewCount)) &&
-            (identical(other.answers, answers) ||
-                const DeepCollectionEquality()
-                    .equals(other.answers, answers)) &&
-            (identical(other.score, score) ||
-                const DeepCollectionEquality().equals(other.score, score)) &&
-            (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)) &&
-            (identical(other.createdAt, createdAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)) &&
-            (identical(other.updatedAt, updatedAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.updatedAt, updatedAt)));
+        (other.runtimeType == runtimeType &&
+            other is Question &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.user, user) &&
+            const DeepCollectionEquality().equals(other.body, body) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality()
+                .equals(other.isAnswered, isAnswered) &&
+            const DeepCollectionEquality().equals(other.viewCount, viewCount) &&
+            const DeepCollectionEquality().equals(other.answers, answers) &&
+            const DeepCollectionEquality().equals(other.score, score) &&
+            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(user) ^
-      const DeepCollectionEquality().hash(body) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(isAnswered) ^
-      const DeepCollectionEquality().hash(viewCount) ^
-      const DeepCollectionEquality().hash(answers) ^
-      const DeepCollectionEquality().hash(score) ^
-      const DeepCollectionEquality().hash(tags) ^
-      const DeepCollectionEquality().hash(createdAt) ^
-      const DeepCollectionEquality().hash(updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(user),
+      const DeepCollectionEquality().hash(body),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(isAnswered),
+      const DeepCollectionEquality().hash(viewCount),
+      const DeepCollectionEquality().hash(answers),
+      const DeepCollectionEquality().hash(score),
+      const DeepCollectionEquality().hash(tags),
+      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(updatedAt));
 
   @JsonKey(ignore: true)
   @override
@@ -400,7 +387,7 @@ class _$Question with DiagnosticableTreeMixin implements Question {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$QuestionToJson(this);
+    return _$$QuestionToJson(this);
   }
 }
 
@@ -422,37 +409,37 @@ abstract class Question implements QuestionModel {
 
   @override
   @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
   @JsonKey(name: 'owner_user_id')
-  User get user => throw _privateConstructorUsedError;
+  User get user;
   @override
   @JsonKey(name: 'body')
-  String get body => throw _privateConstructorUsedError;
+  String get body;
   @override
   @JsonKey(name: 'title')
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
   @JsonKey(name: 'is_answered')
-  bool get isAnswered => throw _privateConstructorUsedError;
+  bool get isAnswered;
   @override
   @JsonKey(name: 'view_count')
-  int get viewCount => throw _privateConstructorUsedError;
+  int get viewCount;
   @override
   @JsonKey(name: 'answers')
-  List<AnswerVote> get answers => throw _privateConstructorUsedError;
+  List<AnswerVote> get answers;
   @override
   @JsonKey(name: 'score')
-  int get score => throw _privateConstructorUsedError;
+  int get score;
   @override
   @JsonKey(name: 'tags')
-  List<Tag> get tags => throw _privateConstructorUsedError;
+  List<Tag> get tags;
   @override
   @JsonKey(name: 'createdAt')
-  String get createdAt => throw _privateConstructorUsedError;
+  String get createdAt;
   @override
   @JsonKey(name: 'updatedAt')
-  String get updatedAt => throw _privateConstructorUsedError;
+  String get updatedAt;
   @override
   @JsonKey(ignore: true)
   $QuestionCopyWith<Question> get copyWith =>

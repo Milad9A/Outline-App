@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'question_vote_bloc.dart';
 
@@ -41,6 +43,12 @@ mixin _$QuestionVoteEvent {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String id, int voteValue)? voteOnQuestion,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String id, int voteValue)? voteOnQuestion,
@@ -51,6 +59,12 @@ mixin _$QuestionVoteEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(QuestionVoteOnQuestion value) voteOnQuestion,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(QuestionVoteOnQuestion value)? voteOnQuestion,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -96,6 +110,7 @@ class __$StartedCopyWithImpl<$Res> extends _$QuestionVoteEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Started implements _Started {
   const _$_Started();
 
@@ -106,7 +121,8 @@ class _$_Started implements _Started {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Started);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
   }
 
   @override
@@ -119,6 +135,15 @@ class _$_Started implements _Started {
     required TResult Function(String id, int voteValue) voteOnQuestion,
   }) {
     return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String id, int voteValue)? voteOnQuestion,
+  }) {
+    return started?.call();
   }
 
   @override
@@ -141,6 +166,15 @@ class _$_Started implements _Started {
     required TResult Function(QuestionVoteOnQuestion value) voteOnQuestion,
   }) {
     return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(QuestionVoteOnQuestion value)? voteOnQuestion,
+  }) {
+    return started?.call(this);
   }
 
   @override
@@ -199,6 +233,7 @@ class _$QuestionVoteOnQuestionCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$QuestionVoteOnQuestion implements QuestionVoteOnQuestion {
   const _$QuestionVoteOnQuestion({required this.id, required this.voteValue});
 
@@ -215,19 +250,17 @@ class _$QuestionVoteOnQuestion implements QuestionVoteOnQuestion {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is QuestionVoteOnQuestion &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.voteValue, voteValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.voteValue, voteValue)));
+        (other.runtimeType == runtimeType &&
+            other is QuestionVoteOnQuestion &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.voteValue, voteValue));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(voteValue);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(voteValue));
 
   @JsonKey(ignore: true)
   @override
@@ -242,6 +275,15 @@ class _$QuestionVoteOnQuestion implements QuestionVoteOnQuestion {
     required TResult Function(String id, int voteValue) voteOnQuestion,
   }) {
     return voteOnQuestion(id, voteValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String id, int voteValue)? voteOnQuestion,
+  }) {
+    return voteOnQuestion?.call(id, voteValue);
   }
 
   @override
@@ -268,6 +310,15 @@ class _$QuestionVoteOnQuestion implements QuestionVoteOnQuestion {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(QuestionVoteOnQuestion value)? voteOnQuestion,
+  }) {
+    return voteOnQuestion?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(QuestionVoteOnQuestion value)? voteOnQuestion,
@@ -284,8 +335,8 @@ abstract class QuestionVoteOnQuestion implements QuestionVoteEvent {
   const factory QuestionVoteOnQuestion(
       {required String id, required int voteValue}) = _$QuestionVoteOnQuestion;
 
-  String get id => throw _privateConstructorUsedError;
-  int get voteValue => throw _privateConstructorUsedError;
+  String get id;
+  int get voteValue;
   @JsonKey(ignore: true)
   $QuestionVoteOnQuestionCopyWith<QuestionVoteOnQuestion> get copyWith =>
       throw _privateConstructorUsedError;
@@ -326,6 +377,13 @@ mixin _$QuestionVoteState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(QuestionVote questionVote)? voteOnQuestionSuccess,
+    TResult Function(NetworkExceptions error)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(QuestionVote questionVote)? voteOnQuestionSuccess,
@@ -339,6 +397,13 @@ mixin _$QuestionVoteState {
     required TResult Function(VoteOnQuestionSuccess value)
         voteOnQuestionSuccess,
     required TResult Function(QuestionVoteError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(VoteOnQuestionSuccess value)? voteOnQuestionSuccess,
+    TResult Function(QuestionVoteError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -385,6 +450,7 @@ class __$InitialCopyWithImpl<$Res> extends _$QuestionVoteStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -395,7 +461,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -409,6 +476,16 @@ class _$_Initial implements _Initial {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(QuestionVote questionVote)? voteOnQuestionSuccess,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -434,6 +511,16 @@ class _$_Initial implements _Initial {
     required TResult Function(QuestionVoteError value) error,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(VoteOnQuestionSuccess value)? voteOnQuestionSuccess,
+    TResult Function(QuestionVoteError value)? error,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -488,6 +575,7 @@ class _$VoteOnQuestionSuccessCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$VoteOnQuestionSuccess implements VoteOnQuestionSuccess {
   const _$VoteOnQuestionSuccess({required this.questionVote});
 
@@ -502,15 +590,15 @@ class _$VoteOnQuestionSuccess implements VoteOnQuestionSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is VoteOnQuestionSuccess &&
-            (identical(other.questionVote, questionVote) ||
-                const DeepCollectionEquality()
-                    .equals(other.questionVote, questionVote)));
+        (other.runtimeType == runtimeType &&
+            other is VoteOnQuestionSuccess &&
+            const DeepCollectionEquality()
+                .equals(other.questionVote, questionVote));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(questionVote);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(questionVote));
 
   @JsonKey(ignore: true)
   @override
@@ -526,6 +614,16 @@ class _$VoteOnQuestionSuccess implements VoteOnQuestionSuccess {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return voteOnQuestionSuccess(questionVote);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(QuestionVote questionVote)? voteOnQuestionSuccess,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return voteOnQuestionSuccess?.call(questionVote);
   }
 
   @override
@@ -555,6 +653,16 @@ class _$VoteOnQuestionSuccess implements VoteOnQuestionSuccess {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(VoteOnQuestionSuccess value)? voteOnQuestionSuccess,
+    TResult Function(QuestionVoteError value)? error,
+  }) {
+    return voteOnQuestionSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(VoteOnQuestionSuccess value)? voteOnQuestionSuccess,
@@ -572,7 +680,7 @@ abstract class VoteOnQuestionSuccess implements QuestionVoteState {
   const factory VoteOnQuestionSuccess({required QuestionVote questionVote}) =
       _$VoteOnQuestionSuccess;
 
-  QuestionVote get questionVote => throw _privateConstructorUsedError;
+  QuestionVote get questionVote;
   @JsonKey(ignore: true)
   $VoteOnQuestionSuccessCopyWith<VoteOnQuestionSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -620,6 +728,7 @@ class _$QuestionVoteErrorCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$QuestionVoteError implements QuestionVoteError {
   const _$QuestionVoteError({required this.error});
 
@@ -634,14 +743,14 @@ class _$QuestionVoteError implements QuestionVoteError {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is QuestionVoteError &&
-            (identical(other.error, error) ||
-                const DeepCollectionEquality().equals(other.error, error)));
+        (other.runtimeType == runtimeType &&
+            other is QuestionVoteError &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -656,6 +765,16 @@ class _$QuestionVoteError implements QuestionVoteError {
     required TResult Function(NetworkExceptions error) error,
   }) {
     return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(QuestionVote questionVote)? voteOnQuestionSuccess,
+    TResult Function(NetworkExceptions error)? error,
+  }) {
+    return error?.call(this.error);
   }
 
   @override
@@ -685,6 +804,16 @@ class _$QuestionVoteError implements QuestionVoteError {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(VoteOnQuestionSuccess value)? voteOnQuestionSuccess,
+    TResult Function(QuestionVoteError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(VoteOnQuestionSuccess value)? voteOnQuestionSuccess,
@@ -702,7 +831,7 @@ abstract class QuestionVoteError implements QuestionVoteState {
   const factory QuestionVoteError({required NetworkExceptions error}) =
       _$QuestionVoteError;
 
-  NetworkExceptions get error => throw _privateConstructorUsedError;
+  NetworkExceptions get error;
   @JsonKey(ignore: true)
   $QuestionVoteErrorCopyWith<QuestionVoteError> get copyWith =>
       throw _privateConstructorUsedError;

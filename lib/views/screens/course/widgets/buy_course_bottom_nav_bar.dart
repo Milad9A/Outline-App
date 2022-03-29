@@ -10,8 +10,9 @@ import 'package:outline/views/widgets/widgets.dart';
 
 class BuyCoursesBottomNavigationBar extends StatelessWidget {
   BuyCoursesBottomNavigationBar({
+    Key? key,
     required this.course,
-  });
+  }) : super(key: key);
 
   final Course course;
 
@@ -21,7 +22,7 @@ class BuyCoursesBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.vertical(
+      borderRadius: const BorderRadius.vertical(
         top: Radius.circular(10.0),
       ),
       child: Container(
@@ -56,7 +57,7 @@ class BuyCoursesBottomNavigationBar extends StatelessWidget {
                             context: context,
                             enableDrag: true,
                             isScrollControlled: true,
-                            shape: RoundedRectangleBorder(
+                            shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.vertical(
                                 top: Radius.circular(10.0),
                               ),
@@ -68,7 +69,7 @@ class BuyCoursesBottomNavigationBar extends StatelessWidget {
                                       MediaQuery.of(context).viewInsets.bottom,
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.fromLTRB(
+                                  padding: const EdgeInsets.fromLTRB(
                                       20.0, 0.0, 20.0, 20.0),
                                   child: Column(
                                     crossAxisAlignment:
@@ -89,7 +90,7 @@ class BuyCoursesBottomNavigationBar extends StatelessWidget {
                                               fontWeight: FontWeight.bold,
                                             ),
                                       ),
-                                      SizedBox(height: 10.0),
+                                      const SizedBox(height: 10.0),
                                       Align(
                                         alignment: Alignment.centerLeft,
                                         child: Column(
@@ -106,21 +107,22 @@ class BuyCoursesBottomNavigationBar extends StatelessWidget {
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                             ),
-                                            SizedBox(height: 8.0),
+                                            const SizedBox(height: 8.0),
                                             Container(
-                                              padding: EdgeInsets.all(8.0),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               decoration: BoxDecoration(
                                                 color: ColorRepository
                                                     .scaffoldBackground,
                                                 borderRadius:
                                                     BorderRadius.circular(4.0),
                                               ),
-                                              child: Text('Banker'),
+                                              child: const Text('Banker'),
                                             )
                                           ],
                                         ),
                                       ),
-                                      SizedBox(height: 20.0),
+                                      const SizedBox(height: 20.0),
                                       OutlineTextField(
                                         controller: emailController,
                                         textInputType:
@@ -129,7 +131,7 @@ class BuyCoursesBottomNavigationBar extends StatelessWidget {
                                         hintText: 'Email',
                                         onChanged: (value) {},
                                       ),
-                                      SizedBox(height: 20.0),
+                                      const SizedBox(height: 20.0),
                                       OutlineTextField(
                                         controller: passwordController,
                                         textInputType: TextInputType.text,
@@ -138,7 +140,7 @@ class BuyCoursesBottomNavigationBar extends StatelessWidget {
                                         obscureText: true,
                                         onChanged: (value) {},
                                       ),
-                                      SizedBox(height: 20.0),
+                                      const SizedBox(height: 20.0),
                                       OutlineTextButton(
                                         text: 'Pay \$${course.price}',
                                         height: 36.0,

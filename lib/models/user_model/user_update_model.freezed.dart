@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'user_update_model.dart';
 
@@ -37,7 +39,7 @@ class _$UserUpdateModelTearOff {
     );
   }
 
-  UserUpdateModel fromJson(Map<String, Object> json) {
+  UserUpdateModel fromJson(Map<String, Object?> json) {
     return UserUpdateModel.fromJson(json);
   }
 }
@@ -190,9 +192,8 @@ class _$UserUpdateCopyWithImpl<$Res> extends _$UserUpdateModelCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$UserUpdate with DiagnosticableTreeMixin implements UserUpdate {
   const _$UserUpdate(
       {@JsonKey(name: 'name') this.name,
@@ -203,7 +204,7 @@ class _$UserUpdate with DiagnosticableTreeMixin implements UserUpdate {
       @JsonKey(name: 'tags') this.tags});
 
   factory _$UserUpdate.fromJson(Map<String, dynamic> json) =>
-      _$_$UserUpdateFromJson(json);
+      _$$UserUpdateFromJson(json);
 
   @override
   @JsonKey(name: 'name')
@@ -245,34 +246,27 @@ class _$UserUpdate with DiagnosticableTreeMixin implements UserUpdate {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is UserUpdate &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.password, password) ||
-                const DeepCollectionEquality()
-                    .equals(other.password, password)) &&
-            (identical(other.aboutMe, aboutMe) ||
-                const DeepCollectionEquality()
-                    .equals(other.aboutMe, aboutMe)) &&
-            (identical(other.reputation, reputation) ||
-                const DeepCollectionEquality()
-                    .equals(other.reputation, reputation)) &&
-            (identical(other.acceptRate, acceptRate) ||
-                const DeepCollectionEquality()
-                    .equals(other.acceptRate, acceptRate)) &&
-            (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)));
+        (other.runtimeType == runtimeType &&
+            other is UserUpdate &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.password, password) &&
+            const DeepCollectionEquality().equals(other.aboutMe, aboutMe) &&
+            const DeepCollectionEquality()
+                .equals(other.reputation, reputation) &&
+            const DeepCollectionEquality()
+                .equals(other.acceptRate, acceptRate) &&
+            const DeepCollectionEquality().equals(other.tags, tags));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(password) ^
-      const DeepCollectionEquality().hash(aboutMe) ^
-      const DeepCollectionEquality().hash(reputation) ^
-      const DeepCollectionEquality().hash(acceptRate) ^
-      const DeepCollectionEquality().hash(tags);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(password),
+      const DeepCollectionEquality().hash(aboutMe),
+      const DeepCollectionEquality().hash(reputation),
+      const DeepCollectionEquality().hash(acceptRate),
+      const DeepCollectionEquality().hash(tags));
 
   @JsonKey(ignore: true)
   @override
@@ -281,7 +275,7 @@ class _$UserUpdate with DiagnosticableTreeMixin implements UserUpdate {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$UserUpdateToJson(this);
+    return _$$UserUpdateToJson(this);
   }
 }
 
@@ -299,22 +293,22 @@ abstract class UserUpdate implements UserUpdateModel {
 
   @override
   @JsonKey(name: 'name')
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
   @JsonKey(name: 'password')
-  String? get password => throw _privateConstructorUsedError;
+  String? get password;
   @override
   @JsonKey(name: 'aboutMe')
-  String? get aboutMe => throw _privateConstructorUsedError;
+  String? get aboutMe;
   @override
   @JsonKey(name: 'reputation')
-  int? get reputation => throw _privateConstructorUsedError;
+  int? get reputation;
   @override
   @JsonKey(name: 'accept_rate')
-  int? get acceptRate => throw _privateConstructorUsedError;
+  int? get acceptRate;
   @override
   @JsonKey(name: 'tags')
-  List<String?>? get tags => throw _privateConstructorUsedError;
+  List<String?>? get tags;
   @override
   @JsonKey(ignore: true)
   $UserUpdateCopyWith<UserUpdate> get copyWith =>

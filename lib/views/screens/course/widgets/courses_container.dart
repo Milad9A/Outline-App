@@ -8,9 +8,10 @@ class CoursesContainer extends StatelessWidget {
   final List<Course> coursesList;
 
   const CoursesContainer({
+    Key? key,
     required this.title,
     required this.coursesList,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class CoursesContainer extends StatelessWidget {
                     ),
               ),
               IconButton(
-                icon: Icon(Icons.arrow_forward),
+                icon: const Icon(Icons.arrow_forward),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -46,16 +47,16 @@ class CoursesContainer extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 10.0),
-        Container(
+        const SizedBox(height: 10.0),
+        SizedBox(
           height: 190.0,
           child: ListView.separated(
             itemCount: coursesList.length,
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(width: 10);
+              return const SizedBox(width: 10);
             },
             itemBuilder: (BuildContext context, int index) {
               Course course = coursesList[index];

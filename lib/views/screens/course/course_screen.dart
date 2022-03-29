@@ -8,6 +8,8 @@ import 'package:outline/views/screens/course/widgets/widgets.dart';
 import 'package:outline/views/widgets/widgets.dart';
 
 class CourseScreen extends StatefulWidget {
+  const CourseScreen({Key? key}) : super(key: key);
+
   @override
   _CourseScreenState createState() => _CourseScreenState();
 }
@@ -19,8 +21,8 @@ class _CourseScreenState extends State<CourseScreen>
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<CourseBloc>(context).add(GetAllCourses());
-    BlocProvider.of<MyCoursesBloc>(context).add(GetMyCourses());
+    BlocProvider.of<CourseBloc>(context).add(const GetAllCourses());
+    BlocProvider.of<MyCoursesBloc>(context).add(const GetMyCourses());
     _tabController = TabController(length: 2, vsync: this);
   }
 
@@ -49,9 +51,9 @@ class _CourseScreenState extends State<CourseScreen>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               children: [
-                CorseExploreTab(),
+                const CorseExploreTab(),
                 MyCoursesTab(
                   tabController: _tabController,
                 ),

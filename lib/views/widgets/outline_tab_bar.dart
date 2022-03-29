@@ -14,6 +14,7 @@ class OutlineTabBar extends StatelessWidget {
   final Function(int)? onTap;
 
   const OutlineTabBar({
+    Key? key,
     required this.firstTitle,
     required this.secondTitle,
     this.backgroundColor = Colors.white,
@@ -22,7 +23,7 @@ class OutlineTabBar extends StatelessWidget {
     this.tabController,
     this.tabs,
     this.onTap,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class OutlineTabBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       decoration: BoxDecoration(
         color: backgroundColor,
-        boxShadow: [Consts.outlineBoxShadow],
+        boxShadow: const [Consts.outlineBoxShadow],
       ),
       child: TabBar(
         onTap: onTap,
@@ -47,7 +48,7 @@ class OutlineTabBar extends StatelessWidget {
               Tab(
                 child: Text(
                   firstTitle,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.w400,
                   ),
@@ -56,7 +57,7 @@ class OutlineTabBar extends StatelessWidget {
               Tab(
                 child: Text(
                   secondTitle,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.w400,
                   ),

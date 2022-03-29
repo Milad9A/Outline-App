@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'article_create_model.dart';
 
@@ -31,7 +33,7 @@ class _$ArticleCreateModelTearOff {
     );
   }
 
-  ArticleCreateModel fromJson(Map<String, Object> json) {
+  ArticleCreateModel fromJson(Map<String, Object?> json) {
     return ArticleCreateModel.fromJson(json);
   }
 }
@@ -144,9 +146,8 @@ class _$ArticleCreateCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$ArticleCreate with DiagnosticableTreeMixin implements ArticleCreate {
   const _$ArticleCreate(
       {@JsonKey(name: 'content') required this.content,
@@ -154,7 +155,7 @@ class _$ArticleCreate with DiagnosticableTreeMixin implements ArticleCreate {
       @JsonKey(name: 'tags') required this.tags});
 
   factory _$ArticleCreate.fromJson(Map<String, dynamic> json) =>
-      _$_$ArticleCreateFromJson(json);
+      _$$ArticleCreateFromJson(json);
 
   @override
   @JsonKey(name: 'content')
@@ -184,22 +185,19 @@ class _$ArticleCreate with DiagnosticableTreeMixin implements ArticleCreate {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ArticleCreate &&
-            (identical(other.content, content) ||
-                const DeepCollectionEquality()
-                    .equals(other.content, content)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.tags, tags) ||
-                const DeepCollectionEquality().equals(other.tags, tags)));
+        (other.runtimeType == runtimeType &&
+            other is ArticleCreate &&
+            const DeepCollectionEquality().equals(other.content, content) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.tags, tags));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(content) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(tags);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(content),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(tags));
 
   @JsonKey(ignore: true)
   @override
@@ -208,7 +206,7 @@ class _$ArticleCreate with DiagnosticableTreeMixin implements ArticleCreate {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$ArticleCreateToJson(this);
+    return _$$ArticleCreateToJson(this);
   }
 }
 
@@ -223,13 +221,13 @@ abstract class ArticleCreate implements ArticleCreateModel {
 
   @override
   @JsonKey(name: 'content')
-  String get content => throw _privateConstructorUsedError;
+  String get content;
   @override
   @JsonKey(name: 'title')
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
   @JsonKey(name: 'tags')
-  List<String> get tags => throw _privateConstructorUsedError;
+  List<String> get tags;
   @override
   @JsonKey(ignore: true)
   $ArticleCreateCopyWith<ArticleCreate> get copyWith =>

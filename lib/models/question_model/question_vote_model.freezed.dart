@@ -1,5 +1,7 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'question_vote_model.dart';
 
@@ -29,7 +31,7 @@ class _$QuestionVoteModelTearOff {
     );
   }
 
-  QuestionVoteModel fromJson(Map<String, Object> json) {
+  QuestionVoteModel fromJson(Map<String, Object?> json) {
     return QuestionVoteModel.fromJson(json);
   }
 }
@@ -128,16 +130,15 @@ class _$QuestionVoteCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$QuestionVote with DiagnosticableTreeMixin implements QuestionVote {
   const _$QuestionVote(
       {@JsonKey(name: 'question') required this.question,
       @JsonKey(name: 'my_vote') required this.myVote});
 
   factory _$QuestionVote.fromJson(Map<String, dynamic> json) =>
-      _$_$QuestionVoteFromJson(json);
+      _$$QuestionVoteFromJson(json);
 
   @override
   @JsonKey(name: 'question')
@@ -163,19 +164,17 @@ class _$QuestionVote with DiagnosticableTreeMixin implements QuestionVote {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is QuestionVote &&
-            (identical(other.question, question) ||
-                const DeepCollectionEquality()
-                    .equals(other.question, question)) &&
-            (identical(other.myVote, myVote) ||
-                const DeepCollectionEquality().equals(other.myVote, myVote)));
+        (other.runtimeType == runtimeType &&
+            other is QuestionVote &&
+            const DeepCollectionEquality().equals(other.question, question) &&
+            const DeepCollectionEquality().equals(other.myVote, myVote));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(question) ^
-      const DeepCollectionEquality().hash(myVote);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(question),
+      const DeepCollectionEquality().hash(myVote));
 
   @JsonKey(ignore: true)
   @override
@@ -184,7 +183,7 @@ class _$QuestionVote with DiagnosticableTreeMixin implements QuestionVote {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$QuestionVoteToJson(this);
+    return _$$QuestionVoteToJson(this);
   }
 }
 
@@ -198,10 +197,10 @@ abstract class QuestionVote implements QuestionVoteModel {
 
   @override
   @JsonKey(name: 'question')
-  Question get question => throw _privateConstructorUsedError;
+  Question get question;
   @override
   @JsonKey(name: 'my_vote')
-  int get myVote => throw _privateConstructorUsedError;
+  int get myVote;
   @override
   @JsonKey(ignore: true)
   $QuestionVoteCopyWith<QuestionVote> get copyWith =>

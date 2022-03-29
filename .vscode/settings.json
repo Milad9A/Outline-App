@@ -1,10 +1,19 @@
 {
     "cSpell.words": [
+        "Alives",
+        "chatroomid",
         "Consts",
+        "foramtter",
         "Giffy",
         "Hilal",
+        "inappwebview",
+        "navigationbar",
+        "nullsafety",
+        "ondemand",
         "Prefs",
-        "serializable"
+        "readmore",
+        "serializable",
+        "videocam"
     ],
     "dart.flutterSdkPath": "C:\\Users\\Milad.A\\fvm\\versions\\stable"
 }

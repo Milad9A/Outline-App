@@ -6,7 +6,7 @@ import 'package:outline/models/user_model/user_login_model.dart';
 
 class BankerRepository {
   late DioClient dioClient;
-  String _baseUrl = 'https://banker-app-api.herokuapp.com';
+  final String _baseUrl = 'https://banker-app-api.herokuapp.com';
 
   BankerRepository() {
     var dio = Dio();
