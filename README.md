@@ -1,3 +1,5 @@
+[![Codemagic build status](https://api.codemagic.io/apps/6096f12df3dcf254cd394e4e/6096f12df3dcf254cd394e4d/status_badge.svg)](https://codemagic.io/apps/6096f12df3dcf254cd394e4e/6096f12df3dcf254cd394e4d/latest_build)
+
 # outline
 
 <img align="center" width="535" alt="outline" src="https://user-images.githubusercontent.com/43892355/160640809-ac399333-bcee-4a03-b2da-6a085686bce2.png">
